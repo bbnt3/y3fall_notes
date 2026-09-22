@@ -1,0 +1,253 @@
+\documentclass[11pt,letterpaper]{article}
+
+% Compile from the template/ folder: latexmk -pdf -interaction=nonstopmode demo.tex
+% This path mirrors how course main.tex files load the shared preamble.
+\input{../template/preamble.tex}
+
+\title{Course Notes Template --- Feature Demo\\[0.5em]\large Every environment and shortcut, shown with its source}
+\author{Reference document, not a real course}
+\date{}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section{What this file is}
+This is a reference build, not a lecture entry. Each section below pairs the
+\texttt{verbatim} source for one template feature with what it actually
+renders to, so you can copy the pattern you need straight into an entry file.
+
+\section{Math shortcuts}
+Defined in \texttt{preamble.tex} so you never have to type \texttt{\textbackslash mathbb\{R\}} by hand.
+
+\begin{verbatim}
+\R, \N, \Z, \E, \Prob \quad \Var(X), \Cov(X,Y)
+\end{verbatim}
+Renders as: $\R,\ \N,\ \Z,\ \E,\ \Prob \quad \Var(X),\ \Cov(X,Y)$
+
+\section{Theorem-style environments}
+\texttt{theorem}, \texttt{lemma}, and \texttt{proposition} share one counter
+and use bold-header, italic-body plain style. The bracketed name is optional.
+
+\begin{verbatim}
+\begin{theorem}[Complement rule]
+  For any event $A$, $\Prob(A^c) = 1 - \Prob(A)$.
+\end{theorem}
+\end{verbatim}
+Renders as:
+\begin{theorem}[Complement rule]
+  For any event $A$, $\Prob(A^c) = 1 - \Prob(A)$.
+\end{theorem}
+
+\begin{verbatim}
+\begin{lemma}
+  Every convergent sequence is bounded.
+\end{lemma}
+
+\begin{proposition}
+  The empty set is a subset of every set.
+\end{proposition}
+\end{verbatim}
+Renders as:
+\begin{lemma}
+  Every convergent sequence is bounded.
+\end{lemma}
+\begin{proposition}
+  The empty set is a subset of every set.
+\end{proposition}
+
+\section{Definition-style environments}
+\texttt{definition}, \texttt{example}, and \texttt{exercise} use upright body
+text and share the same counter sequence as the theorem-style set above.
+
+\begin{verbatim}
+\begin{definition}[Independence]
+  Events $A$ and $B$ are independent if
+  $\Prob(A \cap B) = \Prob(A)\Prob(B)$.
+\end{definition}
+\end{verbatim}
+Renders as:
+\begin{definition}[Independence]
+  Events $A$ and $B$ are independent if
+  $\Prob(A \cap B) = \Prob(A)\Prob(B)$.
+\end{definition}
+
+\begin{verbatim}
+\begin{example}
+  Rolling a fair die: $\Prob(\{1,3,5\}) = \tfrac{1}{2}$.
+\end{example}
+
+\begin{exercise}
+  Show that $\Prob(A \cup B) = \Prob(A) + \Prob(B) - \Prob(A \cap B)$.
+\end{exercise}
+\end{verbatim}
+Renders as:
+\begin{example}
+  Rolling a fair die: $\Prob(\{1,3,5\}) = \tfrac{1}{2}$.
+\end{example}
+\begin{exercise}
+  Show that $\Prob(A \cup B) = \Prob(A) + \Prob(B) - \Prob(A \cap B)$.
+\end{exercise}
+
+\section{Remarks and proofs}
+\texttt{remark} is unnumbered. \texttt{proof} comes from \texttt{amsthm}
+automatically and ends with the usual tombstone.
+
+\begin{verbatim}
+\begin{remark}
+  Independence is a modelling assumption, not something you can see
+  directly in raw data.
+\end{remark}
+
+\begin{proof}
+  Immediate from $\Prob(A) + \Prob(A^c) = 1$.
+\end{proof}
+\end{verbatim}
+Renders as:
+\begin{remark}
+  Independence is a modelling assumption, not something you can see
+  directly in raw data.
+\end{remark}
+\begin{proof}
+  Immediate from $\Prob(A) + \Prob(A^c) = 1$.
+\end{proof}
+
+\section{Cross-references}
+Attach a \texttt{\textbackslash label} to any numbered environment and refer
+back to it with \texttt{\textbackslash ref}.
+
+\begin{verbatim}
+\begin{theorem}[Bayes' rule]\label{thm:bayes}
+  $\Prob(A\mid B) = \dfrac{\Prob(B\mid A)\Prob(A)}{\Prob(B)}$.
+\end{theorem}
+
+See Theorem~\ref{thm:bayes} above.
+\end{verbatim}
+Renders as:
+\begin{theorem}[Bayes' rule]\label{thm:bayes}
+  $\Prob(A\mid B) = \dfrac{\Prob(B\mid A)\Prob(A)}{\Prob(B)}$.
+\end{theorem}
+See Theorem~\ref{thm:bayes} above.
+
+\section{Handwritten-note formatting helpers}
+These extra commands (also in \texttt{preamble.tex}) reproduce the look of
+red definition labels, blue margin comments, and yellow highlights from
+scanned handwritten notes; see \texttt{STA347/entries/week01.tex} for a full
+worked example.
+
+\begin{verbatim}
+\deflabel{2.1}{Conditional Probability}
+\begin{quote}
+  $\Prob(A\mid B) = \Prob(A\cap B)/\Prob(B)$ when $\Prob(B) > 0$.
+\end{quote}
+\aside{This is undefined if $B$ has probability zero.}
+
+\heading{Key difference:}
+Conditioning rescales the sample space; independence does not.
+
+Uniform convergence needs \hly{a single threshold $N$} for every $x$.
+\end{verbatim}
+Renders as:
+
+\deflabel{2.1}{Conditional Probability}
+\begin{quote}
+  $\Prob(A\mid B) = \Prob(A\cap B)/\Prob(B)$ when $\Prob(B) > 0$.
+\end{quote}
+\aside{This is undefined if $B$ has probability zero.}
+
+\heading{Key difference:}
+Conditioning rescales the sample space; independence does not.
+
+Uniform convergence needs \hly{a single threshold $N$} for every $x$.
+
+\section{Diagrams with TikZ}
+\texttt{tikz} and the \texttt{decorations.pathreplacing} library are loaded
+by the preamble, so any entry can draw a quick sketch inline.
+
+\begin{verbatim}
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- (4,0) node[right]{$x$};
+  \draw[thick, blue!55!black] (0,0.2) .. controls (1.5,2) and (2.5,-1.5)
+    .. (4,0.5);
+  \node[red!70!black] at (2,-0.6) {a curve, drawn by hand};
+\end{tikzpicture}
+\end{center}
+\end{verbatim}
+Renders as:
+\begin{center}
+\begin{tikzpicture}
+  \draw[->] (0,0) -- (4,0) node[right]{$x$};
+  \draw[thick, blue!55!black] (0,0.2) .. controls (1.5,2) and (2.5,-1.5)
+    .. (4,0.5);
+  \node[red!70!black] at (2,-0.6) {a curve, drawn by hand};
+\end{tikzpicture}
+\end{center}
+
+\section{Lists}
+\texttt{enumitem} is loaded with \texttt{nosep}, so list items sit close
+together the way handwritten bullet points do.
+
+\begin{verbatim}
+\begin{itemize}
+  \item Sample space $\Omega$
+  \item Event space $\mathcal{F}$
+  \item Probability measure $\Prob$
+\end{itemize}
+\end{verbatim}
+Renders as:
+\begin{itemize}
+  \item Sample space $\Omega$
+  \item Event space $\mathcal{F}$
+  \item Probability measure $\Prob$
+\end{itemize}
+
+\section{Tables}
+\texttt{booktabs} gives the clean horizontal-rule table style (no vertical
+rules).
+
+\begin{verbatim}
+\begin{center}
+\begin{tabular}{lcc}
+  \toprule
+  Distribution & Mean & Variance \\
+  \midrule
+  $\text{Bernoulli}(p)$ & $p$ & $p(1-p)$ \\
+  $\text{Poisson}(\lambda)$ & $\lambda$ & $\lambda$ \\
+  \bottomrule
+\end{tabular}
+\end{center}
+\end{verbatim}
+Renders as:
+\begin{center}
+\begin{tabular}{lcc}
+  \toprule
+  Distribution & Mean & Variance \\
+  \midrule
+  $\text{Bernoulli}(p)$ & $p$ & $p(1-p)$ \\
+  $\text{Poisson}(\lambda)$ & $\lambda$ & $\lambda$ \\
+  \bottomrule
+\end{tabular}
+\end{center}
+
+\section{Links}
+\texttt{hyperref} is loaded with colored links, so both cross-references
+(Section~\ref{sec:links}) and external URLs render in color automatically.
+\label{sec:links}
+
+\begin{verbatim}
+See \href{https://www.overleaf.com}{Overleaf} for an online editor.
+\end{verbatim}
+Renders as: See \href{https://www.overleaf.com}{Overleaf} for an online editor.
+
+\section{Images}
+\texttt{graphicx} is loaded but no image ships with this demo, so the call
+below is shown only as source --- point it at a real file in a course-local
+\texttt{figures/} folder to use it.
+
+\begin{verbatim}
+\includegraphics[width=0.6\textwidth]{figures/diagram.png}
+\end{verbatim}
+
+\end{document}

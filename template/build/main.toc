@@ -1,0 +1,5 @@
+\contentsline {section}{Week 1}{2}{section*.2}%
+\contentsline {subsection}{Key ideas}{2}{section*.3}%
+\contentsline {subsection}{Definitions and results}{2}{section*.4}%
+\contentsline {subsection}{Examples}{2}{section*.5}%
+\contentsline {subsection}{Questions to revisit}{2}{section*.6}%

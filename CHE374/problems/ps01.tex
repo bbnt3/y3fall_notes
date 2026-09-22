@@ -1,0 +1,160 @@
+\documentclass[11pt,letterpaper]{article}
+
+% Compile from this file's own folder (CHE374/problems/).
+\input{../../template/preamble.tex}
+
+\title{CHE374 --- Problem Set 1 Solutions}
+\author{Bonnie Zhuang}
+\date{Fall 2026}
+
+\begin{document}
+\maketitle
+
+\section{Problem Set 1}
+
+\subsection{Question 1}
+\begin{quote}
+    \itshape
+    A new steel stirred tank reactor costs \$8,000, plus \$1,200 for
+    installation. The company has an old stainless steel unit in the
+    warehouse that could be used instead. The old reactor was used for
+    4 years but will last the same length of time as the new one; it
+    cost \$16,000 when purchased. Installing the old reactor would cost
+    \$2,500. The old reactor has a used market value of \$6,800.
+    \\ a) Determine the best alternative.
+    \\ b) What market value would make you indifferent between the two?
+\end{quote}
+
+\textbf{Solution:} The \$16,000 original purchase price of the old
+reactor is a \textbf{sunk cost} --- already spent, and irrelevant to
+the decision going forward. What matters is the \emph{opportunity
+cost} of using the old reactor instead of selling it at its market
+value. Since both reactors have the same remaining life, we can
+compare total up-front cost directly.
+\begin{itemize}
+    \item New reactor: $8{,}000 + 1{,}200 = \$9{,}000$.
+    \item Old reactor: $6{,}800 + 2{,}500 = \$9{,}300$ (market value
+    forgone, plus installation).
+\end{itemize}
+a) Since $\$9{,}000 < \$9{,}300$, buy the \textbf{new reactor}.
+
+b) Let $X$ be the old reactor's market value. Indifference means
+\[X + 2{,}500 = 9{,}000 \implies X = \$6{,}500.\]
+Since the actual market value (\$6,800) is above this breakeven point,
+the old reactor is relatively too valuable to give up for free ---
+confirming the new reactor is the better buy.
+
+\subsection{Question 2}
+\begin{quote}
+    \itshape
+    A restaurant is upgrading its cash registers. Company X quotes
+    \$7{,}500 up front, saving \$1{,}700/year. Company Y quotes
+    \$9{,}000 up front, saving \$2{,}200/year.
+    \\ a) How long to recover the initial investment for each?
+    \\ b) List at least one issue with this type of comparison.
+\end{quote}
+
+\textbf{Solution:}
+\\ a) Payback period $=$ initial cost / annual savings.
+\[\text{Company X: } \frac{7{,}500}{1{,}700} \approx 4.41 \text{ years}, \qquad \text{Company Y: } \frac{9{,}000}{2{,}200} \approx 4.09 \text{ years}.\]
+Company Y pays back faster despite the larger upfront cost.
+
+b) Simple payback analysis has (at least) two issues:
+\begin{itemize}
+    \item It ignores the \textbf{time value of money} --- future
+    savings are not discounted back to present worth.
+    \item It ignores everything that happens \emph{after} the payback
+    period (e.g.\ total savings over the equipment's full life, or
+    differences in equipment lifespan/reliability between options).
+\end{itemize}
+
+\subsection{Question 3}
+\begin{quote}
+    \itshape
+    Find $\displaystyle\lim_{n\to\infty}\left(1+\frac{r}{n}\right)^n$.
+\end{quote}
+
+\textbf{Solution:} This is exactly the continuous-compounding limit
+from the notes (with the ``$-1$'' dropped):
+\[\lim_{n\to\infty}\left(1+\frac{r}{n}\right)^n = e^r.\]
+
+\subsection{Question 4}
+\begin{quote}
+    \itshape
+    An 8-year \$100,000 loan charges an effective 3.4\% interest per
+    year. Find the nominal annual rate for: a) semi-annual, b) monthly,
+    c) daily, d) continuous compounding. e) How much is owed after 4
+    years in each case?
+\end{quote}
+
+\textbf{Solution:} Solve $i_e = \left(1+\frac{r}{m}\right)^m - 1 = 0.034$
+for $r$, i.e.\ $r = m\left[(1.034)^{1/m}-1\right]$.
+\begin{itemize}
+    \item a) $m=2$: $r = 2\left[(1.034)^{1/2}-1\right] \approx 3.372\%$.
+    \item b) $m=12$: $r = 12\left[(1.034)^{1/12}-1\right] \approx 3.348\%$.
+    \item c) $m=365$: $r = 365\left[(1.034)^{1/365}-1\right] \approx 3.343\%$.
+    \item d) Continuous: $r = \ln(1.034) \approx 3.343\%$ (matches
+    $e^r - 1 = i_e$ from the notes).
+\end{itemize}
+
+e) Since every case was solved to give the \emph{same} effective
+annual rate (3.4\%), the amount owed after 4 years is identical
+regardless of compounding frequency:
+\[F_4 = 100{,}000(1.034)^4 \approx \$114{,}309.46 \quad \text{in all four cases.}\]
+This is the point of the effective rate: it's the true, comparable
+growth rate, independent of how compounding is described.
+
+\subsection{Question 5}
+\begin{quote}
+    \itshape
+    A \$100 T-bill (face value paid at maturity, no coupons) sells at a
+    continuously compounding yield of 2.3\%/year.
+    \\ a) Effective annual yield with yearly compounding?
+    \\ b) Price if it matures in 6 months? c) In 9 months?
+    \\ d) If the yield drops 30 bps (to 2\%), how do the prices in b)
+    and c) change?
+\end{quote}
+
+\textbf{Solution:} For continuous compounding, price $= Fe^{-rt}$
+where $F=\$100$ is the face value and $t$ is time to maturity in years.
+
+a) $i_e = e^{0.023} - 1 \approx 2.327\%$.
+
+b) $t = 0.5$: $\text{Price} = 100\,e^{-0.023(0.5)} \approx \$98.86$.
+
+c) $t = 0.75$: $\text{Price} = 100\,e^{-0.023(0.75)} \approx \$98.29$.
+
+d) With $r = 2\%$:
+\[\text{6-month: } 100\,e^{-0.02(0.5)} \approx \$99.00 \quad (+\$0.15), \qquad \text{9-month: } 100\,e^{-0.02(0.75)} \approx \$98.51 \quad (+\$0.22).\]
+Both prices \emph{increase} when the yield drops --- price and yield
+move in opposite directions for a zero-coupon bond --- and the
+9-month (longer maturity) price is more sensitive to the yield
+change than the 6-month price.
+
+\subsection{Question 6}
+\begin{quote}
+    \itshape
+    Interest rate conversion table (assume 252 trading days/year where
+    a daily rate is involved).
+\end{quote}
+
+\textbf{Solution:}
+\begin{enumerate}
+    \item \textbf{Given} 8\% effective/year $\to$ \textbf{monthly rate,
+    monthly compounding}: $i_s = (1.08)^{1/12} - 1 \approx 0.643\%$/month.
+    \item \textbf{Given} 3.5\%/year nominal, daily compounding ($m=252$)
+    $\to$ \textbf{effective rate/year}: $i_e = \left(1+\frac{0.035}{252}\right)^{252}-1 \approx 3.562\%$.
+    \item \textbf{Given} 4\%/year nominal, quarterly compounding
+    ($m=4$) $\to$ \textbf{continuous rate/year}: $r_c = 4\ln(1.01) \approx 3.980\%$.
+    \item \textbf{Given} 1.5\%/month, monthly compounding $\to$
+    \textbf{continuous rate/quarter}: 3 months per quarter, so
+    $r_c = 3\ln(1.015) \approx 4.467\%$/quarter.
+    \item \textbf{Given} 1.2\%/quarter, monthly compounding ($m=3$
+    months/quarter, so $0.4\%$/month) $\to$ \textbf{interest per 3
+    years, semi-annual compounding}: the equivalent effective rate is
+    $(1.004)^{36}-1 \approx 15.455\%$ total over 3 years (equivalently,
+    an effective semi-annual rate of $(1.004)^6-1 \approx 2.423\%$,
+    compounded over the 6 half-years in 3 years).
+\end{enumerate}
+
+\end{document}

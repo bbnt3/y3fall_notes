@@ -1,0 +1,43 @@
+\documentclass[11pt,letterpaper]{article}
+
+% Compile from the folder containing this file.
+% This path works in template/ and in sibling course folders.
+\input{../template/preamble.tex}
+
+% Replace these details for each course.
+\newcommand{\coursecode}{ESC384}
+\newcommand{\coursename}{Partial Differential Equations}
+\newcommand{\term}{Fall 2026}
+\newcommand{\studentname}{Bonnie Zhuang}
+
+\title{\coursecode{} --- \coursename\\[0.5em]\large Course Notes}
+\author{\studentname}
+\date{\term}
+
+% ESC384-only override: definitions and examples are unnumbered
+% ("Definition:" / "Example:" instead of "Definition 1." / "Example 1.").
+\renewenvironment{definition}{\par\noindent\textbf{Definition:}\ }{\par}
+\renewenvironment{example}{\par\noindent\textbf{Example:}\ }{\par}
+
+% ESC384-only override: theorems and corollaries are unnumbered by default
+% (no auto-incrementing counter), but like STA347 you can still give an
+% explicit number matching a textbook via \begin{theorem}[Title][2.7].
+\newcommand{\addoptionalnumberhead}[2]{%
+    \RenewDocumentEnvironment{#1}{o o}{%
+        \par\noindent\textbf{#2\IfValueT{##2}{\ ##2}}%
+        \IfValueT{##1}{\quad\textbf{##1}}%
+        .\ %
+    }{\par}%
+}
+\addoptionalnumberhead{theorem}{Theorem}
+\addoptionalnumberhead{corollary}{Corollary}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% Add one input per lecture, in the order you want them to appear.
+\input{entries/week01.tex}
+\input{entries/week02.tex}
+
+\end{document}

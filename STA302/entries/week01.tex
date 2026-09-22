@@ -1,0 +1,137 @@
+% !TeX root = ../main.tex
+
+% Edit this title for each week's entry.
+\section{Week 1: Course Overview and Simple Linear Regression}
+
+\textbf{Learning Objectives}
+\begin{itemize}
+    \item[\textit{Basic}] Distinguish population vs.\ sample quantities,
+    random variables vs.\ fixed values \S\ref{def:slr}; calculate LS
+    coefficient estimates \S\ref{prop:lse}; interpret estimated
+    coefficients in context \S\ref{ex:credit}.
+    \item[\textit{Adv.}] Explain the LS process to a broad audience;
+    derive LS estimates for various model specifications; apply SLR in R
+    (\texttt{lm()}).
+\end{itemize}
+
+\subsection{Regression Basics}
+
+\begin{definition}[Regression]
+    $Y \approx f(X_1,\dots,X_p)$, $p\geq1$ predictors. $Y$ = response;
+    $X_i$ = predictors/covariates/features.
+    \begin{itemize}
+        \item \textbf{Simple} ($p=1$) vs \textbf{Multiple} ($p>1$).
+        \item \textbf{Parametric}: $f$ has a fixed parametric form, e.g.\
+        $\beta_0+\beta_1X$, $\beta_0+\beta_1X+\beta_2X^2$. Else
+        \textbf{non-parametric} (kNN, trees, neural nets).
+    \end{itemize}
+\end{definition}
+
+\subsection{The SLR Model}
+
+\begin{definition}[SLR Model]\label{def:slr}
+    \[y_i = \beta_0+\beta_1 x_i+\varepsilon_i,\quad i=1,\dots,n,\quad E[\varepsilon_i]=0\ \forall i\]
+    \begin{itemize}
+        \item $\beta_0,\beta_1$: fixed, unknown parameters --- \emph{same}
+        for every $i$.
+        \item $\varepsilon_i$ ($=e_i=\epsilon_i$): random, zero-mean ---
+        \emph{differs} by $i$.
+    \end{itemize}
+    \aside{Was: $y_i \overset{iid}{\sim} N(\mu,\sigma^2)$. Now: $y_i\mid x_i
+    = \beta_0+\beta_1x_i+\varepsilon_i$.}
+\end{definition}
+
+\textbf{Functional} ($y_i=\beta_0+\beta_1x_i$, no error) vs \textbf{statistical}
+relationship ($y_i=\beta_0+\beta_1x_i+\varepsilon_i$); $\varepsilon_i = y_i -
+(\beta_0+\beta_1x_i)$ = residual.
+
+\textbf{``Linear''} = linear in $\beta_0,\beta_1$, not in $X$.
+\begin{itemize}
+    \item OK (still linear): $\beta_0+\beta_1x_i^2$, $\beta_0+\beta_1\sin x_i$, $\beta_0+\beta_1\mathbb{I}(\cdot)$ --- free to transform $X$.
+    \item NOT linear: $\log(\beta_0+\beta_1x_i+\varepsilon_i)$, $\beta_0e^{\beta_1x_i}+\varepsilon_i$ --- \aside{don't transform $Y$.}
+\end{itemize}
+
+\textbf{Always condition on $X$:} $E[Y\mid X]=\beta_0+\beta_1X$
+(abbreviated $E[Y]$, $\Var[Y]$). \aside{$E[Y]$ alone is meaningless ---
+need e.g.\ $E[Y\mid X=5]$.}
+
+\textbf{Notation:} sample $(x_i,y_i)$ = realizations of $(X,Y)$;
+population $Y=\beta_0+\beta_1X+\varepsilon$.
+
+\subsection{Fitted Model \& Predictions}
+
+\begin{definition}[Fitted SLR]
+    $\hat Y = \hat\beta_0+\hat\beta_1X$, where $\hat\beta_0\to\beta_0$,
+    $\hat\beta_1\to\beta_1$, $\hat Y \to E[Y\mid X]$.
+\end{definition}
+
+\begin{example}[Credit Score]\label{ex:credit}
+    \begin{center}
+    \begin{tabular}{lcccccccccc}
+        \toprule
+        Income ($X$, \$100k) & 1.3 & 1.1 & 0.8 & 1.2 & 1.4 & 0.9 & 0.9 & 1.4 & 1.2 & 1.0 \\
+        Credit Score ($Y$) & 756 & 728 & 635 & 599 & 760 & 722 & 743 & 726 & 694 & 726 \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \texttt{lm(creditScore \textasciitilde{} income)}: $\hat\beta_0=632.38$,
+    $\hat\beta_1=68.32$
+    \[\hat Y = 632.38+68.32X\]
+\end{example}
+
+\textbf{Interpretation:}
+\begin{itemize}
+    \item $\hat\beta_0$ = avg.\ $Y$ when $X=0$ \aside{avg.\ credit score, \$0 income}
+    \item $\hat\beta_1$ = avg.\ change in $Y$ per unit increase in $X$ \aside{per \$100k income}
+    \item Prediction: $\hat Y=\hat\beta_0+\hat\beta_1X$, e.g.\ $X=1.05\Rightarrow\hat Y=704.1$
+\end{itemize}
+
+\textbf{Validity of predictions} --- two independent checks:
+\begin{itemize}
+    \item \textbf{Statistical}: is $X$ inside the training range? (else
+    \textbf{extrapolation} --- training range was $X\in[0.8,1.4]$)
+    \item \textbf{Subject-matter}: do $X,\hat Y$ make sense? (credit score
+    $\notin[300,900]$, or negative income $\Rightarrow$ invalid)
+\end{itemize}
+
+\subsection{Least Squares Estimation}
+
+\[RSS = \sum_{i=1}^n \hat\varepsilon_i^2 = \sum_{i=1}^n \big(y_i-(\hat\beta_0+\hat\beta_1x_i)\big)^2 \quad\text{--- minimize over } \hat\beta_0,\hat\beta_1\]
+
+\aside{Why square: no $+/-$ cancellation, differentiable, penalizes
+outliers more; geometrically $\hat Y$ = orthogonal projection of $Y$ onto
+model space.}
+
+\textbf{Identities:}
+\[\sum_{i=1}^n (x_i-\bar x)(y_i-\bar y) = \sum_{i=1}^n x_iy_i - n\bar x\bar y, \qquad \sum_{i=1}^n (x_i-\bar x)^2 = \sum_{i=1}^n x_i^2 - n\bar x^2\]
+
+\begin{proposition}[LS Estimators]\label{prop:lse}
+    \[\hat\beta_1 = \frac{SP_{xy}}{SS_{xx}} = \frac{\sum x_iy_i - n\bar x\bar y}{\sum x_i^2 - n\bar x^2} = \frac{\sum (x_i-\bar x)(y_i-\bar y)}{\sum (x_i-\bar x)^2} = \frac{\Cov(X,Y)}{\Var(X)}, \qquad \hat\beta_0 = \bar y - \hat\beta_1 \bar x\]
+    \aside{$SS_{xx}$ = ``sum of squares for $x$''; $SP_{xy}$ = ``sum of
+    products between $x,y$''.} No relationship $\Rightarrow \hat\beta_1=0$,
+    $\hat\beta_0=\bar y$.
+\end{proposition}
+\begin{proof}[Derivation]
+    $L(\beta_0,\beta_1)=\sum(y_i-\beta_0-\beta_1x_i)^2$.
+    \[\frac{\partial L}{\partial\beta_0}=0 \ \Rightarrow\ \hat\beta_0=\bar y-\hat\beta_1\bar x\]
+    \[\frac{\partial L}{\partial\beta_1}=0 \ \Rightarrow\ \sum x_iy_i=\hat\beta_0\sum x_i+\hat\beta_1\sum x_i^2\]
+    Sub.\ $\hat\beta_0$: $\sum x_iy_i - n\bar x\bar y = \hat\beta_1(\sum x_i^2-n\bar x^2) \Rightarrow \hat\beta_1$ as above.
+\end{proof}
+
+\aside{Formulas only valid for 1 untransformed predictor.}
+
+\begin{example}[Deriving for a Different Specification: No Intercept]
+    $y_i=\beta_1x_i+\varepsilon_i \Rightarrow L(\beta_1)=\sum(y_i-\beta_1x_i)^2$.
+    $\dfrac{\partial L}{\partial\beta_1}=-2\sum x_i(y_i-\beta_1x_i)=0
+    \Rightarrow \hat\beta_1=\dfrac{\sum x_iy_i}{\sum x_i^2}$. \aside{Same
+    method every time: write $L$, differentiate, set $=0$, solve.}
+\end{example}
+
+\begin{proposition}[Properties, if $\beta_0$ in model]
+    \[\sum_{i=1}^n \hat\varepsilon_i = 0, \qquad \sum_{i=1}^n x_i\hat\varepsilon_i = 0\]
+    \aside{2nd property: $X$ and residuals uncorrelated (regardless of
+    $\beta_0$). Good fit = no pattern in residuals vs.\ $X$.}
+\end{proposition}
+\begin{proof}
+    Sub $\hat\beta_0=\bar y-\hat\beta_1\bar x$ into both (and $\hat\beta_1=SP_{xy}/SS_{xx}$ into the 2nd).
+\end{proof}

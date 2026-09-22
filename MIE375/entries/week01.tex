@@ -1,0 +1,145 @@
+% !TeX root = ../main.tex
+
+% Edit this title for each week's entry.
+\section{Week 1}
+\newlecture[Introduction/Syllabus][September 14, 2026]
+
+\header{Principal and Interest}
+\begin{definition}
+    Principal: Amount invested
+
+    Interest: "Rent" paid on investment
+\end{definition}
+
+In general, for
+\begin{itemize}
+    \item $A$: Principal
+    \item $r$: interest rate per period
+    \item $V$: Value received.
+\end{itemize}
+After 1 period, $V=A(1+r)$ is received
+
+Interest over multiple periods depend on the compounding rules:
+\begin{enumerate}
+    \item \rb{Simple}: Money grows linearly, receiving $V=A(1+nr)$ over $n$ periods.
+    \item \rb{Compound}: Money grows geometrically, receiving $V=A(1+r)^n$ over $n$ periods.
+\end{enumerate}
+
+The Rule of 72: Money invested at $r\%$ per year doubles in approximately $72/r$ years.
+
+
+\begin{definition}
+    \rb{Nominal Interest Rate}: annual quote, compounding interest is in fractions corresponding to the compounding period.
+    \\For $m$ periods per year for $k$ periods, $V=(1+\frac{r}{m})^k$
+\end{definition}
+
+\begin{definition}
+    \rb{Continuous Compound Interest}: when the compounding period becomes arbitrarily small, the value approaches $e^{rt}$.
+\end{definition}
+
+Relationship between Nominal and Effective Rate:
+\[1+ r_{eff} = (1+ \frac{r_{nom}}{m})^m\]
+\[\text{1 + Simple One-year Rate = the Explicit Compound}\]
+
+
+\newlecture[Present Value and Internal Rate of Return][Sep 17, 2026]
+Present value: comparing cash flows that occur at different times, while interest rates tells how to move cash flows in time. Use interest rates to 
+
+\b{Ideal Bank}: applies the same rate of interest to deposits and loans, and has no transaction costs (real banks have higher rates for loans...).
+Used for two ways:
+\begin{itemize}
+    \item \rb{Compounding}: when cash flow is moved \b{forward}, \dbb{multipled} by $(1+r)$ each period.
+    \item \rb{Discounting}: when cash flow is moved \b{backward}, \dbb{divided} by $(1+r)$ each period.
+\end{itemize}
+
+\header{The Comparison Principle}
+The ideal bank brings cash flow stream to the same time, then is compared.
+\begin{itemize}
+    \item When all cash flows are moved to \textit{present time}, it is called \rb{present value}.
+    \item When all cash flows are moved to the \textit{same future timeline}, it is calle \rb{future value}.
+\end{itemize}
+
+\header{General Formula for Present Value}
+Let $x = (x_0, x_1, x_2, \dots, x_n)$
+\begin{align*}
+    PV(x) &= x_0 + \frac{x_1}{(1+r)} + \frac{x_2}{(1+r)^2} + \cdots + \frac{x_n}{(1+r)^n} \\
+    &= \boxed{\sum_{k=0}^{n}\frac{x_k}{(1+r)^k}}
+\end{align*}
+Note that it's usually assumed that $x_0$ is negative, for the initial investment.
+
+
+\header{Main Theorem on Present Value}
+Two cash flow streams are equivalent for an ideal bank iff \underline{they have the same present value}.
+
+\header{Internal Rate of Return}
+Captures the idea on the "return" on an investment.
+\\The return on your investment is the return which would make the present value equal to 0.
+\begin{example}
+    Invest \$100 today, receive \$110 in one year. What is your return?
+    \\Intuitively: 10\%, why?
+    \[x(-100, 110)\]
+    \[PV(x) = -100 + \frac{110}{1+0.1} = 0\]
+\end{example}
+
+\begin{definition}
+    Let $x = (x_0, x_1, \dots, x_n)$ be a cash flow stream. Then the internal rate of return of this stream is the number $r$ satisfying:
+    \[\boxed{\begin{gathered}
+        PV(x) = 0 \\
+        x_0 + \frac{x_1}{1+r} + \frac{x_2}{(1+r)^2} + \cdots + \frac{x_n}{(1+r)^n} = 0
+    \end{gathered}}\]
+    To solve for this $r$, its more convenient to set 
+    \[c = \frac{1}{(1+r)}\]
+    and solve
+    \[x_0 + x_1c+ x_2 c^2 + \cdots + x_n c^n = 0\]
+    with the fundamental theory of algebra.
+\end{definition}
+
+\begin{example}
+    What is the internal rate of return of $(-2,1,1,1)$?
+    \\Solve: $0 = -2 + c + c^2 + c^3$
+    \[c = 0.81 \quad \Rightarrow \quad c = 0.81\]
+\end{example}
+
+
+\heading{Main Theorem on IRR}
+Suppose the cash flow stream $x = (x_0, x_1, \dots, x_n)$ has $x_0 < 0$ and $x_k \geq 0$ where at least one term is strictly positive. Then, there is a unique positive root to the equation
+\[x+0+x_1c + x_2 c^2 + \dots + x_n c^n = 0\]
+Proof: plot $f(c) = x_0 + x_1c + x_2c^2 + \dots + x_n c^n$
+
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (-0.3,0) -- (4.5,0) node[right] {$c$};
+    \draw[->] (0,-1.5) -- (0,1.8) node[above] {$f(c)$};
+    \draw[thick, blue, domain=0:4, smooth, variable=\x] plot ({\x}, {-1 + 0.15*\x*\x});
+    \draw[dashed] (2.58,0) -- (2.58,-1.5);
+    \filldraw (2.58,0) circle (1.5pt);
+    \node[below] at (2.58,-0.05) {$c^*$};
+    \filldraw (0,-1) circle (1.5pt);
+    \node[left] at (0,-1) {$x_0$};
+\end{tikzpicture}
+\end{center}
+Since $f(0) = x_0 < 0$ and $f'(c) = x_1 + 2x_2c + \dots + nx_nc^{n-1} \geq 0$ for $c \geq 0$ (as each $x_k \geq 0$, with at least one strictly positive), $f$ is nondecreasing and unbounded above. So $f$ crosses zero exactly once, at some $c^* > 0$.
+
+\heading{Net Present Value (NPV)}
+Computes all present values of \textit{all} cash flows associated with an investment. Includes the investment term $x_0$ as well.
+
+\begin{example}
+    Given two cash flow vectors
+    \begin{enumerate}[label=(\arabic*)]
+        \item After 1 year: $(-1,2)$
+        \item After 2 years: $(-1,0, 3)$
+        \\Using NPV solution (choose largest NPV):
+        \[-1 + \frac{2}{1.1} = 0.82 \quad \text{vs} \quad -1 + \frac{0}{1.1} + \frac{3}{1.1^2} = 1.48\]
+        NPV says choose option (2).
+        \\Using IRR (choose greatest IRR):
+        \[-1 + 2c = 0 \Rightarrow c = 0.5 \Rightarrow r = 1.0 \quad \text{vs} \quad -1+3c^2 = 0 \Rightarrow c = 0.577 \Rightarrow r = 0.7\]
+        IRR says choose option (1).
+    \end{enumerate}
+\end{example}
+
+\underline{IRR and NPV give conflicting recommendations.}
+\\When scaled, \underline{IRR is scale-invariance, PV is not}. 
+\\PV also \underline{distinguishes between single and repeated cash flows}, IRR does not.
+\\In general, NPV is preferred.
+
+\heading{Steps to Solving Cash Flow Problems}

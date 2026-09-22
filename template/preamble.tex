@@ -1,0 +1,134 @@
+% Shared formatting for course notes. Loaded by each course's main.tex.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\linespread{1.15}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathreplacing,positioning}
+\usepackage{xparse}
+\usepackage{etoolbox}
+
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,urlcolor=blue!50!black}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\setlist{nosep}
+
+% Unnumbered section headings: entries show as "Week 1", not "1 Week 1",
+% both in the body and in the table of contents.
+\setcounter{secnumdepth}{0}
+
+% Each \section (i.e. each week's entry) starts on its own new page. The
+% \newpage that used to follow \tableofcontents in each course's main.tex
+% is redundant now and has been removed, so week 1 isn't pushed to a blank
+% page by this.
+\pretocmd{\section}{\newpage}{}{\errmessage{Failed to patch \string\section}}
+
+% Custom head format: bold, unparenthesized title, with a \quad gap after
+% the number (e.g. "Theorem 3.2  Distribution" instead of "Theorem 3.2
+% (Distribution)."), reusing amsthm's usual spacing/punctuation otherwise.
+% When a title is given, the body text starts on its own new line below the
+% head instead of running inline after it; untitled (auto-numbered-only)
+% instances stay inline as usual. Body text is upright (not italic) for all
+% six environments. Two variants share this head format but differ in
+% end-of-head punctuation: theorem/lemma/proposition/exercise keep a
+% trailing period, definition/example drop it (no period after the title).
+\makeatletter
+\newtheoremstyle{boldhead}{}{}{\normalfont}{}{\bfseries}{.}{5pt plus 1pt minus 1pt}%
+    {\thmname{#1}\thmnumber{\@ifnotempty{#1}{ }#2}\thmnote{\@ifnotempty{#3}{\quad#3}}%
+     \@ifnotempty{#3}{\def\thmheadnl{\newline}\thm@headsep\z@skip}{}}
+\newtheoremstyle{boldheadnp}{}{}{\normalfont}{}{\bfseries}{}{5pt plus 1pt minus 1pt}%
+    {\thmname{#1}\thmnumber{\@ifnotempty{#1}{ }#2}\thmnote{\@ifnotempty{#3}{\quad#3}}%
+     \@ifnotempty{#3}{\def\thmheadnl{\newline}\thm@headsep\z@skip}{}}
+\makeatother
+
+\theoremstyle{boldhead}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{exercise}[theorem]{Exercise}
+\theoremstyle{boldheadnp}
+\newtheorem{definition}[theorem]{Def.}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+% \begin{theorem}[Title][2.7]: both optional arguments are new on top of
+% the environments' usual single bracket. The first argument still behaves
+% exactly like plain amsthm's optional title (existing notes using
+% \begin{example}[Some Name] etc. are unaffected). The second argument, if
+% given, overrides the displayed number (e.g. to match a textbook's own
+% numbering) instead of the shared theorem counter's automatic value; the
+% counter itself still advances normally, so later auto-numbered
+% environments are unaffected too.
+\newcommand{\addtitleandnumber}[1]{%
+    \csletcs{#1orig}{#1}%
+    \csletcs{end#1orig}{end#1}%
+    \RenewDocumentEnvironment{#1}{o o}{%
+        \IfValueT{##2}{\ifblank{##2}{}{\renewcommand{\thetheorem}{##2}}}%
+        \IfValueTF{##1}{\ifblank{##1}{\csname#1orig\endcsname}{\csname#1orig\endcsname[##1]}}{\csname#1orig\endcsname}%
+    }{\csname end#1orig\endcsname}%
+}
+\addtitleandnumber{theorem}
+\addtitleandnumber{lemma}
+\addtitleandnumber{proposition}
+\addtitleandnumber{corollary}
+\addtitleandnumber{definition}
+\addtitleandnumber{example}
+\addtitleandnumber{exercise}
+
+% Common mathematical notation.
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+
+% \newlecture[title][date]: bold, centered marker for the start of a new
+% lecture. Both arguments are optional. Numbering runs continuously across
+% the whole document (i.e. across all weeks' entries, not reset per
+% \section), so the Nth \newlecture in the course is always "Lecture N".
+% Each lecture starts on its own new page, except the very first one,
+% which stays on the same page as its \section heading.
+\newcounter{lecture}
+\renewcommand{\thelecture}{\arabic{lecture}}
+\NewDocumentCommand{\newlecture}{o o}{%
+    \stepcounter{lecture}%
+    \ifnum\value{lecture}>1
+        \newpage
+    \fi
+    \par\vspace{1em}
+    \begin{center}
+        \textbf{\Large Lecture \thelecture\IfValueT{#1}{: #1}}\\[2pt]
+        \IfValueT{#2}{\normalsize #2}
+    \end{center}
+    \vspace{0.5em}%
+}
+
+% Handwritten-note-style helpers: red definition labels, blue margin
+% annotations, yellow highlights, underlined mini-headers.
+\newcommand{\deflabel}[2]{\par\noindent{\color{red!70!black}\textbf{Def #1}}\quad\textbf{#2}\par\nobreak}
+\newcommand{\exlabel}[2]{\par\noindent\textbf{Example #1}\quad\textbf{#2}\par\nobreak}
+\newcommand{\heading}[1]{\par\noindent{\color{red!70!black}\textbf{#1}}\par}
+\newcommand{\header}[1]{\par\vspace{0.5em}\noindent\textbf{#1}\par\vspace{-0.2em}}
+\newcommand{\aside}[1]{\ifmmode{\color{blue!55!black}\text{\itshape #1}}\else{\color{blue!55!black}\itshape #1}\fi}
+\newcommand{\hly}[1]{\colorbox{yellow!55}{$#1$}}
+\newcommand{\hlt}[1]{\colorbox{yellow!55}{#1}}
+% \boldmath makes any math the argument switches into (e.g. \rb{$r$}) use
+% the bold math version automatically, so callers don't need to manually
+% wrap math content in \boldsymbol{}.
+\newcommand{\rb}[1]{{\color{red!70!black}\boldmath\textbf{#1}}}
+\renewcommand{\b}[1]{\textbf{#1}}
+\definecolor{navy}{RGB}{0,0,128}
+\newcommand{\dbb}[1]{{\color{navy}\textbf{#1}}}
+\newcommand{\db}[1]{{\color{navy}#1}}

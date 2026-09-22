@@ -1,0 +1,163 @@
+% !TeX root = ../main.tex
+
+% Edit this title for each week's entry.
+\section{Week 1 - Introduction and Time Value of Money}
+
+\newlecture[Interest Rate]
+
+\heading{Time Value of Money}
+\begin{itemize}
+    \item Borring money has a cost for the lender, thus lending money \textit{creates} value for the lender
+    \item Costs and benefits occur in different time periods
+    \item The cost/benefit today to the future is compared by \rb{interest}
+\end{itemize}
+
+\heading{Present and Future Worth}
+\[P = \text{ present worth/\rb{Principal}} \qquad F=\text{ future worth} \qquad i=\text{ interest rate}\]
+\[F = P+Pi \qquad F = P(1+i)\]
+
+\begin{center}
+\begin{tikzpicture}[
+    box/.style={draw, fill=gray!15, minimum width=1.6cm, minimum height=1.6cm},
+    ibox/.style={draw, fill=gray!15, minimum width=1.6cm, minimum height=0.4cm},
+    lbl/.style={red!70!black, font=\small}
+]
+    % Present worth box
+    \node[box] (P) at (0,0) {$P$};
+    \node[above=2pt of P] {$P(1+i)$};
+
+    % Future worth: P portion and interest portion stacked
+    \node[box, minimum height=1.6cm] (F) at (5,0) {$P$};
+    \node[ibox, above=0pt of F] (I) {$i$};
+
+    % Arrow between them
+    \draw[->, thick, red!70!black] ([yshift=-0.15cm]P.east) -- ([yshift=-0.15cm]F.west)
+        node[midway, above, lbl] {1 Period}
+        node[midway, below, lbl] {Interest rate $i$};
+
+    % Brace marking total future worth F
+    \draw[decorate, decoration={brace, amplitude=6pt}, red!70!black]
+        ([xshift=0.3cm]I.north east) -- ([xshift=0.3cm]F.south east)
+        node[midway, right=8pt, black] {$F$};
+\end{tikzpicture}
+\end{center}
+\begin{itemize}
+    \item A higher payoff ($F$) is expected as $i$ increases
+    \item For a given $F$ with increased $i$, $P$ decreases
+\end{itemize}
+
+
+\heading{Interest Rate}
+\begin{itemize}
+    \item Expressed as \%
+    \item Vary widely over time and different types of investments.
+    \begin{itemize}
+        \item A \b{T-Bill} (Treasury Bill, short term loan to the Bank of Canada) will earn the lowest rate of return, as it's considered "risk-free"
+        \item Canadian and provincial bonds pay typically higher interest rates
+        \item Personal/small business loans are much risky and earn significantly higher interest rates
+    \end{itemize}
+\end{itemize}
+
+\heading{Factors that Affect Interest Rates}
+\begin{itemize}
+    \item \b{Inflation}
+    \item \b{Credit (default) Risk}: associated with the borrower being able to pay back
+    \item \b{Liquidity Risk}: associated with access the invested funds during investment. Greater the risk the less liquid.
+    \item \b{Maturity Risk}: associated with the time horizon. Longer the maturity, longer payoff, increases credit (and potential liquidity) risk
+\end{itemize}
+
+\begin{example}
+    What would the impact be expected on the interest rate associated with a large new mining project under the following scenarios, and how would the current value be impacted?
+    \begin{itemize}
+        \item The expected time to complete the project construction increases
+        \\\db{Interest rate will increase as the maturity risk is directly incrased, raising risks of liquidity and credit. The present value would then decrease, from both the interest rate increasing and the time horizon increasing.}
+        \item The estimate amount of ore available to be mined increases
+        \\\db{The future cash flow would increase, thus the value of the project will increase, decreasing risk. Credit risk will drop but not others.}
+    \end{itemize}
+\end{example}
+
+\heading{Summary}
+\begin{itemize}
+    \item \rb{Interest} is money earned by investors for allowing others to use their money
+    \item The \rb{interest rate} is a rate at which interest is earned.
+    \item The interest rate is determined by \dbb{risks} associated with the investment.
+\end{itemize}
+
+
+
+
+
+\newlecture[Simple and Compound Interest]
+
+\heading{Present and Future Worth}
+\[P = \text{ amount of money today (principal)} \qquad F_N = \text{ future amount in year }N\]
+\[i = \text{ interest rate} \qquad I\text{ = interest amount}\]
+\[F = P+I \qquad F_1 = P+Pi\]
+
+\heading{Simple vs Compound Interest}
+\begin{itemize}
+    \item \rb{Simple} applies only to the original principal (GIC)
+    \item \rb{Compound} interest applies to the principal AND to all interest already accrued (mortages, credit card debt...)
+    \item Assume compound unless stated otherwise
+\end{itemize}
+
+\heading{Simple Interest}
+\begin{tabular}{c|c|c|c}
+    Beginning of Period & Amount Lent & Interest Amount & Amount Owned at Period End \\\hline
+    1 & $P$ & $Pi$ & $P+Pi$ \\
+    2 & $P+Pi$ & $Pi$ & $P+2Pi$ \\
+    3 & $P+2Pi$ & $Pi$ & $P+3Pi$ \\
+    ... & ... & ... & ... \\
+    $N$ & $N+(N-1)Pi$ & $Pi$ & $Pi$ + $P+NPi = P(1+Ni)$
+\end{tabular}
+
+\heading{Compound Interest}
+\begin{tabular}{c|c|c|c}
+    Beginning of Period & Amount Lent & Interest Amount & Amount Owned at Period End \\\hline
+    1 & $P$ & $Pi$ & $P(1+i)$ \\
+    2 & $P(1+i)$ & $P(1+i)i$ & $P(1+i)^2$ \\
+    3 & $P(1+i)^2$ & $P(1+i)^2 i$ & $P(1+i)^3$ \\
+    ... & ... & ... & ... \\
+    $N$ & $P(1+i)^{N-1}$ & $P(1+i)^{N-1}i$ & $P(1+i)^N$
+\end{tabular}
+
+\heading{Summary}
+\begin{itemize}
+    \item Simple Interest: $F_N = P+NPi$
+    \item Compound Interest: $F_N = P(1+i)^N$
+\end{itemize}
+
+
+
+
+\newlecture[Subperiod Compounding \& Effective Interest Rates]
+
+\heading{Compound Multiple Times per Year}
+\begin{itemize}
+    \item \rb{$r$}: \b{nominal interest rate} (usually for 1 year)
+    \item \rb{$m$}: times compounded in a year, aka \b{subperiod}
+    \item \rb{$i_s$}: \b{subperiod interest rate}
+    \[i_s = \frac{r}{m}\]
+\end{itemize}
+
+\begin{example}
+    You lend \$100. The nominal interest rate is 6\%.
+    \\What is the total amount in the account at the end of the year if the compounding period is
+    \[P = 100 \qquad r = 6\%\]
+    \begin{enumerate}[label = \alph*)]
+        \item 1 year:
+        \begin{align*}
+            F &= P(1+r)\\
+            &=100(1+0.06)\\
+            &=106
+        \end{align*}
+        \item 3 months:
+        \[m = 4 \quad \Rightarrow \quad i_s = \frac{r}{m} = \frac{0.06}{4} = 0.0015\]
+        \begin{align*}
+            F &= P(1+i_s)^m\\
+            &=100(1+0.0015)^4\\
+            &=106.14
+        \end{align*}
+    \end{enumerate}
+\end{example}
+

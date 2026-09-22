@@ -1,0 +1,30 @@
+\documentclass[11pt,letterpaper]{article}
+
+% Compile from the folder containing this file.
+% This path works in template/ and in sibling course folders.
+\input{../template/preamble.tex}
+
+% Replace these details for each course.
+\newcommand{\coursecode}{STA347}
+\newcommand{\coursename}{Probability}
+\newcommand{\term}{Fall 2026}
+\newcommand{\studentname}{Bonnie Zhuang}
+
+\title{\coursecode{} --- \coursename\\[0.5em]\large Course Notes}
+\author{\studentname}
+\date{\term}
+
+% STA347-only override: the defined term in \deflabel is red too
+% (shared default keeps it black), matching "Def #" already being red.
+\renewcommand{\deflabel}[2]{\par\noindent{\color{red!70!black}\textbf{Def #1}}\quad\textbf{\color{red!70!black}#2}\par\nobreak}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% Add one input per lecture, in the order you want them to appear.
+\input{entries/week01.tex}
+\input{entries/week02.tex}
+\input{entries/week03.tex}
+
+\end{document}

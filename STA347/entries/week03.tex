@@ -1,0 +1,123 @@
+\section{Expectation}
+\newlecture[][Sep 22, 2026]
+
+In STA237:
+\[E(X) - \begin{cases*}
+    \sum_{x}^{}x\cdot p(x) &\text{if } X \text{ discrete}\\
+    \int xf(x)\,dx &\text{if } X \text{ continuous}
+\end{cases*}\]
+for this course, we are defining probability via "measure theory", so we need to revisit the definition of expectation.
+
+Under the "measure theory" perspective:
+\[E(X) = \int x\, dP \quad \Rightarrow P = \text{probability measure}\]
+\[\int xf(x)\,dx \quad \Rightarrow \quad \int x\, dP\]
+"Reinmann Integral"
+
+\begin{definition}[Simple Expectation][5.1]
+    If $X$ only takes finitely many values $x_1, \dots, x_n$, and $A_i : \left\{\omega: X(\omega) = X_i\right\}$, define the expectation of $X$ by:
+    \[E(X) = \sum_{i=1}^{n}x_i P(A_i)\]
+\end{definition}
+
+\begin{example}[][5.1.1]
+    For an arbitrary set $A \subset \Omega$, let
+    \[Y(\omega) = I\left\{\omega \in A\right\} \qquad \text{Then } E(Y) = P(A)\]
+    \begin{align*}
+        E(Y) &= \sum_{i=0}^{1}y_i \cdot P(A_i) \qquad Y\text{ only takes two values 0 and 1}\\
+        &= 1 \cdot P\left\{\omega \in A\right\} + o\cdot P\left\{\omega \notin A\right\}\\
+        &= P(A) = P(\left\{\omega: \omega \in A\right\})
+    \end{align*}
+\end{example}
+
+
+\begin{example}[][5.1.2]
+    $P$ is uniform measure on $\Omega = [0,1]$, and 
+    \[X(\omega) = \begin{cases}
+        5 & \omega > \frac{1}{3} \\
+        3 & \omega < \frac{1}{3}
+    \end{cases}\]
+    \[E(X) = 5 \cdot P(\omega > \frac{1}{3}) + 3\cdot P(\omega < \frac{1}{3})\]
+    \[=5\cdot (1-\frac{1}{3}) + 3\cdot \frac{1}{3}\]
+    \[ = \frac{13}{3}\]
+\end{example}
+
+\begin{proposition}[Properties of Expectation][5.2]
+    If $X$ and $Y$ are simple ranodm variables, the following hold:
+    \begin{enumerate}[label = \roman*)]
+        \item If $x\geq 0$ a.s., $E(X) \geq 0$
+        \item For any $a \in \mathbb{R}$, $E(aX) = a \cdot E(X)$
+        \item $E(X+Y) = E(X)+E(Y)$
+    \end{enumerate}
+    Remark: "a.s." means almost surely.
+    if $E$ a.s. $\Rightarrow$ $P(E) = 1$
+    \\  $x \geq 0$ a.s. $\Rightarrow$ $P(X \geq 0) = 1$ $\Leftrightarrow$ $P(\left\{\omega: X(\omega) \geq 0\right\})=1$
+    \\we may have certain $\omega$'s s.t. $X(\omega) < 0$, byt $P(\left\{\omega: X(\omega) < 0\right\}) = 0$
+\end{proposition}
+
+Proof: Both i) and ii) are trivial.
+\\For iii), let $X$ take values $x_1, \dots, x_n$ on sets $A_1,\dots, A_n$ (i.e. $A_i = \left\{\omega: X(\omega) = x_i\right\}$) and $Y$ takes values $y_1, \dots, y_n$ on sets $\beta_1, \dots, \beta_n$,
+\\Observe that there are $m\cdot n$ events
+\[(C_{ij} = \left\{X = x_i \bigcap Y = y_j \right\})\]
+Then
+\begin{align*}
+    E(X+Y) &= \sum_{i=1}^{n}\sum_{j=1}^{m} (x_i+y_j)\cdot P(C_{ij})\\
+    &= \sum_{i=1}^{n}x_i \sum_{j=1}^{m} P(X=x_i)+\sum_{j=1}^{m}y_j P(Y=y_j)\\
+    &= E(X)+E(Y)
+\end{align*}
+
+\begin{lemma}[][5.2.1]
+    If Proposition 5.2 holds, the following properties also hold:
+    \begin{enumerate}[label = \roman*), start=4]
+        \item If $X \leq Y$ a.s., then $E(X) \leq E(Y)$
+        \item If $X=Y$ a.s., then $E(X) = E(Y)$
+        \item $\left|E(X)\right| \leq E(\left|X\right|)$
+        proof as exercise.
+    \end{enumerate}
+\end{lemma}
+
+Our logic is, we first define 
+\begin{center}
+    expectation of simple random variables
+    \\$\Downarrow$
+    \\expectation of bounded R.V.'s (approximation)
+    \\$\Downarrow$
+    \\expectation of non-negative R.V's (truncation)
+    \\$\Downarrow$
+    \\expectation of any R.V.'s (symmetric)
+\end{center}
+
+\begin{definition}[Bounded Random Variable][5.3]
+    A random variable $X$ is bounded if there exists
+    $m< \infty$, such that $|x|\leq m$ a.s.
+\end{definition}
+
+\begin{definition}[Expectation of Bounded Random Variable][5.3.1]
+    If $X$ is a bounded R.V., then
+    \begin{align*}
+        E(X) &= \inf\left\{ E(Z): Z \text{ simple, }Z \geq X \text{ a.s.}\right\}\\
+        &= \sup\left\{E(Y): Y \text{ simple, }Y \leq X \text{ a.s.}\right\}
+    \end{align*}
+\end{definition}
+
+Recall, when we defined the integral:
+\\the integral is defined as the limit value of sums of areas of tiny rectangles.
+\\When it comes to Reinmann integral, we are no longer cutting $X$ axis into tiny intervals, but cutting each set into tiny subsets and caculate the sum of $x$ times the measure of each tiny subset.
+\begin{align*}
+    E(X) &= \inf \left\{E(Z): \quad Z\text{ is simple and } Z \geq X \text{ a.s.}\right\}\\
+    &= \sup \left\{E(Y): \quad Y \text{ is simple and } Y \leq X \text{ a.s.}\right\}
+\end{align*}
+"Squeeze the R.V. $X$ via two simple R.V.'s $Y$ and $Z$, with one captures the upper bound and the others captures the lower bound".
+\\Proof: Since $X$ is bounded, $|x| < m$ a.s.
+\[L = \sup \left\{EY: \quad Y \text{ simple and }Y\leq X \text{ a.s.}\right\}\]
+\[U = \inf\left\{EZ: \quad Z \text{ simple and }Z \geq X \text{ a.s.}\right\}\]
+\[L \leq U \text{ a.s. } Y\leq X \text{ a.s. and }Z\geq X \text{ a.s.}\]
+Our goal is to prove $L \geq U \quad \Rightarrow \quad L = U \overset{def}{=}E(X)$
+\\the way to cut $[-m, m]$ into tiny intervals.
+\\for any arbitrary $n$, we define
+\[E_k = \left\{\omega: \frac{km}{n}\geq X(\omega) \geq \frac{(k-1)m}{n}\right\}\]
+
+we then define two simple R.V.'s
+\\Lower bound: \[\phi_n(\omega) = \sum_{k}^{}\frac{(k-1)m}{n}\cdot I(\omega \in E_k)\]
+\\Upper bound: \[\psi_n(\omega) = \sum_{k}^{}\frac{km}{n}\cdot I(\omega \in E_k) \]
+\[\phi_n(\omega) \leq X(\omega) \leq \psi_n(\omega)\]
+\[E\phi_n(\omega) \leq E(X) \leq E\psi_n(\omega)\]
+\[E\psi_n(\omega) = E\phi_n(\omega) + \frac{m}{n}\]

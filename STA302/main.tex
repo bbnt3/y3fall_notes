@@ -1,0 +1,46 @@
+\documentclass[11pt,letterpaper]{article}
+
+% Compile from the folder containing this file.
+% This path works in template/ and in sibling course folders.
+\input{../template/preamble.tex}
+
+% Replace these details for each course.
+\newcommand{\coursecode}{STA302}
+\newcommand{\coursename}{Methods of Data Analysis}
+\newcommand{\term}{Fall 2026}
+\newcommand{\studentname}{Bonnie Zhuang}
+
+\title{\coursecode{} --- \coursename\\[0.5em]\large Course Notes}
+\author{\studentname}
+\date{\term}
+
+% STA302-only override: definitions are unnumbered, shown as
+% "Definition - <term>" in bold red instead of the shared numbered style,
+% with the definition body indented so it's clearly set off from the header.
+\makeatletter
+\renewenvironment{definition}[1][]{%
+    \par\noindent
+    \def\@defterm{#1}%
+    \ifx\@defterm\@empty
+        \noindent\textbf{Definition}%
+    \else
+        \noindent\textbf{Definition - \textcolor{red}{\@defterm}}%
+    \fi
+    \par\nobreak
+    \begin{list}{}{\leftmargin=1.5em \itemindent=0pt \listparindent=0pt \parsep=\parskip \topsep=0pt \itemsep=0pt}
+    \item\relax
+}{%
+    \end{list}
+    \vspace{0.5em}
+}
+\makeatother
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% Add one input per lecture, in the order you want them to appear.
+\input{entries/week01.tex}
+\input{entries/week02.tex}
+
+\end{document}

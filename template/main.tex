@@ -1,0 +1,25 @@
+\documentclass[11pt,letterpaper]{article}
+
+% Compile from the folder containing this file.
+% This path works in template/ and in sibling course folders.
+\input{../template/preamble.tex}
+
+% Replace these details for each course.
+\newcommand{\coursecode}{COURSE101}
+\newcommand{\coursename}{Course Name}
+\newcommand{\term}{Fall 2026}
+\newcommand{\studentname}{Your Name}
+
+\title{\coursecode{} --- \coursename\\[0.5em]\large Course Notes}
+\author{\studentname}
+\date{\term}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+% Add one input per lecture, in the order you want them to appear.
+\input{entries/lec01.tex}
+% \input{entries/lec02.tex}
+
+\end{document}

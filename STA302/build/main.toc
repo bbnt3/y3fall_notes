@@ -1,0 +1,11 @@
+\contentsline {section}{Week 1: Course Overview and Simple Linear Regression}{3}{section*.2}%
+\contentsline {subsection}{Regression Basics}{3}{section*.3}%
+\contentsline {subsection}{The SLR Model}{3}{section*.4}%
+\contentsline {subsection}{Fitted Model \& Predictions}{3}{section*.5}%
+\contentsline {subsection}{Least Squares Estimation}{4}{section*.6}%
+\contentsline {section}{Week 2: Multiple Linear Regression (MLR) Models}{6}{section*.7}%
+\contentsline {subsection}{Matrices (Review)}{6}{section*.8}%
+\contentsline {subsection}{The MLR Model}{6}{section*.9}%
+\contentsline {subsection}{Estimation via Least Squares}{8}{section*.10}%
+\contentsline {subsection}{Application Example}{9}{section*.11}%
+\contentsline {subsection}{Interpreting Coefficients}{9}{section*.12}%

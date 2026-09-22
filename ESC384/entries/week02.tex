@@ -1,0 +1,298 @@
+
+\newlecture[Fourier Series: Analysis][Sep 18, 2026]
+
+\[f(x) \sim \frac{1}{2}a_0 + \sum_{n=1}^{\infty}(a_n \cos(n\pi x) + b_n \sin(n\pi x))\]
+\[S_N (x) = \frac{1}{2}a_0 + \sum_{n=1}^{N} (a_c \cos (n\pi x) + b_n \sin (n\pi x))\]
+Question: Does $S_N \to f$ as $N \to \infty$? In what sense? For what functions?
+
+\subsection{Regularity of Functions}
+\begin{definition}
+    $f:(a, b) \to \mathbb{R} $ is \underline{continuous} on $(a,b)$ if $\lim_{x \to c}f(x) = f(c), \quad \forall c \in (a,b)$
+\end{definition}
+\begin{definition}
+    $f:[a,b] \to \mathbb{R}$ is \underline{continuous} on $[a,b]$ if $\lim_{x \to c}f(x) = f(c), \quad \forall c \in (a,b)$ and
+    \[\lim_{x \to a^+}f(x) = f(a) \quad \text{and}  \quad \lim_{x \to b^-}f(x) = f(b)  \]
+\end{definition}
+\begin{definition}
+    $f:I\to \mathbb{R}$ is \underline{continuously differentiable} on $I$ if $f'$ is continuous on $I$.
+\end{definition}
+
+\begin{example}
+    \[f(x) = \left\lvert x\right\rvert , \quad x\in (-1,1)\]
+\end{example}
+\begin{example}
+    \[f(x) = \sqrt{x}, \quad x\in [0,1]\]
+
+    % include diagrams here!!!!!!
+
+
+\end{example}
+
+\begin{definition}
+    $f:(a, b) \to \mathbb{R}$ is \underline{piecewise continuous} on $(a, b)$ 
+    \\if $\exists$ a set of points $a \equiv x_1 < x_2 < \cdots < x_N \equiv b$ s.t. $f$ is continuous on each $(x_i, x_{i+1}) $ and one-sided limits $\lim_{x \to x_i^+}f(x)$ and $\lim_{x\to x_{i+1}^-}f(x)$ exist.
+\end{definition}
+
+\begin{definition}
+    $f:(a,b) \to \mathbb{R}$ is \underline{piecewise continuously differentiable} on $a(,b)$ if $f'$ is piecewise continuous.
+\end{definition}
+
+\subsection{Convergence of Fourier Series}
+\begin{theorem}[Pointwise Convergence]
+    Let $f$ be a piecewise continuously differentiable function with a period 2. Then, for any $x\in \mathbb{R}$
+    \[S_N(x) \to \frac{1}{2}[f(x^-) + f(x^+)] \text{ as } N \to \infty\]
+\end{theorem}
+
+\begin{corollary}
+    if $f$ is continuous at $x$, then $S_N(x) \to f(x)$
+    \\if $f$ is \underline{not} continuous at $x$, then $S_N(x) \to$ avergae of one-sided limits.
+\end{corollary}
+
+
+\begin{theorem}[Uniform Convergence]
+    Let $f$ be a \underline{continuous} and \underline{piecewise continuously differentiable} function with a period 2. Then
+    \[\mathcal{E}_N = \max_{x\in \mathbb{R}}\left\lvert f(x) - S_N(x)\right\rvert \to 0 \text{ as } N \to \infty\]
+\end{theorem}
+
+If a series is uniformly convergent
+\begin{enumerate}
+    \item $S_N$ gives a good approximation to $f$ at \underline{all} points (to within $\mathcal{E}_N$)
+    \item We can make $\mathcal{E}_N$ arbitrarily small by taking $N$ large
+    \item $f$ must be continuous (cf. uniform limit thm)
+    \item Fourier series is equal to $f$
+    \[f(x) = \frac{1}{2}a_0 + \sum_{n=1}^{\infty}(a_n \cos (n\pi x) + b_n \sin(n\pi x))\]
+\end{enumerate}
+
+\begin{theorem}[$L^2$ Convergence]
+    Let $f$ be a square integratable function with a period 2: i.e.
+    \[\int_{-1}^{1}f(x)^2 \, dx < \infty\]
+    then, 
+    \[\int_{-1}^{1}(f(x) - S_N(x))^2\, dx \to 0 \text{ as } N\to \infty\]
+\end{theorem}
+\begin{example}
+    \[f(x) = sgn(\sin(\pi x))\] 
+    Pointwise convergent? $\rightarrow$ piecewise continuously differentiable? YES
+    \\Uniform convergent? $\rightarrow$ continuous? NO
+\end{example}
+
+\begin{example}
+    \[f(x) = \left\lvert x \right\rvert \]
+\end{example}
+
+\subsection{Convergence on Finite Intervals}
+\begin{itemize}
+    \item Fourier series converges pointwise/uniformly/$L^2$ if the appropriate periodic extension satisfies the required continuity \& differentiability conditions.
+    \item \underline{Coveat}: even if $f:[-L, L] \to \mathbb{R}$ is continuous, periodic extension may not be continuous
+\end{itemize}
+
+\subsection{Endpoint Conditions for Continuity}
+\begin{itemize}
+    \item full: $f:[-L, L] \to \mathbb{R}, \quad f(-L^+) = f(L^-) $
+    \item sine: $f:[0,L] \to \mathbb{R}, \quad f(0^+) = f(L^-) = 0$
+    \item cosine: $f:[0, L] \to \mathbb{R}$, no additional requirements.
+    \item "Jump" (if any) at endpoints determines the value of Fourier series @ endpoints.
+\end{itemize}
+
+
+\subsection{Uniform and Absolute Convergence}
+\begin{theorem}
+    Fourier series $f(x)\sim \frac{1}{2}a_ + \sum_{n=1}^{\infty} (a_n \cos(n\pi x) + b_n \sin(n \pi x))$ converges uniformly if
+    \[\sum_{n=1}^{\infty} (\left\lvert a_n\right\rvert + \left\lvert b_n\right\rvert ) < \infty\]
+\end{theorem}
+\begin{example}
+    \[f(x) = x, x\in(0,1)\]
+    Fourier cosine series: $\hat{f}_n = \frac{2}{n^2 \pi^2} ((-1)^n -1)$
+    \[\sum_{n=1}^{\infty} \left\lvert \hat{f}_n\right\rvert \leq \sum_{n=1}^{\infty} \frac{4}{n^2 \pi^2} < \infty \Rightarrow \text{ uniform conv.}\]
+    Fourier sine series: $\hat{f}_n = \frac{2}{n\pi} (-1)^{n+1}$
+    \[\sum_{n=1}^{\infty}\left\lvert \hat{f}_n\right\rvert = \sum_{n=1}^{\infty}\frac{2}{n\pi} \Rightarrow \text{ diverges } \Rightarrow \text{ may not uniformly converge}\]
+\end{example}
+
+\subsection{Differentiation of Fourier Series}
+\begin{theorem}
+    Let $f$ be a continuous periodic function with piecewise continuously differentiable $f'$.
+    \\Then, the Fourier series of $f'$ is given by term-by-term differentiation:
+    \[f(x) \sim \frac{1}{2}a_0 + \sum_{n=1}^{\infty}(a_n \cos(n\pi x)+b_n \sin(n\pi x))\]
+    \[f'(x) \sim \sum_{n=1}^{\infty} (-a_n n\pi x \sin(n\pi x)+ b_n n\pi x\cos (n\pi x))\]
+\end{theorem}
+
+\begin{theorem}[Uniform Convergence of Derivatives]
+    The $k$-th derivative of $f$ is continuous if
+    \[\sum_{n=1}^{\infty}(\left\lvert n^k a_n\right\rvert + \left\lvert n^k b_n \right\rvert ) < \infty\]
+\end{theorem}
+
+\begin{example}
+    \[f(x) = \sum_{n=1}^{\infty} \underbrace{\exp (-\lambda n)}_{b_n} \sin (n\pi x) \text{ for } \lambda > 0\]
+    \[\sum_{n=1}^{\infty}n^k \left\lvert b_n\right\rvert = \sum_{n=1}^{\infty}n^k \exp(-\lambda n) < \infty \text{ for any }k \]
+\end{example}
+
+
+\newlecture[Sturn-Liouville Problems][09.21]
+Fourier Series \& Eigenproblems
+\begin{example}
+    Find eigenfunctions $\phi_n$ and eigenvalues $\lambda_n$ s.t.
+    \[\begin{cases*}
+        - \phi_n'' = \lambda_n \phi_n \text{ in } (0,1) &\text{ODE} \\
+        \phi_n(x=0) = \phi_n(x=1) = 0 &\text{BCs}
+    \end{cases*}\]
+
+    Case 1: $\lambda_n <0 $
+    \begin{quote}
+    {   Let $\mu_n = -\lambda_n$ so that $\mu_n > 0$
+        \\General solution to ODE: $\phi_n'' = \mu_n \phi_n$
+        \[\phi_n = A_n' \exp(\sqrt{\mu_n}x)+B_n' \exp(-\sqrt{\mu_n}x)\]
+        \[=A_n \cosh(\sqrt{\mu_n}x)+B_n \sinh(\sqrt{\mu_n}x)\]
+        Recall: $\cosh(x) = \frac{1}{2}(e^x+e^{-x}), \sinh(x) = \frac{1}{2}(e^x - e^{-x})$
+        \[\phi_n''(x) = A_n \mu_n \cosh(\sqrt{\mu_n}x) + B_n \mu_n \sinh(\sqrt{\mu_n} x) = \mu_n \phi_n\] 
+        BC \@ $x=0: \quad \phi_n(x=0) = A_n \cosh(0) + B_n\sinh(0) = A_n = 0 \Rightarrow A_n = 0$ \\
+        BC \@ $x=1: \quad \phi_n(x=1) = B_n \sinh(1) = 0 \Rightarrow B_n = 0$
+        \\$\Rightarrow$ only solution is the trivial soulution $\phi_n = 0$} 
+    \end{quote}
+
+    Case 2: $\lambda_n = 0$
+    \begin{quote}
+        ODE: $-\phi_n '' = 0 \quad \Rightarrow \quad \phi_n(x) = A_n x+B+n$
+        \\BC \@ $x=0: \quad \phi_n(x=0) = B_n = 0 \Rightarrow B_n = 0$
+        \\BC \@ $x+1: \quad \phi_n(x=1) = A_n = 0 \Rightarrow A_n = 0$
+        \\$Rightarrow$ only trivial solution $\phi_n = 0$
+    \end{quote}
+
+
+    Case 3: $\lambda_n > 0$
+    \begin{quote}
+        ODE: $-\phi_n'' = \lambda_n\phi_n$
+        \[\Rightarrow phi_n(x) = A_n \cos (\sqrt{\lambda_n}x)+ B_n\sin(\sqrt{\lambda_n}x)\]
+        BC \@ $x=0: \quad \phi_n(x=0) = A_n \cos(0)+ B_n\sin(0) = A_n = 0 \Rightarrow A_n=0$ \\
+        BC \@ $x=1: \quad \phi_n(x=1) = B_n\sin(\sqrt{\lambda_n} \cdot 1) = 0$
+        \begin{itemize}[label = $\Rightarrow$]
+            \item since we want nontrivial solution, take $B_n \neq 0$
+            \item $\sin(\sqrt{\lambda_n}) = 0 \Rightarrow \sqrt{(\lambda_n)} = n\pi \Rightarrow \lambda_n = n^2\pi^2, n = 1,2,3,\dots$
+        \end{itemize}
+        $\Rightarrow \phi_n(x) = \sin(n\pi x) \& \lambda_n = n^2\pi^2$ are the (nontrivial) solutions ot the eigenproblem.
+    \end{quote}
+\end{example}
+
+\header{Observations}
+\begin{enumerate}
+    \item Eigenfunctions for the basis of Fourier sine series.
+    $\hookrightarrow$ they can be used to approcimate functions
+    \item Eigenfunctions are orthogonal
+    \item Eigenvalues are real and non-negative
+    \underline{Q.} could we have known this just by looking at the eigenproblem?
+    \\\underline{Intuition}: eigenpairs of symmetric matrices
+\end{enumerate}
+
+\heading{Sturm-Liouville Theory}
+\begin{definition}
+    \b{Sturm-Liouville problem} is an eigenproblem of the form
+    \[\begin{cases*}
+        (p\phi')'+q\phi = \lambda w \phi \quad \text{in }(a,b) & \quad \text{ODE} \\
+        \alpha_1 \phi(a) - \alpha_2 \phi'(a) = 0 & \quad \text{left BC} \\
+        \beta_1 \phi(b) + \beta_2 \phi'(b) = 0 & \quad \text{right BC}
+    \end{cases*}\]
+    where:
+    \begin{enumerate}[label = (\roman*)]
+        \item $p, p'm q, \& w$ are continuous functions on $[a,b]$.
+        \item $p>0 \& w > 0$ on $[a,b]$
+        \item $\alpha_1^2 + \alpha_2^2 > 0$
+        \item $\beta^2_1 + \beta_2^2 > 0$
+    \end{enumerate}
+\end{definition}
+
+\begin{example}
+    \[\begin{cases*}
+        -\phi'' = \lambda\phi &\text{ in }(0,1)\\
+        \phi(0) = \phi(1) = 0 &
+    \end{cases*} \]
+    is Sturm-Liouville problem with $p=1, q=0; w = 1, \alpha_1 = 1, \alpha_2 = 0, \beta_1 = 1, \beta_2 = 2$
+\end{example}
+
+\begin{theorem}
+    Sturm-Liouville operator $L = -\frac{d}{dx}(p \frac{d}{dx}) + q$
+    \\is \underline{self-adjoint}: i.e, 
+    \[(Lw, v )= (w,Lv)\]
+    for any continuously twice differentiablle functions $w \& v$ 
+    \\when $(f,g)= \int_{a}^{b} f \bar{g}\,dx \quad$ for $\bar{g}$ is the complex conjugate.
+
+    \b{Analogy}: if $A$ is symmetric, then
+    \[(Aw, v) - v^TAw = w^T A^T v = w^T Av = (w, Av)\]
+\end{theorem}
+
+
+\begin{theorem}
+    All eigenvalues of S-L problems are real.
+    
+    \b{Analogy}: all eigenvalues of symmetric $A$ are real.
+\end{theorem}
+\begin{theorem}
+    Eigenfuncctions of S-L problems associated with distinct eigenvalues $\lambda_n \& \lambda_m$ are orthogonal wrt weight w:
+    \[\int_{a}^{b} w\phi_n \phi_m\, dx = 0, \quad \forall n\neq m\]
+
+    \b{Analogy}: eigenvectors of symmetric $A$ associated with distinct eigenvalues are orthogonal.
+\end{theorem}
+
+\begin{theorem}
+    S-L problem has an infinite number of eigenvalues and $\lambda_n \to \infty$ as $n\to \infty$.
+\end{theorem}
+\begin{theorem}
+    If $q\geq 0, \alpha_1 \geq 0, \alpha_2 \geq 0, \beta_1 \geq 0 \& \beta_2 \geq 0$, 
+    \\then $\lambda_n \geq 0 \quad \forall n$
+\end{theorem}
+
+\b{Key}: given 
+\[\begin{cases*}
+    -\phi_n '' = \lambda_n\phi_n \quad &\text{in }(0,1) \\
+    \phi_n(0) = \phi_n(1) = 0 &
+\end{cases*}\]
+we could have known, without knowing the solutions
+\begin{enumerate}[label = \roman*]
+    \item eigenfunctions are orthogonal
+    \item eigenvalues are real \& non-negative
+\end{enumerate}
+
+\begin{example}
+    \[\begin{cases*}
+        -\phi'' = \lambda\phi \quad \text{in }(0,1) & \text{ODE} \\
+        \phi'(0) = \phi'(1) = 0 &\text{BCs}
+    \end{cases*}\]
+    S-L problem with $p=1, q=0, w=1, \alpha_1 = \beta_1 = 0, \alpha_2 = \beta_2 = 1$
+    \\$Rightarrow$ eigenfunctions are orthogonal; eigenvalues are real \& non-negative.
+
+    Explicit Solution:
+    \\Case 1: $\lambda = 0$ (note: we need \underline{not} consider $\lambda< 0$ by S-L theory)
+    \begin{quote}
+        \[\text{ODE: }-\phi_n'' = 0 \quad \Rightarrow \quad \phi_n(x) = A_n(x)+ B_n\]
+        BC \@ $x=0: \quad \phi_n'(0) = A_n = 0 \quad \Rightarrow \quad A_n = 0$
+        \\BC \@ $x=1: \quad \phi_n'(1) = A_n = 0$
+        \[ \Rightarrow \text{pick }B_n = 1 \quad \Rightarrow \quad \phi_n(x = 1), \lambda_n = 0\]
+    \end{quote}
+    Case 2: $\lambda_n > 0$
+    \begin{quote}
+        \[\text{ODE: } -\phi_n'' = \lambda_n \phi_n \quad  \Rightarrow \quad \phi_n(x) = A_n\cos(\sqrt{\lambda_n}x) + B_n \sin(\sqrt{\lambda_n}x)\]
+        BC \@ $x=0: \quad \phi_n'(0) = -A_n \sqrt{\lambda_n}\sin(\sqrt{\lambda_n}\cdot 0)+ B_n \sqrt{\lambda_n} \cos(\sqrt{\lambda_n}\cdot 0) = 0 \Rightarrow B_n = 0$
+        \\BC \@ $x=1: \quad \phi_n'(1) = -A_n \sqrt{\lambda_n}\sin(\sqrt{\lambda_n}\cdot 1) = 0 \Rightarrow \sin(\sqrt{\lambda_n}) = 0\Rightarrow \lambda_n = n^2\pi^2, n = 1,2,\dots$
+    \end{quote}
+
+    \[\phi_n(x) = \begin{cases*}
+        1, &n=0 \\
+        \cos(n\pi x), &n=1,2,3, \dots
+    \end{cases*} = \cos(n\pi x), n = 0,1,2, \dots \]
+    \[\lambda_n = \begin{cases*}
+        0, &n=0 \\
+        n^2\pi^2, &n=1,2,3,\dots
+    \end{cases*} = n^2\pi^2, n=0,1,2,\dots \Rightarrow \text{Fourier cosine series}\]
+\end{example}
+
+\header{Generalized Fourier Series}
+Let $(\phi_n)^{\infty}_{n=1}$ be eigenfunctions of the S-L problem with $\alpha_1, \alpha_2, \beta_1, \beta_2 \geq 0$.
+\\We can approximate any square integrable $f: (a, b) \to \mathbb{R}$ by generalized Fourier series.
+\[f(x) \sim \sum_{n=1}^{\infty}\hat{f}_n\phi_n(x)\]
+where 
+\[\hat{f_n} = \frac{\int_{a}^{b} f(x)\phi_n (x)w(x)\, dx}{\int_{a}^{b}\phi_n(x)^2w(x)\, dx}\]
+note: the basis is orthogonal, not necessarily orthanormal.
+
+\header{Remarks}:
+\begin{enumerate}
+    \item Coefficients follow from orthogonality
+    \item Series converges point-wise/uniformaly/in $L^2$ given a sufficiently regular $f$.
+\end{enumerate}
+

@@ -1,0 +1,12 @@
+\contentsline {section}{What this file is}{2}{section*.2}%
+\contentsline {section}{Math shortcuts}{2}{section*.3}%
+\contentsline {section}{Theorem-style environments}{2}{section*.4}%
+\contentsline {section}{Definition-style environments}{3}{section*.5}%
+\contentsline {section}{Remarks and proofs}{3}{section*.6}%
+\contentsline {section}{Cross-references}{4}{section*.7}%
+\contentsline {section}{Handwritten-note formatting helpers}{4}{section*.8}%
+\contentsline {section}{Diagrams with TikZ}{5}{section*.9}%
+\contentsline {section}{Lists}{5}{section*.10}%
+\contentsline {section}{Tables}{6}{section*.11}%
+\contentsline {section}{Links}{6}{section*.12}%
+\contentsline {section}{Images}{6}{section*.13}%
