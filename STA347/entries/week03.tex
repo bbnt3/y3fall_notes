@@ -2,7 +2,7 @@
 \newlecture[][Sep 22, 2026]
 
 In STA237:
-\[E(X) - \begin{cases*}
+\[E(X) = \begin{cases*}
     \sum_{x}^{}x\cdot p(x) &\text{if } X \text{ discrete}\\
     \int xf(x)\,dx &\text{if } X \text{ continuous}
 \end{cases*}\]
@@ -127,3 +127,48 @@ $X \leq Y$ a.s.
     \item $\omega: X(\omega) \leq Y(\omega)$
     \item $\left\{ \omega: X(\omega) \leq Y(\omega)\right\}$
 \end{enumerate}
+
+\begin{definition}[Non-negative Random Variable][5.4]
+    If $X \geq 0$ a.s. ($P(\left\{\omega: X(\omega)\geq 0\right\}) = 1$)
+    \\define $E(X) = \sup \left\{E(Y): Y\text{ bounded, } 0\leq Y \leq X \text{ a.s.}\right\}$
+\end{definition}
+
+Remark: Def 5.4. only provides a definition of $E(X)$ when $X$ is non-negative, it does \underline{not} guarantee $E(X) < \infty$.
+
+\begin{definition}[Integrable Random Variables][5.5]
+    For any random variable $X$, let $X^+(\omega) = \max\left\{X(\omega), 0\right\}$, and $X^- = \max\left\{-X(\omega), 0\right\}$.
+    \\Observe thta both $X^+$ and $X^-$ are non-negative and $X=X^+ - X- X^-$.
+    \\Then, if $E(|X|) = E(X^+) -E(X^-) < \infty$, we say R.V. $X$ is integrable and define $E(X) = E(X^+) - E(X^-)$
+\end{definition}
+
+\begin{enumerate}
+    \item $E|X| = E(X^+)+E(X^-) < \infty \Rightarrow X \text{ is integrable}$
+    \item $E(X) = E(X^+) + E(X^-)$
+\end{enumerate}
+
+\begin{proposition}[Properties of Expected Values][5.6]
+    If R.V. $X$ is either bounded, non-negative or integrable. Proposition 5.2. always holds.
+\end{proposition}
+\begin{enumerate}
+    \item $X$ and $Y$ may not need to be simple, if they are bounded, non-negative or integrable, the 3 properties (prop 5.2) also hold.
+    \item Lemma 5.2.1 says, if prop 5.2 holds, the additional 3 properties also hold.
+    \item To sum up, if R.V.'s are bounded, non-negative or integrable, all the 6 properties hold.
+\end{enumerate}
+
+Hint for Assignment 1. Q2:
+\begin{quote}
+    $E_1$ and $E_2$ are independent.
+    \\$E_1^c$ and $E_2^c$ are independent.
+
+    if $E_1, E_2, \dots E_n$, you want to prove $E_1^c, E_2^c, \dots E_n^c$ are indepdent.
+    \[P(E_1^c \bigcap E_2^c \bigcap \cdots \bigcap E_n^c) = \cdots\]
+    you can flip 1 event at a time
+    
+    first try to flip the first\dots
+    \[P(E_1^c \bigcap E_2^c \bigcap \cdots \bigcap E_n^c)\]
+    \[= P(E_2 \bigcap E_3 \bigcap \cdots \bigcap E_n) - P(E_1 \bigcap E_2 \bigcap \cdots \bigcap E_n)\]
+    \[ = \cdots = (1-P(E_1))P(E_2)\cdots P(E_n)\]
+
+    Then you flip the second one\dots
+    \\Via induction, complete the proofs
+\end{quote}

@@ -31,6 +31,15 @@
 % page by this.
 \pretocmd{\section}{\newpage}{}{\errmessage{Failed to patch \string\section}}
 
+% Tracks whether \section was the most recent sectioning/lecture command,
+% so a \newlecture immediately following a \section (the usual "week's
+% first lecture" case) doesn't also throw in its own \newpage, which would
+% otherwise leave a blank page between the two. Set true by \section, and
+% cleared by \newlecture whether or not it was true, so it only fires for
+% a \newlecture that directly follows a \section (nothing else in between).
+\newbool{newlecture@justsection}
+\pretocmd{\section}{\booltrue{newlecture@justsection}}{}{\errmessage{Failed to patch \string\section}}
+
 % Custom head format: bold, unparenthesized title, with a \quad gap after
 % the number (e.g. "Theorem 3.2  Distribution" instead of "Theorem 3.2
 % (Distribution)."), reusing amsthm's usual spacing/punctuation otherwise.
@@ -98,15 +107,15 @@
 % lecture. Both arguments are optional. Numbering runs continuously across
 % the whole document (i.e. across all weeks' entries, not reset per
 % \section), so the Nth \newlecture in the course is always "Lecture N".
-% Each lecture starts on its own new page, except the very first one,
-% which stays on the same page as its \section heading.
+% Each lecture starts on its own new page, except when it directly follows
+% a \section heading (which already started a new page of its own), so the
+% two stay together instead of leaving a blank page in between.
 \newcounter{lecture}
 \renewcommand{\thelecture}{\arabic{lecture}}
 \NewDocumentCommand{\newlecture}{o o}{%
     \stepcounter{lecture}%
-    \ifnum\value{lecture}>1
-        \newpage
-    \fi
+    \ifbool{newlecture@justsection}{}{\newpage}%
+    \boolfalse{newlecture@justsection}%
     \par\vspace{1em}
     \begin{center}
         \textbf{\Large Lecture \thelecture\IfValueT{#1}{: #1}}\\[2pt]
