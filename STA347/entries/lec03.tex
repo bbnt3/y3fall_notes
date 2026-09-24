@@ -1,3 +1,5 @@
+% !TeX root = ../main.tex
+
 \section{Week 2: }
 
 \newlecture[Independence, Random Variables and Distributions][Sep 15, 2026]
@@ -156,50 +158,3 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
 \begin{theorem}[][3.6]
     If $F$ is a CDF, it can only have countably many discontinuities.
 \end{theorem}
-
-\newlecture[Random Variables \& Distributions][Sep 17, 2026]
-\begin{definition}[Density Function][3.7]
-    A r.v. has a density function
-    \[f: \mathbb{R} \rightarrow \mathbb{R}, \quad \text{if for all }x \in \mathbb{R} \]
-    \[F(x) = \int_{-\infty}^{x}f(y)dy\]
-    we call $f()$ the density function.
-\end{definition}
-
-\begin{definition}[Joint Distribution][3.8]
-    We define the joint distribution function of a random vector $\overrightarrow{X} = (X_1, \dots, X_n)$ by
-    \[F(x_1, \dots, x_n) = p(X_1 \leq x_1, \dots, X_n \leq x_n)\]
-    using the notation $p(A, B) \overset{def}{=}p(A\bigcap B)$
-\end{definition}
-
-\begin{theorem}[][3.8.1]
-    A joint distribution $F: \mathbb{R}^n \rightarrow \mathbb{R} $ satisfies the following properties:
-    \begin{enumerate}[label = \roman*)]
-        \item if $(x_1, \dots, x_n)$ and $x_1', \dots x_n'$ satisfy $x_i \leq x_i'$ for all $i \in [n]$.
-        \[F(x_1, \dots x_n) \leq F(x_1', \dots x_n')\]
-        \item $\lim_{x_i \to -\infty} F(x_1, \dots, x_n) = 0$ for all $i \in \left\{1, \dots, n\right\}$ and 
-        $\lim_{x_1 \to \infty, \dots x_n \to \infty}  F (x_1, \dots, x_n) = 1$
-        \item $\lim_{h \to 0^+}F(x_1+h, \dots, x_n) = \cdots = \lim_{h \to 0^+}F(x_1, \dots x_n+h)$
-        \[=F(x_1, \dots, x_n)\]
-    \end{enumerate}
-    Proof are anagolous to the proof under univariate case.
-\end{theorem}
-
-\begin{definition}[The Joint Density][3.9]
-    A random vector has a joint density function:
-    \[f: \mathbb{R}^n \to \mathbb{R}, \quad \text{if }\forall(x_1, \dots, x_n)\in \mathbb{R}^n\]
-    \[F(x_1, \dots x_n) = \int_{-\infty}^{x_1}\cdots \int_{-\infty}^{x_n}f(y_1, \dots, y_n)\, dy_n\dots \,dy_1\]
-\end{definition}
-
-\begin{theorem}[Independence of Random Variables][3.10]
-    Random variables $X_1, \dots, X_n$ with CDFs $F_1, \dots, F_n$
-    are independent if and only if
-    \[F(x_1, \dots, x_n) = \prod_{i=1}^nF_i(x_i), \quad \forall(x_1, \dots, x_n) \in \mathbb{R}^n \]
-\end{theorem}
-
-\heading{Limits of sets:}
-Let $A_i$ be sets for $i\in\{1,2,\dots\}$ and consider $\displaystyle\lim_{n\to\infty}A_n$.
-\begin{itemize}
-    \item If $A_1 \subseteq A_2 \subseteq \dots \subseteq A_n \subseteq \dots$ (increasing), then $\displaystyle\lim_{n\to\infty}\bigcup_{i=1}^{n}A_i = \bigcup_{i=1}^{\infty}A_i$.
-    \item If $A_1 \supseteq A_2 \supseteq \dots \supseteq A_n \supseteq \dots$ (decreasing), then $\displaystyle\lim_{n\to\infty}\bigcap_{i=1}^{n}A_i = \bigcap_{i=1}^{\infty}A_i$.
-\end{itemize}
-

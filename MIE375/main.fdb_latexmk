@@ -1,7 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1790267236.59411 "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" "main.pdf" "main" 1790267238.01143 0
+["pdflatex"] 1790267872.65106 "main.tex" "main.pdf" "main" 1790267874.4875 0
   "../template/preamble.tex" 1790264812.41193 6618 8415c2c07e321d3a8c448c27684157a5 ""
-  "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" 1790094876.03651 1132 71e78bc181e6f5de63ca8d58fd34af22 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -199,12 +198,14 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1771962573 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "entries/week01.tex" 1790267020.72989 11611 3b3c515cb1ceca54c1b17bbbc9844867 ""
-  "entries/week02.tex" 1790267235.50675 11038 e1fdf9b87c19a0e88f4e03a910200ce3 ""
-  "main.aux" 1790267237.86766 252 7b4c2432ac8a65916dbd355f61e9c7ed "pdflatex"
-  "main.out" 1790267237.86823 77 b7b51d2722b3022d48edc1dc93cf0c2a "pdflatex"
-  "main.tex" 1790094876.03651 1132 71e78bc181e6f5de63ca8d58fd34af22 ""
-  "main.toc" 1790267237.8685 48 723ebc657c9751403678d350ff116362 "pdflatex"
+  "entries/lec01.tex" 1790267870.80602 3518 608440853d81fe740acc42b3cd98a07a ""
+  "entries/lec02.tex" 1790267870.80619 8119 f4671009f258701ce686759a3ff2b9bd ""
+  "entries/lec03.tex" 1790267870.80669 11043 fe8044772c635d8988fa2483b9acc88a ""
+  "entries/lec04.tex" 1790267870.80682 43 c55fc75253956099f7e1ce767cea3da1 ""
+  "main.aux" 1790267874.31668 252 7b4c2432ac8a65916dbd355f61e9c7ed "pdflatex"
+  "main.out" 1790267874.31718 77 b7b51d2722b3022d48edc1dc93cf0c2a "pdflatex"
+  "main.tex" 1790267870.80738 1182 2a44ea5b69fa43132e00da847b615146 ""
+  "main.toc" 1790267874.31746 48 723ebc657c9751403678d350ff116362 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

@@ -1,0 +1,84 @@
+% !TeX root = ../main.tex
+
+% Edit this title for each week's entry.
+\section{Week 1}
+\newlecture[Introduction/Syllabus][September 14, 2026]
+
+\header{Principal and Interest}
+\begin{definition}
+    Principal: Amount invested
+
+    Interest: "Rent" paid on investment
+\end{definition}
+
+In general, for
+\begin{itemize}
+    \item $A$: Principal
+    \item $r$: interest rate per period
+    \item $V$: Value received.
+\end{itemize}
+After 1 period, $V=A(1+r)$ is received
+
+Interest over multiple periods depend on the compounding rules:
+\begin{enumerate}
+    \item \rb{Simple}: Money grows linearly, receiving $V=A(1+nr)$ over $n$ periods.
+    \item \rb{Compound}: Money grows geometrically, receiving $V=A(1+r)^n$ over $n$ periods.
+\end{enumerate}
+
+The Rule of 72: Money invested at $r\%$ per year doubles in approximately $72/r$ years.
+
+\begin{example}
+    \textit{Simple:} \$5000 borrowed for 5 years at 10\% per year simple interest is owed
+    \[V = A(1+rn) = 5000(1+0.1\cdot 5) = \$7500\]
+    \textit{Compound:} \$100 deposited at 7\% compounded yearly for 10 years grows to
+    \[V = A(1+r)^n = 100(1+0.07)^{10} = \$196.72\]
+\end{example}
+Simple interest is not used often in practice.
+
+
+\begin{definition}
+    \rb{Nominal Interest Rate}: annual quote, compounding interest is in fractions corresponding to the compounding period.
+    \\For $m$ periods per year for $k$ periods, $V=A(1+\frac{r}{m})^k$
+\end{definition}
+
+\begin{example}
+    Invest \$10 at 8\% compounded quarterly for 3 quarters:
+    \[V = 10\left(1+\frac{0.08}{4}\right)^3 = \$10.61\]
+\end{example}
+
+\begin{definition}
+    \rb{Continuous Compound Interest}: when the compounding period becomes arbitrarily small, the value approaches $e^{rt}$.
+\end{definition}
+After 1 year with $m$ periods: $(1+\frac{r}{m})^m$, and $\lim_{m\to\infty}(1+\frac{r}{m})^m = e^r$. More generally, in $t$ years there are $k = tm$ periods, so $(1+\frac{r}{m})^{tm} \to e^{rt}$.
+
+\begin{example}
+    $A = \$100$, $r = 9\%$ compounded continuously. After 1.5 years:
+    \[V = 100e^{(0.09)(1.5)} = \$114.45\]
+\end{example}
+
+\header{Compound Interest Summary}
+For $r$ the nominal interest rate quoted:
+\[\boxed{\begin{gathered}
+    \text{Yearly for $k$ years:} \quad (1+r)^k\\
+    \text{$m$ periods per year for $k$ periods:} \quad \left(1+\frac{r}{m}\right)^k\\
+    \text{Continuously for time $t$:} \quad e^{rt}
+\end{gathered}}\]
+
+\begin{definition}
+    \rb{Effective Rate}: interest rates are usually quoted as nominal rates, but what you pay depends on the number of compounding periods. The equivalent rate with a \textit{single} compounding period over the time interval of interest is the effective rate.
+\end{definition}
+
+Relationship between Nominal and Effective Rate (with $m$ compounding periods per year, so the rate per compounding period is $r = r_{nom}/m$):
+\[1+ r_{eff} = (1+ \frac{r_{nom}}{m})^m \quad \Rightarrow \quad \boxed{r_{eff} = (1+ \frac{r_{nom}}{m})^m - 1}\]
+\[\text{1 + Simple One-year Rate = the Explicit Compound}\]
+
+\begin{example}
+    Effective yearly rate of 8\% compounded quarterly:
+    \[r_{eff} = \left(1+\frac{0.08}{4}\right)^4 - 1 = 8.24\%\]
+\end{example}
+
+\begin{definition}
+    \rb{APR} (Annual Percentage Rate): the \textit{nominal} annual rate of interest including all fees and charges.
+    \\\rb{APY} (Annual Percentage Yield): the \textit{effective} annual rate of interest including all fees and charges.
+\end{definition}
+Both are required by the Truth in Lending Act (1968), and can be used to compare loans with different terms.

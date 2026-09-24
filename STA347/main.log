@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 SEP 2026 12:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 SEP 2026 12:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -875,7 +875,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 \openout5 = `main.toc'.
 
 
-(./entries/week01.tex
+(./entries/lec01.tex
 
 [2]
 
@@ -892,11 +892,11 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 [4]
 
-[5]
+[5]) (./entries/lec02.tex
 
 [6{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 
-[7]) (./entries/week02.tex
+[7]) (./entries/lec03.tex
 
 [8]
 
@@ -904,15 +904,15 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 [10]
 
-[11]
+[11]) (./entries/lec04.tex
 
 [12]
-LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
-02.
+LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
+5.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ))
-(./entries/week03.tex
+(./entries/lec05.tex
 
 [13{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
 
@@ -920,7 +920,7 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 
 [15]
 
-[16]
+[16]) (./entries/lec06.tex
 
 [17]
 
@@ -935,10 +935,10 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 804EE559378414EF061D8F54CF08F797;695.
  ) 
 Here is how much of TeX's memory you used:
- 23051 strings out of 473190
- 431061 string characters out of 5715801
+ 23069 strings out of 473190
+ 431394 string characters out of 5715801
  803445 words of memory out of 5000000
- 45763 multiletter control sequences out of 15000+600000
+ 45772 multiletter control sequences out of 15000+600000
  635597 words of font info for 89 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,15n,90p,541b,867s stack positions out of 10000i,1000n,20000p,200000b,200000s

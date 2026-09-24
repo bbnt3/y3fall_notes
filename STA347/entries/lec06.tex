@@ -1,0 +1,59 @@
+% !TeX root = ../main.tex
+
+\newlecture[][Sep 24, 2026]
+\begin{theorem}[Independence and Expectation][5.7]
+    If $X$ and $Y$ are independent with $EX, EY < \infty$, then 
+    \[E(XY) = (EX)(EY)\]
+    Proof: 
+    \begin{quote}
+        First, consider both $X$ and $Y$ are simple, so that
+        \[X= \sum_{i=1}^{n} x_i I(A_i) \quad \text{and} \quad Y= \sum_{j=1}^{m} y_j I(B_j)\]
+        \begin{align*}
+            E(XY) &= E[\sum_{i=1}^{n}\sum_{j=1}^{m} x_i y_j \cdot [\left\{A_i \bigcap B_j\right\}]\\
+            &\phantom{=}\ \sum_{i=1}^{n}\sum_{j=1}^{m} x_i y_j P(x_i \in A_i, Y_j \in B_j)]\\
+            &=\sum_{i=1}^{n}\sum_{j=1}^{m} x_i y_i P(\left\{\omega: X(\omega) \in A_i, Y(\omega) \in B_j\right\})\\
+            &=\sum_{i=1}^{n}\sum_{j=1}^{m} x_i y_j P(x \in A_i)\cdot P(Y\in B_j)\\
+            &=\underbrace{\sum_{i=1}^{n}x_i\cdot P(x\in A_i)}_{EX}  \underbrace{\sum_{j=1}^{m}y_j\cdot P(Y \in B_j)}_{EY}\\
+            &= (EX)(EY)
+        \end{align*}
+    \end{quote}
+\end{theorem}
+
+Next, consider the case that $X$ and $Y$ are non-simple and non-negative, then we let $Z_1\geq X, Z_2 \geq Y$, where $Z_1$ and $Z_2$ are simple. Notice that
+\[Z_1 \geq X, Z_2 \geq Y \text{ implies that } Z_1 \cdot Z_2 \geq XY\]
+\begin{align*}
+    (EX)(EY) &= \inf \left\{EZ_1: Z_1 \text{ simple, } Z_1 \geq X \text{ a.s.}\right\}\\
+    &\mathrel{\phantom{=}}\inf\left\{EZ_2: Z_2\text{ simple, } Z_2 \geq Y \text{ a.s.}\right\}
+\end{align*}
+\[ \inf\left\{(EZ_1) \cdot(EZ_2)\right\} \quad \text{because of indepegndence and $Z_1, Z_2$ simple}\]
+\[\geq \inf\left\{EZ_1Z_2, Z_1 \text{ and }Z_2 \text{ simple and indep, } Z_1 Z_2\geq XY \text{ a.s.}\right\}\]
+
+Additionally, if $Z_1$ and $Z_2$ are simple and 
+\[Z_1 \leq X \text{ a.s.} \qquad Z_2 \leq Y \text{ a.s.}\]
+Similarly, $(EX)(EY = \sup\left\{EZ_1Z_2, Z_1 \text{ and }Z_2 \text{ are simple and indep, }Z_1 \leq X, Z_2 \leq Y \text{ a.s.}\right\})$
+
+
+Previously, we proved that
+\[\inf\left\{EZ_1Z_2, \quad Z_1, Z_2 \text{ are simple and indep with }Z_1 \geq X, Z_2 \geq Y \text{ a.s. }\right\} = E(XY)\]
+and
+\[\sup\left\{EZ_1Z_2, \quad Z_1, Z_2 \text{ are simple and indep with }Z_1 \leq X, Z_2 \leq Y \text{ a.s. }\right\} = E(XY)\]
+
+
+Finally, for $X$ and $Y$ that are integrable, first realize that if $X$ and $Y$ are independent, then $X^+, X^- Y^+, Y^-$ are also independent.
+\[X = X^+ - X^- \qquad Y = Y^+ - Y^-\]
+\begin{align*}
+    E(XY) &= E[(X^+ - X^-)(Y^+ - Y^-)]\\
+    &=E[X^+Y^+ - X^+ Y^- - X^- Y^+ + X^- Y^-]\\
+    &= E(X^+Y^+) - E(X^+Y^-) - E(X^- Y^+) + E(X^- Y^-)\\
+    &= E(X^+)E(Y^+) - E(X^+)E(Y^-) - E(X^-)E(Y^+) + E(X^-)E(Y^-)\\
+    &=(EX)(EY)
+\end{align*}
+
+\begin{definition}[Variance and Covariance][5.8]
+    The variance of a random variable $X$ is defined as
+    \[\Var(X) = E[(X-EX)^2]\]
+    The covariance of random variables $X$ and $Y$ is 
+    \[\Cov(X,Y) = E[(X-EX)(Y-EY)]\]
+    The correlation coefficient is
+    \[\text{Corr}(X,Y) = \frac{\Cov(X,Y)}{\sqrt{\Var(X)\Var(Y)}}\]
+\end{definition}
