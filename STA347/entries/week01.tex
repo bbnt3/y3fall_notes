@@ -29,7 +29,7 @@
     $f_1,\dots,f_n,\dots$ --- \aside{sequence of functions}
     \\ $f$ --- \aside{target function}
     \\ For any $\varepsilon$ and $x$, can find $N_x$ s.t. $n>N_x$, $\left\lvert f_n(x)-f(x)\right\rvert < \varepsilon$.
-    \\ $f_1(1), f_2(1), \dots, f_n(1), \dots \to f(1)$ --- \aside{for every $x$, there is a corresponding $N_x$.}
+    \\ $f_1(2), f_2(2), \dots, f_n(2), \dots \to f(2)$ --- \aside{for every $x$, there is a corresponding $N_x$.}
 
     \item \deflabel{1.1.3}{Functional Convergence Uniformly}
     \begin{quote}
@@ -128,7 +128,7 @@ $\max(A)$ and $\min(A)$ must be elements of the set $A$.
 
 \subsection{Function Limits}
 
-\deflabel{1..13}{Left and Right Limit of a Function}
+\deflabel{1.3}{Left and Right Limit of a Function}
 \begin{quote}
     For any function $f: \R \to \R$,
     \[f(x-) = \lim_{y\uparrow x} f(y) = L \quad \aside{(to the left of $x$, a small neighbourhood)}\]
@@ -139,7 +139,7 @@ $\max(A)$ and $\min(A)$ must be elements of the set $A$.
 \end{quote}
 
 \begin{example}
-    \[f(x) = \begin{cases} 0 & x\leq 0 \\ 1 & x>0 \end{cases}\]
+    \[f(x) = \begin{cases} 0 & x<0 \\ 1 & x\geq 0 \end{cases}\]
     $f(0-) = 0$, $f(0+) = 1$
     \[\Rightarrow \lim_{x\to 0} f(x) \text{ DNE}\]
 \end{example}
@@ -158,7 +158,7 @@ $\max(A)$ and $\min(A)$ must be elements of the set $A$.
     \\Weather: $\{\text{hot, cold, mild}\} \times \{\text{wet, dry}\}$
 \end{example}
 
-\deflabel{2.2}{Proabbility Measure (STA347 ver.)}
+\deflabel{2.2}{Probability Measure (STA347 ver.)}
 \begin{quote}
     For a sample space $\Omega$, we say $P$ is a probability measure if the following holds:
     \begin{enumerate}[label=\roman*)]
@@ -169,13 +169,15 @@ $\max(A)$ and $\min(A)$ must be elements of the set $A$.
     \end{enumerate}
 \end{quote}
 
-Remark: 
+\aside{$\mathcal{P}(\Omega)$ is the power set of $\Omega$.}
+
+\textbf{Remark:} It may be impossible for such a $P$ to exist. To define exactly which subsets we want $P$ to satisfy these axioms, that would require more advanced mathematical theories. For this class, we just assume such a $P$ is defined for all subsets of $\Omega$.
 
 \begin{example}
     Probabilities of coin flipping
     \[\Omega = \{H, T\}\]
-    \[p(\Omega) = \{\phi, \{H\}, \{T\}, \{H, T\}\}\]
-    \[P: p(\Omega) \mapsto [0, 1]\]
+    \[\mathcal{P}(\Omega) = \{\phi, \{H\}, \{T\}, \{H, T\}\}\]
+    \[P: \mathcal{P}(\Omega) \mapsto [0, 1]\]
     \begin{align*}
         p: \phi &\mapsto 0 \\
         \{H\} &\mapsto \frac{1}{2} \\
@@ -185,9 +187,10 @@ Remark:
 \end{example}
 
 \begin{example}
-    The uniform/Lebesque measure
-    Let $\Omega =[L,U]$ for some $L < U \in R$. Define
-    \[bruh\]
+    The uniform/Lebesgue measure.
+    Let $\Omega =[L,U]$ for some $L < U \in \R$. Define
+    \[P([a,b]) = \frac{b-a}{U-L} \quad \text{when } L \leq a \leq b \leq U\]
+    We assume such a measure exists (and is well defined) for this class.
 \end{example}
 
 Proposition 2.3:
@@ -195,13 +198,13 @@ The following properties are satisfied by any probability measure $P$
 \begin{enumerate}
     \item $\forall E \subseteq \Omega, P(E^C) = 1 - P(E)$
     \item $P(\phi) = 0$
-    \item $\forall E, F \subseteq \Omega$, such that $E \subseteq F, P(E) \leq P(F)$
+    \item $\forall E, F \subseteq \Omega$, such that $E \subseteq F, P(E) \leq P(F)$ \aside{(``big event, big probability'')}
     \item $\forall E, F \subseteq \Omega, P(E\bigcup F) = P(E)+P(F) - P(E\bigcap F)$
     \item $\forall E, F \subseteq \Omega, P(E\bigcap F) = P(E)+P(F)-P(E\bigcup F)$
     \item $\forall E, F \subset \Omega, P(F \setminus E) = P(F) - P(E\bigcap F)$
 \end{enumerate}
 
-Proof via Def 1.2 - Probability Axioms
+Proof via Def 2.2 (probability axioms).
 
 Lemma 2.4
 \begin{quote}
@@ -218,4 +221,9 @@ Lemma 2.4
     \[\text{We also know } F_i \subseteq E_i \text{ as } F_i = E_i \setminus \bigcup_{j=1}^{i-1}E_j\]
     \[P(F_i) \leq P(E_i)\]
     \[P(\bigcup_{i=1}^{n}E_i) = \sum_{i=1}^{n}P(F_i) \leq \sum_{i=1}^{n}P(E_i)\]
+\end{quote}
+
+Lemma 2.5
+\begin{quote}
+    Let $P$ be the Lebesgue measure on $[0,1]$. Then $P(E) = 0$ for any \underline{countable} set $E$.
 \end{quote}

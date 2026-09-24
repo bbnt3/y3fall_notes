@@ -27,28 +27,70 @@ Interest over multiple periods depend on the compounding rules:
 
 The Rule of 72: Money invested at $r\%$ per year doubles in approximately $72/r$ years.
 
+\begin{example}
+    \textit{Simple:} \$5000 borrowed for 5 years at 10\% per year simple interest is owed
+    \[V = A(1+rn) = 5000(1+0.1\cdot 5) = \$7500\]
+    \textit{Compound:} \$100 deposited at 7\% compounded yearly for 10 years grows to
+    \[V = A(1+r)^n = 100(1+0.07)^{10} = \$196.72\]
+\end{example}
+Simple interest is not used often in practice.
+
 
 \begin{definition}
     \rb{Nominal Interest Rate}: annual quote, compounding interest is in fractions corresponding to the compounding period.
-    \\For $m$ periods per year for $k$ periods, $V=(1+\frac{r}{m})^k$
+    \\For $m$ periods per year for $k$ periods, $V=A(1+\frac{r}{m})^k$
 \end{definition}
+
+\begin{example}
+    Invest \$10 at 8\% compounded quarterly for 3 quarters:
+    \[V = 10\left(1+\frac{0.08}{4}\right)^3 = \$10.61\]
+\end{example}
 
 \begin{definition}
     \rb{Continuous Compound Interest}: when the compounding period becomes arbitrarily small, the value approaches $e^{rt}$.
 \end{definition}
+After 1 year with $m$ periods: $(1+\frac{r}{m})^m$, and $\lim_{m\to\infty}(1+\frac{r}{m})^m = e^r$. More generally, in $t$ years there are $k = tm$ periods, so $(1+\frac{r}{m})^{tm} \to e^{rt}$.
 
-Relationship between Nominal and Effective Rate:
-\[1+ r_{eff} = (1+ \frac{r_{nom}}{m})^m\]
+\begin{example}
+    $A = \$100$, $r = 9\%$ compounded continuously. After 1.5 years:
+    \[V = 100e^{(0.09)(1.5)} = \$114.45\]
+\end{example}
+
+\header{Compound Interest Summary}
+For $r$ the nominal interest rate quoted:
+\[\boxed{\begin{gathered}
+    \text{Yearly for $k$ years:} \quad (1+r)^k\\
+    \text{$m$ periods per year for $k$ periods:} \quad \left(1+\frac{r}{m}\right)^k\\
+    \text{Continuously for time $t$:} \quad e^{rt}
+\end{gathered}}\]
+
+\begin{definition}
+    \rb{Effective Rate}: interest rates are usually quoted as nominal rates, but what you pay depends on the number of compounding periods. The equivalent rate with a \textit{single} compounding period over the time interval of interest is the effective rate.
+\end{definition}
+
+Relationship between Nominal and Effective Rate (with $m$ compounding periods per year, so the rate per compounding period is $r = r_{nom}/m$):
+\[1+ r_{eff} = (1+ \frac{r_{nom}}{m})^m \quad \Rightarrow \quad \boxed{r_{eff} = (1+ \frac{r_{nom}}{m})^m - 1}\]
 \[\text{1 + Simple One-year Rate = the Explicit Compound}\]
+
+\begin{example}
+    Effective yearly rate of 8\% compounded quarterly:
+    \[r_{eff} = \left(1+\frac{0.08}{4}\right)^4 - 1 = 8.24\%\]
+\end{example}
+
+\begin{definition}
+    \rb{APR} (Annual Percentage Rate): the \textit{nominal} annual rate of interest including all fees and charges.
+    \\\rb{APY} (Annual Percentage Yield): the \textit{effective} annual rate of interest including all fees and charges.
+\end{definition}
+Both are required by the Truth in Lending Act (1968), and can be used to compare loans with different terms.
 
 
 \newlecture[Present Value and Internal Rate of Return][Sep 17, 2026]
-Present value: comparing cash flows that occur at different times, while interest rates tells how to move cash flows in time. Use interest rates to 
+Present value: comparing cash flows that occur at different times, while interest rates tells how to move cash flows in time. Use interest rates to move all cash flows to the same time, so they become easy to compare.
 
 \b{Ideal Bank}: applies the same rate of interest to deposits and loans, and has no transaction costs (real banks have higher rates for loans...).
 Used for two ways:
 \begin{itemize}
-    \item \rb{Compounding}: when cash flow is moved \b{forward}, \dbb{multipled} by $(1+r)$ each period.
+    \item \rb{Compounding}: when cash flow is moved \b{forward}, \dbb{multiplied} by $(1+r)$ each period.
     \item \rb{Discounting}: when cash flow is moved \b{backward}, \dbb{divided} by $(1+r)$ each period.
 \end{itemize}
 
@@ -56,8 +98,17 @@ Used for two ways:
 The ideal bank brings cash flow stream to the same time, then is compared.
 \begin{itemize}
     \item When all cash flows are moved to \textit{present time}, it is called \rb{present value}.
-    \item When all cash flows are moved to the \textit{same future timeline}, it is calle \rb{future value}.
+    \item When all cash flows are moved to the \textit{same future timeline}, it is called \rb{future value}.
 \end{itemize}
+
+\begin{example}
+    Cash flow stream $(-2,1,1,1)$ at $r = 10\%$ (yearly compounding, but any compounding convention works):
+    \begin{align*}
+        FV &= -2(1.1)^3 + 1(1.1)^2 + 1(1.1) + 1 = 0.648\\
+        PV &= -2 + \frac{1}{1.1} + \frac{1}{(1.1)^2} + \frac{1}{(1.1)^3} = 0.487
+    \end{align*}
+    Check: $PV = FV/(1.1)^3 = 0.648/(1.1)^3 = 0.487$
+\end{example}
 
 \header{General Formula for Present Value}
 Let $x = (x_0, x_1, x_2, \dots, x_n)$
@@ -82,7 +133,7 @@ Captures the idea on the "return" on an investment.
 \end{example}
 
 \begin{definition}
-    Let $x = (x_0, x_1, \dots, x_n)$ be a cash flow stream. Then the internal rate of return of this stream is the number $r$ satisfying:
+    Let $x = (x_0, x_1, \dots, x_n)$ be a cash flow stream. \\Then, the \rb{internal rate of return} of this stream is the number $r$ satisfying:
     \[\boxed{\begin{gathered}
         PV(x) = 0 \\
         x_0 + \frac{x_1}{1+r} + \frac{x_2}{(1+r)^2} + \cdots + \frac{x_n}{(1+r)^n} = 0
@@ -97,13 +148,14 @@ Captures the idea on the "return" on an investment.
 \begin{example}
     What is the internal rate of return of $(-2,1,1,1)$?
     \\Solve: $0 = -2 + c + c^2 + c^3$
-    \[c = 0.81 \quad \Rightarrow \quad c = 0.81\]
+    \[c = 0.81 \quad \Rightarrow \quad c = \frac{1}{1+r} \quad \Rightarrow \quad r = 0.23\]
 \end{example}
+The polynomial can have many roots, which can be a problem. Fortunately, most standard investments have a well-defined IRR (see the theorem below).
 
 
 \heading{Main Theorem on IRR}
 Suppose the cash flow stream $x = (x_0, x_1, \dots, x_n)$ has $x_0 < 0$ and $x_k \geq 0$ where at least one term is strictly positive. Then, there is a unique positive root to the equation
-\[x+0+x_1c + x_2 c^2 + \dots + x_n c^n = 0\]
+\[x_0+x_1c + x_2 c^2 + \dots + x_n c^n = 0\]
 Proof: plot $f(c) = x_0 + x_1c + x_2c^2 + \dots + x_n c^n$
 
 \begin{center}
@@ -138,8 +190,62 @@ Computes all present values of \textit{all} cash flows associated with an invest
 \end{example}
 
 \underline{IRR and NPV give conflicting recommendations.}
-\\When scaled, \underline{IRR is scale-invariance, PV is not}. 
+\\When scaled, \underline{IRR is scale-invariant, PV is not}. 
 \\PV also \underline{distinguishes between single and repeated cash flows}, IRR does not.
 \\In general, NPV is preferred.
 
+\begin{example}
+    Scaling and repetition (PV at 10\%):
+    \begin{center}
+    \begin{tabular}{lccc}
+        \toprule
+        Cash flows & $(-1,2)$ & $10\cdot(-1,2)$ & $(-1,2,-1,2,\dots)$\\
+        \midrule
+        PV & 0.818 & 8.18 & 4.71\\
+        IRR & $r=1.0$ & $r=1.0$ & $r=1.0$\\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+\end{example}
+
+NPV is preferred because it distinguishes between more cash flows, but this means the cash flows and assumptions need to be modelled carefully before the NPV analysis is done. E.g. the tree-cutting NPV analysis assumes it is done only \textit{once}; if the process can be repeated many times, we arrive at a different answer. Methods of IRR analysis exist that make it agree with NPV (e.g. incremental IRR analysis).
+
 \heading{Steps to Solving Cash Flow Problems}
+\begin{enumerate}
+    \item Write down the cash flow diagram for each alternative (include \textit{all} cash flows).
+    \item Evaluate the NPV of each cash flow.
+    \item Choose the alternative with the largest NPV.
+\end{enumerate}
+
+\heading{Cycle Problems}
+Relate to activities that can be repeated. With NPV you arrive at a different answer depending on how many times an activity is repeated, so the activities must be evaluated over the \underline{same time horizon}. Two approaches:
+\begin{enumerate}
+    \item Repeat both activities until they terminate at the same time.
+    \item Repeat both to infinity: for an activity with lifetime $T$ and one-cycle present value $PV_1$,
+    \[PV_1\sum_{k=0}^{\infty}\frac{1}{(1+r)^{Tk}} = PV_1\cdot\frac{1}{1-\frac{1}{(1+r)^T}}\]
+\end{enumerate}
+
+\begin{example}[Refrigerator Purchase]
+    Model A: price \$600, yearly cost \$180 (beginning of year), life 3 years.
+    \\Model B: price \$800, yearly cost \$120 (beginning of year), life 5 years.
+    \\Interest rate is 10\%. One cycle of each (price and first cost at time 0):
+    \[PV_A = 780 + 180\sum_{k=1}^{2}\frac{1}{1.1^k} = \$1,092.40 \qquad PV_B = 920 + 120\sum_{k=1}^{4}\frac{1}{1.1^k} = \$1,300.38\]
+    \b{Approach 1}: equal horizons, 15 years = 5 cycles of A = 3 cycles of B
+    \begin{align*}
+        A&: PV_A\left(1+\frac{1}{1.1^3}+\frac{1}{1.1^6}+\frac{1}{1.1^9}+\frac{1}{1.1^{12}}\right) = \$3,341.11\\
+        B&: PV_B\left(1+\frac{1}{1.1^5}+\frac{1}{1.1^{10}}\right) = \$2,609.17
+    \end{align*}
+    \b{Approach 2}: repeat to infinity
+    \begin{align*}
+        A&: 1092.40\cdot\frac{1}{1-\frac{1}{1.1^3}} = \$4,392.70\\
+        B&: 1300.38\cdot\frac{1}{1-\frac{1}{1.1^5}} = \$3,430.37
+    \end{align*}
+    These are costs, so the smaller is better: choose Model B in both approaches.
+\end{example}
+
+\heading{Summing Geometric Series}
+\begin{align*}
+    S = \sum_{k=0}^{\infty}x^k &= 1 + x + x^2 + \cdots\\
+    &= 1 + x(1+x+x^2+\cdots) = 1 + xS
+\end{align*}
+\[S(1-x) = 1 \quad \Rightarrow \quad S = \frac{1}{1-x} \qquad (|x|<1)\]

@@ -1,13 +1,13 @@
 \newlecture[Fixed Income Securities][Sep 21, 2026]
 
 \begin{definition}[Financial Instruments]
-    A legal obligation or claim having monetary value (eg. mortage, stocks and bonds...)
+    A legal obligation or claim having monetary value (eg. mortgage, stocks and bonds...)
 \end{definition}
 \begin{definition}[Security]
     A tradable financial instrument satisfying legal and regulatory requirements.
 \end{definition}
 \begin{definition}[Fixed Income Securities]
-    Securities that promise a fixed income to the holder over some spam of time. (eg. bonds, mortages, annuities)
+    Securities that promise a fixed income to the holder over some span of time. (eg. bonds, mortgages, annuities)
 \end{definition}
 
 \heading{Annuity}
@@ -31,6 +31,11 @@ A contract that pays the holder money periodically according to the fixed schedu
 At a per period interest rate of $r$, the PV is
 \[P = \sum_{k=1}^{\infty}\frac{A}{(1+r)^k} = \frac{A}{r}\]
 Note: Infinite sum!!
+
+\begin{example}
+    A perpetual annuity of \$1,000 each year at 10\% interest/year has present value
+    \[P = \frac{A}{r} = \frac{\$1,000}{0.1} = \$10,000\]
+\end{example}
 
 
 \heading{Finite-Life Streams}
@@ -123,6 +128,7 @@ An agreement to pay money according to the rules of the issue.
     \[\text{Face Value } = \$1,000 \qquad \text{Coupon } = 9\%\]
     The yearly coupon amount is $\$1,000(0.09) = \$90$
 \end{example}
+In general, coupons are paid $m$ times per year, so each payment is $C/m$ where $C$ is the yearly coupon amount. In the U.S., coupons are usually paid every six months ($m=2$), e.g. US treasury bonds with this example pay \$45 every 6 months (\$90/2).
 
 \header{Payoff Structure of a Bond}
 \begin{center}
@@ -175,3 +181,108 @@ Ignored by bond price quotes, but must be added to the price.
 You must pay the previous owner their ``portion'' of the next coupon payment.
 
 \[\boxed{AI = \frac{\text{days since last coupon}}{\text{days in current coupon period}} \times (C/m) = \frac{t}{t_c}(C/m)}\]
+
+\begin{example}
+    A treasury bond is purchased on May 8 and matures on August 15 in some future year. The coupon rate is 9\% and coupons are paid every Feb 15 and Aug 15. How much accrued interest is owed?
+    \\On May 8th, 83 days have passed since the last coupon and 99 days remain until the next. With $C/m = 9\%/2 = 4.5\%$:
+    \[AI = \frac{83}{83+99}\times 4.5\% = 2.05\%\]
+\end{example}
+
+\begin{definition}
+    \rb{Clean price}: the market bond price (quoted, doesn't include accrued interest).
+    \\\rb{Dirty (cash) price}: the clean price plus accrued interest, i.e. what you actually pay.
+\end{definition}
+
+Government securities:
+\begin{itemize}
+    \item Bill: up to 1 year
+    \item Note: 1 to 10 years
+    \item Bond: 10 to 30 years
+\end{itemize}
+
+\header{Bond Price and Yield}
+The whole cash flow stream of purchasing a bond can be mapped out, where $P$ is the entire amount paid for the bond: the market price plus accrued interest (the dirty price).
+
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (-0.3,0) -- (7.5,0);
+    \node[above left] at (0,0) {$0$};
+    \node[below] at (6.5,0) {$n$};
+    \draw[->, thick] (0,0) -- (0,-1.2) node[below] {$P$};
+    \draw[->, thick] (1,0) -- (1,0.9) node[above] {$C/m$};
+    \draw[->, thick] (2,0) -- (2,0.9) node[above] {$C/m$};
+    \draw[->, thick] (3,0) -- (3,0.9) node[above] {$C/m$};
+    \draw[->, thick] (4,0) -- (4,0.9) node[above] {$C/m$};
+    \node at (5.2,0.4) {$\cdots$};
+    \draw[->, thick] (6.5,0) -- (6.5,1.7);
+    \node at (6.5,2.3) {$C/m$};
+    \node at (6.5,1.95) {$F$};
+\end{tikzpicture}
+\end{center}
+
+The IRR of this cash flow stream is the \rb{yield} (or \rb{yield to maturity}) of the bond, denoted $\lambda$. It captures the rate of return from buying the bond and holding it to maturity.
+
+\[\boxed{P = \underbrace{\frac{F}{\left(1+\frac{\lambda}{m}\right)^n}}_{\text{PV of face}} + \underbrace{\frac{C/m}{\lambda/m}\left[1-\frac{1}{\left(1+\frac{\lambda}{m}\right)^n}\right]}_{\text{annuity formula}}}\]
+\begin{itemize}
+    \item $P$: price including accrued interest
+    \item $F$: face value
+    \item $m$: coupon payments per year (compounding $m$ times per year), 
+    \item $C/m$: amount of each coupon payment
+    \item $n$: amount of coupon payments remaining.
+    \item $\lambda/m$: yield per coupon period, $n$: coupon payments left
+\end{itemize}
+Note this equation \underline{only} holds when $\lambda$ is the yield.
+
+\begin{example}
+    Price of a bond with par value \$1,000 paid in ten years, coupon rate 10\%, yield 12\%, coupons paid semi-annually. Then $n = 20$, $C/m = 50$, $\lambda/m = 6\%$:
+    \[P = 50\cdot\frac{1-\frac{1}{(1.06)^{20}}}{0.06} + \frac{1000}{(1.06)^{20}} = 50(11.47) + 311.80 \approx \$885.30\]
+\end{example}
+
+\header{The Price-Yield Curve}
+For a fixed maturity, \underline{price and yield are inversly related}
+\\The longer the time to maturity, the more sensitive the price of the bond is to the yield.
+
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (0,0) -- (6,0) node[right] {yield};
+    \draw[->] (0,0) -- (0,3.7) node[above] {price};
+    \draw[thick, domain=0.7:5.5, smooth, variable=\x] plot ({\x}, {0.6 + 1.5/\x});
+    \draw[thick, domain=0.7:5.5, smooth, variable=\x] plot ({\x}, {0.15 + 2.2/\x});
+    \node[right] at (0.85,3.05) {10 years};
+    \node[above] at (5.4,0.95) {5 years};
+\end{tikzpicture}
+\end{center}
+
+The \b{current yield} is the coupon divided by the current price. In this course, \dbb{yield} always means \dbb{yield to maturity}.
+
+\begin{minipage}{\textwidth}
+\header{Bond Ratings}
+Standard \& Poor's and Moody's are two independent bond rating agencies.
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+    \toprule
+    & S\&P & Moody's & Meaning\\
+    \midrule
+    Investment & AAA & Aaa & Best quality, smallest credit risk (US gov. bonds)\\
+    Grade & AA & Aa & High grade\\
+    & A & A & High to medium grade\\
+    & BBB & Baa & Medium grade\\
+    \midrule
+    Speculative & BB & Ba & Judged to be speculative\\
+    Grade & B & B & Increasingly speculative\\
+    (Junk Bonds) & CCC & Caa & Danger of default\\
+    & CC & Ca & Very speculative, high chance of default\\
+    & C & C & Small chance of not defaulting\\
+    & D & D & In default\\
+    \bottomrule
+\end{tabular}
+\end{center}
+\end{minipage}
+
+
+
+
+
+
+
+\newlecture[][]

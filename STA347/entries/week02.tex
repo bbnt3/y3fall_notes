@@ -1,46 +1,45 @@
 \section{Week 2: }
 
-\newlecture[Set Theory Fundamentals][Sep 8, 2026]
+\newlecture[Independence, Random Variables and Distributions][Sep 15, 2026]
 
-\deflabel{Independence}{2.7}
+\deflabel{2.7}{Independence}
 \begin{quote}
     Events $E_1, \dots, E_n \subseteq \Omega$ are independent with respect to a probability measure $P$, if for each $\mathcal{I} \subseteq \underset{\text{any subset of} \left\{1, \dots, n\right\}}{[n]}$
+    \[P\left(\bigcap_{i\in\mathcal{I}}E_i\right) = \prod_{i\in\mathcal{I}}P(E_i)\]
 \end{quote}
 e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right\}$
-\[p(E_1 \bigcap E_2 \bigcap E_3) = p(E_1)p(E_2)p(E_3)\]
+\[P(E_1 \bigcap E_2 \bigcap E_3) = P(E_1)P(E_2)P(E_3)\]
 
 \begin{proposition}[][2.7.1]
     If $E_1, \dots E_n$ are independent, then $E_1^c, \dots, E_n^c$ are also independent. Proof as an exercise.
 \end{proposition}
 
 \begin{proposition}[][2.7.2]
-    An infinite collection of events $\left\{E\alpha :\alpha in \mathcal{I}\right\}$ are independent. Then for a finite subset $\mathcal{J} \subseteq \mathcal{I}$, the events $\left\{E \beta : \beta \in \mathcal{J}\right\}$ are independent.
+    An infinite collection of events $\left\{E_\alpha :\alpha \in \mathcal{I}\right\}$ are independent. Then for a finite subset $\mathcal{J} \subseteq \mathcal{I}$, the events $\left\{E_\beta : \beta \in \mathcal{J}\right\}$ are independent.
 \end{proposition}
 
 \subsection{Random Variables}
-\deflabel{Random Variables}{3.1}
 \begin{definition}[Random Variables][3.1]
-    Given a sample space $\Omega$, a fuction $X: \Omega \rightarrow R$ is a random variable.
+    Given a sample space $\Omega$, a function $X: \Omega \rightarrow \mathbb{R}$ is a random variable.
 \end{definition}
 
 \begin{example}[Coin Flipping][3.1.1]
-    \[Omega = \left\{H, T\right\}\]
-    \[\downarrow R.V. X: X(H)\rightarrow 1, X(T)\rightarrow 0 \]
-    \[R\]
+    \[\Omega = \left\{H, T\right\}\]
+    \[\downarrow \text{R.V. } X: \quad X(H)\rightarrow 1, \quad X(T)\rightarrow 0 \]
+    \[\mathbb{R}\]
 \end{example}
 
 \begin{theorem}[Distribution][3.2]
     A random variable $X$ and probability measure $P$ induce a probability measure $\mu$ on $R$ defined by
     \[\mu(A) = p(X \in A) = p(\left\{\omega\in \Omega: X(\omega)\in A\right\})\]
     for any $A \subseteq R$
-    \[\mu: \text{ a measure n real number set}\]
-    \[\mu(\left\{0,1\right\}) \quad \mu(\left\{[0,1)\right\})\]
-    \[\mu(A) (\text{a real number set}) = \]
+    \aside{$\mu$ is a measure on the real number set: $\mu(\{0,1\})$ and $\mu([0,1))$ each return a certain value.}
+    \\ $\mu(A)$ takes a real number set $A$ as input, and equals $P$ of the \aside{pre-image of $A$ w.r.t.\ r.v.\ $X$}, i.e.\ $P(\Omega_A) = \mu(A)$ where $\Omega_A = \left\{\omega\in\Omega: X(\omega)\in A\right\}$.
 \end{theorem}
 
 \begin{example}[][3.2.1]
     Define the following
-    \[\Omega = \left\{ \text{\textcolor{blue}{blue}, \textcolor{red}{red}, \textcolor{green}{green}, \textcolor{yellow}{yelloq}} \right\} \]
+    \[\Omega = \left\{ \text{\textcolor{blue}{blue}, \textcolor{red}{red}, \textcolor{green}{green}, \textcolor{yellow}{yellow}} \right\} \]
     \[X: \begin{cases}
         \textcolor{blue}{\text{blue} \rightarrow 1} \\
         \textcolor{red}{\text{red} \rightarrow 3} \\
@@ -48,31 +47,34 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
         \textcolor{yellow}{\text{yellow} \rightarrow 6}
     \end{cases}\]
 
+    \[P: \{\text{blue}\}\mapsto\tfrac{1}{5},\quad \{\text{red}\}\mapsto\tfrac{1}{5},\quad \{\text{green}\}\mapsto\tfrac{1}{4},\quad \{\text{yellow}\}\mapsto 1-\tfrac{1}{5}-\tfrac{1}{5}-\tfrac{1}{4}=\tfrac{7}{20}\]
+    \[P(\{\text{blue, red}\}) = \tfrac{1}{5}+\tfrac{1}{5} = \tfrac{2}{5}\]
     \[A = [1,3] \]
     \begin{enumerate}
         \item $\left\{w: w \in \Omega, X(w) \in A \right\} = \left\{\text{\textcolor{blue}{blue} ,\textcolor{red}{red}}\right\}$
-        \item $p(\left\{\text{\textcolor{blue}{blue} ,\textcolor{red}{red}}\right\})$
+        \item $P(\left\{\text{\textcolor{blue}{blue} ,\textcolor{red}{red}}\right\}) = \frac{2}{5}$, so $\mu(A) = \frac{2}{5}$
     \end{enumerate}
     in summary
     \[\mu([1,3]) = \frac{2}{5}\]
 \end{example}
 
-$\mu$ is a probability measure for any real number set $B$.
+\textbf{Claim:} $\mu$ is a probability measure on $\mathbb{R}$ (for any real number set $B$).
 \\proof:
 \begin{enumerate}
-    \item $\mu(B) \in [0,1]$ is trivial since $p$ is a probability measure.
+    \item $\mu(B) \in [0,1]$ is trivial, since $P$ is a probability measure.
     \item Since $X(\omega) \in R $ for all $\omega \in \Omega$.
     \[\mu(R) = p(\underset{\Omega}{ \left\{\omega : \omega \in \Omega, X(\omega)\in R\right\} }) = p(\Omega) = 1\]
     \item Consider disjoint sets $A_1, A_2, \dots \subseteq R$ and define $E_i = \left\{\omega: X(\omega) \in A_i\right\}$
-    \\(e.g. $E_1 = \left\{ \omega: X(\omega) \right\}$)
-    \\Since $X$ is a function, it is impossible for $X(\omega) = a$ and $X(\omega) = b$ 
+    \\(e.g. $E_1 = \left\{\omega: X(\omega)\in A_1\right\}$, $E_2 = \left\{\omega: X(\omega)\in A_2\right\}$)
+    \\Since $X$ is a function, it is impossible for $X(\omega) = a$ and $X(\omega) = b$ when $a\neq b$, so the $E_i$'s are also disjoint. Then
     \begin{align*}
-        \mu\left(\bigcup_{i=1}^{\infty}A_i\right) &= p\left(X\omega \in \bigcup_{i=1}^{\infty}A_i\right) \\
-        &= p\left(\bigcup_{i=1}^{\infty}E_i\right) \quad \text{we know} \\
+        \mu\left(\bigcup_{i=1}^{\infty}A_i\right) &= p\left(X(\omega) \in \bigcup_{i=1}^{\infty}A_i\right) \\
+        &= p\left(\bigcup_{i=1}^{\infty}E_i\right) \quad \text{we know } E_i\text{'s are disjoint} \\
         &= \sum_{i=1}^{\infty}p(E_i) \\
         &= \sum_{i=1}^{\infty}\mu(A_i)
     \end{align*}
 \end{enumerate}
+\hfill $\square$
 
 \begin{definition}[The Cumulative Distribution Function][3.3]
     A random variable $X$ and measure $p$ generate the cumulative distribution function (CDF) defined by
@@ -88,13 +90,13 @@ $\mu$ is a probability measure for any real number set $B$.
 
 \begin{example}[Uniform Distribution][3.3.2]
     $P$ is uniform on $[0,1]$ and $X(\omega)=\omega$
-    \\For $x\in[0,1)$
+    \\For $x\in[0,1]$
     \begin{align*}
-        F(x) &= \mu((-\infty, x]) & \leftarrow& \text{by the definition of CDF} \\
+        F(x) &= \mu((-\infty, x]) & \leftarrow& \text{by definition of CDF} \\
         &= p(X \leq x) & \leftarrow& \text{by Thm 3.2 (definition of distribution)} \\
         &= p\left(\left\{\omega :X(\omega) \in (-\infty, x]\right\}\right) \\
         &= p((-\infty, x]) & \leftarrow& \text{by }X(\omega) = \omega \\
-        &= p([0,x]) & \leftarrow& \text{because $P$ is a uniform measure} \\
+        &= p([0,x]) & \leftarrow& \text{because $P$ is a uniform/Lebesgue measure} \\
         &= x
     \end{align*}
 \end{example}
@@ -109,32 +111,32 @@ $\mu$ is a probability measure for any real number set $B$.
         \begin{enumerate}[label = \roman*)]
             \item $x\leq y \in R$
             \[F(x) = \mu((-\infty, x]), F(y) = \mu((-\infty, y])\]
-            Since $x\leq y \quad (-\infty, x] \subseteq (-\infty y]$
+            Since $x\leq y$, \quad $(-\infty, x] \subseteq (-\infty, y]$
             \[\mu((-\infty, x])\leq \mu((-\infty, y])\]
             "bigger set, bigger probability"
             \[(A \leq B, \quad p(A) \leq p(B) \quad / \quad \mu(A)\leq \mu(B))\]
-            \item Define $A_nn = \left\{X\leq -n\right\}, \quad n\geq 0$
-            \\Then $A_1 \geq A_2 \geq A_3 \geq \dots $
+            \item Define $A_n = \left\{X\leq -n\right\}, \quad n\geq 0$
+            \\Then $A_1 \supseteq A_2 \supseteq A_3 \supseteq \dots $
             \begin{align*}
                 \bigcap_{n=1}^{\infty} A_n &= \phi \\
-                \lim_{x \to \infty} F(-n) &= \lim_{x \to \infty} p(A_n) \\
+                \lim_{n \to \infty} F(-n) &= \lim_{n \to \infty} p(A_n) \\
                 &= p\left(\bigcap_{n=1}^{\infty}A_n\right) \\
                 &= p(\phi) = 0
             \end{align*}
             Define $B_n = \left\{X\leq n\right\}$,
-            \\then $B_1 \leq B_2 \leq \dots$
+            \\then $B_1 \subseteq B_2 \subseteq \dots$
             \[\bigcup_{n=1}^{\infty} B_n = \Omega\]
             \begin{align*}
-                \lim_{x \to \infty} F(n) &= \lim_{x \to \infty} p(B_n) \\
+                \lim_{n \to \infty} F(n) &= \lim_{n \to \infty} p(B_n) \\
                 &= p\left(\bigcup_{n=1}^{\infty}B_n\right) \\
                 &= p(\Omega) = 1
             \end{align*}
             \item Fix $x\in R$ and let $h_n \downarrow 0 \quad (h_n \geq 0 \quad h_n \rightarrow 0, h_1 \geq h_2 \geq \dots)$
             \\Define $C_n = \left\{X\leq x+h_n\right\}$
-            \\then $C_1 \geq C_2 \geq \dots$
-            \[\lim_{x \to \infty} C_n = \bigcap_{n=1}^{\infty} C_n = \left\{X\leq x\right\} \]
+            \\then $C_1 \supseteq C_2 \supseteq \dots$
+            \[\lim_{n \to \infty} C_n = \bigcap_{n=1}^{\infty} C_n = \left\{X\leq x\right\} \]
             Therefore
-            \[\lim_{x \to \infty} F(x+h_0) = \lim_{x \to \infty} p(C_n) = p(\bigcap_{n=1}^{\infty} C_n) = p(X \leq x) = F(x) \]
+            \[\lim_{n \to \infty} F(x+h_n) = \lim_{n \to \infty} p(C_n) = p(\bigcap_{n=1}^{\infty} C_n) = p(X \leq x) = F(x) \]
             Hence
             \[\lim_{h \downarrow 0}F(x+h) = F(x)  \]
             So $F$ is right-continuous.
@@ -148,14 +150,14 @@ $\mu$ is a probability measure for any real number set $B$.
 \end{definition}
 
 \begin{theorem}[][3.5.1]
-    If $F$ satisfies properties i) to iii) of Thm 3.4, then such an $F$ is the CDF pf some r.v. 
+    If $F$ satisfies properties i) to iii) of Thm 3.4, then such an $F$ is the CDF of some r.v. 
 \end{theorem}
 
 \begin{theorem}[][3.6]
     If $F$ is a CDF, it can only have countably many discontinuities.
 \end{theorem}
 
-\newlecture[idk he was super late and stuck at queens park/college turning right][Sep 17, 2026]
+\newlecture[Random Variables \& Distributions][Sep 17, 2026]
 \begin{definition}[Density Function][3.7]
     A r.v. has a density function
     \[f: \mathbb{R} \rightarrow \mathbb{R}, \quad \text{if for all }x \in \mathbb{R} \]
@@ -164,8 +166,8 @@ $\mu$ is a probability measure for any real number set $B$.
 \end{definition}
 
 \begin{definition}[Joint Distribution][3.8]
-    We define the joint distribution function of a random vector $\overrightarrow{x} = (x_1, \dots, x_n)$ by
-    \[F(x_1, \dots, x_n) = p(x_1 \leq x_1, \dots, x_n \leq x_n)\]
+    We define the joint distribution function of a random vector $\overrightarrow{X} = (X_1, \dots, X_n)$ by
+    \[F(x_1, \dots, x_n) = p(X_1 \leq x_1, \dots, X_n \leq x_n)\]
     using the notation $p(A, B) \overset{def}{=}p(A\bigcap B)$
 \end{definition}
 
@@ -173,7 +175,7 @@ $\mu$ is a probability measure for any real number set $B$.
     A joint distribution $F: \mathbb{R}^n \rightarrow \mathbb{R} $ satisfies the following properties:
     \begin{enumerate}[label = \roman*)]
         \item if $(x_1, \dots, x_n)$ and $x_1', \dots x_n'$ satisfy $x_i \leq x_i'$ for all $i \in [n]$.
-        \[F(x_1, \dots x_n) = F(x_1', \dots x_n')\]
+        \[F(x_1, \dots x_n) \leq F(x_1', \dots x_n')\]
         \item $\lim_{x_i \to -\infty} F(x_1, \dots, x_n) = 0$ for all $i \in \left\{1, \dots, n\right\}$ and 
         $\lim_{x_1 \to \infty, \dots x_n \to \infty}  F (x_1, \dots, x_n) = 1$
         \item $\lim_{h \to 0^+}F(x_1+h, \dots, x_n) = \cdots = \lim_{h \to 0^+}F(x_1, \dots x_n+h)$
@@ -189,8 +191,15 @@ $\mu$ is a probability measure for any real number set $B$.
 \end{definition}
 
 \begin{theorem}[Independence of Random Variables][3.10]
-    Random variables $X_1, \dots, X_n$ 
-    are independent iff
-    \[F(X_1, \dots, X_n) = \prod_{i=1}^nF_i(X_i), \quad \forall(X_1, \dots, X_n) \in \mathbb{R} \]
+    Random variables $X_1, \dots, X_n$ with CDFs $F_1, \dots, F_n$
+    are independent if and only if
+    \[F(x_1, \dots, x_n) = \prod_{i=1}^nF_i(x_i), \quad \forall(x_1, \dots, x_n) \in \mathbb{R}^n \]
 \end{theorem}
+
+\heading{Limits of sets:}
+Let $A_i$ be sets for $i\in\{1,2,\dots\}$ and consider $\displaystyle\lim_{n\to\infty}A_n$.
+\begin{itemize}
+    \item If $A_1 \subseteq A_2 \subseteq \dots \subseteq A_n \subseteq \dots$ (increasing), then $\displaystyle\lim_{n\to\infty}\bigcup_{i=1}^{n}A_i = \bigcup_{i=1}^{\infty}A_i$.
+    \item If $A_1 \supseteq A_2 \supseteq \dots \supseteq A_n \supseteq \dots$ (decreasing), then $\displaystyle\lim_{n\to\infty}\bigcap_{i=1}^{n}A_i = \bigcap_{i=1}^{\infty}A_i$.
+\end{itemize}
 
