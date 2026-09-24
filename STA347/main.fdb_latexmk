@@ -1,6 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1790095795.04472 "main.tex" "main.pdf" "main" 1790095796.45829 0
-  "../template/preamble.tex" 1790095422.44407 6584 3a2c36215006548383bf90e4f75abe21 ""
+["pdflatex"] 1790264824.56893 "/Users/Bonnie/Desktop/y3fall_notes/STA347/main.tex" "main.pdf" "main" 1790264825.81091 0
+  "../template/preamble.tex" 1790264812.41193 6618 8415c2c07e321d3a8c448c27684157a5 ""
+  "/Users/Bonnie/Desktop/y3fall_notes/STA347/main.tex" 1790264812.41279 1052 2aac512bb62dc5550ccc07c50a98d70f ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -203,11 +204,11 @@
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "entries/week01.tex" 1790094876.04066 9496 3d9ffdbbdf7b8aa72656fdae6629cfd4 ""
   "entries/week02.tex" 1790094876.04086 9090 b7fc9a547c5f85e8ca6e70e5a7208ee1 ""
-  "entries/week03.tex" 1790095789.06311 6947 3364b18dac74333d7a2761d557acdf0e ""
-  "main.aux" 1790095796.26078 747 9fa3ddff668506554a0c27e8c7a49698 "pdflatex"
-  "main.out" 1790095796.26142 695 804ee559378414ef061d8f54cf08f797 "pdflatex"
-  "main.tex" 1790094876.04326 948 cbd0f0a2122ce9142fefd037292f8cb3 ""
-  "main.toc" 1790095796.26172 338 02860b19a8fbc843362ad49da81f6c52 "pdflatex"
+  "entries/week03.tex" 1790264824.23106 10709 5bf19331c63bfcf9dd8cf66b1f8370df ""
+  "main.aux" 1790264825.6616 747 ae9a359662bb4fbdc78fb69f3885d983 "pdflatex"
+  "main.out" 1790264825.66224 695 804ee559378414ef061d8f54cf08f797 "pdflatex"
+  "main.tex" 1790264812.41279 1052 2aac512bb62dc5550ccc07c50a98d70f ""
+  "main.toc" 1790264825.66252 338 02860b19a8fbc843362ad49da81f6c52 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

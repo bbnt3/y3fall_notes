@@ -18,6 +18,9 @@
 % (shared default keeps it black), matching "Def #" already being red.
 \renewcommand{\deflabel}[2]{\par\noindent{\color{red!70!black}\textbf{Def #1}}\quad\textbf{\color{red!70!black}#2}\par\nobreak}
 
+% STA347-only override: no trailing period after theorem/lemma/etc. titles.
+\renewcommand{\thmpunct}{}
+
 \begin{document}
 \maketitle
 \tableofcontents

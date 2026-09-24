@@ -50,7 +50,8 @@
 % end-of-head punctuation: theorem/lemma/proposition/exercise keep a
 % trailing period, definition/example drop it (no period after the title).
 \makeatletter
-\newtheoremstyle{boldhead}{}{}{\normalfont}{}{\bfseries}{.}{5pt plus 1pt minus 1pt}%
+\newcommand{\thmpunct}{.}
+\newtheoremstyle{boldhead}{}{}{\normalfont}{}{\bfseries}{\thmpunct}{5pt plus 1pt minus 1pt}%
     {\thmname{#1}\thmnumber{\@ifnotempty{#1}{ }#2}\thmnote{\@ifnotempty{#3}{\quad#3}}%
      \@ifnotempty{#3}{\def\thmheadnl{\newline}\thm@headsep\z@skip}{}}
 \newtheoremstyle{boldheadnp}{}{}{\normalfont}{}{\bfseries}{}{5pt plus 1pt minus 1pt}%
