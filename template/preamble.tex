@@ -113,10 +113,18 @@
 % two stay together instead of leaving a blank page in between.
 \newcounter{lecture}
 \renewcommand{\thelecture}{\arabic{lecture}}
+% Set \lecturetoctrue in a course's main.tex to list each lecture as a
+% top-level table-of-contents entry ("Lecture N: title", or the date when
+% untitled), with \subsection headings nested beneath it.
+\newif\iflecturetoc
 \NewDocumentCommand{\newlecture}{o o}{%
     \stepcounter{lecture}%
     \ifbool{newlecture@justsection}{}{\newpage}%
     \boolfalse{newlecture@justsection}%
+    \iflecturetoc
+        \phantomsection
+        \addcontentsline{toc}{section}{Lecture \thelecture\IfValueTF{#1}{\ifblank{#1}{\IfValueT{#2}{\ifblank{#2}{}{ (#2)}}}{: #1}}{\IfValueT{#2}{\ifblank{#2}{}{ (#2)}}}}%
+    \fi
     \par\vspace{1em}
     \begin{center}
         \textbf{\Large Lecture \thelecture\IfValueT{#1}{: #1}}\\[2pt]

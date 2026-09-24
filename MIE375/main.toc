@@ -1,1 +1,5 @@
-\contentsline {section}{Week 1}{3}{section*.2}%
+\contentsline {section}{Lecture 1: Introduction/Syllabus}{2}{section*.2}%
+\contentsline {section}{Lecture 2: Present Value and Internal Rate of Return}{4}{section*.3}%
+\contentsline {section}{Lecture 3: Fixed Income Securities}{9}{section*.4}%
+\contentsline {section}{Lecture 4: Bonds and Interest Rates}{15}{section*.5}%
+

@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1790267870.94058 "main.tex" "main.pdf" "main" 1790267872.49475 0
-  "../template/preamble.tex" 1790264812.41193 6618 8415c2c07e321d3a8c448c27684157a5 ""
+["pdflatex"] 1790268358.0708 "main.tex" "main.pdf" "main" 1790268360.27259 0
+  "../template/preamble.tex" 1790268355.96652 7062 52f4b5047ae684fcbab0281e7e19e6e9 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -204,16 +204,16 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1771962573 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "entries/lec01.tex" 1790267864.10571 6723 7fcb5c64eb88982b10e039f4a808d33d ""
+  "entries/lec01.tex" 1790268355.97441 6704 3640c6f6f32baa769d20ac995a323183 ""
   "entries/lec02.tex" 1790267864.10597 3461 0827f2255dffa345af948a8d25b9900e ""
-  "entries/lec03.tex" 1790267864.10661 8016 0f5456c7bf52dea321f1b4837fa5f86d ""
+  "entries/lec03.tex" 1790268355.97521 7997 d48294ddcff89e0c78340e92142ca569 ""
   "entries/lec04.tex" 1790267864.10673 2497 161e181160307864cf4dcd6be0a27b52 ""
-  "entries/lec05.tex" 1790267864.10722 7789 1b3559399b69197589c68f1c5cf7343c ""
+  "entries/lec05.tex" 1790268355.98277 7792 918e252251cc0cb8b0a6872150dc1e00 ""
   "entries/lec06.tex" 1790267864.10734 2971 08c286b55086676e591ef1c55568cec4 ""
-  "main.aux" 1790267872.27887 747 ae9a359662bb4fbdc78fb69f3885d983 "pdflatex"
-  "main.out" 1790267872.27955 695 804ee559378414ef061d8f54cf08f797 "pdflatex"
-  "main.tex" 1790267870.80561 1127 eedd0d0395d6134ca51f7bb4bd88d101 ""
-  "main.toc" 1790267872.27986 338 02860b19a8fbc843362ad49da81f6c52 "pdflatex"
+  "main.aux" 1790268360.02815 1286 4b42e679798318ba65b0faaf5f2be4cb "pdflatex"
+  "main.out" 1790268360.0291 1955 22c78412a4d5e69db479ddd37ccbd40f "pdflatex"
+  "main.tex" 1790268355.96717 1144 65dc20e209adbc6864573e4ff6f450c4 ""
+  "main.toc" 1790268360.02962 713 c596ad15c68eb76c58948a234067fcbe "pdflatex"
   (generated)
   "main.aux"
   "main.log"
