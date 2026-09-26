@@ -3,14 +3,39 @@
 % Edit this title for each week's entry.
 \section{Week 1 - Introduction and Time Value of Money}
 
-\newlecture[Interest Rate]
+\topic{Interest Rate}
+
+\heading{Engineering Project Life Cycles}
+\begin{itemize}
+    \item All engineering projects have a life cycle:
+    \begin{itemize}
+        \item Conceptualization $\to$ detailed economic analysis $\to$ go / no go decision $\to$ design $\to$ build $\to$ utilize / produce $\to$ phase out / dispose
+    \end{itemize}
+    \item Most of the project's cost is \b{committed} early, during conceptual and detailed design, even though the money is mostly spent later (production, operation)
+    \item We \rb{invest} in projects to gain benefits (economic and societal)
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.75\linewidth]{figures/life_cycle_cost.png}
+\\[2pt] \textit{\small Most cost is committed early, during design, before it is actually spent}
+\end{center}
 
 \heading{Time Value of Money}
 \begin{itemize}
-    \item Borring money has a cost for the lender, thus lending money \textit{creates} value for the lender
+    \item Borrowing (renting) money has a cost for the \b{borrower}, thus lending money \textit{should} create value for the lender (investor/creditor)
     \item Costs and benefits occur in different time periods
     \item The cost/benefit today to the future is compared by \rb{interest}
 \end{itemize}
+
+\begin{example}
+    You borrow \$10 from a lender today and return it a year later.
+    \begin{itemize}
+        \item You must return the \$10 borrowed $\Rightarrow$ the \rb{principal}
+        \item The lender charges an extra amount, e.g.\ \$1 $\Rightarrow$ the \rb{interest}
+        \item The \rb{interest rate} is interest/principal:
+        \[i = \frac{1}{10} = 10\%\]
+    \end{itemize}
+\end{example}
 
 \heading{Present and Future Worth}
 \[P = \text{ present worth/\rb{Principal}} \qquad F=\text{ future worth} \qquad i=\text{ interest rate}\]
@@ -53,18 +78,19 @@
     \item Vary widely over time and different types of investments.
     \begin{itemize}
         \item A \b{T-Bill} (Treasury Bill, short term loan to the Bank of Canada) will earn the lowest rate of return, as it's considered "risk-free"
-        \item Canadian and provincial bonds pay typically higher interest rates
-        \item Personal/small business loans are much risky and earn significantly higher interest rates
+        \item Canadian and provincial bonds pay typically slightly higher interest rates
+        \item Personal/small business loans are much riskier and earn significantly higher interest rates
     \end{itemize}
 \end{itemize}
 
 \heading{Factors that Affect Interest Rates}
 \begin{itemize}
-    \item \b{Inflation}
-    \item \b{Credit (default) Risk}: associated with the borrower being able to pay back
-    \item \b{Liquidity Risk}: associated with access the invested funds during investment. Greater the risk the less liquid.
-    \item \b{Maturity Risk}: associated with the time horizon. Longer the maturity, longer payoff, increases credit (and potential liquidity) risk
+    \item \b{Inflation}: prices generally tend to increase over time. Higher expected inflation generally leads to higher interest rates
+    \item \b{Credit (default) Risk}: associated with the borrower being able to pay back interest and principal. Higher risk of default $\Rightarrow$ higher interest rates
+    \item \b{Liquidity Risk}: associated with being able to access the invested funds during the investment. The less liquid the investment (greater the risk), the higher the interest rate
+    \item \b{Maturity Risk}: associated with the time horizon. Longer the maturity, longer payoff, increases credit (and potential liquidity) risk $\Rightarrow$ higher interest rates
 \end{itemize}
+\db{Generally, as \dbb{risk} increases, the \dbb{interest rate} increases.}
 
 \begin{example}
     What would the impact be expected on the interest rate associated with a large new mining project under the following scenarios, and how would the current value be impacted?
@@ -87,33 +113,42 @@
 
 
 
-\newlecture[Simple and Compound Interest]
+\topic{Simple and Compound Interest}
 
 \heading{Present and Future Worth}
 \[P = \text{ amount of money today (principal)} \qquad F_N = \text{ future amount in year }N\]
 \[i = \text{ interest rate} \qquad I\text{ = interest amount}\]
 \[F = P+I \qquad F_1 = P+Pi\]
 
+\begin{example}[GIC]
+    You deposit \$5,000 in the bank for 1 year as a \b{Guaranteed Investment Certificate (GIC)}, i.e.\ you \textit{lent} the bank the money for a fixed time period. After 1 year the bank pays 10\% interest.
+    \\\db{You get $I = 5000(0.10) = \$500$ as ``rent'' for lending the \$5,000, and the \$5,000 is also returned.}
+    \begin{itemize}
+        \item This is a \rb{simple} interest loan: you receive the money when the GIC \b{matures}
+        \item \b{Matures}: the borrower must pay the loan back
+    \end{itemize}
+\end{example}
+
 \heading{Simple vs Compound Interest}
 \begin{itemize}
-    \item \rb{Simple} applies only to the original principal (GIC)
+    \item \rb{Simple} applies only to the original principal (GIC, aka Certificate of Deposit (CD) in the U.S.)
     \item \rb{Compound} interest applies to the principal AND to all interest already accrued (mortages, credit card debt...)
     \item Assume compound unless stated otherwise
 \end{itemize}
 
 \heading{Simple Interest}
 \begin{tabular}{c|c|c|c}
-    Beginning of Period & Amount Lent & Interest Amount & Amount Owned at Period End \\\hline
+    Beginning of Period & Amount Lent & Interest Amount & Amount Owed at Period End \\\hline
     1 & $P$ & $Pi$ & $P+Pi$ \\
     2 & $P+Pi$ & $Pi$ & $P+2Pi$ \\
     3 & $P+2Pi$ & $Pi$ & $P+3Pi$ \\
     ... & ... & ... & ... \\
-    $N$ & $N+(N-1)Pi$ & $Pi$ & $Pi$ + $P+NPi = P(1+Ni)$
+    $N$ & $P+(N-1)Pi$ & $Pi$ & $P+NPi = P(1+Ni)$
 \end{tabular}
 
 \heading{Compound Interest}
 \begin{tabular}{c|c|c|c}
-    Beginning of Period & Amount Lent & Interest Amount & Amount Owned at Period End \\\hline
+    Beginning of Period & Amount Lent & Interest Amount & Amount Owed at Period End \\\hline
     1 & $P$ & $Pi$ & $P(1+i)$ \\
     2 & $P(1+i)$ & $P(1+i)i$ & $P(1+i)^2$ \\
     3 & $P(1+i)^2$ & $P(1+i)^2 i$ & $P(1+i)^3$ \\
@@ -121,21 +156,75 @@
     $N$ & $P(1+i)^{N-1}$ & $P(1+i)^{N-1}i$ & $P(1+i)^N$
 \end{tabular}
 
+\begin{example}[Simple Interest]
+    If you borrow \$100 for 3 years at 10\% annual interest (simple interest), how much interest will you pay, and how much will you owe after 3 years?
+    \[P = 100 \qquad i = 10\% \qquad N = 3\]
+    \begin{align*}
+        I &= NPi = 3(100)(0.10) = \db{\$30}\\
+        F_3 &= P + NPi = 100 + 30 = \db{\$130}
+    \end{align*}
+\end{example}
+
+\begin{example}[Compound Interest]
+    If you borrow \$100 for 3 years at 10\% annual interest (compound interest), how much interest will you pay, and how much will you owe after 3 years?
+    \begin{align*}
+        F_3 &= P(1+i)^N = 100(1.10)^3 = \db{\$133.10}\\
+        I &= F_3 - P = 133.10 - 100 = \db{\$33.10}
+    \end{align*}
+    \db{The extra \$3.10 compared to simple interest is interest earned on interest.}
+\end{example}
+
+\heading{Simple Interest is Linear, Compound Interest is Exponential}
+\begin{center}
+\includegraphics[width=0.7\linewidth]{figures/simple_vs_compound.png}
+\\[2pt] \textit{\small \$100 invested at 10\%: \$300 (simple) vs.\ \$673 (compound) after 20 years}
+\end{center}
+
+\begin{example}[The Power of Compounding]
+    The Dutch West India Company (supposedly) paid \$24 to purchase Manhattan Island in 1626. If the company had invested the \$24 in a savings account that earned 7\% interest per year, how much would it be worth today (2020, $N = 394$)?
+    \begin{align*}
+        \text{Simple: } F &= 24 + 394(24)(0.07) \approx \db{\$686}\\
+        \text{Compound: } F &= 24(1.07)^{394} \approx \db{\$9{,}066{,}082{,}143{,}625}
+    \end{align*}
+    \begin{center}
+    \begin{tabular}{c|r|r}
+        Year & Simple (7\%) & Compound (7\%) \\\hline
+        1626 & \$24 & \$24 \\
+        1676 & \$108 & \$707 \\
+        1726 & \$192 & \$20,825 \\
+        1776 & \$276 & \$613,448 \\
+        1826 & \$360 & \$18,070,359 \\
+        1876 & \$444 & \$532,299,016 \\
+        1926 & \$528 & \$15,679,945,443 \\
+        1976 & \$612 & \$461,884,545,916 \\
+        2020 & \$686 & \$9,066,082,143,625
+    \end{tabular}
+    \end{center}
+\end{example}
+
 \heading{Summary}
 \begin{itemize}
     \item Simple Interest: $F_N = P+NPi$
     \item Compound Interest: $F_N = P(1+i)^N$
+    \item Remember: \rb{interest rate} $=$ interest/principal
 \end{itemize}
 
 
 
 
-\newlecture[Subperiod Compounding \& Effective Interest Rates]
+\topic{Subperiod Compounding \& Effective Interest Rates}
+
+\heading{Compound Interest}
+\begin{itemize}
+    \item Recall: \rb{compound} interest applies to the principal AND to all interest already accrued
+    \item ``To compound'' (verb) is to reinvest the principal PLUS the interest and earn interest on both:
+    \[F = P(1+i)^N\]
+\end{itemize}
 
 \heading{Compound Multiple Times per Year}
 \begin{itemize}
     \item \rb{$r$}: \b{nominal interest rate} (usually for 1 year)
-    \item \rb{$m$}: times compounded in a year, aka \b{subperiod}
+    \item \rb{$m$}: times compounded in a year, aka \b{subperiods}
     \item \rb{$i_s$}: \b{subperiod interest rate}
     \[i_s = \frac{r}{m}\]
 \end{itemize}
@@ -152,12 +241,56 @@
             &=106
         \end{align*}
         \item 3 months:
-        \[m = 4 \quad \Rightarrow \quad i_s = \frac{r}{m} = \frac{0.06}{4} = 0.0015\]
+        \[m = 4 \quad \Rightarrow \quad i_s = \frac{r}{m} = \frac{0.06}{4} = 0.015\]
         \begin{align*}
             F &= P(1+i_s)^m\\
-            &=100(1+0.0015)^4\\
+            &=100(1+0.015)^4\\
             &=106.14
         \end{align*}
     \end{enumerate}
 \end{example}
 
+\begin{example}[Reflection]
+    True or false: for the same nominal interest rate, the more frequently you compound, the more you earn at the end of the year.
+    \\\db{True. Each extra compounding lets earlier interest start earning interest sooner (\$106 vs.\ \$106.14 above). The gain shrinks as $m$ grows, though, approaching a finite limit (continuous compounding).}
+\end{example}
+
+\heading{Effective Interest Rate}
+\begin{itemize}
+    \item How do we compare investments with different compounding periods?
+    \item \rb{$i_e$}: \b{effective interest rate}, the equivalent interest rate of an account that is compounded just \textit{once} over the stated time period (usually 1 year)
+    \item Set one year of subperiod compounding equal to one compounding at $i_e$:
+    \[P(1+i_e) = P\left(1+\frac{r}{m}\right)^m \quad\Rightarrow\quad \boxed{i_e = \left(1+\frac{r}{m}\right)^m - 1}\]
+\end{itemize}
+
+\begin{example}
+    Which account earns you more money after 1 year?
+    \begin{itemize}
+        \item Option A: $r = 6\%$, compounded monthly
+        \item Option B: $r = 6.3\%$, compounded once a year
+    \end{itemize}
+    \begin{align*}
+        \text{A: } i_e &= \left(1+\frac{0.06}{12}\right)^{12} - 1 = (1.005)^{12} - 1 = 6.17\%\\
+        \text{B: } i_e &= r = 6.3\% \quad (m = 1)
+    \end{align*}
+    \db{Option B earns more, since $6.3\% > 6.17\%$. Compare the effective rates, not the nominal ones.}
+\end{example}
+
+\heading{Continuous Compounding}
+\begin{itemize}
+    \item As the compounding period shortens ($m$ increases), $i_e$ increases
+    \item As the compounding period becomes infinitesimally small, $i_e$ approaches a finite limit $\Rightarrow$ \rb{continuous compounding}
+    \[i_e = \lim_{m\to\infty}\left(1+\frac{r}{m}\right)^m - 1 = e^r - 1\]
+    \item e.g.\ $r = 6\%$: $i_e = e^{0.06} - 1 = 6.18\%$, only slightly more than monthly (6.17\%)
+\end{itemize}
+
+\heading{Summary}
+\begin{itemize}
+    \item Know the difference between \rb{nominal} and \rb{effective} interest rates, and how to convert between them
+    \begin{enumerate}
+        \item Start with the nominal interest rate $r$ for a stated time period (usually 1 year)
+        \item Compound multiple ($m$) times within that time period, at $i_s = r/m$
+        \item Effective interest rate: $i_e = (1+r/m)^m - 1$
+        \item Continuous compounding: $i_e = e^r - 1$
+    \end{enumerate}
+\end{itemize}

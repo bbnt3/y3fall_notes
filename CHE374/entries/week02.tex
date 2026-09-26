@@ -3,7 +3,58 @@
 % Edit this title for each week's entry.
 \section{Week 2 - Cash-flow Analysis}
 
-\newlecture[Cash-flow Diagrams]
+\heading{Learning Objectives}
+\begin{itemize}
+    \item Construct cash-flow diagrams
+    \item Categorize five types of (regular) cash-flows
+    \item Explain mathematical, market and decisional equivalence
+    \item Calculate the present value of (regular) cash-flows
+    \item Perform cash-flow analysis using mathematical equivalence
+\end{itemize}
+
+\topic{Cash-flow Diagrams}
+
+\begin{remark}[Project Life-Cycle Cost Categories]
+    \begin{itemize}
+        \item \textbf{Start}: \textbf{First (capital) cost} --- expense to
+        build/buy and install.
+        \item \textbf{During}: \textbf{Revenues (sales)} --- receipts from
+        sale of products/services; \textbf{O\&M costs} --- expenses
+        incurred on a regular basis (electricity, labour, repairs);
+        \textbf{Overhaul} --- a major capital expenditure partway through
+        the asset's life.
+        \item \textbf{End}: \textbf{Salvage value} --- net receipt from
+        sale/disposal at the end of the asset's \emph{useful} life;
+        \textbf{Scrap value} --- value of the materials at the end of the
+        asset's \emph{physical} life; \textbf{Disposal costs} --- cost to
+        dispose of waste (removal, shipping, tipping fees, etc.).
+    \end{itemize}
+\end{remark}
+
+\begin{definition}[Cash-flow Table]
+    A table showing the ``money consequences'' of a situation and the timing
+    of the cash-flows: for each point in time, the activity and the
+    resulting cash-flow. Costs/benefits occurring at the start, during, or
+    end of a project are together called the \textbf{project life-cycle
+    costs}.
+\end{definition}
+
+\begin{example}[Car Ownership Cash-flow Table]
+    \begin{center}
+    \begin{tabular}{lll}
+        \toprule
+        Year & Cash-flow & Activity \\
+        \midrule
+        Start of Year 1 & $-\$24{,}500$ & Car purchased now \\
+        End of Year 1 & $-\$1{,}500$ & Service cost \\
+        End of Year 2 & $-\$1{,}500$ & Service cost \\
+        End of Year 3 & $-\$1{,}500$ & Service cost \\
+        End of Year 4 & $-\$1{,}500$, $+\$5{,}000$ & Service cost \& car sold for \$5,000 \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \db{The purchase is the first cost (at $t=0$), service is an O\&M cost, and the \$5,000 sale is the salvage value.}
+\end{example}
 
 \begin{definition}[Cash-flow Diagram]
     A simple graph summarizing the \textbf{timing} and \textbf{magnitude} of
@@ -23,49 +74,33 @@
     \\[2pt] \textit{\small Up = inflow (receipt); down = outflow (disbursement)}
 \end{center}
 
-\begin{definition}[Cash-flow Table]
-    A table showing the money consequences of a situation and the timing
-    of the cash-flows: for each point in time, the activity and the
-    resulting cash-flow. Costs/benefits occurring at the start, during, or
-    end of a project are together called the \textbf{project life-cycle
-    costs}.
-\end{definition}
-
-\begin{remark}[Project Life-Cycle Cost Categories]
-    \begin{itemize}
-        \item \textbf{Start}: \textbf{First (capital) cost} --- expense to
-        build/buy and install.
-        \item \textbf{During}: \textbf{Revenues (sales)} --- receipts from
-        sale of products/services; \textbf{O\&M costs} --- expenses
-        incurred on a regular basis (electricity, labour, repairs);
-        \textbf{Overhaul} --- a major capital expenditure partway through
-        the asset's life.
-        \item \textbf{End}: \textbf{Salvage value} --- net receipt from
-        sale/disposal at the end of the asset's \emph{useful} life;
-        \textbf{Scrap value} --- value of the materials at the end of the
-        asset's \emph{physical} life; \textbf{Disposal costs} --- cost to
-        dispose of waste (removal, shipping, tipping fees, etc.).
-    \end{itemize}
-\end{remark}
-
 \begin{remark}[Diagram Conventions]
     \begin{itemize}
-        \item Time $0$ is the start of period 1; the end of period $N$ is
-        the start of period $N+1$.
+        \item The end of one period is the beginning of the next: time $0$
+        is the start of period 1, time 1 is the end of period 1 and the
+        start of period 2, and $N$ periods from now is the end of period
+        $N$ / start of period $N+1$.
         \item Unless stated otherwise: interest compounds once per
         period, and cash-flows occur at the \textbf{end} of the period.
-        \item Cash-flows occurring \emph{during} a period are summed and
-        accounted for at the \textbf{end} of that period.
+        \item Cash-flows occurring \emph{during} a period are
+        \textbf{summed} and accounted for at the \textbf{end} of that
+        period.
+        \item First costs are typically accounted for at \textbf{time 0}.
     \end{itemize}
 \end{remark}
+
+\begin{center}
+    \includegraphics[width=0.6\linewidth]{figures/period_timeline.png}
+\end{center}
 
 \begin{example}[Loan Repayment Diagram]
     \$1,000 is borrowed on January 1 and repaid in 6 monthly installments
-    of \$172.50 ($i=1\%$ per month). From the \textbf{borrower's}
-    perspective: an inflow of \$1,000 at $t=0$, and outflows of \$172.50
-    at $t=1,\dots,6$. From the \textbf{bank's} perspective the diagram
-    flips: an outflow of \$1,000 at $t=0$, and inflows of \$172.50 at
-    $t=1,\dots,6$.
+    of \$172.50 ($i=1\%$ per month). The time line's origin is the start of
+    the analysis (time 0 = January 1, intervals are monthly). From the
+    \textbf{borrower's} perspective: an inflow of \$1,000 at $t=0$, and
+    outflows of \$172.50 at $t=1,\dots,6$. From the \textbf{bank's}
+    perspective the diagram flips: an outflow of \$1,000 at $t=0$, and
+    inflows of \$172.50 at $t=1,\dots,6$.
 \end{example}
 
 \begin{center}
@@ -92,7 +127,37 @@
     \end{minipage}
 \end{center}
 
-\newlecture[Categories of Regular Cash-flows]
+\begin{example}[Reflection: Young Professional]
+    Construct a cash-flow diagram for one month (assume 4 weeks per month):
+    \begin{itemize}
+        \item Monthly income: \$2,200 (end of each month)
+        \item Rent incl.\ utilities: \$700 (end of each month)
+        \item Weekly food and entertainment: \$120
+        \item Telephone bill: \$40 (end of the first week of each month)
+        \item Credit card purchases: \$300 (end of the second week of each month)
+    \end{itemize}
+    \db{Use weeks as periods and net everything at the end of each week:}
+    \begin{align*}
+        \text{Week 1} &: -120 - 40 = \db{-\$160}\\
+        \text{Week 2} &: -120 - 300 = \db{-\$420}\\
+        \text{Week 3} &: \db{-\$120}\\
+        \text{Week 4} &: 2200 - 700 - 120 = \db{+\$1{,}380}
+    \end{align*}
+    \begin{center}
+        \includegraphics[width=0.5\linewidth]{figures/young_professional_cf.png}
+    \end{center}
+\end{example}
+
+\topic{Categories of Regular Cash-flows}
+
+\heading{Five Types of (Regular) Cash-flows}
+\begin{enumerate}
+    \item Single payments or receipts
+    \item Perpetuity
+    \item Annuity
+    \item Arithmetic gradient
+    \item Geometric gradient
+\end{enumerate}
 
 \begin{definition}[Single Payment/Receipt]
     A single cash-flow $P$ (now) or $F$ (in the future), occurring only
@@ -125,8 +190,8 @@
 \end{center}
 
 \begin{definition}[Annuity]
-    A constant cash-flow $A$ occurring every period, for a \emph{finite}
-    number of periods $N$.
+    A constant (uniform) cash-flow $A$ occurring every period, for a
+    \emph{finite} number of periods $N$.
 \end{definition}
 
 \begin{center}
@@ -142,37 +207,34 @@
     A cash-flow that grows (or shrinks) by the same \emph{amount} $G$
     each period, starting from a base $A'$ at $t=1$:
     \[A',\ A'+G,\ A'+2G,\ \dots,\ A'+(N-1)G.\]
+    It splits into an annuity of $A'$ (red, below) plus a pure gradient
+    $G, 2G, \dots$ on top (black).
 \end{definition}
 
 \begin{center}
-    \begin{tikzpicture}[scale=0.8]
-        \draw[->] (0,0) -- (5,0) node[right] {\scriptsize $t$};
-        \draw[dashed,gray] (1,0.4) -- (4,1.0);
-        \foreach \x/\h in {1/0.4,2/0.6,3/0.8,4/1.0}{\fill (\x,0) circle (1pt); \draw[->,thick] (\x,0) -- (\x,\h);}
-        \node at (1,0.65) {\scriptsize $A'$};
-        \node at (4,1.3) {\scriptsize $A'+(N-1)G$};
-    \end{tikzpicture}
-    \\[2pt] \textit{\small Arrow tops grow \emph{linearly} (straight trend line)}
+    \includegraphics[width=0.55\linewidth]{figures/arithmetic_gradient.png}
 \end{center}
 
 \begin{definition}[Geometric Gradient]
     A cash-flow that grows (or shrinks) by the same \emph{percentage} $g$
     each period, starting from $A$ at $t=1$:
     \[A,\ A(1+g),\ A(1+g)^2,\ \dots,\ A(1+g)^{N-1}.\]
+    There must be a cash-flow at the end of period 1, otherwise there is
+    nothing for the percentage to grow from.
 \end{definition}
 
 \begin{center}
-    \begin{tikzpicture}[scale=0.8]
-        \draw[->] (0,0) -- (5,0) node[right] {\scriptsize $t$};
-        \draw[dotted,gray] (1,0.3) .. controls (2,0.42) and (3,0.59) .. (4,0.83);
-        \foreach \x/\h in {1/0.3,2/0.42,3/0.59,4/0.83}{\fill (\x,0) circle (1pt); \draw[->,thick] (\x,0) -- (\x,\h);}
-        \node at (1,0.55) {\scriptsize $A$};
-        \node at (4,1.15) {\scriptsize $A(1+g)^{N-1}$};
-    \end{tikzpicture}
-    \\[2pt] \textit{\small Arrow tops grow \emph{exponentially} (curved trend line)}
+    \includegraphics[width=0.6\linewidth]{figures/geometric_gradient.png}
 \end{center}
 
-\newlecture[Cash-flow Equivalence]
+\topic{Cash-flow Equivalence}
+
+\heading{Three Concepts of Equivalence}
+\begin{itemize}
+    \item \rb{Mathematical}: consequence of the mathematical relationship between time and money
+    \item \rb{Market}: consequence of the ability to exchange one cash-flow for another at zero cost
+    \item \rb{Decisional}: due to indifference on the part of the decision maker among available choices
+\end{itemize}
 
 \begin{definition}[Mathematical Equivalence]
     A consequence of the mathematical relationship between time and
@@ -180,20 +242,12 @@
     $t+N$) are equivalent at rate $i$ if
     \[F_{t+N} = P_t(1+i)^N \iff P_t = \frac{F_{t+N}}{(1+i)^N}.\]
     If a further cash-flow $F_{t+N+M}$ is also equivalent to $P_t$, then
-    $F_{t+N+M} = F_{t+N}(1+i)^M$: equivalent amounts compound/discount
-    consistently with each other.
+    \[F_{t+N+M} = P_t(1+i)^{N+M} = F_{t+N}(1+i)^M \iff P_t = \frac{F_{t+N+M}}{(1+i)^{N+M}},\]
+    i.e.\ equivalent amounts compound/discount consistently with each other.
 \end{definition}
 
 \begin{center}
-    \begin{tikzpicture}[scale=0.8]
-        \draw[->] (0,0) -- (5,0) node[right] {\scriptsize $t$};
-        \fill (0,0) circle (1.2pt); \fill (3,0) circle (1.2pt);
-        \node at (0,-0.35) {\scriptsize $t$};
-        \node at (3,-0.35) {\scriptsize $t+N$};
-        \draw[->,thick] (0,0) -- (0,-0.9) node[below] {\scriptsize $P_t$};
-        \draw[->,thick] (3,0) -- (3,0.9) node[above] {\scriptsize $F_{t+N}$};
-        \node at (1.5,0.55) {\scriptsize $\equiv$};
-    \end{tikzpicture}
+    \includegraphics[width=0.75\linewidth]{figures/math_equivalence.png}
 \end{center}
 
 \begin{definition}[Market Equivalence]
@@ -205,31 +259,35 @@
 \end{definition}
 
 \begin{example}[T-bill Market Equivalence]
-    A \$1,000 T-bill maturing in 6 months currently sells for \$990.10.
-    The market has agreed this corresponds to an interest rate of 1\%
-    over 6 months.
+    A T-bill is a short-term government debt obligation (maturity $\le 1$
+    year), usually sold in \$1,000 denominations. A \$1,000 T-bill
+    maturing in 6 months currently sells for \$990.10: some holders are
+    willing to sell at this price and others to buy. The market has agreed
+    this corresponds to an interest rate of 1\% over 6 months. Confirm:
+    \[i = \frac{1000}{990.10} - 1 = \db{0.0100 = 1\%}\]
 \end{example}
 
 \begin{definition}[Decisional Equivalence]
     Two cash-flows $P_t$ and $F_{t+N}$ are equivalent for a decision
     maker if they are \emph{indifferent} between them. Here the interest
-    rate is not known a priori --- instead, an \emph{implied} rate can be
+    rate is not known a priori --- instead, an \rb{implied} rate can be
     backed out from the decision that the two are equivalent.
 \end{definition}
 
 \begin{example}[Implied Interest Rate]
     A manufacturer needs 1,000~kg of aluminium on August 15 but is
     offered 1,100~kg on August 22 instead (same price, paid at the end
-    of August). Accepting the delay implies an interest rate of 10\% for
-    one week.
+    of August).
+    \[i = \frac{1100}{1000} - 1 = \db{10\% \text{ for one week}}\]
+    \db{The real question is whether the extra 100~kg is worth the cost of the one-week delay to this decision maker. If they are indifferent, 10\%/week is their implied rate.}
 \end{example}
 
 \begin{remark}
     Financial analysis uses \textbf{mathematical} and \textbf{market}
-    equivalence to decide whether to invest.
+    equivalence to decide whether to invest or not invest.
 \end{remark}
 
-\newlecture[Cash-flow Factors]
+\topic{Cash-flow Factors}
 
 \begin{remark}[Standing Assumptions]
     Unless otherwise noted:
@@ -267,17 +325,21 @@
         $(F/A,i,N)$ & Series compound amount factor \\
         $(A/P,i,N)$ & Capital recovery factor \\
         $(P/A,i,N)$ & Series present worth factor \\
+        $(P/G,i,N)$ & Arithmetic gradient to present worth \\
+        $(P/\text{Geom},i,g,N)$ & Geometric gradient to present worth \\
         \bottomrule
     \end{tabular}
 \end{center}
 
 \begin{remark}[Relating Factors]
-    Factors invert: since $P = A(P/A,i,N)$ and $A = P(A/P,i,N)$, we get
-    $(A/P,i,N) = 1/(P/A,i,N)$. The same trick relates any pair of
-    factors.
+    Factors invert: since $P = A(P/A,i,N)$,
+    \[A = \frac{P}{(P/A,i,N)} = P(A/P,i,N) \quad\Rightarrow\quad (A/P,i,N) = \frac{1}{(P/A,i,N)}.\]
+    The same trick relates any pair of factors.
 \end{remark}
 
 \begin{definition}[Single-Payment Factors]
+    $P$ and $F$ are related by compounding one period at a time,
+    $F_n = F_{n-1}(1+i)$, so $F = P(1+i)^N$:
     \[(F/P,i,N) = (1+i)^N, \qquad (P/F,i,N) = (1+i)^{-N}.\]
 \end{definition}
 
@@ -296,14 +358,43 @@
     \\[2pt] \textit{\small $(1+i)^{-N}$ decays toward $0$ as $N$ grows (shown for $i=10\%$)}
 \end{center}
 
+\begin{example}[F/P]
+    If you had \$2,000 now and invested it at 10\%, how much would it be worth in 8 years?
+    \[F = 2000(F/P,10\%,8) = 2000(1.10)^8 = 2000(2.1436) = \db{\$4{,}287.18}\]
+\end{example}
+
+\begin{example}[P/F: Solving for $i$]
+    You invest \$1,100 today and expect \$2,000 in 8 years. What is the interest rate?
+    \[1100 = 2000(P/F,i,8) \;\Rightarrow\; (1+i)^8 = \frac{2000}{1100} = 1.8182 \;\Rightarrow\; i = 1.8182^{1/8} - 1 = \db{7.76\%}\]
+\end{example}
+
 \begin{example}[Present Value of a Perpetuity]
-    A constant amount $A$ paid forever has finite present value:
-    \[P = \frac{A}{1+i}+\frac{A}{(1+i)^2}+\cdots = \frac{A}{i}.\]
+    Invest \$100 and get paid 5\% interest in cash every year, forever.
+    Each year the \$5 of interest is paid out, so the balance never changes:
+    \begin{center}
+    \begin{tabular}{cccc}
+        \toprule
+        Year & Interest & Cash-flow & Amount in bank at year end \\
+        \midrule
+        0 & --- & $-100$ & 100 \\
+        1 & 5 & $+5$ & 100 \\
+        2 & 5 & $+5$ & 100 \\
+        3 & 5 & $+5$ & 100 \\
+        $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \db{So \$100 today is equivalent to \$5/year forever, i.e.\ $P = A/i = 5/0.05 = 100$.} In general, a constant amount $A$ paid forever has a finite present value:
+    \[P = \frac{A}{1+i}+\frac{A}{(1+i)^2}+\cdots = \boxed{\frac{A}{i}}.\]
 \end{example}
 
 \begin{definition}[Present Worth of an Annuity]
+    An annuity of $A$ for $N$ periods is a perpetuity starting now minus a
+    perpetuity starting at $N$ (worth $A/i$ at time $N$, discounted back):
     \[(P/A,i,N) = \frac{1}{i}-\frac{1}{i(1+i)^N}
     = \frac{(1+i)^N - 1}{i(1+i)^N}.\]
+    Combining with $(F/P)$ and inverting gives the rest of the uniform-series factors:
+    \[(F/A,i,N) = \frac{(1+i)^N-1}{i}, \qquad (A/F,i,N) = \frac{i}{(1+i)^N-1}, \qquad (A/P,i,N) = \frac{i(1+i)^N}{(1+i)^N-1}.\]
 \end{definition}
 
 \begin{definition}[Present Worth of an Arithmetic Gradient]
@@ -314,6 +405,11 @@
     into an annuity plus a gradient:
     \[P = A(P/A,i,N) + G(P/G,i,N).\]
 \end{definition}
+
+\begin{center}
+    \includegraphics[width=0.45\linewidth]{figures/gradient_G_only.png}
+    \\[2pt] \textit{\small The pure gradient: nothing at $t=0,1$; $G$ at $t=2$, \dots, $(N-1)G$ at $t=N$}
+\end{center}
 
 \begin{remark}[Sign Combinations for Arithmetic Gradients]
     Besides $G=0$, four cases: $A>0,\,G>0$ (positive, increasing);
@@ -329,57 +425,160 @@
 
 \begin{remark}
     Regardless of the pattern, present value always follows from
-    discounting each cash-flow individually and summing:
-    \[\boxed{P = \sum_t \frac{F_t}{(1+i)^t}.}\]
+    discounting each cash-flow individually and summing. Each period a
+    cash-flow is moved forward, multiply by $(1+i)$; each period back,
+    divide by $(1+i)$:
+    \[\boxed{P = \frac{F_1}{1+i}+\frac{F_2}{(1+i)^2}+\cdots = \sum_t \frac{F_t}{(1+i)^t}.}\]
 \end{remark}
 
-\newlecture[Worked Examples]
+\heading{Factor Table ($i = 10\%$)}
+\begin{center}
+    \includegraphics[width=0.75\linewidth]{figures/factor_table_10pct.png}
+\end{center}
+
+\begin{example}[Reflection: Lump Sums vs.\ Annuity]
+    Which option do you prefer if interest is 8\%?
+    (a) \$20,000 now and \$50,000 at the end of 10 years, or
+    (b) ten equal annual receipts of \$7,000?
+    \begin{align*}
+        P_a &= 20{,}000 + 50{,}000(P/F,8\%,10) = 20{,}000 + 50{,}000(0.46319) = \db{\$43{,}160}\\
+        P_b &= 7{,}000(P/A,8\%,10) = 7{,}000(6.7101) = \db{\$46{,}971}
+    \end{align*}
+    \db{Prefer (b): it has the higher present value.}
+\end{example}
+
+\begin{example}[Reflection: Annuity at a Lower Rate]
+    \$1/year for 5 years has a present value of \$3.7908 at 10\%. Which is a likely value at 9\%?
+    (a) 3.8897 \quad (b) 5.0000 \quad (c) 3.7908 \quad (d) 2.3262
+    \\\db{(a) 3.8897. A lower rate discounts less, so PV rises above 3.7908, but it must stay below the undiscounted total of \$5. Check: $(P/A,9\%,5) = 3.8897$.}
+\end{example}
+
+\topic{Worked Examples}
 
 \begin{example}[Investment Decision]
     An investor can buy a tract of land that will be worth \$10,000 in
-    six years. If the required rate of return is 8\%, the investor
-    should be willing to pay $P = 10{,}000(P/F,8\%,6)$ now.
+    six years. If the rate of return on land is 8\%, how much should the
+    investor be willing to pay now?
+    \[P = 10{,}000(P/F,8\%,6) = \frac{10{,}000}{(1.08)^6} = \db{\$6{,}301.70}\]
+\end{example}
+
+\begin{example}[The Magic of Compounding]
+    At age 20 you save and invest \$1.00 each day (\$365/year) until age 80,
+    at 10\% annual interest.
+    \[F = 365(F/A,10\%,60) = 365\cdot\frac{(1.10)^{60}-1}{0.10} \approx \db{\$1{,}107{,}708}\]
+    \db{You become a millionaire.}
+\end{example}
+
+\begin{example}[F and P with Subperiod Compounding]
+    How much is accumulated over 5 years in each savings plan?
+    \begin{itemize}
+        \item \$2,000 today at 10\% compounded semi-annually: $i_s = 5\%$, $N = 10$
+        \[F = 2000(1.05)^{10} = \db{\$3{,}257.79}\]
+        \item \$1,000 today at 12\% compounded monthly: $i_s = 1\%$, $N = 60$
+        \[F = 1000(1.01)^{60} = \db{\$1{,}816.70}\]
+    \end{itemize}
+    How much must you invest today to get \$2,000 in 5 years at 8\% compounded quarterly? $i_s = 2\%$, $N = 20$:
+    \[P = 2000(P/F,2\%,20) = \frac{2000}{(1.02)^{20}} = \db{\$1{,}345.94}\]
 \end{example}
 
 \begin{example}[Mortgage/Amortization]
-    A \$300,000 mortgage at a nominal 9\% (compounded semi-annually) is
-    amortized over 15 years. The monthly payment $A$ solves
-    $300{,}000 = A(P/A,i_s,180)$, where $i_s$ is the effective monthly
-    rate equivalent to the semi-annual nominal rate.
+    A \$300,000 mortgage at a nominal 9\% (mortgages are quoted with
+    semi-annual compounding) is amortized over 15 years. What is the monthly payment?
+    \\\db{Semi-annual rate $= 4.5\%$. The equivalent monthly rate satisfies $(1+i_m)^6 = 1.045$:}
+    \[i_m = 1.045^{1/6} - 1 = 0.7363\%, \qquad N = 15 \times 12 = 180\]
+    \[A = 300{,}000(A/P,0.7363\%,180) = \db{\$3{,}013.56 \text{ per month}}\]
+    \db{That is about \$36,163/year, over 70\% of a \$50k starting salary (before tax), so it doesn't fit the budget.}
 \end{example}
 
 \begin{example}[Sinking Fund]
-    A roof must be replaced in 10 years for an estimated \$28,000. The
-    equal end-of-year deposits $A$ needed at 8\% interest solve
-    $A = 28{,}000(A/F,8\%,10)$.
+    A ``targeted'' $F$ calculation: save up to pay a future expenditure
+    (e.g.\ replacing a machine). A roof must be replaced in 10 years for
+    an estimated \$28,000. What equal end-of-year deposits at 8\% are needed?
+    \[A = 28{,}000(A/F,8\%,10) = 28{,}000\cdot\frac{0.08}{(1.08)^{10}-1} = \db{\$1{,}932.83 \text{ per year}}\]
 \end{example}
 
 \begin{example}[Retirement Planning]
-    Starting at age 20 and retiring at 65 (45 years), the equal
-    end-of-year savings $A$ needed to reach \$1{,}000{,}000 at an average
-    7\% return solve $A = 1{,}000{,}000(A/F,7\%,45)$; a higher rate
-    (e.g.\ 10\%) reduces the required $A$.
+    You are 20 and want \$1,000,000 at retirement at 65 (45 years). What
+    equal end-of-year savings are needed at 7\%? At 10\%?
+    \begin{align*}
+        A_{7\%} &= 1{,}000{,}000(A/F,7\%,45) = \db{\$3{,}499.57 \text{ per year}}\\
+        A_{10\%} &= 1{,}000{,}000(A/F,10\%,45) = \db{\$1{,}391.00 \text{ per year}}
+    \end{align*}
 \end{example}
 
 \begin{example}[Uneven Annuity Segments]
-    To fund withdrawals of \$2,000/year for 5 years followed by
-    \$3,000/year for the next 3 years at 8\% interest, the deposit
-    needed now is
-    \[P = 2{,}000(P/A,8\%,5) + 3{,}000(P/A,8\%,3)(P/F,8\%,5),\]
-    discounting the second annuity back to $t=5$ and then to $t=0$.
+    Claudia wants to deposit $P$ now so that she can withdraw \$2,000/year
+    for 5 years and then \$3,000/year for the next 3 years, at 8\%.
+    Discount the second annuity back to $t=5$, then to $t=0$:
+    \begin{align*}
+        P &= 2{,}000(P/A,8\%,5) + 3{,}000(P/A,8\%,3)(P/F,8\%,5)\\
+        &= 2{,}000(3.9927) + 3{,}000(2.5771)(0.68058)\\
+        &= 7{,}985.42 + 5{,}261.79 = \db{\$13{,}247.21}
+    \end{align*}
+    \begin{center}
+    \begin{tikzpicture}[scale=0.7]
+        \draw[->] (0,0) -- (9,0) node[right] {\scriptsize $t$};
+        \foreach \x in {0,...,8}{\fill (\x,0) circle (1pt); \node[below] at (\x,-0.05) {\scriptsize \x};}
+        \draw[->,thick,red!70!black] (0,0) -- (0,-1.2) node[below] {\scriptsize $P$};
+        \foreach \x in {1,...,5}{\draw[->,thick] (\x,0) -- (\x,0.8);}
+        \foreach \x in {6,7,8}{\draw[->,thick,green!50!black] (\x,0) -- (\x,1.2);}
+        \node[above] at (3,0.8) {\scriptsize \$2,000};
+        \node[above,green!50!black] at (7,1.2) {\scriptsize \$3,000};
+    \end{tikzpicture}
+    \end{center}
 \end{example}
 
-\begin{example}[Present Value with an Arithmetic Gradient]
+\begin{example}[Present Value with an Arithmetic Gradient: Investment]
+    An investment of \$400,000 pays benefits of 20\% (\$80,000) in year 1,
+    with an additional \$15,000 added to each previous year's benefit, for
+    5 years. At a 10\% discount rate, is it worth it?
+    \begin{align*}
+        P &= -400{,}000 + 80{,}000(P/A,10\%,5) + 15{,}000(P/G,10\%,5)\\
+        &= -400{,}000 + 80{,}000(3.7908) + 15{,}000(6.8618)\\
+        &= -400{,}000 + 406{,}190 = \db{+\$6{,}190}
+    \end{align*}
+    \db{Barely worth it: the benefits' PV just exceeds the \$400,000 cost.}
+\end{example}
+
+\begin{example}[Present Value with an Arithmetic Gradient: Maintenance]
     A machine costs \$155 to maintain this year, with maintenance
-    costing \$35 more each subsequent year, over an 8-year life at 6\%
-    interest. The present value of the maintenance cash-flow is
-    \[P = 155(P/A,6\%,8) + 35(P/G,6\%,8).\]
-    Adding an up-front overhaul cost simply adds that amount at $t=0$.
+    costing \$35 more each subsequent year, over an 8-year life at 6\%.
+    How much must be invested now to cover maintenance, and what is the
+    Equivalent Annual Cost (EAC)?
+    \begin{align*}
+        P &= 155(P/A,6\%,8) + 35(P/G,6\%,8) = 155(6.2098) + 35(19.8416) = \db{\$1{,}656.97}\\
+        \text{EAC} &= P(A/P,6\%,8) = 1{,}656.97(0.16104) = \db{\$266.83 \text{ per year}}
+    \end{align*}
+    With a \$1,000 overhaul at the start ($t=0$):
+    \[\text{EAC} = (1{,}656.97 + 1{,}000)(A/P,6\%,8) = \db{\$427.87 \text{ per year}}\]
 \end{example}
 
 \begin{example}[Future Value with Periodic Dividends]
-    \$100,000 is invested at 15\% (compounded annually, not paid out),
-    with a \$5,000 dividend received every third year for 15 years and
-    reinvested at the same 15\%. The total future value combines the
-    compounded principal with the compounded value of each dividend.
+    \$100,000 is loaned at 15\% (interest compounded annually, not paid out),
+    with a \$5,000 dividend at the end of every third year for 15 years,
+    reinvested at 15\%. How much do you have at the end?
+    \\\db{Principal: $100{,}000(1.15)^{15} = \$813{,}706$. The dividends are an
+    annuity with 3-year periods ($N=5$), so use the 3-year effective rate
+    $i_3 = (1.15)^3 - 1 = 52.09\%$:}
+    \begin{align*}
+        F &= 100{,}000(F/P,15\%,15) + 5{,}000(F/A,52.09\%,5)\\
+        &= 813{,}706 + 68{,}510 = \db{\$882{,}216}
+    \end{align*}
+\end{example}
+
+\begin{example}[A Business Example]
+    Over 3 years a small business has:
+    \begin{itemize}
+        \item sales of \$240k, \$360k, \$480k per year, received in equal monthly amounts (\$20k, \$30k, \$40k/month)
+        \item investments of \$15k/quarter in year 1, \$20k/quarter in year 2, \$25k/quarter in year 3
+        \item an initial investment of \$100k, and a salvage value of \$70k after 3 years
+    \end{itemize}
+    What is the PV at 12\%, analysed on monthly cash-flows?
+    \\\db{Monthly rate $i = 12\%/12 = 1\%$. Each year's sales are a 12-month annuity shifted to the start of its year; quarterly investments fall at months $3, 6, \dots, 36$:}
+    \begin{align*}
+        P ={}& -100{,}000 + \big[20{,}000 + 30{,}000(P/F,1\%,12) + 40{,}000(P/F,1\%,24)\big](P/A,1\%,12)\\
+        & - \sum_{q=1}^{12} Q_q (P/F,1\%,3q) + 70{,}000(P/F,1\%,36)\\
+        \approx{}& \db{\$633{,}463}
+    \end{align*}
+    \db{where $Q_q$ is \$15k, \$20k or \$25k depending on the year.}
 \end{example}

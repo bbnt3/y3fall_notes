@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790276956.54887 "main.tex" "build/main.pdf" "main" 1790276958.29999 0
+["pdflatex"] 1790277169.94679 "main.tex" "main.pdf" "main" 1790277171.9806 0
   "../template/preamble.tex" 1790268355.96652 7062 52f4b5047ae684fcbab0281e7e19e6e9 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -211,9 +211,6 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1771962573 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "build/main.aux" 1790276958.12248 1765 1fcbf2be471fa866c2e2cdebbfdb2386 "pdflatex"
-  "build/main.out" 1790276958.12325 2846 d5ea24146612db053222fe5b4373592c "pdflatex"
-  "build/main.toc" 1790276958.12355 1028 d194fea71e212bcc9a6f700857e0d394 "pdflatex"
   "entries/week01.tex" 1790276411.80261 13226 002570eced95154b9f5b4484856b4971 ""
   "entries/week02.tex" 1790276681.28524 26008 ac46882e9191095b8c965e5e99b6987f ""
   "entries/week03.tex" 1790276954.59565 13141 f65778931b1c77f75c3004815a7d922b ""
@@ -230,11 +227,14 @@
   "figures/period_timeline.png" 1790276538.642 3860 48e417c4628a37a0a6cb962d28f1197c ""
   "figures/simple_vs_compound.png" 1790276391.31617 17443 a829bbf193d5e7144b498edae656048b ""
   "figures/young_professional_cf.png" 1790276561.63411 6116 29efddbc3d6866bbc13f5d67b09e6aa4 ""
+  "main.aux" 1790277171.7994 1765 1fcbf2be471fa866c2e2cdebbfdb2386 "pdflatex"
+  "main.out" 1790277171.80021 2846 d5ea24146612db053222fe5b4373592c "pdflatex"
   "main.tex" 1790276939.89662 2578 c8498628efe3bec66fdf757a9097bfe9 ""
+  "main.toc" 1790277171.80051 1028 d194fea71e212bcc9a6f700857e0d394 "pdflatex"
   (generated)
-  "build/main.aux"
-  "build/main.log"
-  "build/main.out"
-  "build/main.pdf"
-  "build/main.toc"
+  "main.aux"
+  "main.log"
+  "main.out"
+  "main.pdf"
+  "main.toc"
   (rewritten before read)

@@ -51,12 +51,28 @@
 }
 \makeatother
 
+% CHE374-only: \topic{title} replaces \newlecture. Topics are numbered
+% within each week ("1.1 - Interest Rate"), resetting at every \section.
+% secnumdepth=0 stops \section from stepping its own counter, so the week
+% number is tracked separately by patching \section.
+\newcounter{week}
+\newcounter{topic}[week]
+\pretocmd{\section}{\stepcounter{week}}{}{\errmessage{Failed to patch \string\section}}
+\newcommand{\topic}[1]{%
+    \stepcounter{topic}%
+    \phantomsection
+    \subsection*{\theweek.\arabic{topic} - #1}%
+    \addcontentsline{toc}{subsection}{\theweek.\arabic{topic} - #1}%
+}
+
 \begin{document}
 \maketitle
 \tableofcontents
+\setcounter{week}{0} % \tableofcontents's \section* also stepped it
 
 % Add one input per lecture, in the order you want them to appear.
 \input{entries/week01.tex}
 \input{entries/week02.tex}
+\input{entries/week03.tex}
 
 \end{document}

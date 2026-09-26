@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 SEP 2026 15:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 SEP 2026 15:12
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
@@ -739,7 +740,7 @@ LaTeX Font Info:    Trying to load font information for T1+lmr on input line 68
 .
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-) (build/main.aux)
+) (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
@@ -819,7 +820,7 @@ e
 ))
 Package hyperref Info: Link coloring ON on input line 68.
 
-(build/main.out) (build/main.out)
+(./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
@@ -869,7 +870,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 [1
 
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/loc
-al/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}] (build/main.toc
+al/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}] (./main.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 2.
 )
@@ -1038,7 +1039,7 @@ Overfull \hbox (9.30182pt too wide) in paragraph at lines 227--238
 
 [26])
 
-[27] (build/main.aux)
+[27] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -1047,8 +1048,8 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D5EA24146612DB053222FE5B4373592C;2846.
  ) 
 Here is how much of TeX's memory you used:
- 23399 strings out of 473190
- 439541 string characters out of 5715801
+ 23398 strings out of 473190
+ 439473 string characters out of 5715801
  804735 words of memory out of 5000000
  46130 multiletter control sequences out of 15000+600000
  646828 words of font info for 99 fonts, out of 8000000 for 9000
@@ -1068,7 +1069,7 @@ texlive/2025/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/202
 e1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/
 lm/lmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pf
 b>
-Output written on build/main.pdf (27 pages, 2401560 bytes).
+Output written on main.pdf (27 pages, 2401560 bytes).
 PDF statistics:
  352 PDF objects out of 1000 (max. 8388607)
  274 compressed objects within 3 object streams
