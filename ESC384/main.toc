@@ -1,0 +1,8 @@
+\contentsline {section}{\ignorespaces Lecture 1: Introduction to PDEs}{3}{section*.2}%
+\contentsline {section}{\ignorespaces Lecture 2: Fourier series: formulation}{11}{section*.3}%
+\contentsline {section}{\ignorespaces Lecture 3: Fourier series: analysis}{24}{section*.4}%
+\contentsline {section}{\ignorespaces Lecture 4: Sturm–Liouville theory}{38}{section*.5}%
+\contentsline {section}{\ignorespaces Lecture 5: Heat equation: introduction}{47}{section*.6}%
+\contentsline {section}{\ignorespaces Lecture 6: Heat equation: separation of variables}{58}{section*.7}%
+\contentsline {section}{\ignorespaces Lecture 7: Heat equation: fundamental solution}{73}{section*.8}%
+\contentsline {section}{\ignorespaces Lecture 8: Heat equation: finite difference method}{91}{section*.9}%

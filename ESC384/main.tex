@@ -3,6 +3,7 @@
 % Compile from the folder containing this file.
 % This path works in template/ and in sibling course folders.
 \input{../template/preamble.tex}
+\usepackage{pdfpages}
 
 % Replace these details for each course.
 \newcommand{\coursecode}{ESC384}
@@ -36,8 +37,13 @@
 \maketitle
 \tableofcontents
 
-% Add one input per lecture, in the order you want them to appear.
-\input{entries/week01.tex}
-\input{entries/week02.tex}
+% Lecture PDFs: drop downloaded PDFs into lectures/ and rebuild. latexmkrc
+% regenerates lectures.tex (ordered by the "Lecture N" on each PDF's first
+% page, with a table-of-contents entry per lecture) before every build.
+\input{lectures.tex}
+
+% Previous typed notes (not currently included):
+% \input{entries/week01.tex}
+% \input{entries/week02.tex}
 
 \end{document}
