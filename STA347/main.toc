@@ -8,3 +8,4 @@
 \contentsline {section}{Lecture 5 (Sep 22, 2026)}{13}{section*.9}%
 \contentsline {subsection}{Expectation}{13}{section*.10}%
 \contentsline {section}{Lecture 6 (Sep 24, 2026)}{17}{section*.11}%
+\contentsline {section}{Lecture 7: Chapter 4 - Inequalities}{19}{section*.12}%
