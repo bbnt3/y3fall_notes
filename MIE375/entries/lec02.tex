@@ -46,6 +46,7 @@ Captures the idea on the "return" on an investment.
     \\Intuitively: 10\%, why?
     \[x(-100, 110)\]
     \[PV(x) = -100 + \frac{110}{1+0.1} = 0\]
+    Because under 10\% interest, the present value of \$110 is exactly \$100.
 \end{example}
 
 \begin{definition}
@@ -67,6 +68,20 @@ Captures the idea on the "return" on an investment.
     \[c = 0.81 \quad \Rightarrow \quad c = \frac{1}{1+r} \quad \Rightarrow \quad r = 0.23\]
 \end{example}
 The polynomial can have many roots, which can be a problem. Fortunately, most standard investments have a well-defined IRR (see the theorem below).
+
+\begin{example}[Present Value Plot]
+    Cash flow $(-5, -2, 12, -5)$: plotting $PV$ against the interest rate $r$, the curve rises to a peak of about \$2.12 near $r = -0.35$, then falls and stays negative for all $r > 0$.
+    \begin{center}
+    \begin{tabular}{lccccccc}
+        \toprule
+        $r$ & $-0.5$ & $-0.4$ & $-0.3$ & $-0.1$ & $0$ & $0.1$ & $0.5$\\
+        \midrule
+        $PV$ & $-1.00$ & $1.85$ & $2.06$ & $0.73$ & $0.00$ & $-0.66$ & $-2.48$\\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    $PV = 0$ at both $r = 0$ and $r \approx -0.48$, so this stream has \dbb{two IRRs}. The sign of the cash flows changes more than once, so the Main Theorem on IRR below does not apply.
+\end{example}
 
 
 \heading{Main Theorem on IRR}

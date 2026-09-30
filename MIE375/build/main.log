@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  28 SEP 2026 12:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  30 SEP 2026 12:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -922,12 +922,11 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [2{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local
 /texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2
 025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2025/texmf-dist
-/fonts/enc/dvips/lm/lm-mathsy.enc}]
+/fonts/enc/dvips/lm/lm-mathex.enc}]
 
-[3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}])
-(./entries/lec02.tex
+[3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
 
-[4]
+[4]) (./entries/lec02.tex
 
 [5]
 
@@ -935,9 +934,9 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 [7]
 
-[8]) (./entries/lec03.tex
+[8]
 
-[9]
+[9]) (./entries/lec03.tex
 
 [10]
 
@@ -945,18 +944,22 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 [12]
 
-[13]) (./entries/lec04.tex
-Underfull \hbox (badness 10000) in paragraph at lines 260--2
+[13]
+
+[14]
+
+[15]) (./entries/lec04.tex
+Underfull \hbox (badness 10000) in paragraph at lines 304--2
 
  []
 
 
 
-[14]
-
-[15]) (./entries/lec05.tex
-
 [16]
+Underfull \vbox (badness 2865) detected at line 46
+ []
+
+
 
 [17]
 
@@ -974,13 +977,13 @@ LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A3BBC45D6CFF103402A8E711F8035017;1298.
+(rerunfilecheck)             Checksum: 289509C488239136CFF125BBE58792BD;1064.
  ) 
 Here is how much of TeX's memory you used:
- 23574 strings out of 473190
- 441483 string characters out of 5715801
- 815180 words of memory out of 5000000
- 46332 multiletter control sequences out of 15000+600000
+ 23571 strings out of 473190
+ 441379 string characters out of 5715801
+ 814180 words of memory out of 5000000
+ 46328 multiletter control sequences out of 15000+600000
  609095 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,13n,90p,541b,827s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -997,10 +1000,10 @@ exmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fo
 nts/type1/public/lm/lmri10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/
 public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/
 lmsy8.pfb>
-Output written on build/main.pdf (22 pages, 302267 bytes).
+Output written on build/main.pdf (22 pages, 310123 bytes).
 PDF statistics:
- 238 PDF objects out of 1000 (max. 8388607)
- 181 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 239 PDF objects out of 1000 (max. 8388607)
+ 182 compressed objects within 2 object streams
+ 45 named destinations out of 1000 (max. 500000)
+ 45 words of extra memory for PDF output out of 10000 (max. 10000000)
 

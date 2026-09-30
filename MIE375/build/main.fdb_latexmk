@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790612695.27736 "main.tex" "build/main.pdf" "main" 1790612697.2401 0
+["pdflatex"] 1790784804.52894 "main.tex" "build/main.pdf" "main" 1790784806.45453 0
   "../template/preamble.tex" 1790268355.96652 7062 52f4b5047ae684fcbab0281e7e19e6e9 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -202,15 +202,14 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1771962573 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "build/main.aux" 1790612697.05787 781 6b4ab7db30b153200a10228cf35a060b "pdflatex"
-  "build/main.out" 1790612697.0585 1298 a3bbc45d6cff103402a8e711f8035017 "pdflatex"
-  "build/main.toc" 1790612697.0588 413 b74a7b3ce25ebb359310f9ae1f5e2d05 "pdflatex"
-  "entries/lec01.tex" 1790268368.92497 3460 a8915aaf53bd4c199a908457348c70ca ""
-  "entries/lec02.tex" 1790267870.80619 8119 f4671009f258701ce686759a3ff2b9bd ""
-  "entries/lec03.tex" 1790267870.80669 11043 fe8044772c635d8988fa2483b9acc88a ""
-  "entries/lec04.tex" 1790268312.39185 236 01c9eaa17827e977d48e71284ce7ba04 ""
-  "entries/lec05.tex" 1790612695.0838 12760 febeb0a8027da2e7350a0883c7e5ab66 ""
-  "main.tex" 1790612695.07774 1288 2305bba6ed0a1208feaf00412aa3dcb3 ""
+  "build/main.aux" 1790784806.27269 662 091167eead7d7e82e8109f2cf03605b8 "pdflatex"
+  "build/main.out" 1790784806.27332 1064 289509c488239136cff125bbe58792bd "pdflatex"
+  "build/main.toc" 1790784806.27361 335 77b90fe0a1d7bf7c220a28c9078fb0e1 "pdflatex"
+  "entries/lec01.tex" 1790784334.74857 6438 24b8a9bb36778fe0e657e2061af31962 ""
+  "entries/lec02.tex" 1790784359.14008 8912 12e6c69e48bd6815395ae61497555ec5 ""
+  "entries/lec03.tex" 1790784804.37467 12914 d35c02c76bd968b82236ff09274b5fe8 ""
+  "entries/lec04.tex" 1790784370.10593 13085 fcfa477215680a1d2380745788ce3b2a ""
+  "main.tex" 1790784646.54113 1262 42e634253caed8742a0df37bccb1a8f4 ""
   (generated)
   "build/main.aux"
   "build/main.log"

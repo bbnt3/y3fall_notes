@@ -1,6 +1,6 @@
 % !TeX root = ../main.tex
 
-\newlecture[Fixed Income Securities][Sep 21, 2026]
+\newlecture[Fixed Income Securities][Sep 21 \& 24, 2026]
 
 \begin{definition}[Financial Instruments]
     A legal obligation or claim having monetary value (eg. mortgage, stocks and bonds...)
@@ -195,7 +195,7 @@ You must pay the previous owner their ``portion'' of the next coupon payment.
     \\\rb{Dirty (cash) price}: the clean price plus accrued interest, i.e. what you actually pay.
 \end{definition}
 
-Government securities:
+\b{Government Securities}:
 \begin{itemize}
     \item Bill: up to 1 year
     \item Note: 1 to 10 years
@@ -233,16 +233,30 @@ The IRR of this cash flow stream is the \rb{yield} (or \rb{yield to maturity}) o
     \item $n$: amount of coupon payments remaining.
     \item $\lambda/m$: yield per coupon period, $n$: coupon payments left
 \end{itemize}
-Note this equation \underline{only} holds when $\lambda$ is the yield.
+Note this equation \underline{only} holds when $\lambda$ is the yield, with \underline{exactly} $n$ coupon payments remaining.
 
 \begin{example}
     Price of a bond with par value \$1,000 paid in ten years, coupon rate 10\%, yield 12\%, coupons paid semi-annually. Then $n = 20$, $C/m = 50$, $\lambda/m = 6\%$:
     \[P = 50\cdot\frac{1-\frac{1}{(1.06)^{20}}}{0.06} + \frac{1000}{(1.06)^{20}} = 50(11.47) + 311.80 \approx \$885.30\]
 \end{example}
 
+\begin{definition}
+    Comparing a bond's price $P$ to its face value $F$ (equivalently, its coupon rate $C/F$ to its yield $\lambda$):
+    \begin{itemize}
+        \item \rb{Par bond}: $P = F$, when the coupon rate \dbb{equals} the yield.
+        \item \rb{Premium bond}: $P > F$, when the coupon rate is \dbb{above} the yield.
+        \item \rb{Discount bond}: $P < F$, when the coupon rate is \dbb{below} the yield.
+    \end{itemize}
+\end{definition}
+E.g.\ the bond above has a 10\% coupon but a 12\% yield, so it sells at a discount ($\$885.30 < \$1,000$).
+
 \header{The Price-Yield Curve}
-For a fixed maturity, \underline{price and yield are inversly related}
-\\The longer the time to maturity, the more sensitive the price of the bond is to the yield.
+For a fixed maturity, \underline{price and yield are inversly related}:
+\begin{itemize}
+    \item Rates Rise $\rightarrow$ Existing bond prices Fall
+    \item Rates Fall $\rightarrow$ Existing bond prices Rise
+\end{itemize}
+The longer the time to maturity, the more sensitive the price of the bond is to the yield.
 
 \begin{center}
 \begin{tikzpicture}
@@ -255,7 +269,37 @@ For a fixed maturity, \underline{price and yield are inversly related}
 \end{tikzpicture}
 \end{center}
 
+\begin{example}
+    A 30-year zero-coupon bond with face value \$1,000, priced at different yields:
+    \begin{center}
+    \begin{tabular}{lcccccc}
+        \toprule
+        Yield & 1\% & 2\% & 5\% & 10\% & 15\% & 20\%\\
+        \midrule
+        Price & \$741.37 & \$550.45 & \$227.28 & \$53.54 & \$13.05 & \$3.28\\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    Price falls steeply as yield rises: $P = 1000/(1+\lambda)^{30}$.
+\end{example}
+
 The \b{current yield} is the coupon divided by the current price. In this course, \dbb{yield} always means \dbb{yield to maturity}.
+
+\begin{example}[Bond Quote]
+    Treasury quotes from yahoo.com (YTM = yield to maturity, CY = current yield):
+    \begin{center}
+    \begin{tabular}{lcccc}
+        \toprule
+        Issue & Price & Coupon & YTM & CY\\
+        \midrule
+        T-Note, matures 31-Oct-2005 & 99.91 & 1.625 & 2.923 & 1.626\\
+        T-Note, matures 15-Jan-2011 & 109.71 & 3.500 & 1.574 & 3.190\\
+        T-Bond, matures 15-Feb-2021 & 135.49 & 7.875 & 4.622 & 5.812\\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    Check: $CY = 7.875/135.49 = 5.812\%$. YTM and CY can differ a lot, since CY ignores the face value repaid at maturity.
+\end{example}
 
 \begin{minipage}{\textwidth}
 \header{Bond Ratings}

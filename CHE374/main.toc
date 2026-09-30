@@ -5,10 +5,13 @@
 \contentsline {section}{Week 2 - Cash-flow Analysis}{10}{section*.9}%
 \contentsline {subsection}{2.1 - Cash-flow Diagrams}{10}{section*.11}%
 \contentsline {subsection}{2.2 - Categories of Regular Cash-flows}{12}{section*.13}%
-\contentsline {subsection}{2.3 - Cash-flow Equivalence}{14}{section*.15}%
+\contentsline {subsection}{2.3 - Cash-flow Equivalence}{13}{section*.15}%
 \contentsline {subsection}{2.4 - Cash-flow Factors}{15}{section*.17}%
 \contentsline {subsection}{2.5 - Worked Examples}{19}{section*.19}%
 \contentsline {section}{Week 3 - Financial Instruments}{22}{section*.20}%
 \contentsline {subsection}{3.1 - Mortgages}{22}{section*.22}%
-\contentsline {subsection}{3.2 - Bonds}{24}{section*.24}%
+\contentsline {subsection}{3.2 - Bonds}{23}{section*.24}%
 \contentsline {subsection}{3.3 - Bond Examples}{27}{section*.26}%
+\contentsline {section}{Week 4 - Risk, Reward and Arbitrage}{28}{section*.27}%
+\contentsline {subsection}{4.1 - Capital Asset Pricing Model}{28}{section*.29}%
+\contentsline {subsection}{4.2 - Arbitrage}{32}{section*.31}%
