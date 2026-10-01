@@ -51,6 +51,24 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
     \[P: \{\text{blue}\}\mapsto\tfrac{1}{5},\quad \{\text{red}\}\mapsto\tfrac{1}{5},\quad \{\text{green}\}\mapsto\tfrac{1}{4},\quad \{\text{yellow}\}\mapsto 1-\tfrac{1}{5}-\tfrac{1}{5}-\tfrac{1}{4}=\tfrac{7}{20}\]
     \[P(\{\text{blue, red}\}) = \tfrac{1}{5}+\tfrac{1}{5} = \tfrac{2}{5}\]
     \[A = [1,3] \]
+    \begin{center}
+    \begin{tikzpicture}[scale=1, every node/.style={font=\small}]
+        \draw[thick] (0,0) ellipse (1.1cm and 1.9cm);
+        \node at (0,2.25) {$\Omega$};
+        \foreach \y/\col/\nm in {1.2/blue/blue, 0.4/red/red, -0.4/green!60!black/green, -1.2/yellow!70!black/yellow}
+            \node[\col] (w\nm) at (0,\y) {\nm};
+        \draw[->] (3,-2.3) -- (9.3,-2.3) node[right]{$\R$};
+        \foreach \x in {0,...,7} \draw (3.4+0.8*\x,-2.22) -- (3.4+0.8*\x,-2.38) node[below]{\scriptsize $\x$};
+        \draw[very thick, red!70!black] (4.2,-2.3) -- (5.8,-2.3);
+        \node[red!70!black, above] at (5,-2.25) {$A=[1,3]$};
+        \draw[->, blue] (wblue.east) to[bend left=10] (4.2,-2.2);
+        \draw[->, red] (wred.east) to[bend left=10] (5.8,-2.2);
+        \draw[->, green!60!black] (wgreen.east) to[bend left=10] (6.6,-2.2);
+        \draw[->, yellow!70!black] (wyellow.east) to[bend left=5] (8.2,-2.2);
+        \node[blue!55!black, align=left, anchor=west] at (1.4,1.6) {\aside{pre-image of $A$ w.r.t.\ $X$: $\{\text{blue, red}\}$}};
+        \node at (6.3,0.1) {$X$};
+    \end{tikzpicture}
+    \end{center}
     \begin{enumerate}
         \item $\left\{w: w \in \Omega, X(w) \in A \right\} = \left\{\text{\textcolor{blue}{blue} ,\textcolor{red}{red}}\right\}$
         \item $P(\left\{\text{\textcolor{blue}{blue} ,\textcolor{red}{red}}\right\}) = \frac{2}{5}$, so $\mu(A) = \frac{2}{5}$
@@ -108,16 +126,29 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
         \item For all $x \leq y \in R, F(x) \leq F(y)$
         \item $\lim_{x \to -\infty} F(x) = 0 $ and $\lim_{x \to +\infty} F(x) = 1 $
         \item $F$ is right-continuous
-        proof:
+    \end{enumerate}
+    proof:
         \begin{enumerate}[label = \roman*)]
             \item $x\leq y \in R$
             \[F(x) = \mu((-\infty, x]), F(y) = \mu((-\infty, y])\]
             Since $x\leq y$, \quad $(-\infty, x] \subseteq (-\infty, y]$
             \[\mu((-\infty, x])\leq \mu((-\infty, y])\]
             "bigger set, bigger probability"
-            \[(A \leq B, \quad p(A) \leq p(B) \quad / \quad \mu(A)\leq \mu(B))\]
+            \[(A \subseteq B, \quad p(A) \leq p(B) \quad / \quad \mu(A)\leq \mu(B))\]
             \item Define $A_n = \left\{X\leq -n\right\}, \quad n\geq 0$
             \\Then $A_1 \supseteq A_2 \supseteq A_3 \supseteq \dots $
+            \begin{center}
+            \begin{tikzpicture}[scale=0.8, every node/.style={font=\small}]
+                \draw (0,0) ellipse (2.4cm and 1.3cm);
+                \draw (-0.3,-0.1) ellipse (1.7cm and 0.95cm);
+                \draw (-0.6,-0.2) ellipse (1.05cm and 0.6cm);
+                \node at (1.9,0.75) {$A_1$};
+                \node at (0.95,0.45) {$A_2$};
+                \node at (-0.25,-0.05) {$A_3$};
+                \node at (-1.15,-0.25) {$\cdots$};
+                \node[anchor=west] at (2.7,0) {$\displaystyle\bigcap_{n=1}^{\infty} A_n = \phi$ \aside{(shrinks to nothing)}};
+            \end{tikzpicture}
+            \end{center}
             \begin{align*}
                 \bigcap_{n=1}^{\infty} A_n &= \phi \\
                 \lim_{n \to \infty} F(-n) &= \lim_{n \to \infty} p(A_n) \\
@@ -126,6 +157,18 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
             \end{align*}
             Define $B_n = \left\{X\leq n\right\}$,
             \\then $B_1 \subseteq B_2 \subseteq \dots$
+            \begin{center}
+            \begin{tikzpicture}[scale=0.8, every node/.style={font=\small}]
+                \draw (-0.6,-0.2) ellipse (1.05cm and 0.6cm);
+                \draw (-0.3,-0.1) ellipse (1.7cm and 0.95cm);
+                \draw (0,0) ellipse (2.4cm and 1.3cm);
+                \node at (-0.6,-0.2) {$B_1$};
+                \node at (0.95,0.45) {$B_2$};
+                \node at (1.9,0.75) {$B_3$};
+                \node at (2.85,0) {$\cdots$};
+                \node[anchor=west] at (3.3,0) {$\displaystyle\bigcup_{n=1}^{\infty} B_n = \Omega$ \aside{(grows to everything)}};
+            \end{tikzpicture}
+            \end{center}
             \[\bigcup_{n=1}^{\infty} B_n = \Omega\]
             \begin{align*}
                 \lim_{n \to \infty} F(n) &= \lim_{n \to \infty} p(B_n) \\
@@ -142,7 +185,6 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
             \[\lim_{h \downarrow 0}F(x+h) = F(x)  \]
             So $F$ is right-continuous.
         \end{enumerate}
-    \end{enumerate}
 \end{theorem}
 
 \begin{definition}[The Inverse CDF][3.5]
