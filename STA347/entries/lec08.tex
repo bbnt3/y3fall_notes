@@ -1,0 +1,87 @@
+\newlecture[][Oct 1, 2026]
+
+\begin{theorem}[Jensen's Inequality][4.5]
+    If $f$ is a convex function and $X$ is a random variable such that $f(x)$ is integrable,
+    \[f(EX) \leq Ef(X)\]
+    The inequality is \dbb{flipped} if $f$ is \dbb{concave}.
+    \\Proof: Since $f$ is convex, there exists a function $g$ s.t.
+    \begin{align*}
+        g(x) &= ax + b \text{ and} & &\db{\Leftarrow \quad g(\cdot) \text{ is a straight line}}\\
+        g(x) &\leq f(x) \text{ for all }x \text{ and} & &\db{\Leftarrow \quad g(\cdot) \text{ always below }f(\cdot)}\\
+        g(EX) &= f(EX) & &\db{\Leftarrow \quad g(\cdot)=f(\cdot) \text{ at } X=EX}
+    \end{align*}
+    \[f(x) \geq g(x) \text{ for all }x\]
+    \begin{align*}
+        E[f(x)] \geq E[g(x)] &= E[aX+b]\\
+        &= aE(X)+b\\
+        &= g(E(X))\\
+        &= f(E(X))
+    \end{align*}
+\end{theorem}
+
+\begin{example}[Applying the Jensen's Inequality][4.5.1]
+    \[[E(X)]^2 \leq E[X^2] \quad f(x) = x^2 \Rightarrow \text{convex}\]
+    \[E[\log X] \leq \log [EX] \quad f(x) = \log x \Rightarrow \text{concave}\]
+\end{example}
+
+\begin{lemma}[Young's Inequality][4.6]
+    For any $p, q \geq 1 \text{ and } \frac{1}{p}+ \frac{1}{q} = 1$,
+    \[xy \leq \frac{x^p}{p} + \frac{y^q}{q} \quad \text{for any }x,y \geq 0 \]
+    Proof: Let $h_y(x) = \frac{1}{p}x^p + \frac{1}{q}y^q -xy$
+    \\To prove $h_y(x) \geq 0$, we take derivatives
+    \[h_y'(x) = \frac{dh_y(x)}{dx}\]
+    \[= x^{p-1} - y\]
+    \[h_y''(x = \frac{d^2h_y(x)}{dx^2})\]
+    \[=p(-1)x^{p-2} \geq 0, \text{ because } x \geq 0\]
+    Therefore $h_y'(x) = 0 \Rightarrow x^* = y^{\frac{1}{p-1}}$ is the minimizer
+    \\Plugging in $h_y(x^*) = \frac{1}{p}(y^{\frac{1}{p-1}})^p + \frac{1}{q}y^q - y^{\frac{1}{p-1}} \cdot y$
+    \[= \frac{1}{p}y^{\frac{p}{p-1}} + \frac{1}{q}y^q - y^{\frac{p}{p-1}}\]
+    
+    \[\frac{1}{p}+\frac{1}{q} = 1\]
+    \[\frac{1}{q} = 1 - \frac{1}{p}\]
+    \[q = \frac{p}{p-1}\]
+
+    \[= \frac{1}{q}y^{\frac{p}{p-1}} + (1-\frac{1}{q})\]
+    \[=\text{i forgot}\]
+    \[=0\]
+
+    \[h_y(x) \geq =0\]
+    Therefore $\frac{1}{p}x^p + \frac{1}{q}y^q \geq xy$
+    \\(If p=1=2, $\frac{1}{2}x^2 + \frac{1}{2}y^2 \geq xy \quad x^2+y^2 \geq 2xy$)
+\end{lemma}
+
+\begin{theorem}[H\"older's Inequality][4.6]
+    If $p,q > 1$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$, 
+    \[E[|XY|] \leq [E(|X|^p)]^p \cdot [E(|Y|^q]]\]
+
+    Proof: Let
+    \[X^* = \frac{|X|}{[E(|X|^p)]^p} \quad \text{and} \quad Y^* = \frac{|Y|}{?}\]
+    Observe that
+    \[E[(X^*)^p] = E[(Y^*)^q]\]
+    bro this is too long
+
+
+    Applying the Young's Inequality
+    \[X^*Y^* \leq \frac{(X^*)^p}{p} + \frac{(Y^*)^q}{q}\]
+    Take expectations on both sides
+    \[E[X^*Y^*]\leq \frac{E[(X^*)^p]}{p} + \frac{E[(Y^*)^q]}{q}\]
+    \[E\left[\frac{|X||Y|}{E(|X|^p)^{\frac{1}{p}}E(|Y|^q)^{\frac{1}{q}}}\right] \leq \frac{1}{p}+ \frac{1}{q} = 1\]
+    Therefore, re-arrange
+    \[E[|X||Y|] \leq E(|X|^p)^{\frac{1}{P}} E(|Y|^q)^{\frac{1}{q}}\]
+\end{theorem}
+
+\begin{proposition}[Cauchy-Schwarz Inequality][4.6.1]
+    \[E[|XY|] \leq \sqrt{E(X^2)E(Y^2)}\]
+    Proof: easyyyyyy do it yourself idk
+\end{proposition}
+
+\begin{theorem}[Minkowski's Inequality][4.7]
+    If $p>1$, then
+    \[[E(|X+Y|^p)]^{\frac{1}{p}} \leq [E(|X)^p]^{\frac{1}{p}} + [E(|Y|^p)]^{\frac{1}{p}}\]
+    \begin{center}
+        (The triangle inequality in probability)
+    \end{center}
+\end{theorem}
+Note: this proof is hard but we need? to know? idk
+
+\large{\rb{EXAM UPDATE: CAN BRING CHEATSHEET DOUBLE SIDE HANDWRITTEN!!!!}}

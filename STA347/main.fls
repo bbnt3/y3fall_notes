@@ -369,6 +369,9 @@ INPUT entries/lec06.tex
 INPUT ./entries/lec07.tex
 INPUT ./entries/lec07.tex
 INPUT entries/lec07.tex
+INPUT ./entries/lec08.tex
+INPUT ./entries/lec08.tex
+INPUT entries/lec08.tex
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
