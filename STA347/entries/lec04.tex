@@ -45,3 +45,26 @@ Let $A_i$ be sets for $i\in\{1,2,\dots\}$ and consider $\displaystyle\lim_{n\to\
     \item If $A_1 \subseteq A_2 \subseteq \dots \subseteq A_n \subseteq \dots$ (increasing), then $\displaystyle\lim_{n\to\infty}\bigcup_{i=1}^{n}A_i = \bigcup_{i=1}^{\infty}A_i$.
     \item If $A_1 \supseteq A_2 \supseteq \dots \supseteq A_n \supseteq \dots$ (decreasing), then $\displaystyle\lim_{n\to\infty}\bigcap_{i=1}^{n}A_i = \bigcap_{i=1}^{\infty}A_i$.
 \end{itemize}
+\begin{center}
+\begin{tikzpicture}[scale=0.75, every node/.style={font=\small}]
+    % increasing
+    \draw (-0.6,-0.2) ellipse (1.05cm and 0.6cm);
+    \draw (-0.3,-0.1) ellipse (1.7cm and 0.95cm);
+    \draw (0,0) ellipse (2.4cm and 1.3cm);
+    \node at (-0.6,-0.2) {$A_1$};
+    \node at (0.95,0.45) {$A_2$};
+    \node at (1.85,0.75) {$A_n$};
+    \node at (2.8,0.2) {$\cdots$};
+    \node at (0,-1.75) {\aside{increasing: $A_1 \subseteq A_2 \subseteq \cdots$}};
+    % decreasing
+    \begin{scope}[xshift=7.5cm]
+        \draw (0,0) ellipse (2.4cm and 1.3cm);
+        \draw (-0.3,-0.1) ellipse (1.7cm and 0.95cm);
+        \draw (-0.6,-0.2) ellipse (1.05cm and 0.6cm);
+        \node at (1.85,0.75) {$A_1$};
+        \node at (0.95,0.45) {$A_2$};
+        \node at (-0.4,-0.15) {$\cdots A_n$};
+        \node at (0,-1.75) {\aside{decreasing: $A_1 \supseteq A_2 \supseteq \cdots$}};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
