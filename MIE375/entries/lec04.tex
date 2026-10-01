@@ -260,7 +260,8 @@ Why isn't the term structure (spot rate curve) flat? Three explanations:
 
 \header{Expectation Dynamics}
 Forward rates are rates in the future that are agreed upon \rb{now}. But we don't know what the \dbb{actual future rates} will be when that time arrives, since spot rate curves could change.
-\\When we use forward rates as a prediction (could be wrong) of the actual future rates, this forecast is called \rb{expectation dynamics}.
+When forward rates are used as a prediction (could be wrong) of the actual future rates, this forecast is called \rb{expectation dynamics}.
+\\Prohibits arbitrage, using forward rates that are anchored on the spot rates today.
 
 \heading{The Invariance Theorem}
 If interest rates evolve according to expectation dynamics, then a sum of money invested in the interest rate market for $n$ years, will grow by a factor of $(1+s_n)^n$ \ul{regardless of the investment and reinvestment strategy} (no matter what combination of spot and forward rates).
@@ -279,3 +280,6 @@ If interest rates evolve according to expectation dynamics, then a sum of money 
 
 \b{Why?} Implied forward rates were \ul{computed to satisfy exactly this relationship}.
 \\So even if you don't lock in a future interest rate now, you can still use forward rates for discounting, \ul{as long as you assume expectation dynamics}.
+
+
+If expectation dynamics are assumed, the invariance thoerem is true (will always equal the same return value regardless of investment strategies.)

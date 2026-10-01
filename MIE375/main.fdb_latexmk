@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1790784649.73321 "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" "main.pdf" "main" 1790784653.49957 0
+["pdflatex"] 1790873788.33129 "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" "main.pdf" "main" 1790873790.48421 0
   "../template/preamble.tex" 1790268355.96652 7062 52f4b5047ae684fcbab0281e7e19e6e9 ""
-  "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" 1790784646.54113 1262 42e634253caed8742a0df37bccb1a8f4 ""
+  "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" 1790871964.6778 1288 2305bba6ed0a1208feaf00412aa3dcb3 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -205,12 +205,13 @@
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "entries/lec01.tex" 1790784334.74857 6438 24b8a9bb36778fe0e657e2061af31962 ""
   "entries/lec02.tex" 1790784359.14008 8912 12e6c69e48bd6815395ae61497555ec5 ""
-  "entries/lec03.tex" 1790784458.09604 12349 148443d3c7bcfa383bc047c79febc6ff ""
-  "entries/lec04.tex" 1790784370.10593 13085 fcfa477215680a1d2380745788ce3b2a ""
-  "main.aux" 1790784653.26243 662 091167eead7d7e82e8109f2cf03605b8 "pdflatex"
-  "main.out" 1790784653.26358 1064 289509c488239136cff125bbe58792bd "pdflatex"
-  "main.tex" 1790784646.54113 1262 42e634253caed8742a0df37bccb1a8f4 ""
-  "main.toc" 1790784653.26408 335 77b90fe0a1d7bf7c220a28c9078fb0e1 "pdflatex"
+  "entries/lec03.tex" 1790784804.37467 12914 d35c02c76bd968b82236ff09274b5fe8 ""
+  "entries/lec04.tex" 1790871673.89907 13319 6ad50d00503b478cc1c69b7e3128efa9 ""
+  "entries/lec05.tex" 1790873788.04364 932 0dd10f85eb77ad98e4b7da14b2702f63 ""
+  "main.aux" 1790873790.33083 787 b818fb7236cbdec1f2ccec1edba82b63 "pdflatex"
+  "main.out" 1790873790.33147 1337 93d4622d5106c82a71ac62d8c15bfa42 "pdflatex"
+  "main.tex" 1790871964.6778 1288 2305bba6ed0a1208feaf00412aa3dcb3 ""
+  "main.toc" 1790873790.33176 419 eb916fa30e0b9b028ef7cb24323aab04 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
