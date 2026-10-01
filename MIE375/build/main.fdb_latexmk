@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1790784804.52894 "main.tex" "build/main.pdf" "main" 1790784806.45453 0
+["pdflatex"] 1790880826.08972 "main.tex" "build/main.pdf" "main" 1790880827.3659 0
   "../template/preamble.tex" 1790268355.96652 7062 52f4b5047ae684fcbab0281e7e19e6e9 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -54,6 +54,7 @@
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb" 1255129361 122174 a7a08406857c9530a0320a2517f60370 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb" 1255129361 112593 fda2373ba4420af33949610de4c28fe8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb" 1254269338 27863 09ce3735688ffde955e72da27c95b61a ""
+  "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb" 1254269338 28109 6d61305ed3d0eb794ebe36f15cf44aa0 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb" 1254269338 27802 5c876bb2c4040caaf035d60bd74a86bd ""
   "/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii" 1461363279 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "/usr/local/texlive/2025/texmf-dist/tex/generic/atbegshi/atbegshi.sty" 1575674566 24708 5584a51a7101caf7e6bbf1fc27d8f7b1 ""
@@ -202,14 +203,15 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1771962573 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "build/main.aux" 1790784806.27269 662 091167eead7d7e82e8109f2cf03605b8 "pdflatex"
-  "build/main.out" 1790784806.27332 1064 289509c488239136cff125bbe58792bd "pdflatex"
-  "build/main.toc" 1790784806.27361 335 77b90fe0a1d7bf7c220a28c9078fb0e1 "pdflatex"
+  "build/main.aux" 1790880827.23935 770 d0be2d66df50f7638987f76046adab6c "pdflatex"
+  "build/main.out" 1790880827.23973 1237 efba4278f960afa502ea17d4bec346fb "pdflatex"
+  "build/main.toc" 1790880827.23991 402 beb43b9bd8518aed32323a4fe432a7d4 "pdflatex"
   "entries/lec01.tex" 1790784334.74857 6438 24b8a9bb36778fe0e657e2061af31962 ""
   "entries/lec02.tex" 1790784359.14008 8912 12e6c69e48bd6815395ae61497555ec5 ""
   "entries/lec03.tex" 1790784804.37467 12914 d35c02c76bd968b82236ff09274b5fe8 ""
-  "entries/lec04.tex" 1790784370.10593 13085 fcfa477215680a1d2380745788ce3b2a ""
-  "main.tex" 1790784646.54113 1262 42e634253caed8742a0df37bccb1a8f4 ""
+  "entries/lec04.tex" 1790871673.89907 13319 6ad50d00503b478cc1c69b7e3128efa9 ""
+  "entries/lec05.tex" 1790880823.37912 6426 a9270c772d8d13d26ee9525200dc5b77 ""
+  "main.tex" 1790871964.6778 1288 2305bba6ed0a1208feaf00412aa3dcb3 ""
   (generated)
   "build/main.aux"
   "build/main.log"

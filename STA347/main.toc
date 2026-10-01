@@ -2,11 +2,12 @@
 \contentsline {subsection}{Limiting Processes}{3}{section*.3}%
 \contentsline {subsection}{Function Limits}{5}{section*.4}%
 \contentsline {section}{Lecture 2: Probability Measure}{6}{section*.5}%
-\contentsline {section}{Lecture 3: Independence, Random Variables and Distributions}{8}{section*.6}%
-\contentsline {subsection}{Random Variables}{8}{section*.7}%
-\contentsline {section}{Lecture 4: Random Variables \& Distributions}{12}{section*.8}%
-\contentsline {section}{Lecture 5 (Sep 22, 2026)}{13}{section*.9}%
-\contentsline {subsection}{Expectation}{13}{section*.10}%
-\contentsline {section}{Lecture 6 (Sep 24, 2026)}{17}{section*.11}%
-\contentsline {section}{Lecture 7: Chapter 4 - Inequalities}{19}{section*.12}%
-\contentsline {section}{Lecture 8 (Oct 1, 2026)}{24}{section*.13}%
+\contentsline {section}{Lecture 3: Independence, Random Variables and Distributions}{9}{section*.6}%
+\contentsline {subsection}{Random Variables}{9}{section*.7}%
+\contentsline {section}{Lecture 4: Random Variables \& Distributions}{14}{section*.8}%
+\contentsline {section}{Lecture 5: Expectation}{16}{section*.9}%
+\contentsline {subsection}{Expectation}{16}{section*.10}%
+\contentsline {section}{Lecture 6: Independence and Expectation, Variance}{22}{section*.11}%
+\contentsline {section}{Lecture 7: Chapter 4 - Inequalities}{24}{section*.12}%
+\contentsline {subsection}{Hoeffding's Inequality (Thm 4.4)}{25}{section*.13}%
+\contentsline {section}{Lecture 8 (Oct 1, 2026)}{29}{section*.14}%

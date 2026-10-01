@@ -1,22 +1,132 @@
-\newlecture[???he dindt post it yet so idk][Oct 1, 2026]
+% !TeX root = ../main.tex
+
+\newlecture[Cash Matching][Oct 1, 2026]
 
 \header{Cash Matching Problem}
 A series of future obligations must be met.
 \\You have various bonds you can invest in, where the portfolio could be used to meet the obligation.
 \\Choose portfolio of minimum cost that has enough money to meet the obligation (optimization!!)
 
-Assumptions:
+\begin{center}
+\begin{tikzpicture}[yscale=0.9]
+    % period columns
+    \fill[green!15] (1.6,-5.0) rectangle (2.4,1.4);
+    \fill[yellow!25] (3.6,-5.0) rectangle (4.4,1.4);
+    \fill[magenta!15] (5.6,-5.0) rectangle (6.4,1.4);
+    \node at (2,-4.75) {1};
+    \node at (4,-4.75) {2};
+    \node at (6,-4.75) {3};
+    % obligation
+    \node[left] at (0,0) {Obligation:};
+    \draw[->] (0,0) -- (7.5,0);
+    \draw[->, thick] (2,0) -- (2,0.6) node[right] {$y_1$};
+    \draw[->, thick] (4,0) -- (4,1.1) node[right] {$y_2$};
+    \draw[->, thick] (6,0) -- (6,0.8) node[right] {$y_3$};
+    % bond 1
+    \node[left] at (0,-1.4) {Bond 1};
+    \draw[->] (0,-1.4) -- (7.5,-1.4);
+    \draw[->, thick] (2,-1.4) -- (2,-0.6) node[right] {$F_1$};
+    % bond 2
+    \node[left] at (0,-2.8) {Bond 2};
+    \draw[->] (0,-2.8) -- (7.5,-2.8);
+    \draw[->, thick] (2,-2.8) -- (2,-2.3) node[right] {$C_2$};
+    \draw[->, thick] (4,-2.8) -- (4,-1.9) node[right] {$C_2 + F_2$};
+    % bond 3
+    \node[left] at (0,-4.2) {Bond 3};
+    \draw[->] (0,-4.2) -- (7.5,-4.2);
+    \draw[->, thick] (2,-4.2) -- (2,-3.7) node[right] {$C_3$};
+    \draw[->, thick] (4,-4.2) -- (4,-3.7) node[right] {$C_3$};
+    \draw[->, thick] (6,-4.2) -- (6,-3.3) node[right] {$C_3 + F_3$};
+    % number and price of bonds
+    \node at (8.4,0.6) {\underline{\# of bonds}};
+    \node at (10.1,0.6) {\underline{Price}};
+    \foreach \i/\y in {1/-1.4, 2/-2.8, 3/-4.2} {
+        \node at (8.4,\y) {$x_\i$};
+        \node at (10.1,\y) {$p_\i$};
+    }
+\end{tikzpicture}
+\end{center}
+Let $y_t$ be the obligation at time $t$, and $x_i$ the number of bond $i$ (price $p_i$, coupon $C_i$, face $F_i$) we buy.
+
+Assumptions (the problem can be solved under each one):
 \begin{enumerate}[label = \arabic*)]
     \item No reinvestment of excess cash is allowed.
-    \item Excess cash can be held at zero interest fron one period to the next.
+    \item Excess cash can be held at zero interest from one period to the next.
     \item Excess cash can be reinvested at the appropriate forward rate.
 \end{enumerate}
 
 Constrained optimization?????
+\\Yes: the objective (total cost) and every constraint are \dbb{linear} in the unknowns, so each model is a \rb{linear program} (LP), solvable with e.g.\ Excel Solver.
 
-Note \# of bonds should always be non-negative!
-$z_i$ is the possible excess cash generated, when positive, could be carried forward for reinvestment
+Note \# of bonds should always be non-negative! ($x_i \geq 0$, no short selling)
 
-Model 2 will never be worse than model one, worst case the same (z=0) than model 1, thus it is superior.
+\heading{Model 1: Without Reinvestment}
+Each period's cash flow from the bonds must cover that period's obligation on its own:
+\[\boxed{\begin{aligned}
+    \min_{x_1,x_2,x_3} \quad & p_1x_1 + p_2x_2 + p_3x_3\\
+    \text{s.t.} \quad & F_1x_1 + C_2x_2 + C_3x_3 \geq y_1\\
+    & (F_2 + C_2)x_2 + C_3x_3 \geq y_2\\
+    & (F_3 + C_3)x_3 \geq y_3\\
+    & x_1, x_2, x_3 \geq 0
+\end{aligned}}\]
 
-Model 3: investment with forward rate.
+\heading{Model 2: Reinvestment at Zero Rate}
+$z_i$ is the possible excess cash generated, when positive, could be carried forward for reinvestment.
+\\Excess $z_1$ is subtracted at time 1 and added back (with no interest) at time 2:
+\[\boxed{\begin{aligned}
+    \min_{x_1,x_2,x_3} \quad & p_1x_1 + p_2x_2 + p_3x_3\\
+    \text{s.t.} \quad & F_1x_1 + C_2x_2 + C_3x_3 - z_1 \geq y_1\\
+    & (F_2 + C_2)x_2 + C_3x_3 + z_1 - z_2 \geq y_2\\
+    & (F_3 + C_3)x_3 + z_2 \geq y_3\\
+    & x_i \geq 0, \quad z_1, z_2 \geq 0
+\end{aligned}}\]
+Model 2 will never be worse than model one, worst case the same ($z=0$) than model 1, thus it is superior.
+
+\heading{Model 3: Reinvestment at Forward Rate}
+Model 3: investment with forward rate. Excess $z_1$ carried from time 1 to 2 now grows by $(1+f_{1,2})$:
+\[\boxed{\begin{aligned}
+    \min_{x_1,x_2,x_3} \quad & p_1x_1 + p_2x_2 + p_3x_3\\
+    \text{s.t.} \quad & F_1x_1 + C_2x_2 + C_3x_3 - z_1 \geq y_1\\
+    & (F_2 + C_2)x_2 + C_3x_3 + (1+f_{1,2})z_1 - z_2 \geq y_2\\
+    & (F_3 + C_3)x_3 + (1+f_{2,3})z_2 \geq y_3\\
+    & x_i \geq 0, \quad z_1, z_2 \geq 0
+\end{aligned}}\]
+Similarly, as long as forward rates are non-negative, $(1+f)z \geq z$, so Model 3 is never worse than Model 2.
+
+\begin{example}[Cash Matching Spreadsheet]
+    Four bonds (face \$100, annual coupons), bond $i$ maturing at time $i$, and obligations $(10, 200, 30, 50)$ at times 1--4.
+    \\The term structure uses \dbb{continuous compounding}: discount factors $d(0,i) = e^{-s_i i}$, and reinvesting from $i-1$ to $i$ multiplies by $e^{f_{i-1,i}}$ (e.g.\ $e^{0.04} = 1.0408$).
+    \begin{center}
+    \begin{tabular}{c|ccc|cccc|c}
+        \toprule
+        & \multicolumn{3}{c|}{Term structure} & \multicolumn{4}{c|}{Bond cash flows} & \\
+        Time & $s_i$ & $f_{i-1,i}$ & $d(0,i)$ & 1 (3\%) & 2 (4\%) & 3 (2\%) & 4 (5\%) & Obligation\\
+        \midrule
+        1 & 3\% & 3.0\% & 0.9704 & 103 & 4 & 2 & 5 & 10\\
+        2 & 3.5\% & 4.0\% & 0.9324 & & 104 & 2 & 5 & 200\\
+        3 & 4\% & 5.0\% & 0.8869 & & & 102 & 5 & 30\\
+        4 & 4.2\% & 4.8\% & 0.8454 & & & & 105 & 50\\
+        \midrule
+        \multicolumn{4}{r|}{Price} & 99.96 & 100.85 & 94.27 & 102.71 & \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    Each price is the bond's cash flows discounted at the spot rates, e.g.\ $p_1 = 103(0.9704) = 99.96$. Optimal portfolios:
+    \begin{center}
+    \begin{tabular}{lccccc}
+        \toprule
+        Model & $x_1$ & $x_2$ & $x_3$ & $x_4$ & Total cost\\
+        \midrule
+        1) No reinvestment & 0 & 1.8950 & 0.2708 & 0.4762 & \$265.546\\
+        2) Zero rate ($z_1 = 0.484$) & 0 & 1.8903 & 0.2708 & 0.4762 & \$265.077\\
+        3) Forward rate ($z = 21.25, 9.97, 9.19$) & 0.2104 & 1.7828 & 0.2626 & 0.3843 & \$265.059\\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \begin{itemize}
+        \item In Model 1, time 1 receives $\$10.50 > \$10$: the extra \$0.50 is wasted, since it can't be carried forward.
+        \item In Model 2, that excess ($z_1 = 0.484$) is carried to time 2, so slightly fewer of bond 2 are needed.
+        \item Cost decreases $1 \to 2 \to 3$, as expected.
+        \item Model 3's cost equals the PV of the obligations at the spot rates: $10(0.9704) + 200(0.9324) + 30(0.8869) + 50(0.8454) = \$265.059$. With reinvestment at the forward rates, every dollar moves through time exactly as the term structure says, so no portfolio can do better than this.
+    \end{itemize}
+\end{example}
