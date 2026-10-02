@@ -8,12 +8,12 @@ In STA237:
     \sum_{x}^{}x\cdot p(x) &\text{if } X \text{ discrete}\\
     \int xf(x)\,dx &\text{if } X \text{ continuous}
 \end{cases*}\]
-for this course, we are defining probability via "measure theory", so we need to revisit the definition of expectation.
+for this course, we are defining probability via ``measure theory'', so we need to revisit the definition of expectation.
 
-Under the "measure theory" perspective:
+Particularly, under the ``measure theory'' perspective:
 \[E(X) = \int x\, dP \quad \Rightarrow P = \text{probability measure}\]
 \[\int xf(x)\,dx \quad \Rightarrow \quad \int x\, dP\]
-"Reinmann Integral" \aside{(integrating against a measure $dP$ instead of $dx$; this is the Lebesgue integral)}
+``Riemann Integral'' \aside{(integrating against a measure $dP$ instead of $dx$; this is the Lebesgue integral)}
 
 \begin{definition}[Simple Expectation][5.1]
     If $X$ only takes finitely many values $x_1, \dots, x_n$, and $A_i = \left\{\omega: X(\omega) = x_i\right\}$, define the expectation of $X$ by:
@@ -32,7 +32,7 @@ Under the "measure theory" perspective:
 
 
 \begin{example}[][5.1.2]
-    $P$ is uniform measure on $\Omega = [0,1]$, and
+    $P$ is uniform measure on $\Omega = [0,1)$, and
     \[X(\omega) = \begin{cases}
         5 & \omega > \frac{1}{3} \\
         3 & \omega \leq \frac{1}{3}
@@ -136,7 +136,7 @@ Recall, when we defined the integral:
     \node at (3.5,0.6) {$\cdots$};
 \end{tikzpicture}
 \end{center}
-When it comes to Reinmann integral, we are no longer cutting $X$ axis into tiny intervals, but cutting each set into tiny subsets and caculate the sum of $x$ times the measure of each tiny subset.
+When it comes to the Riemann integral, we are no longer cutting $X$ axis into tiny intervals, but cutting each set into tiny subsets and calculate the sum of $x$ times the measure of each tiny subset.
 \begin{align*}
     E(X) &= \inf \left\{E(Z): \quad Z\text{ is simple and } Z \geq X \text{ a.s.}\right\}\\
     &= \sup \left\{E(Y): \quad Y \text{ is simple and } Y \leq X \text{ a.s.}\right\}
@@ -158,7 +158,7 @@ When it comes to Reinmann integral, we are no longer cutting $X$ axis into tiny 
     \node[anchor=west, red!70!black] at (6.7,3.2) {red $Y$ $\to$ lower bound of $X$};
 \end{tikzpicture}
 \end{center}
-"Squeeze the R.V. $X$ via two simple R.V.'s $Y$ and $Z$, with one captures the upper bound and the others captures the lower bound".
+``Squeeze the R.V. $X$ via two simple R.V.'s $Y$ and $Z$, with one capturing the upper bound and the other capturing the lower bound''.
 \\Proof: Since $X$ is bounded, $|X| < M$ a.s.
 \[L = \sup \left\{EY: \quad Y \text{ simple and }Y\leq X \text{ a.s.}\right\}\]
 \[U = \inf\left\{EZ: \quad Z \text{ simple and }Z \geq X \text{ a.s.}\right\}\]
@@ -271,7 +271,7 @@ Remark: Def 5.4. only provides a definition of $E(X)$ when $X$ is non-negative, 
 \end{enumerate}
 
 \begin{proposition}[Properties of Expected Values][5.6]
-    If R.V. $X$ is either bounded, non-negative or integrable. Proposition 5.2. always holds.
+    If R.V. $X$ is either bounded, non-negative or integrable, Proposition 5.2 holds.
 \end{proposition}
 \begin{enumerate}
     \item $X$ and $Y$ may not need to be simple, if they are bounded, non-negative or integrable, the 3 properties (prop 5.2) also hold.
