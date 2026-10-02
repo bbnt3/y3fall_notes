@@ -19,7 +19,7 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
     An infinite collection of events $\left\{E_\alpha :\alpha \in \mathcal{I}\right\}$ are independent. Then for a finite subset $\mathcal{J} \subseteq \mathcal{I}$, the events $\left\{E_\beta : \beta \in \mathcal{J}\right\}$ are independent.
 \end{proposition}
 
-\subsection{Random Variables}
+\subsection{Random Variables and Distributions}
 \begin{definition}[Random Variables][3.1]
     Given a sample space $\Omega$, a function $X: \Omega \rightarrow \mathbb{R}$ is a random variable.
 \end{definition}
@@ -31,9 +31,9 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
 \end{example}
 
 \begin{theorem}[Distribution][3.2]
-    A random variable $X$ and probability measure $P$ induce a probability measure $\mu$ on $R$ defined by
-    \[\mu(A) = p(X \in A) = p(\left\{\omega\in \Omega: X(\omega)\in A\right\})\]
-    for any $A \subseteq R$
+    A random variable $X$ and probability measure $P$ induce a probability measure $\mu$ on $\R$ defined by
+    \[\mu(A) = P(X \in A) = P(\left\{\omega\in \Omega: X(\omega)\in A\right\})\]
+    for any $A \subseteq \R$.
     \aside{$\mu$ is a measure on the real number set: $\mu(\{0,1\})$ and $\mu([0,1))$ each return a certain value.}
     \\ $\mu(A)$ takes a real number set $A$ as input, and equals $P$ of the \aside{pre-image of $A$ w.r.t.\ r.v.\ $X$}, i.e.\ $P(\Omega_A) = \mu(A)$ where $\Omega_A = \left\{\omega\in\Omega: X(\omega)\in A\right\}$.
 \end{theorem}
@@ -81,25 +81,25 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
 \\proof:
 \begin{enumerate}
     \item $\mu(B) \in [0,1]$ is trivial, since $P$ is a probability measure.
-    \item Since $X(\omega) \in R $ for all $\omega \in \Omega$.
-    \[\mu(R) = p(\underset{\Omega}{ \left\{\omega : \omega \in \Omega, X(\omega)\in R\right\} }) = p(\Omega) = 1\]
-    \item Consider disjoint sets $A_1, A_2, \dots \subseteq R$ and define $E_i = \left\{\omega: X(\omega) \in A_i\right\}$
+    \item Since $X(\omega) \in \R$ for all $\omega \in \Omega$.
+    \[\mu(\R) = P(\underset{\Omega}{ \left\{\omega : \omega \in \Omega, X(\omega)\in \R\right\} }) = P(\Omega) = 1\]
+    \item Consider disjoint sets $A_1, A_2, \dots \subseteq \R$ and define $E_i = \left\{\omega: X(\omega) \in A_i\right\}$
     \\(e.g. $E_1 = \left\{\omega: X(\omega)\in A_1\right\}$, $E_2 = \left\{\omega: X(\omega)\in A_2\right\}$)
     \\Since $X$ is a function, it is impossible for $X(\omega) = a$ and $X(\omega) = b$ when $a\neq b$, so the $E_i$'s are also disjoint. Then
     \begin{align*}
-        \mu\left(\bigcup_{i=1}^{\infty}A_i\right) &= p\left(X(\omega) \in \bigcup_{i=1}^{\infty}A_i\right) \\
-        &= p\left(\bigcup_{i=1}^{\infty}E_i\right) \quad \text{we know } E_i\text{'s are disjoint} \\
-        &= \sum_{i=1}^{\infty}p(E_i) \\
+        \mu\left(\bigcup_{i=1}^{\infty}A_i\right) &= P\left(X(\omega) \in \bigcup_{i=1}^{\infty}A_i\right) \\
+        &= P\left(\bigcup_{i=1}^{\infty}E_i\right) \quad \text{we know } E_i\text{'s are disjoint} \\
+        &= \sum_{i=1}^{\infty}P(E_i) \\
         &= \sum_{i=1}^{\infty}\mu(A_i)
     \end{align*}
 \end{enumerate}
 \hfill $\square$
 
 \begin{definition}[The Cumulative Distribution Function][3.3]
-    A random variable $X$ and measure $p$ generate the cumulative distribution function (CDF) defined by
-    \[F(x) = \mu((-\infty, x]) = p(X \leq x)\]
-    where $p(X\leq x)$ is a short-hand notation for
-    \[p(\left\{\omega: \omega \in \Omega, X(\omega) \in (-\infty, x]\right\})\]
+    A random variable $X$ and measure $P$ generate the cumulative distribution function (CDF) defined by
+    \[F(x) = \mu((-\infty, x]) = P(X \leq x)\]
+    where $P(X\leq x)$ is a short-hand notation for
+    \[P(\left\{\omega: \omega \in \Omega, X(\omega) \in (-\infty, x]\right\})\]
 \end{definition}
 
 \begin{theorem}[][3.3.1]
@@ -109,13 +109,13 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
 
 \begin{example}[Uniform Distribution][3.3.2]
     $P$ is uniform on $[0,1]$ and $X(\omega)=\omega$
-    \\For $x\in[0,1]$
+    \\For $x\in[0,1)$
     \begin{align*}
         F(x) &= \mu((-\infty, x]) & \leftarrow& \text{by definition of CDF} \\
-        &= p(X \leq x) & \leftarrow& \text{by Thm 3.2 (definition of distribution)} \\
-        &= p\left(\left\{\omega :X(\omega) \in (-\infty, x]\right\}\right) \\
-        &= p((-\infty, x]) & \leftarrow& \text{by }X(\omega) = \omega \\
-        &= p([0,x]) & \leftarrow& \text{because $P$ is a uniform/Lebesgue measure} \\
+        &= P(X \leq x) & \leftarrow& \text{by Thm 3.2 (definition of distribution)} \\
+        &= P\left(\left\{\omega :X(\omega) \in (-\infty, x]\right\}\right) \\
+        &= P((-\infty, x]) & \leftarrow& \text{by }X(\omega) = \omega \\
+        &= P([0,x]) & \leftarrow& \text{because $P$ is a uniform/Lebesgue measure} \\
         &= x
     \end{align*}
 \end{example}
@@ -123,18 +123,18 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
 \begin{theorem}[Properties of Distribution Function][3.4]
     A distribution function satisfies the following properties:
     \begin{enumerate}[label = \roman*)]
-        \item For all $x \leq y \in R, F(x) \leq F(y)$
+        \item For all $x \leq y \in \R, F(x) \leq F(y)$
         \item $\lim_{x \to -\infty} F(x) = 0 $ and $\lim_{x \to +\infty} F(x) = 1 $
         \item $F$ is right-continuous
     \end{enumerate}
     proof:
         \begin{enumerate}[label = \roman*)]
-            \item $x\leq y \in R$
+            \item $x\leq y \in \R$
             \[F(x) = \mu((-\infty, x]), F(y) = \mu((-\infty, y])\]
             Since $x\leq y$, \quad $(-\infty, x] \subseteq (-\infty, y]$
             \[\mu((-\infty, x])\leq \mu((-\infty, y])\]
-            "bigger set, bigger probability"
-            \[(A \subseteq B, \quad p(A) \leq p(B) \quad / \quad \mu(A)\leq \mu(B))\]
+            ``bigger set, bigger probability''
+            \[(A \subseteq B, \quad P(A) \leq P(B) \quad / \quad \mu(A)\leq \mu(B))\]
             \item Define $A_n = \left\{X\leq -n\right\}, \quad n\geq 0$
             \\Then $A_1 \supseteq A_2 \supseteq A_3 \supseteq \dots $
             \begin{center}
@@ -151,9 +151,9 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
             \end{center}
             \begin{align*}
                 \bigcap_{n=1}^{\infty} A_n &= \phi \\
-                \lim_{n \to \infty} F(-n) &= \lim_{n \to \infty} p(A_n) \\
-                &= p\left(\bigcap_{n=1}^{\infty}A_n\right) \\
-                &= p(\phi) = 0
+                \lim_{n \to \infty} F(-n) &= \lim_{n \to \infty} P(A_n) \\
+                &= P\left(\bigcap_{n=1}^{\infty}A_n\right) \\
+                &= P(\phi) = 0
             \end{align*}
             Define $B_n = \left\{X\leq n\right\}$,
             \\then $B_1 \subseteq B_2 \subseteq \dots$
@@ -171,16 +171,16 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
             \end{center}
             \[\bigcup_{n=1}^{\infty} B_n = \Omega\]
             \begin{align*}
-                \lim_{n \to \infty} F(n) &= \lim_{n \to \infty} p(B_n) \\
-                &= p\left(\bigcup_{n=1}^{\infty}B_n\right) \\
-                &= p(\Omega) = 1
+                \lim_{n \to \infty} F(n) &= \lim_{n \to \infty} P(B_n) \\
+                &= P\left(\bigcup_{n=1}^{\infty}B_n\right) \\
+                &= P(\Omega) = 1
             \end{align*}
-            \item Fix $x\in R$ and let $h_n \downarrow 0 \quad (h_n \geq 0 \quad h_n \rightarrow 0, h_1 \geq h_2 \geq \dots)$
+            \item Fix $x\in \R$ and let $h_n \downarrow 0 \quad (h_n \geq 0 \quad h_n \rightarrow 0, h_1 \geq h_2 \geq \dots)$
             \\Define $C_n = \left\{X\leq x+h_n\right\}$
             \\then $C_1 \supseteq C_2 \supseteq \dots$
             \[\lim_{n \to \infty} C_n = \bigcap_{n=1}^{\infty} C_n = \left\{X\leq x\right\} \]
             Therefore
-            \[\lim_{n \to \infty} F(x+h_n) = \lim_{n \to \infty} p(C_n) = p(\bigcap_{n=1}^{\infty} C_n) = p(X \leq x) = F(x) \]
+            \[\lim_{n \to \infty} F(x+h_n) = \lim_{n \to \infty} P(C_n) = P(\bigcap_{n=1}^{\infty} C_n) = P(X \leq x) = F(x) \]
             Hence
             \[\lim_{h \downarrow 0}F(x+h) = F(x)  \]
             So $F$ is right-continuous.
