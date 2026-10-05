@@ -1,5 +1,6 @@
 \contentsline {section}{Lecture 1: Introduction/Syllabus}{2}{section*.2}%
 \contentsline {section}{Lecture 2: Present Value and Internal Rate of Return}{6}{section*.3}%
 \contentsline {section}{Lecture 3: Fixed Income Securities}{11}{section*.4}%
-\contentsline {section}{Lecture 4: The Term Structure of Interest Rates}{17}{section*.5}%
-\contentsline {section}{Lecture 5: Cash Matching}{23}{section*.6}%
+\contentsline {section}{Lecture 4: The Term Structure of Interest Rates}{18}{section*.5}%
+\contentsline {section}{Lecture 5: Cash Matching}{24}{section*.6}%
+\contentsline {section}{Lecture 6: Bond Price Sensitivity}{28}{section*.7}%

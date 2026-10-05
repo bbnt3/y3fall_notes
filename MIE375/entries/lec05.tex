@@ -130,3 +130,52 @@ Similarly, as long as forward rates are non-negative, $(1+f)z \geq z$, so Model 
         \item Model 3's cost equals the PV of the obligations at the spot rates: $10(0.9704) + 200(0.9324) + 30(0.8869) + 50(0.8454) = \$265.059$. With reinvestment at the forward rates, every dollar moves through time exactly as the term structure says, so no portfolio can do better than this.
     \end{itemize}
 \end{example}
+
+\begin{example}[Writing Out the Linear Programs]
+    Same four bonds and obligations as above, with $x_j$ = units of bond $j$ and $z_t$ = cash carried from year $t$ to year $t+1$. All three models share the objective (prices from the term structure):
+    \[\min \quad 99.955890x_1 + 100.850739x_2 + 94.271563x_3 + 102.710952x_4\]
+    \b{1) No reinvestment:}
+    \[\begin{aligned}
+        103x_1 + 4x_2 + 2x_3 + 5x_4 &\geq 10\\
+        104x_2 + 2x_3 + 5x_4 &\geq 200\\
+        102x_3 + 5x_4 &\geq 30\\
+        105x_4 &\geq 50\\
+        x_1, x_2, x_3, x_4 &\geq 0
+    \end{aligned}\]
+    $x^* = (0, 1.894976, 0.270775, 0.476190)$, minimum cost \$265.546082. Year 1 has an excess of 0.502406 that is lost.
+
+    \b{2) Carry cash at zero interest:} each $z_t$ leaves year $t$ and arrives unchanged in year $t+1$.
+    \[\begin{aligned}
+        103x_1 + 4x_2 + 2x_3 + 5x_4 - z_1 &\geq 10\\
+        104x_2 + 2x_3 + 5x_4 + z_1 - z_2 &\geq 200\\
+        102x_3 + 5x_4 + z_2 - z_3 &\geq 30\\
+        105x_4 + z_3 &\geq 50\\
+        x \geq 0, \quad z_1, z_2, z_3 &\geq 0
+    \end{aligned}\]
+    $x^* = (0, 1.890324, 0.270775, 0.476190)$, $z^* = (0.483798, 0, 0)$, minimum cost \$265.076934. Cash left after year 1 is available in year 2.
+
+    \b{3) Reinvest at the forward rate:} each $z_t$ grows by the forward factor $e^{f_{t,t+1}}$ before arriving, i.e.\ $e^{0.04}$, $e^{0.05}$, $e^{0.048}$.
+    \[\begin{aligned}
+        103x_1 + 4x_2 + 2x_3 + 5x_4 - z_1 &\geq 10\\
+        104x_2 + 2x_3 + 5x_4 + 1.040811z_1 - z_2 &\geq 200\\
+        102x_3 + 5x_4 + 1.051271z_2 - z_3 &\geq 30\\
+        105x_4 + 1.049171z_3 &\geq 50\\
+        x \geq 0, \quad z_1, z_2, z_3 &\geq 0
+    \end{aligned}\]
+    Excel's portfolio, with minimum cost \$265.058524:
+    \[x^* \approx (0.210372,\ 1.782777,\ 0.262646,\ 0.384342), \qquad z^* \approx (21.24643,\ 9.96928,\ 9.192063)\]
+
+    \begin{center}
+    \begin{tabular}{lr}
+        \toprule
+        Model & Minimum initial cost\\
+        \midrule
+        No reinvestment & \$265.546082\\
+        Zero interest carry & \$265.076934\\
+        Forward rate carry & \$265.058524\\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \ul{Allowing cash to move across years reduces the purchase cost.}
+    \\At forward rates, \dbb{several portfolios} have the same minimum cost, so the optimal $x^*$ is not unique (Excel's answer is just one of them). This matches the note above: any portfolio that exactly meets the obligations costs the PV of the obligations.
+\end{example}

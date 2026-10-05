@@ -224,15 +224,17 @@ The whole cash flow stream of purchasing a bond can be mapped out, where $P$ is 
 
 The IRR of this cash flow stream is the \rb{yield} (or \rb{yield to maturity}) of the bond, denoted $\lambda$. It captures the rate of return from buying the bond and holding it to maturity.
 
-\[\boxed{P = \underbrace{\frac{F}{\left(1+\frac{\lambda}{m}\right)^n}}_{\text{PV of face}} + \underbrace{\frac{C/m}{\lambda/m}\left[1-\frac{1}{\left(1+\frac{\lambda}{m}\right)^n}\right]}_{\text{annuity formula}}}\]
-\begin{itemize}
-    \item $P$: price including accrued interest
-    \item $F$: face value
-    \item $m$: coupon payments per year (compounding $m$ times per year), 
-    \item $C/m$: amount of each coupon payment
-    \item $n$: amount of coupon payments remaining.
-    \item $\lambda/m$: yield per coupon period, $n$: coupon payments left
-\end{itemize}
+\[\boxed{\begin{gathered}
+    P = \underbrace{\frac{F}{\left(1+\frac{\lambda}{m}\right)^n}}_{\text{PV of face}} + \underbrace{\frac{C/m}{\lambda/m}\left[1-\frac{1}{\left(1+\frac{\lambda}{m}\right)^n}\right]}_{\text{annuity formula}}\\[4pt]
+    \begin{array}{@{}l@{}}
+        P: \text{price including accrued interest}\\
+        F: \text{face value}\\
+        m: \text{coupon payments per year (compounding $m$ times per year)}\\
+        C/m: \text{amount of each coupon payment}\\
+        \lambda/m: \text{yield per coupon period}\\
+        n: \text{coupon payments remaining}
+    \end{array}
+\end{gathered}}\]
 Note this equation \underline{only} holds when $\lambda$ is the yield, with \underline{exactly} $n$ coupon payments remaining.
 
 \begin{example}
@@ -301,7 +303,7 @@ The \b{current yield} is the coupon divided by the current price. In this course
     Check: $CY = 7.875/135.49 = 5.812\%$. YTM and CY can differ a lot, since CY ignores the face value repaid at maturity.
 \end{example}
 
-\begin{minipage}{\textwidth}
+\noindent\begin{minipage}{\textwidth}
 \header{Bond Ratings}
 Standard \& Poor's and Moody's are two independent bond rating agencies.
 \begin{center}
@@ -324,3 +326,4 @@ Standard \& Poor's and Moody's are two independent bond rating agencies.
 \end{tabular}
 \end{center}
 \end{minipage}
+\par

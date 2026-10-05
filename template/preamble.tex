@@ -147,6 +147,11 @@
 % wrap math content in \boldsymbol{}.
 \newcommand{\rb}[1]{{\color{red!70!black}\boldmath\textbf{#1}}}
 \renewcommand{\b}[1]{\textbf{#1}}
-\definecolor{navy}{RGB}{0,0,128}
+\definecolor{navy}{RGB}{0,32,96}
 \newcommand{\dbb}[1]{{\color{navy}\textbf{#1}}}
 \newcommand{\db}[1]{{\color{navy}#1}}
+
+% Wider padding inside \boxed{} equations (default \fboxsep is 3pt).
+% Scoped to \boxed only, so \colorbox highlights (e.g. \hly) are unaffected.
+\let\oldboxed\boxed
+\renewcommand{\boxed}[1]{{\setlength{\fboxsep}{10pt}\oldboxed{#1}}}
