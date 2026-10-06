@@ -1,6 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1791297419.8255 "main.tex" "main.pdf" "main" 1791297420.98039 0
+["pdflatex"] 1791304737.78634 "/Users/Bonnie/Desktop/y3fall_notes/STA302/main.tex" "main.pdf" "main" 1791304739.08315 0
   "../template/preamble.tex" 1791217002.22348 7297 0fd95ed11559886728354c86763c30db ""
+  "/Users/Bonnie/Desktop/y3fall_notes/STA302/main.tex" 1791304737.21108 1377 c39fedff6e9401ec674acf519499743c ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -251,10 +252,10 @@
   "figures/whats_wrong_pairs.png" 1790441512.40203 40119 4af5c05d3cd1ac721a9afe66f6d0f6e3 ""
   "figures/whats_wrong_resid.png" 1790441512.32816 59731 af0fa1d841a9c42ac633c98d6f8c1ff3 ""
   "figures/you_try_residuals.png" 1790441511.84654 37417 0d667d1424b614ff946d244d584e0669 ""
-  "main.aux" 1791297420.8039 4066 e3e4aa8efa4f8d3635f19c19aef03e9c "pdflatex"
-  "main.out" 1791297420.80457 5584 bbe820131f878d5aa0033e0b3af57465 "pdflatex"
-  "main.tex" 1791297369.25535 1377 c39fedff6e9401ec674acf519499743c ""
-  "main.toc" 1791297420.80477 1943 4e8f8c3bce9d4b6fe526aabf4d34b114 "pdflatex"
+  "main.aux" 1791304738.9144 4066 e3e4aa8efa4f8d3635f19c19aef03e9c "pdflatex"
+  "main.out" 1791304738.91519 5584 bbe820131f878d5aa0033e0b3af57465 "pdflatex"
+  "main.tex" 1791304737.21108 1377 c39fedff6e9401ec674acf519499743c ""
+  "main.toc" 1791304738.91544 1943 4e8f8c3bce9d4b6fe526aabf4d34b114 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
