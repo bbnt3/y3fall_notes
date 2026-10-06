@@ -1,7 +1,6 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  26 SEP 2026 12:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  6 OCT 2026 10:36
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
@@ -940,7 +939,7 @@ Package hyperref Warning: Suppressing empty link on input line 16.
 
 Package hyperref Warning: Suppressing empty link on input line 16.
 
-<figures/anscombe_scatter.png, id=179, 1585.925pt x 1063.975pt>
+<figures/anscombe_scatter.png, id=224, 1585.925pt x 1063.975pt>
 File: figures/anscombe_scatter.png Graphic file (type png)
 <use figures/anscombe_scatter.png>
 Package pdftex.def Info: figures/anscombe_scatter.png  used on input line 58.
@@ -948,7 +947,7 @@ Package pdftex.def Info: figures/anscombe_scatter.png  used on input line 58.
 
 
 [12]
-<figures/assumptions_picture.png, id=186, 817.0525pt x 524.96124pt>
+<figures/assumptions_picture.png, id=231, 817.0525pt x 524.96124pt>
 File: figures/assumptions_picture.png Graphic file (type png)
 <use figures/assumptions_picture.png>
 Package pdftex.def Info: figures/assumptions_picture.png  used on input line 91
@@ -961,7 +960,7 @@ Package pdftex.def Info: figures/assumptions_picture.png  used on input line 91
 [14 <./figures/assumptions_picture.png (PNG copy)>]
 
 [15]
-<figures/you_try_residuals.png, id=205, 1235.61626pt x 1096.095pt>
+<figures/you_try_residuals.png, id=250, 1235.61626pt x 1096.095pt>
 File: figures/you_try_residuals.png Graphic file (type png)
 <use figures/you_try_residuals.png>
 Package pdftex.def Info: figures/you_try_residuals.png  used on input line 210.
@@ -977,17 +976,17 @@ qnorm(model$residuals)
 
 
 [16 <./figures/you_try_residuals.png (PNG copy)>]
-<figures/qq_shapes.png, id=214, 972.63374pt x 1022.82124pt>
+<figures/qq_shapes.png, id=259, 972.63374pt x 1022.82124pt>
 File: figures/qq_shapes.png Graphic file (type png)
 <use figures/qq_shapes.png>
 Package pdftex.def Info: figures/qq_shapes.png  used on input line 240.
 (pdftex.def)             Requested size: 258.36668pt x 271.68622pt.
-<figures/anscombe1_diag.png, id=215, 1145.27875pt x 1078.0275pt>
+<figures/anscombe1_diag.png, id=260, 1145.27875pt x 1078.0275pt>
 File: figures/anscombe1_diag.png Graphic file (type png)
 <use figures/anscombe1_diag.png>
 Package pdftex.def Info: figures/anscombe1_diag.png  used on input line 257.
 (pdftex.def)             Requested size: 225.4804pt x 212.22955pt.
-<figures/anscombe2_diag.png, id=216, 1710.39pt x 1092.08pt>
+<figures/anscombe2_diag.png, id=261, 1710.39pt x 1092.08pt>
 File: figures/anscombe2_diag.png Graphic file (type png)
 <use figures/anscombe2_diag.png>
 Package pdftex.def Info: figures/anscombe2_diag.png  used on input line 262.
@@ -995,12 +994,12 @@ Package pdftex.def Info: figures/anscombe2_diag.png  used on input line 262.
 
 
 [17 <./figures/qq_shapes.png (PNG copy)>]
-<figures/anscombe3_diag.png, id=222, 1710.39pt x 1092.08pt>
+<figures/anscombe3_diag.png, id=267, 1710.39pt x 1092.08pt>
 File: figures/anscombe3_diag.png Graphic file (type png)
 <use figures/anscombe3_diag.png>
 Package pdftex.def Info: figures/anscombe3_diag.png  used on input line 267.
 (pdftex.def)             Requested size: 225.4804pt x 143.95837pt.
-<figures/anscombe4_diag.png, id=223, 1710.39pt x 1092.08pt>
+<figures/anscombe4_diag.png, id=268, 1710.39pt x 1092.08pt>
 File: figures/anscombe4_diag.png Graphic file (type png)
 <use figures/anscombe4_diag.png>
 Package pdftex.def Info: figures/anscombe4_diag.png  used on input line 272.
@@ -1011,7 +1010,7 @@ Overfull \hbox (10.76633pt too wide) in paragraph at lines 282--285
 10.95 lm(Price ~ Food + Decor + Service + InMichelin)\T1/lmr/m/n/10.95 ). 
  []
 
-<figures/michelin_resid.png, id=224, 2007.5pt x 660.4675pt>
+<figures/michelin_resid.png, id=269, 2007.5pt x 660.4675pt>
 File: figures/michelin_resid.png Graphic file (type png)
 <use figures/michelin_resid.png>
 Package pdftex.def Info: figures/michelin_resid.png  used on input line 288.
@@ -1021,7 +1020,7 @@ Package pdftex.def Info: figures/michelin_resid.png  used on input line 288.
 [18 <./figures/anscombe1_diag.png (PNG copy)> <./figures/anscombe2_diag.png (PN
 G copy)> <./figures/anscombe3_diag.png (PNG copy)> <./figures/anscombe4_diag.pn
 g (PNG copy)> <./figures/michelin_resid.png (PNG copy)>]
-<figures/whats_wrong_resid.png, id=229, 1027.84pt x 1019.81pt>
+<figures/whats_wrong_resid.png, id=274, 1027.84pt x 1019.81pt>
 File: figures/whats_wrong_resid.png Graphic file (type png)
 <use figures/whats_wrong_resid.png>
 Package pdftex.def Info: figures/whats_wrong_resid.png  used on input line 325.
@@ -1030,7 +1029,7 @@ Package pdftex.def Info: figures/whats_wrong_resid.png  used on input line 325.
 
 
 [19]
-<figures/whats_wrong_pairs.png, id=237, 958.58125pt x 1009.7725pt>
+<figures/whats_wrong_pairs.png, id=282, 958.58125pt x 1009.7725pt>
 File: figures/whats_wrong_pairs.png Graphic file (type png)
 <use figures/whats_wrong_pairs.png>
 Package pdftex.def Info: figures/whats_wrong_pairs.png  used on input line 340.
@@ -1044,7 +1043,7 @@ Overfull \hbox (8.88844pt too wide) in paragraph at lines 368--369
 []\T1/lmr/m/n/10.95 Recall: [][][][][][] 
  []
 
-<figures/nyc_pairs.png, id=243, 1042.89626pt x 1045.9075pt>
+<figures/nyc_pairs.png, id=288, 1042.89626pt x 1045.9075pt>
 File: figures/nyc_pairs.png Graphic file (type png)
 <use figures/nyc_pairs.png>
 Package pdftex.def Info: figures/nyc_pairs.png  used on input line 388.
@@ -1052,17 +1051,17 @@ Package pdftex.def Info: figures/nyc_pairs.png  used on input line 388.
 
 
 [21]
-<figures/nyc_resid.png, id=251, 1860.9525pt x 1022.82124pt>
+<figures/nyc_resid.png, id=296, 1860.9525pt x 1022.82124pt>
 File: figures/nyc_resid.png Graphic file (type png)
 <use figures/nyc_resid.png>
 Package pdftex.def Info: figures/nyc_resid.png  used on input line 393.
 (pdftex.def)             Requested size: 399.29463pt x 219.44968pt.
-<figures/caution_pairs.png, id=252, 1150.2975pt x 1078.0275pt>
+<figures/caution_pairs.png, id=297, 1150.2975pt x 1078.0275pt>
 File: figures/caution_pairs.png Graphic file (type png)
 <use figures/caution_pairs.png>
 Package pdftex.def Info: figures/caution_pairs.png  used on input line 407.
 (pdftex.def)             Requested size: 225.4804pt x 211.3084pt.
-<figures/caution_resid.png, id=253, 992.70876pt x 743.77875pt>
+<figures/caution_resid.png, id=298, 992.70876pt x 743.77875pt>
 File: figures/caution_resid.png Graphic file (type png)
 <use figures/caution_resid.png>
 Package pdftex.def Info: figures/caution_resid.png  used on input line 411.
@@ -1070,25 +1069,108 @@ Package pdftex.def Info: figures/caution_resid.png  used on input line 411.
 
 
 [22 <./figures/nyc_pairs.png (PNG copy)> <./figures/nyc_resid.png (PNG copy)>])
-
+(./entries/week04.tex
 
 [23 <./figures/caution_pairs.png (PNG copy)> <./figures/caution_resid.png (PNG 
-copy)>] (./main.aux)
+copy)>]
+
+[24]
+<figures/w4_vst_sqrt.png, id=320, 507.3354pt x 459.27585pt>
+File: figures/w4_vst_sqrt.png Graphic file (type png)
+<use figures/w4_vst_sqrt.png>
+Package pdftex.def Info: figures/w4_vst_sqrt.png  used on input line 100.
+(pdftex.def)             Requested size: 281.85587pt x 255.1604pt.
+
+
+[25]
+<figures/w4_poisson_sqrt.png, id=326, 903.73634pt x 461.8053pt>
+File: figures/w4_poisson_sqrt.png Graphic file (type png)
+<use figures/w4_poisson_sqrt.png>
+Package pdftex.def Info: figures/w4_poisson_sqrt.png  used on input line 123.
+(pdftex.def)             Requested size: 291.2458pt x 148.8236pt.
+
+
+[26 <./figures/w4_vst_sqrt.png (PNG copy)>]
+
+[27 <./figures/w4_poisson_sqrt.png (PNG copy)>]
+
+[28]
+Overfull \hbox (5.0199pt too wide) in paragraph at lines 258--261
+[]\T1/lmtt/m/n/10.95 mag <- read.csv("magazines.csv")\T1/lmr/m/n/10.95 , 204 ma
+g-a-zines. Pre-dict $\OML/lmm/m/it/10.95 Y \OT1/lmr/m/n/10.95 =$ \T1/lmtt/m/n/1
+0.95 AdRevenue \T1/lmr/m/n/10.95 from $\OML/lmm/m/it/10.95 X[] \OT1/lmr/m/n/10.
+95 =$ \T1/lmtt/m/n/10.95 AdPages\T1/lmr/m/n/10.95 ,
+ []
+
+<figures/w4_magazine_resid.png, id=343, 512.03294pt x 301.3659pt>
+File: figures/w4_magazine_resid.png Graphic file (type png)
+<use figures/w4_magazine_resid.png>
+Package pdftex.def Info: figures/w4_magazine_resid.png  used on input line 262.
+
+(pdftex.def)             Requested size: 258.36668pt x 152.06212pt.
+<figures/w4_magazine_log.png, id=344, 522.15076pt x 361.71135pt>
+File: figures/w4_magazine_log.png Graphic file (type png)
+<use figures/w4_magazine_log.png>
+Package pdftex.def Info: figures/w4_magazine_log.png  used on input line 273.
+(pdftex.def)             Requested size: 258.36668pt x 178.98419pt.
+
+
+[29 <./figures/w4_magazine_resid.png (PNG copy)>]
+<figures/w4_magazine_allresid.png, id=351, 963.72044pt x 292.33215pt>
+File: figures/w4_magazine_allresid.png Graphic file (type png)
+<use figures/w4_magazine_allresid.png>
+Package pdftex.def Info: figures/w4_magazine_allresid.png  used on input line 2
+77.
+(pdftex.def)             Requested size: 446.26582pt x 135.37099pt.
+<figures/w4_boxcox_y.png, id=352, 963.72044pt x 423.86356pt>
+File: figures/w4_boxcox_y.png Graphic file (type png)
+<use figures/w4_boxcox_y.png>
+Package pdftex.def Info: figures/w4_boxcox_y.png  used on input line 291.
+(pdftex.def)             Requested size: 422.77664pt x 185.95079pt.
+
+
+[30 <./figures/w4_magazine_log.png (PNG copy)> <./figures/w4_magazine_allresid.
+png (PNG copy)>]
+<figures/w4_boxcox_x_resid.png, id=358, 602.37045pt x 179.2296pt>
+File: figures/w4_boxcox_x_resid.png Graphic file (type png)
+<use figures/w4_boxcox_x_resid.png>
+Package pdftex.def Info: figures/w4_boxcox_x_resid.png  used on input line 320.
+
+(pdftex.def)             Requested size: 399.29463pt x 118.80876pt.
+
+
+[31 <./figures/w4_boxcox_y.png (PNG copy)> <./figures/w4_boxcox_x_resid.png (PN
+G copy)>]
+<figures/w4_boxcox_xy_resid.png, id=365, 602.37045pt x 175.97745pt>
+File: figures/w4_boxcox_xy_resid.png Graphic file (type png)
+<use figures/w4_boxcox_xy_resid.png>
+Package pdftex.def Info: figures/w4_boxcox_xy_resid.png  used on input line 346
+.
+(pdftex.def)             Requested size: 399.29463pt x 116.65297pt.
+
+
+[32 <./figures/w4_boxcox_xy_resid.png (PNG copy)>]
+
+[33]
+
+[34])
+
+[35] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 46CFB78902789EF4AD0135A79C5D19F5;3468.
+(rerunfilecheck)             Checksum: BBE820131F878D5AA0033E0B3AF57465;5584.
  ) 
 Here is how much of TeX's memory you used:
- 23310 strings out of 473190
- 437178 string characters out of 5715801
- 809300 words of memory out of 5000000
- 46038 multiletter control sequences out of 15000+600000
- 653186 words of font info for 103 fonts, out of 8000000 for 9000
+ 23494 strings out of 473190
+ 440812 string characters out of 5715801
+ 809340 words of memory out of 5000000
+ 46169 multiletter control sequences out of 15000+600000
+ 662798 words of font info for 108 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,13n,90p,541b,712s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,15n,90p,541b,727s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texliv
 e/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2025/tex
@@ -1108,10 +1190,10 @@ lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb><
 ist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/
 type1/public/lm/lmtti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/pub
 lic/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (23 pages, 1615582 bytes).
+Output written on main.pdf (35 pages, 3131393 bytes).
 PDF statistics:
- 384 PDF objects out of 1000 (max. 8388607)
- 295 compressed objects within 3 object streams
- 74 named destinations out of 1000 (max. 500000)
- 216 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 525 PDF objects out of 1000 (max. 8388607)
+ 414 compressed objects within 5 object streams
+ 122 named destinations out of 1000 (max. 500000)
+ 328 words of extra memory for PDF output out of 10000 (max. 10000000)
 

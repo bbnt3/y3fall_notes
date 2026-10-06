@@ -14,3 +14,12 @@
 \contentsline {subsection}{Linear Regression Assumptions}{12}{section*.15}%
 \contentsline {subsection}{Verifying Assumptions with Residual Plots}{14}{section*.16}%
 \contentsline {subsection}{Additional Conditions for Multiple Regression Models}{19}{section*.17}%
+\contentsline {section}{Week 4: Mitigating Violated Assumptions}{24}{section*.18}%
+\contentsline {subsection}{Review: Assumptions and Residual Plots}{24}{section*.19}%
+\contentsline {subsection}{Introduction to Transformations}{24}{section*.20}%
+\contentsline {subsection}{Variance Stabilizing Transformations}{25}{section*.21}%
+\contentsline {subsection}{Box--Cox Transformations for Normality}{27}{section*.22}%
+\contentsline {subsection}{Application and Interpretation of Transformed Models}{29}{section*.23}%
+\contentsline {subsection}{Impact of Violations on Sampling Distributions}{32}{section*.24}%
+\contentsline {subsection}{Gauss--Markov Theorem}{34}{section*.25}%
+\contentsline {subsection}{Summary}{34}{section*.26}%
