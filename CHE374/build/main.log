@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 SEP 2026 15:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  7 OCT 2026 11:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -885,7 +885,7 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 1
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-<figures/life_cycle_cost.png, id=92, 948.54375pt x 488.82625pt>
+<figures/life_cycle_cost.png, id=127, 948.54375pt x 488.82625pt>
 File: figures/life_cycle_cost.png Graphic file (type png)
 <use figures/life_cycle_cost.png>
 Package pdftex.def Info: figures/life_cycle_cost.png  used on input line 19.
@@ -905,7 +905,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [4]
 
 [5]
-<figures/simple_vs_compound.png, id=114, 1450.41875pt x 842.14626pt>
+<figures/simple_vs_compound.png, id=149, 1450.41875pt x 842.14626pt>
 File: figures/simple_vs_compound.png Graphic file (type png)
 <use figures/simple_vs_compound.png>
 Package pdftex.def Info: figures/simple_vs_compound.png  used on input line 179
@@ -923,63 +923,62 @@ Package pdftex.def Info: figures/simple_vs_compound.png  used on input line 179
 [9]
 
 [10]
-<figures/period_timeline.png, id=147, 1282.7925pt x 299.1175pt>
+<figures/period_timeline.png, id=184, 1282.7925pt x 299.1175pt>
 File: figures/period_timeline.png Graphic file (type png)
 <use figures/period_timeline.png>
-Package pdftex.def Info: figures/period_timeline.png  used on input line 93.
+Package pdftex.def Info: figures/period_timeline.png  used on input line 84.
 (pdftex.def)             Requested size: 281.85587pt x 65.71933pt.
-
-
-[11 <./figures/period_timeline.png (PNG copy)>]
-<figures/young_professional_cf.png, id=153, 965.6075pt x 634.37pt>
+<figures/young_professional_cf.png, id=185, 965.6075pt x 634.37pt>
 File: figures/young_professional_cf.png Graphic file (type png)
 <use figures/young_professional_cf.png>
 Package pdftex.def Info: figures/young_professional_cf.png  used on input line 
-147.
+138.
 (pdftex.def)             Requested size: 234.8775pt x 154.304pt.
 
 
+[11 <./figures/period_timeline.png (PNG copy)>]
+
 [12 <./figures/young_professional_cf.png (PNG copy)>]
-<figures/arithmetic_gradient.png, id=165, 1089.06876pt x 572.1375pt>
+<figures/arithmetic_gradient.png, id=200, 1089.06876pt x 572.1375pt>
 File: figures/arithmetic_gradient.png Graphic file (type png)
 <use figures/arithmetic_gradient.png>
-Package pdftex.def Info: figures/arithmetic_gradient.png  used on input line 21
-5.
+Package pdftex.def Info: figures/arithmetic_gradient.png  used on input line 20
+6.
 (pdftex.def)             Requested size: 258.36668pt x 135.72691pt.
-<figures/geometric_gradient.png, id=166, 1337.99875pt x 552.0625pt>
+<figures/geometric_gradient.png, id=201, 1337.99875pt x 552.0625pt>
 File: figures/geometric_gradient.png Graphic file (type png)
 <use figures/geometric_gradient.png>
-Package pdftex.def Info: figures/geometric_gradient.png  used on input line 227
+Package pdftex.def Info: figures/geometric_gradient.png  used on input line 218
 .
 (pdftex.def)             Requested size: 281.85587pt x 116.29034pt.
 
 
-[13 <./figures/arithmetic_gradient.png (PNG copy)>]
-<figures/math_equivalence.png, id=172, 1702.36pt x 482.80376pt>
+[13 <./figures/arithmetic_gradient.png (PNG copy)> <./figures/geometric_gradien
+t.png (PNG copy)>]
+<figures/math_equivalence.png, id=208, 1702.36pt x 482.80376pt>
 File: figures/math_equivalence.png Graphic file (type png)
 <use figures/math_equivalence.png>
-Package pdftex.def Info: figures/math_equivalence.png  used on input line 250.
+Package pdftex.def Info: figures/math_equivalence.png  used on input line 241.
 (pdftex.def)             Requested size: 352.31625pt x 99.91838pt.
 
 
-[14 <./figures/geometric_gradient.png (PNG copy)> <./figures/math_equivalence.p
-ng (PNG copy)>]
+[14 <./figures/math_equivalence.png (PNG copy)>]
 
 [15]
 
 [16]
-<figures/gradient_G_only.png, id=193, 668.4975pt x 308.15125pt>
+<figures/gradient_G_only.png, id=228, 668.4975pt x 308.15125pt>
 File: figures/gradient_G_only.png Graphic file (type png)
 <use figures/gradient_G_only.png>
-Package pdftex.def Info: figures/gradient_G_only.png  used on input line 410.
+Package pdftex.def Info: figures/gradient_G_only.png  used on input line 401.
 (pdftex.def)             Requested size: 211.38832pt x 97.4396pt.
 
 
 [17 <./figures/gradient_G_only.png (PNG copy)>]
-<figures/factor_table_10pct.png, id=198, 1130.2225pt x 778.91pt>
+<figures/factor_table_10pct.png, id=233, 1130.2225pt x 778.91pt>
 File: figures/factor_table_10pct.png Graphic file (type png)
 <use figures/factor_table_10pct.png>
-Package pdftex.def Info: figures/factor_table_10pct.png  used on input line 436
+Package pdftex.def Info: figures/factor_table_10pct.png  used on input line 427
 .
 (pdftex.def)             Requested size: 352.31625pt x 242.80263pt.
 
@@ -991,10 +990,10 @@ Package pdftex.def Info: figures/factor_table_10pct.png  used on input line 436
 [20]) (./entries/week03.tex
 
 [21]
-<figures/household_debt_pie.png, id=217, 695.59875pt x 538.01pt>
+<figures/household_debt_pie.png, id=252, 695.59875pt x 538.01pt>
 File: figures/household_debt_pie.png Graphic file (type png)
 <use figures/household_debt_pie.png>
-Package pdftex.def Info: figures/household_debt_pie.png  used on input line 26.
+Package pdftex.def Info: figures/household_debt_pie.png  used on input line 20.
 
 (pdftex.def)             Requested size: 164.41711pt x 127.163pt.
 
@@ -1002,22 +1001,22 @@ Package pdftex.def Info: figures/household_debt_pie.png  used on input line 26.
 [22 <./figures/household_debt_pie.png (PNG copy)>]
 
 [23]
-<figures/bond_face_annotated.png, id=233, 1827.82875pt x 844.15375pt>
+<figures/bond_face_annotated.png, id=268, 1827.82875pt x 844.15375pt>
 File: figures/bond_face_annotated.png Graphic file (type png)
 <use figures/bond_face_annotated.png>
-Package pdftex.def Info: figures/bond_face_annotated.png  used on input line 12
-4.
+Package pdftex.def Info: figures/bond_face_annotated.png  used on input line 11
+1.
 (pdftex.def)             Requested size: 291.2458pt x 134.5006pt.
-<figures/bond_back_annotated.png, id=234, 1392.20125pt x 845.1575pt>
+<figures/bond_back_annotated.png, id=269, 1392.20125pt x 845.1575pt>
 File: figures/bond_back_annotated.png Graphic file (type png)
 <use figures/bond_back_annotated.png>
-Package pdftex.def Info: figures/bond_back_annotated.png  used on input line 12
-6.
+Package pdftex.def Info: figures/bond_back_annotated.png  used on input line 11
+3.
 (pdftex.def)             Requested size: 234.8775pt x 142.5787pt.
-<figures/bond_coupon.png, id=235, 514.92375pt x 256.96pt>
+<figures/bond_coupon.png, id=270, 514.92375pt x 256.96pt>
 File: figures/bond_coupon.png Graphic file (type png)
 <use figures/bond_coupon.png>
-Package pdftex.def Info: figures/bond_coupon.png  used on input line 128.
+Package pdftex.def Info: figures/bond_coupon.png  used on input line 115.
 (pdftex.def)             Requested size: 140.92793pt x 70.32506pt.
 
 
@@ -1025,53 +1024,94 @@ Package pdftex.def Info: figures/bond_coupon.png  used on input line 128.
 ed.png (PNG copy)> <./figures/bond_coupon.png (PNG copy)>]
 
 [25]
-Overfull \hbox (1.42929pt too wide) in paragraph at lines 208--223
+Overfull \hbox (1.42929pt too wide) in paragraph at lines 195--210
  [][] 
  []
 
 
-Overfull \hbox (9.30182pt too wide) in paragraph at lines 227--238
+Overfull \hbox (9.30182pt too wide) in paragraph at lines 214--225
  [][] 
  []
 
 
 
-[26])
+[26]) (./entries/week04.tex
 
-[27] (build/main.aux)
+[27]
+
+[28]
+
+LaTeX Font Warning: Command \boldmath invalid in math mode on input line 57.
+
+
+LaTeX Font Warning: Command \mathversion invalid in math mode on input line 57.
+
+
+
+
+[29]
+
+[30]
+
+[31]
+
+[32]
+
+[33]
+
+[34]) (./entries/week05.tex
+
+[35]
+
+[36]
+
+[37]
+
+[38]
+
+[39]
+
+[40]
+
+[41])
+
+[42] (build/main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: D5EA24146612DB053222FE5B4373592C;2846.
+(rerunfilecheck)             Checksum: 49632DA536AB7F7FB8617FEB6615D9E7;4541.
  ) 
 Here is how much of TeX's memory you used:
- 23399 strings out of 473190
- 439541 string characters out of 5715801
- 804735 words of memory out of 5000000
- 46130 multiletter control sequences out of 15000+600000
- 646828 words of font info for 99 fonts, out of 8000000 for 9000
+ 23569 strings out of 473190
+ 441702 string characters out of 5715801
+ 810778 words of memory out of 5000000
+ 46242 multiletter control sequences out of 15000+600000
+ 649819 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,12n,90p,541b,789s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,12n,90p,541b,844s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texliv
 e/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2025/tex
 mf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2025/texmf-dist/fo
-nts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/p
-ublic/lm/lmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lm
-mib10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb><
-/usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/
-texlive/2025/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/202
-5/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist
-/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2025/texmf-dist/fonts/typ
-e1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/
-lm/lmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pf
-b>
-Output written on build/main.pdf (27 pages, 2401560 bytes).
+nts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/p
+ublic/lm/lmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lm
+mi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmib10.pfb><
+/usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/
+texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/202
+5/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2025/texmf-dis
+t/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
+1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/
+lmri10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
+></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/loca
+l/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2
+025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-d
+ist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on build/main.pdf (42 pages, 2486844 bytes).
 PDF statistics:
- 352 PDF objects out of 1000 (max. 8388607)
- 274 compressed objects within 3 object streams
- 77 named destinations out of 1000 (max. 500000)
- 190 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 512 PDF objects out of 1000 (max. 8388607)
+ 409 compressed objects within 5 object streams
+ 128 named destinations out of 1000 (max. 500000)
+ 246 words of extra memory for PDF output out of 10000 (max. 10000000)
 

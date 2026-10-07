@@ -436,6 +436,9 @@ INPUT ./entries/week04.tex
 INPUT ./entries/week04.tex
 INPUT entries/week04.tex
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbx6.tfm
+INPUT ./entries/week05.tex
+INPUT ./entries/week05.tex
+INPUT entries/week05.tex
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out

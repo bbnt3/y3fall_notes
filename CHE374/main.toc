@@ -15,3 +15,7 @@
 \contentsline {section}{Week 4 - Risk, Reward and Arbitrage}{28}{section*.27}%
 \contentsline {subsection}{4.1 - Capital Asset Pricing Model}{28}{section*.29}%
 \contentsline {subsection}{4.2 - Arbitrage}{32}{section*.31}%
+\contentsline {section}{Week 5 - Comparison Methods}{36}{section*.32}%
+\contentsline {subsection}{5.1 - Project Relationships and Alternatives}{36}{section*.34}%
+\contentsline {subsection}{5.2 - Present Worth and Annual Worth}{37}{section*.36}%
+\contentsline {subsection}{5.3 - Evaluating Mutually Exclusive Projects (PW/AW)}{39}{section*.38}%
