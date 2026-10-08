@@ -1,91 +1,107 @@
-\newlecture[][Oct 8, 2026]
+% !TeX root = ../main.tex
 
-\begin{definition}{Convergence in Probability}{5.4}
-    A sequence of random variables $X_n$ converges in Probability to $X$ if for all $\varepsilon > 0$
-    \[\lim_{n\to \infty} P(\left|X_n - X\right| \leq \varepsilon) = 1\]
+\newlecture[Convergence in Probability and Almost Sure Convergence][Oct 8, 2026]
+
+\begin{definition}[Convergence in Probability][5.4]
+    A sequence of random variables $X_n$ converges in probability to $X$ if for all $\varepsilon > 0$
+    \[\lim_{n\to \infty} P(\left|X_n - X\right| \leq \varepsilon) = 1 \qquad \text{or} \qquad \lim_{n\to \infty} P(\left|X_n - X\right| > \varepsilon) = 0\]
+    and is denoted by $X_n \overset{P}{\longrightarrow} X$.
 \end{definition}
 
 \begin{definition}[Almost Sure Convergence][5.5]
-    A sequence of random variables $X_n$ coverges almost surely to $X$ if
+    A sequence of random variables $X_n$ converges almost surely to $X$ if
     \[P(\lim_{n \to \infty} X_n = X) = 1\]
-    and is denoted by $X_n \overset{a.s.}{\longrightarrow} X$. 
+    and is denoted by $X_n \overset{a.s.}{\longrightarrow} X$.
 \end{definition}
 
-Comparing the two:
-\[X_n \overset{P}{\rightarrow} X \quad \lim_{n\to \infty} P(\left|X_n - X\right| < \varepsilon ) = 1\]
-\[X_n \overset{a.s.}{\longrightarrow} X \quad P(\lim_{n \to \infty} X_n = X) = 1\]
+\heading{Compare the two:}
+\[X_n \overset{P}{\longrightarrow} X \qquad \lim_{n\to \infty} P(\left|X_n - X\right| < \varepsilon ) = 1\]
+\[X_n \overset{a.s.}{\longrightarrow} X \qquad P(\lim_{n \to \infty} X_n = X) = 1\]
+where
 \[\lim_{n \to \infty} X_n = X \Leftrightarrow \left\{\omega: \lim_{n\to \infty} X_n (\omega) = X(\omega)\right\}\]
 \[P(\lim_{n\to \infty} X_n = X) = P(\left\{\omega: \lim_{n \to \infty} X_n (\omega) = X(\omega)\right\})=1\]
+Written in the same form, for all $\varepsilon > 0$:
 \begin{align*}
-    \text{for } &X_n \overset{P}{\rightarrow} X \quad \lim_{n\to \infty} P(\left|X_n - X\right| < \varepsilon) = 1 \\
-    &X_n \overset{a.s.}{\longrightarrow} \quad P(\left|X_n(\omega) - X\right| < \varepsilon a.a.) = 1
+    X_n &\overset{P}{\longrightarrow} X & &\lim_{n\to \infty} P(\left|X_n - X\right| < \varepsilon) = 1 \\
+    X_n &\overset{a.s.}{\longrightarrow} X & &P(\left|X_n(\omega) - X(\omega)\right| < \varepsilon \text{ a.a.}) = 1
 \end{align*}
+\aside{``$\overset{a.s.}{\longrightarrow}$'': the condition holds almost always, i.e.\ on the intersect of the tail (for each $\omega$, eventually \emph{every} $X_n(\omega)$ stays within $\varepsilon$).}
+\\ \aside{``$\overset{P}{\longrightarrow}$'': the condition only needs to be satisfied with probability tending to $1$ at each large $n$, one $n$ at a time.}
 
 \begin{proposition}[][5.5.1]
-    If for all $\varepsilon > 0$, $P(\left|X_n - X\right| > \varepsilon i.o.) = 0$, then
+    If for all $\varepsilon > 0$, $P(\left|X_n - X\right| > \varepsilon \text{ i.o.}) = 0$, then
     \[X_n \overset{a.s.}{\longrightarrow} X\]
     \begin{proof}
-        \[P(\lim_{n\to \infty}X_n = X) = P(\forall \varepsilon > 0, \left|X_n(\omega) - X(\omega)\right| < \varepsilon a.a.)\]
-        \[= 1-P(\left|X_n(\omega) - X(\omega)\right|) \geq 1\]
-        \[= 1-0 = 1\]
+        \begin{align*}
+            P(\lim_{n\to \infty}X_n = X) &= P(\forall \varepsilon > 0,\ \left|X_n(\omega) - X(\omega)\right| < \varepsilon \text{ a.a.})\\
+            &= 1-P(\left|X_n(\omega) - X(\omega)\right| \geq \varepsilon \text{ i.o.}) & &\text{(Corollary 5.2.1)}\\
+            &= 1-0 = 1
+        \end{align*}
+        \aside{(Strictly: ``$\forall \varepsilon > 0$'' is an uncountable intersection, so take $\varepsilon = \frac{1}{m}$, $m = 1, 2, \dots$; then $P(\exists m: |X_n - X| \geq \frac1m \text{ i.o.}) \leq \sum_m P(|X_n - X| \geq \frac1m \text{ i.o.}) = 0$. Also $>\varepsilon$ vs.\ $\geq\varepsilon$ doesn't matter since $\varepsilon$ is arbitrary.)}
     \end{proof}
 \end{proposition}
 
 \begin{proposition}[][5.5.2]
-    If for all $\varepsilon > 0$, 
+    If for all $\varepsilon > 0$,
     \[\sum_{n=1}^{\infty} P(\left|X_n(\omega) - X(\omega)\right| \geq \varepsilon) < \infty\]
-    then $X_n \overset{a.s.}{\longrightarrow} X$
+    then $X_n \overset{a.s.}{\longrightarrow} X$.
     \begin{proof}
-        Applying the Berel Cantelli Lemma
+        Applying the Borel-Cantelli Lemma.
+        \\ \aside{(Let $A_n = \{|X_n - X| \geq \varepsilon\}$. By Borel-Cantelli i), $\sum P(A_n) < \infty \Rightarrow P(A_n \text{ i.o.}) = 0$ for every $\varepsilon$, so Prop 5.5.1 gives $X_n \overset{a.s.}{\longrightarrow} X$.)}
     \end{proof}
 \end{proposition}
 
 \begin{proposition}[][5.5.3]
-    If $X_n \overset{a.s.}{\longrightarrow} X$, then $X_n \overset{P}{\rightarrow}X$. 
-    \\The opposite doesn't hold, $X_n \overset{P}{\rightarrow} X \nRightarrow X_n \overset{a.s.}{\longrightarrow} X$
+    If $X_n \overset{a.s.}{\longrightarrow} X$, then $X_n \overset{P}{\longrightarrow}X$.
+    \\The opposite doesn't hold: $X_n \overset{P}{\longrightarrow} X \nRightarrow X_n \overset{a.s.}{\longrightarrow} X$.
     \begin{proof}
-        For any $\varepsilon > 0$, let 
-        \[E_n = \left\{\omega: \exists m \geq n, \left|X_m(\omega) - X(\omega)\right| \geq \varepsilon\right\}\]
-        Observe that $E_{n+1} \leq E_n$
-        \\and if $\omega \in \bigcap_{n=1}^{\infty}$ then
-        \[\lim_{n\to \infty} P(\left|X_n(\omega) - X(\omega)\right|\geq \varepsilon)\]
-        \[\leq \lim_{n\to \infty} P(E_n)\]
-        \[=???\]
-        \[=P(\bigcap_{n=1}^{\infty}E_n)\]
-        \[=P(\left\{\omega : X_n(\omega)....bruh im not done\right\})\]
+        For any $\varepsilon > 0$, let
+        \[E_n = \left\{\omega: \exists m \geq n,\ \left|X_m(\omega) - X(\omega)\right| \geq \varepsilon\right\}\]
+        Observe that $E_{n+1} \subseteq E_n$, and if $\omega \in \bigcap_{n=1}^{\infty}E_n$ then $X_n(\omega) \overset{a.s.}{\not\longrightarrow} X(\omega)$ \aside{(it misses by $\geq \varepsilon$ infinitely often)}.
+        \begin{align*}
+            \lim_{n\to \infty} P(\left|X_n(\omega) - X(\omega)\right|\geq \varepsilon) &\leq \lim_{n\to \infty} P(E_n) & &{}\aside{($\{|X_n - X| \geq \varepsilon\} \subseteq E_n$, take $m = n$)}\\
+            &= P\left(\bigcap_{n=1}^{\infty}E_n\right) & &{}\aside{(Thm 5.1, $E_n \downarrow$)}\\
+            &\leq P(\left\{\omega : X_n(\omega) \not\to X(\omega)\right\}) & &{}\aside{(prof writes ``$=$''; it is only $\subseteq$)}\\
+            &= 0 & &\text{since } X_n \overset{a.s.}{\longrightarrow} X
+        \end{align*}
+        So $\lim_{n\to\infty} P(|X_n - X| \geq \varepsilon) = 0$ for every $\varepsilon > 0$, i.e.\ $X_n \overset{P}{\longrightarrow} X$. The counterexample for the converse is Example 5.5.4.
     \end{proof}
 \end{proposition}
 
 \begin{example}[][5.5.4]
-    $X_n$ independent with $P(X_n = 1) = \frac{1}{n}$, $P(X_n = 0) = 1 - \frac{1}{n}$
-    \\For all $\varepsilon > 0$, 
+    $X_n$ independent with $P(X_n = 1) = \frac{1}{n}$, $P(X_n = 0) = 1 - \frac{1}{n}$.
+    \\For all $\varepsilon > 0$,
     \[P(X_n > \varepsilon) = \frac{1}{n} \to 0 \text{ as }n \to \infty\]
-    So, $X_n \overset{P}{\rightarrow} 0$
+    \aside{(for $\varepsilon \geq 1$ it is $0$; either way $\to 0$)}
+    \\So, $X_n \overset{P}{\longrightarrow} 0$.
     \\However,
-    \[P(X_n = 1 i.o.) = 1,\]
-    \[X_n \overset{a.s.}{\nrightarrow} 0\]
+    \[P(X_n = 1 \text{ i.o.}) = 1\]
+    \aside{(Borel-Cantelli ii): the events $\{X_n = 1\}$ are independent and $\sum \frac1n = \infty$)}
+    \[\Rightarrow X_n \overset{a.s.}{\not\longrightarrow} 0\]
 \end{example}
 
 \begin{theorem}[][5.5.5]
-    If $X_n \overset{P}{\rightarrow} X$, there exists a subsequence such that
+    If $X_n \overset{P}{\longrightarrow} X$, there exists a subsequence such that
     \[X_{n_k} \overset{a.s.}{\longrightarrow} X\]
+    \aside{No proof given in lecture. Idea: pick $n_1 < n_2 < \cdots$ with $P(|X_{n_k} - X| \geq \frac1k) \leq 2^{-k}$. Then $\sum_k P(|X_{n_k} - X| \geq \frac1k) < \infty$, so by Borel-Cantelli i), a.s.\ only finitely many $|X_{n_k} - X| \geq \frac1k$, hence $X_{n_k} \to X$ a.s.}
 \end{theorem}
 
 \begin{theorem}[Continuous Mapping Theorem][5.6]
     If $f$ is a continuous function, then
     \begin{enumerate}[label = \roman*)]
-        \item $X_n \overset{a.s.}{\longrightarrow} X \Rightarrow f(X_n) \overset{a.s.}{\longrightarrow}f(x)$
-        \item $X_n \overset{P}{\rightarrow} X \Rightarrow f(X_n) \overset{P}{\rightarrow} X$
+        \item $X_n \overset{a.s.}{\longrightarrow} X \Rightarrow f(X_n) \overset{a.s.}{\longrightarrow}f(X)$
+        \item $X_n \overset{P}{\longrightarrow} X \Rightarrow f(X_n) \overset{P}{\longrightarrow} f(X)$
     \end{enumerate}
     \begin{proof}
         \begin{enumerate}[label = \roman*)]
             \item $f$ is continuous, it means
-            \[X_n(\omega) \to X(\omega) \Rightarrow f(X_n(\omega) \to f(X(\omega)))\]
+            \[X_n(\omega) \to X(\omega) \Rightarrow f(X_n(\omega)) \to f(X(\omega))\]
+            \aside{so $\{\omega: X_n(\omega) \to X(\omega)\} \subseteq \{\omega: f(X_n(\omega)) \to f(X(\omega))\}$, and the left side has probability $1$.}
             \item For all $\varepsilon > 0$, there exists a $\delta > 0$, such that $\left|X_n(\omega) - X(\omega)\right| \leq \delta$ implies
-            \[f(X_n(\omega)) - f(X(\omega)) \leq \varepsilon\]
-            \[\lim_{n\to\infty}P(\left|X_n(\omega) - X(\omega)\right|\leq \delta) = \lim_{n\to\infty} P(\left|bruh\right|)\]
+            \[\left|f(X_n(\omega)) - f(X(\omega))\right| \leq \varepsilon\]
+            \[\Rightarrow 1 = \lim_{n\to\infty}P(\left|X_n(\omega) - X(\omega)\right|\leq \delta) \leq \lim_{n\to\infty} P(\left|f(X_n(\omega)) - f(X(\omega))\right| \leq \varepsilon) \leq 1\]
+            \aside{(Prof writes ``$=$'' between the two limits; it is ``$\leq$'', from the event inclusion, which is all we need.)}
+            \\ \aside{Caveat: a single $\delta$ working for every $\omega$ needs $f$ \emph{uniformly} continuous. For general continuous $f$, first pick $M$ with $P(|X| > M) < \eta$; $f$ is uniformly continuous on $[-M-1, M+1]$, so the argument above works off an event of probability $< \eta$, and then let $\eta \to 0$.}
         \end{enumerate}
     \end{proof}
 \end{theorem}
-
-% 

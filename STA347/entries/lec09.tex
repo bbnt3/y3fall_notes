@@ -1,21 +1,191 @@
-\newlecture[][Oct 6, 2026]
+% !TeX root = ../main.tex
 
-Chapter 5. Limiting Theorems and Convergences
+\newlecture[Chapter 5 - Limiting Theorems and Convergences][Oct 6, 2026]
 
 \begin{theorem}[Continuity of Measure][5.1]
-    If $\left\{A_n\right\} \uparrow A$ or $\left\{A_n\right\} \downarrow A$, then $\lim_{n\to \infty} P(A_n) = P(A)$
-    \\Note: $\left\{A_n\right\} \uparrow A$ means:
-    \[A_1 \subseteq A_2 \subseteq \cdots \subseteq A_n \subseteq \cdots \to A\]
-    \[\lim_{n\to \infty} \bigcup_{i=1}^n A_i = A\]
-    and $\left\{A_n\right\}\downarrow A$ means:
-    \[A_1 \supseteq A_2 \supseteq \cdots \supseteq A_n \cdots \supseteq \cdots \to A\]
-    \[\lim{n\to \infty} \bigcap_{i=1}^n A_i = A\]
-    Note: $A_1 \subseteq \cdots A_n \subseteq A$ means
-    \[P(A_1) \leq \cdots \leq P(A_n) \leq \cdots \to P(A)\]
+    If $\left\{A_n\right\} \uparrow A$ or $\left\{A_n\right\} \downarrow A$, then $\lim_{n\to \infty} P(A_n) = P(A)$.
+    \\Note:
+    \begin{enumerate}
+        \item $\left\{A_n\right\} \uparrow A$ means:
+        \[A_1 \subseteq A_2 \subseteq \cdots \subseteq A_n \subseteq \cdots \to A, \qquad \lim_{n\to \infty} \bigcup_{i=1}^n A_i = A\]
+        \item $\left\{A_n\right\}\downarrow A$ means:
+        \[A_1 \supseteq A_2 \supseteq \cdots \supseteq A_n \supseteq \cdots \to A, \qquad \lim_{n\to \infty} \bigcap_{i=1}^n A_i = A\]
+    \end{enumerate}
+    \aside{Note: $A_1 \subseteq \cdots \subseteq A_n \subseteq \cdots \to A$ means}
+    \[\aside{$P(A_1) \leq \cdots \leq P(A_n) \leq \cdots \to P(A)$}\]
     \begin{proof}
-        Suppose $\left\{A_n\right\} \uparrow A$
-        \\We let $A_0 = \phi$, and $B_1 = A_1, B_n = A_n \bigcap A_{n-1} $
+        Suppose $\left\{A_n\right\} \uparrow A$.
+        \\We let $A_0 = \varnothing$, and $B_1 = A_1$, $B_n = A_n \cap A_{n-1}^c$ \aside{($B_n$ = the part of $A_n$ not already in $A_{n-1}$)}.
+        \begin{center}
+        \begin{tikzpicture}[scale=0.8, every node/.style={font=\small}]
+            \fill[green!30] (0,0) ellipse (2.4cm and 1.3cm);
+            \fill[red!25] (-0.3,-0.1) ellipse (1.7cm and 0.95cm);
+            \fill[blue!15] (-0.6,-0.2) ellipse (1.05cm and 0.6cm);
+            \draw (0,0) ellipse (2.4cm and 1.3cm);
+            \draw (-0.3,-0.1) ellipse (1.7cm and 0.95cm);
+            \draw (-0.6,-0.2) ellipse (1.05cm and 0.6cm);
+            \node at (-0.6,-0.2) {$A_1 = B_1$};
+            \node at (0.9,0.45) {$A_2$};
+            \node at (1.85,0.75) {$A_3$};
+            \node[anchor=west, red!70!black] at (2.8,0.6) {red: $B_2$ = $A_2$ excluding $A_1$};
+            \node[anchor=west, green!50!black] at (2.8,-0.1) {green: $B_3$ = $A_3$ excluding $A_2$};
+        \end{tikzpicture}
+        \end{center}
+        Observe that:
+        \begin{enumerate}
+            \item $\bigcup_{i=1}^n A_i = \bigcup_{i=1}^n B_i$
+            \item $B_i$'s are disjoint.
+        \end{enumerate}
+        Therefore, $P\left(\bigcup_{i=1}^n A_i\right) = P\left(\bigcup_{i=1}^n B_i\right)$, and
+        \begin{align*}
+            P(A) = P\left(\lim_{n\to\infty}\bigcup_{i=1}^n A_i\right) &= P\left(\lim_{n\to\infty}\bigcup_{i=1}^n B_i\right) = P\left(\bigcup_{i=1}^\infty B_i\right)\\
+            &= \lim_{n\to\infty}\sum_{i=1}^n P(B_i) & &{}\aside{(countable additivity, $B_i$'s disjoint)}\\
+            &= \lim_{n\to\infty} P(A_n) & &{}\aside{($\textstyle\sum_{i=1}^n P(B_i) = P(\bigcup_{i=1}^n B_i) = P(A_n)$)}
+        \end{align*}
+        For the case $A_n \downarrow A$, the proof is similar; one may take the complement:
+        \[\left\{A_n\right\}\downarrow A \;\Rightarrow\; \left\{A_n^c\right\}\uparrow A^c\]
+        \aside{so $P(A_n) = 1 - P(A_n^c) \to 1 - P(A^c) = P(A)$.}
     \end{proof}
-
-    bro my laptop died will update later
 \end{theorem}
+
+\begin{example}[][5.1.1]
+    If each $A_n = \left[0, 1-\frac{1}{n}\right]$, then
+    \[\lim_{n\to\infty} A_n = [0,1) = A, \qquad A_n \uparrow A\]
+    If we apply a uniform measure $P(\cdot)$ on $\left\{A_n\right\}$,
+    \[P(A) = \lim_{n\to\infty} P(A_n) = \lim_{n\to\infty}\left(1-\frac{1}{n}\right) = 1\]
+\end{example}
+
+\begin{definition}[Tail Events][5.2]
+    Consider a sequence $A_1, A_2, \dots \subseteq \Omega$, define the tail events as:
+    \[\limsup_{n\to\infty} A_n = \left\{A_n \text{ i.o.}\right\} = \bigcap_{n=1}^\infty \bigcup_{k=n}^\infty A_k\]
+    \[\liminf_{n\to\infty} A_n = \left\{A_n \text{ a.a.}\right\} = \bigcup_{n=1}^\infty \bigcap_{k=n}^\infty A_k\]
+    Note: the notations
+    \\ i.o.\ means \dbb{infinitely often}
+    \\ a.a.\ means \dbb{almost always}
+\end{definition}
+
+\[\limsup_{n\to\infty} A_n = \left\{A_n \text{ i.o.}\right\} = \bigcap_{n=1}^\infty \underbrace{\bigcup_{k=n}^\infty A_k}_{\text{tail union}}\]
+You want to find the smallest set that contains the union of your tail events:
+\\``elements that will appear infinitely many times''.
+\\ \aside{$\omega \in \{A_n \text{ i.o.}\}$ $\Leftrightarrow$ for every $n$ there is some $k \geq n$ with $\omega \in A_k$.}
+\[\liminf_{n\to\infty} A_n = \left\{A_n \text{ a.a.}\right\} = \bigcup_{n=1}^\infty \underbrace{\bigcap_{k=n}^\infty A_k}_{\text{tail intersect}}\]
+You want to find the largest set that contains the intersect of your tail events:
+\\``elements that will appear in all tail sets''.
+\\ \aside{$\omega \in \{A_n \text{ a.a.}\}$ $\Leftrightarrow$ there is some $n$ with $\omega \in A_k$ for all $k \geq n$ (in all but finitely many $A_k$).}
+
+\begin{example}[Tail Events][\relax]
+    Suppose $\left\{A_n\right\}$ is constructed as follows:
+    \[A_i = \begin{cases}
+        \left\{\textcolor{blue}{\text{blue}}, \textcolor{red}{\text{red}}\right\} & i \text{ odd}\\
+        \left\{\textcolor{blue}{\text{blue}}, \textcolor{green!60!black}{\text{green}}, \textcolor{orange}{\text{orange}}\right\} & i \text{ even}
+    \end{cases}\]
+    \begin{center}
+    \begin{tikzpicture}[scale=1, every node/.style={font=\small}]
+        \foreach \i in {1,...,6} {
+            \node at (1.2*\i,0.6) {$A_{\i}$};
+            \fill[blue] (1.2*\i,0) circle (4pt);
+        }
+        \foreach \i in {1,3,5} \fill[red] (1.2*\i,-0.5) circle (4pt);
+        \foreach \i in {2,4,6} {
+            \fill[green!60!black] (1.2*\i,-0.5) circle (4pt);
+            \fill[orange] (1.2*\i,-1.0) circle (4pt);
+        }
+        \node at (8.3,-0.3) {$\cdots$};
+    \end{tikzpicture}
+    \end{center}
+    \[\limsup_{n\to\infty} A_n = \left\{A_n \text{ i.o.}\right\} = \left\{\textcolor{blue}{\text{blue}}, \textcolor{red}{\text{red}}, \textcolor{green!60!black}{\text{green}}, \textcolor{orange}{\text{orange}}\right\}\]
+    \[\liminf_{n\to\infty} A_n = \left\{A_n \text{ a.a.}\right\} = \left\{\textcolor{blue}{\text{blue}}\right\}\]
+    $\left\{A_n \text{ i.o.}\right\} \Rightarrow$ ``the elements that will appear infinitely often in the tail of $\left\{A_n\right\}$''
+    \\$\left\{A_n \text{ a.a.}\right\} \Rightarrow$ ``the elements that will appear almost always in the tail of $\left\{A_n\right\}$''
+\end{example}
+
+\begin{corollary}[][5.2.1]
+    \[P(A_n \text{ i.o.}) = 1 - P(A_n^c \text{ a.a.})\]
+    \aside{(By De Morgan, $\{A_n \text{ i.o.}\}^c = \bigcup_{n}\bigcap_{k\geq n}A_k^c = \{A_n^c \text{ a.a.}\}$.)}
+\end{corollary}
+
+\begin{proposition}[][5.2.2]
+    \[P(A_n \text{ a.a.}) \leq \liminf_{n\to\infty} P(A_n) \leq \limsup_{n\to\infty} P(A_n) \leq P(A_n \text{ i.o.})\]
+    i.e.
+    \[P\left(\liminf_{n\to\infty} A_n\right) \leq \liminf_{n\to\infty} P(A_n) \leq \limsup_{n\to\infty} P(A_n) \leq P\left(\limsup_{n\to\infty} A_n\right)\]
+    \begin{proof}
+        We prove the 1st ``$\leq$''.
+        \[\liminf_{n\to\infty} A_n = \bigcup_{n=1}^\infty \underbrace{\bigcap_{k=n}^\infty A_k}_{B_n}\]
+        We let $B_n = \bigcap_{k=n}^\infty A_k$ \aside{(``the intersect of tail events'')}, so $\liminf_{n\to\infty} A_n = \bigcup_{n=1}^\infty B_n$.
+        \\Notice that $B_1 \subseteq B_2 \subseteq \cdots \subseteq B_n \subseteq \cdots$ as $B_n = \bigcap_{k=n}^\infty A_k$:
+        \begin{align*}
+            B_1 &= A_1 \cap A_2 \cap \cdots \cap A_n \cap \cdots\\
+            B_2 &= \phantom{A_1 \cap{}} A_2 \cap \cdots \cap A_n \cap \cdots \qquad \Rightarrow B_1 \subseteq B_2
+        \end{align*}
+        So $B_n \uparrow B = \bigcup_{n=1}^\infty B_n$, and $\lim_{n\to\infty} P(B_n) = P(B)$ by continuity of measure (Thm 5.1).
+        \begin{align*}
+            P\left(\liminf_{n\to\infty} A_n\right) &= P\left(\bigcup_{n=1}^\infty B_n\right) = P\left(\lim_{n\to\infty} B_n\right)\\
+            &= \lim_{n\to\infty} P(B_n) & &\text{as $B_n$ converges}\\
+            &= \liminf_{n\to\infty} P(B_n) = \liminf_{n\to\infty} P\left(\bigcap_{k=n}^\infty A_k\right)\\
+            &\leq \liminf_{n\to\infty} P(A_n) & &\text{because } \textstyle\bigcap_{k=n}^\infty A_k \subseteq A_n
+        \end{align*}
+        The 2nd ``$\leq$'' is by definition.
+        \\The 3rd ``$\leq$'' can be proved similarly.
+        \\ \aside{(Let $C_n = \bigcup_{k=n}^\infty A_k$, so $C_n \downarrow \limsup A_n$. Then $P(\limsup A_n) = \lim P(C_n) = \limsup P(C_n) \geq \limsup P(A_n)$, since $A_n \subseteq C_n$.)}
+    \end{proof}
+\end{proposition}
+
+\begin{theorem}[Borel-Cantelli Lemma][5.3]
+    \begin{enumerate}[label=\roman*)]
+        \item If $\sum_{n=1}^\infty P(A_n) < \infty$, then $P(A_n \text{ i.o.}) = 0$.
+        \item If $\sum_{n=1}^\infty P(A_n) = \infty$ and $\left\{A_n\right\}$ are independent, then $P(A_n \text{ i.o.}) = 1$.
+    \end{enumerate}
+    \begin{proof}
+        \begin{enumerate}[label=\roman*)]
+            \item
+            \[\left\{A_n \text{ i.o.}\right\} = \bigcap_{n=1}^\infty \underbrace{\bigcup_{k=n}^\infty A_k}_{B_n}, \qquad B_n = \bigcup_{k=n}^\infty A_k, \qquad B_n \downarrow B\]
+            \begin{align*}
+                P(A_n \text{ i.o.}) &= P\left(\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k\right) = P\left(\bigcap_{n=1}^\infty B_n\right)\\
+                &= \lim_{n\to\infty} P(B_n) & &\text{as } B_n \downarrow B = \textstyle\bigcap_{n=1}^\infty B_n\\
+                &= \lim_{n\to\infty} P\left(\bigcup_{k=n}^\infty A_k\right)\\
+                &\leq \lim_{n\to\infty} \sum_{k=n}^\infty P(A_k) & &{}\aside{(union bound, Lemma 2.4)}\\
+                &= 0 & &\text{as } \textstyle\sum_{k=1}^\infty P(A_k) < \infty
+            \end{align*}
+            \aside{(The tail $\sum_{k=n}^\infty P(A_k)$ of a convergent series goes to $0$.)}
+
+            \item
+            \begin{align*}
+                1 - P(A_n \text{ i.o.}) &= P\left(\left\{A_n \text{ i.o.}\right\}^c\right)\\
+                &= P\left(\bigcup_{n=1}^\infty \underbrace{\bigcap_{k=n}^\infty A_k^c}_{C_n}\right) & &\text{because } \left\{A_n \text{ i.o.}\right\}^c = \textstyle\bigcup_{n=1}^\infty\bigcap_{k=n}^\infty A_k^c
+            \end{align*}
+            Let $C_n = \bigcap_{k=n}^\infty A_k^c$, $C_n \uparrow C$.
+            \begin{align*}
+                &= P\left(\bigcup_{n=1}^\infty C_n\right) = P\left(\lim_{n\to\infty} C_n\right) & &\text{as } C_n \uparrow C\\
+                &= \lim_{n\to\infty} P(C_n) = \lim_{n\to\infty} P\left(\bigcap_{k=n}^\infty A_k^c\right)\\
+                &= \lim_{n\to\infty}\prod_{k=n}^\infty \left[1 - P(A_k)\right] & &\text{because $\{A_n\}$ independent}
+            \end{align*}
+            \aside{($P(\bigcap_{k=n}^\infty A_k^c) = \prod_{k=n}^\infty P(A_k^c)$; the $A_k^c$ are independent by Prop 2.7.1.)}
+            \\Each factor $1 - P(A_k) \leq 1$, but that alone doesn't give $0$. The missing step: use $1 - x \leq e^{-x}$:
+            \[\prod_{k=n}^\infty\left[1 - P(A_k)\right] \leq \prod_{k=n}^\infty e^{-P(A_k)} = \exp\left\{-\sum_{k=n}^\infty P(A_k)\right\} = e^{-\infty} = 0\]
+            since $\sum_{k=n}^\infty P(A_k) = \infty$ for every $n$. So
+            \[1 - P(A_n \text{ i.o.}) = 0 \;\Rightarrow\; P(A_n \text{ i.o.}) = 1\]
+        \end{enumerate}
+    \end{proof}
+\end{theorem}
+
+\begin{example}[Converse does NOT hold for i)][5.3.1]
+    Uniform measure and $A_n = \left[0, \frac{1}{n}\right]$. Then $A_n \downarrow A = \left\{0\right\}$, and
+    \begin{align*}
+        \left\{A_n \text{ i.o.}\right\} &= \bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k = \bigcap_{n=1}^\infty\bigcup_{k=n}^\infty\left[0, \frac{1}{k}\right]\\
+        &= \left\{0\right\} = \lim_{n\to\infty} A_n
+    \end{align*}
+    \[P(\left\{A_n \text{ i.o.}\right\}) = P(\left\{0\right\}) = 0\]
+    but
+    \[\sum_{n=1}^\infty P(A_n) = \sum_{n=1}^\infty \frac{1}{n} = \infty\]
+    \aside{($P(A_n \text{ i.o.}) = 0$ does not force $\sum P(A_n) < \infty$.)}
+\end{example}
+
+\begin{example}[Independence is needed for ii)][5.3.2]
+    Define $C_1, C_2, \dots$ to be results of a fair coin toss, such that $C_i = 1$ if the $i$-th toss resulted in H.
+    \\Let $A_1, A_2, \dots$ be events such that
+    \[A_j = \left\{\text{the \hlt{1st} toss is H}\right\} \quad \text{for every } j\]
+    Then
+    \[\sum_{n=1}^\infty P(A_n) = \sum_{n=1}^\infty \frac{1}{2} = \lim_{n\to\infty}\frac{1}{2}\cdot n = \infty\]
+    \[P(A_n \text{ i.o.}) = P(A_n) = \frac{1}{2} \neq 1\]
+    as all $\left\{A_n\right\}$ are the same \aside{(so they are not independent)}.
+\end{example}

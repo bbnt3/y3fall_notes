@@ -1,6 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1791476276.68303 "main.tex" "main.pdf" "main" 1791476278.4051 0
+["pdflatex"] 1791486481.22633 "/Users/Bonnie/Desktop/y3fall_notes/STA347/main.tex" "main.pdf" "main" 1791486483.06928 0
   "../template/preamble.tex" 1791217002.22348 7297 0fd95ed11559886728354c86763c30db ""
+  "/Users/Bonnie/Desktop/y3fall_notes/STA347/main.tex" 1791472658.77978 1249 4036c97993c971686cd00d8dedb3b295 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -217,12 +218,12 @@
   "entries/lec06.tex" 1791476206.90941 3181 2305437c6515edd82273ac608b783e22 ""
   "entries/lec07.tex" 1791475831.68291 11767 b7d9d88048880d2e5df5599d50082d77 ""
   "entries/lec08.tex" 1791476276.54285 4940 1007f5c7a404afb50fbf4ca832d8a60b ""
-  "entries/lec09.tex" 1791475831.68336 930 d671aa004c3847b2ecf9624c38883d83 ""
-  "entries/lec10.tex" 1791475831.68369 4191 607c4bc67e6bfb3492b5774a6d67a36b ""
-  "main.aux" 1791476278.23801 1892 35b9086e25dce8953a49b79054c7cb55 "pdflatex"
-  "main.out" 1791476278.23866 3161 f280d785ec8b8ca8632058e73aab30f3 "pdflatex"
+  "entries/lec09.tex" 1791486481.04556 12124 db225b6aa6833c66b6b74be4b2961176 ""
+  "entries/lec10.tex" 1791486469.68796 7356 8ecb3e1872e1d4ecbac55936fa2e2606 ""
+  "main.aux" 1791486482.92364 1968 ac69c3e220909823a226a326f36ea71d "pdflatex"
+  "main.out" 1791486482.92438 3553 78159ce1702218a48d8433df6562a157 "pdflatex"
   "main.tex" 1791472658.77978 1249 4036c97993c971686cd00d8dedb3b295 ""
-  "main.toc" 1791476278.23888 1114 1850da28de26e8e2e27e05e955a45653 "pdflatex"
+  "main.toc" 1791486482.92465 1190 e18742019ded760bcca8d4275d3dbf87 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
