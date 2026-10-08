@@ -4,8 +4,7 @@
 \begin{theorem}[Independence and Expectation][5.7]
     If $X$ and $Y$ are independent with $EX, EY < \infty$, then
     \[E(XY) = (EX)(EY)\]
-    Proof:
-    \begin{quote}
+    \begin{proof}
         First, consider both $X$ and $Y$ are simple, so that
         \[X= \sum_{i=1}^{n} x_i I(A_i) \quad \text{and} \quad Y= \sum_{j=1}^{m} y_j I(B_j)\]
         \begin{align*}
@@ -16,8 +15,6 @@
             &=\underbrace{\sum_{i=1}^{n}x_i\cdot P(X\in A_i)}_{EX}  \underbrace{\sum_{j=1}^{m}y_j\cdot P(Y \in B_j)}_{EY}\\
             &= (EX)(EY)
         \end{align*}
-    \end{quote}
-\end{theorem}
 
 Next, consider the case that $X$ and $Y$ are bounded and non-negative, then we let $Z_1\geq X, Z_2 \geq Y$, where $Z_1$ and $Z_2$ are simple. Notice that
 \[Z_1 \geq X, Z_2 \geq Y \text{ implies } Z_1 \cdot Z_2 \geq XY\]
@@ -49,7 +46,8 @@ Finally, for $X$ and $Y$ that are integrable, first realize that if $X$ and $Y$ 
     &= E(X^+)E(Y^+) - E(X^+)E(Y^-) - E(X^-)E(Y^+) + E(X^-)E(Y^-)\\
     &=(EX)(EY)
 \end{align*}
-\hfill $\square$
+    \end{proof}
+\end{theorem}
 
 \begin{definition}[Variance and Covariance][5.8]
     The variance of a random variable $X$ is defined as

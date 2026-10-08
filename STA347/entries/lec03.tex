@@ -16,7 +16,7 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
 \end{proposition}
 
 \begin{proposition}[][2.7.2]
-    An infinite collection of events $\left\{E_\alpha :\alpha \in \mathcal{I}\right\}$ are independent. Then for a finite subset $\mathcal{J} \subseteq \mathcal{I}$, the events $\left\{E_\beta : \beta \in \mathcal{J}\right\}$ are independent.
+    If an infinite collection of events $\left\{E_\alpha :\alpha \in \mathcal{I}\right\}$ are independent, then for a finite subset $\mathcal{J} \subseteq \mathcal{I}$, the events $\left\{E_\beta : \beta \in \mathcal{J}\right\}$ are independent.
 \end{proposition}
 
 \subsection{Random Variables and Distributions}
@@ -78,7 +78,7 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
 \end{example}
 
 \textbf{Claim:} $\mu$ is a probability measure on $\mathbb{R}$ (for any real number set $B$).
-\\proof:
+\begin{proof}
 \begin{enumerate}
     \item $\mu(B) \in [0,1]$ is trivial, since $P$ is a probability measure.
     \item Since $X(\omega) \in \R$ for all $\omega \in \Omega$.
@@ -93,7 +93,7 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
         &= \sum_{i=1}^{\infty}\mu(A_i)
     \end{align*}
 \end{enumerate}
-\hfill $\square$
+\end{proof}
 
 \begin{definition}[The Cumulative Distribution Function][3.3]
     A random variable $X$ and measure $P$ generate the cumulative distribution function (CDF) defined by
@@ -127,7 +127,7 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
         \item $\lim_{x \to -\infty} F(x) = 0 $ and $\lim_{x \to +\infty} F(x) = 1 $
         \item $F$ is right-continuous
     \end{enumerate}
-    proof:
+    \begin{proof}
         \begin{enumerate}[label = \roman*)]
             \item $x\leq y \in \R$
             \[F(x) = \mu((-\infty, x]), F(y) = \mu((-\infty, y])\]
@@ -185,6 +185,7 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
             \[\lim_{h \downarrow 0}F(x+h) = F(x)  \]
             So $F$ is right-continuous.
         \end{enumerate}
+    \end{proof}
 \end{theorem}
 
 \begin{definition}[The Inverse CDF][3.5]

@@ -75,7 +75,8 @@ Particularly, under the ``measure theory'' perspective:
     \\we may have certain $\omega$'s s.t. $X(\omega) < 0$, but $P(\left\{\omega: X(\omega) < 0\right\}) = 0$
 \end{proposition}
 
-Proof: Both i) and ii) are trivial.
+\begin{proof}
+Both i) and ii) are trivial.
 \\For iii), let $X$ take values $x_1, \dots, x_n$ on sets $A_1,\dots, A_n$ (i.e. $A_i = \left\{\omega: X(\omega) = x_i\right\}$) and $Y$ takes values $y_1, \dots, y_m$ on sets $B_1, \dots, B_m$.
 \\Observe that there are $m\cdot n$ events
 \[C_{ij} = \left\{X = x_i \bigcap Y = y_j \right\}\]
@@ -86,7 +87,7 @@ Then
     &= \sum_{i=1}^{n}x_i P(X=x_i)+\sum_{j=1}^{m}y_j P(Y=y_j)\\
     &= E(X)+E(Y)
 \end{align*}
-\hfill $\square$
+\end{proof}
 
 \begin{lemma}[][5.2.1]
     If Proposition 5.2 holds, the following properties also hold:
@@ -136,7 +137,8 @@ Recall, when we defined the integral:
     \node at (3.5,0.6) {$\cdots$};
 \end{tikzpicture}
 \end{center}
-When it comes to the Riemann integral, we are no longer cutting $X$ axis into tiny intervals, but cutting each set into tiny subsets and calculate the sum of $x$ times the measure of each tiny subset.
+When it comes to the measure-theoretic integral, we are no longer cutting $X$ axis into tiny intervals, but cutting each set into tiny subsets and calculate the sum of $x$ times the measure of each tiny subset.
+\\ \aside{(Prof's notes say ``Riemann'' here, but cutting the sample space into sets and weighting by their measure is the Lebesgue integral; Riemann is the ``cut the $x$-axis'' picture above.)}
 \begin{align*}
     E(X) &= \inf \left\{E(Z): \quad Z\text{ is simple and } Z \geq X \text{ a.s.}\right\}\\
     &= \sup \left\{E(Y): \quad Y \text{ is simple and } Y \leq X \text{ a.s.}\right\}
@@ -159,7 +161,8 @@ When it comes to the Riemann integral, we are no longer cutting $X$ axis into ti
 \end{tikzpicture}
 \end{center}
 ``Squeeze the R.V. $X$ via two simple R.V.'s $Y$ and $Z$, with one capturing the upper bound and the other capturing the lower bound''.
-\\Proof: Since $X$ is bounded, $|X| < M$ a.s.
+\begin{proof}
+Since $X$ is bounded, $|X| < M$ a.s.
 \[L = \sup \left\{EY: \quad Y \text{ simple and }Y\leq X \text{ a.s.}\right\}\]
 \[U = \inf\left\{EZ: \quad Z \text{ simple and }Z \geq X \text{ a.s.}\right\}\]
 \[L \leq U \text{ as } Y\leq X \text{ a.s. and }Z\geq X \text{ a.s.}\]
@@ -167,6 +170,7 @@ Our goal is to prove $L \geq U \quad \Rightarrow \quad L = U \overset{def}{=}E(X
 \\the way to cut $[-M, M]$ into tiny intervals.
 \\for any arbitrary $n$, we define
 \[E_k = \left\{\omega: \frac{kM}{n}\geq X(\omega) \geq \frac{(k-1)M}{n}\right\}\]
+\aside{($k = -n+1, \dots, n$, so the $E_k$'s cover $[-M, M]$ in $2n$ levels of width $\frac{M}{n}$.)}
 \begin{center}
 \begin{tikzpicture}[scale=1, every node/.style={font=\small}]
     % inverse of X(w) = 0.08 w^2 + 0.2 w + 0.3, to find where each level is hit
@@ -211,7 +215,7 @@ we then define two simple R.V.'s
 Let $n\to\infty$, \quad $\dfrac{M}{n} \to 0$, so the upper bound and lower bound converge:
 \[L \geq E\phi_n = E\psi_n - \frac{M}{n} \geq U - \frac{M}{n} \quad \Rightarrow \quad L \geq U\]
 \[E(X) = E\psi_n(\omega) = E\phi_n(\omega) \quad \text{as } n\to\infty\]
-\hfill $\square$
+\end{proof}
 
 $X \leq Y$ a.s. means:
 \begin{enumerate}[label = step \arabic*.]

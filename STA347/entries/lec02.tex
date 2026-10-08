@@ -7,9 +7,9 @@
     A sample space $\Omega$ is any non-empty set.
 \end{quote}
 
-\begin{example}
-    The sample space contains ''all the states of the following''
-    \\Coin Flipping: $\Omega: \{H, T\}$
+\begin{example}[][2.1]
+    The sample space contains ``all the states of the following''
+    \\Coin Flipping: $\Omega = \{H, T\}$
     \\Weather: $\{\text{hot, cold, mild}\} \times \{\text{wet, dry}\}$
 \end{example}
 
@@ -28,27 +28,25 @@
 
 \textbf{Remark:} It may be impossible for such a $P$ to exist. To define exactly which subsets we want $P$ to satisfy these axioms, that would require more advanced mathematical theories. For this class, we just assume such a $P$ is defined for all subsets of $\Omega$.
 
-\begin{example}
-    Probabilities of coin flipping
+\begin{example}[Probabilities of Coin Flipping][2.2]
     \[\Omega = \{H, T\}\]
     \[\mathcal{P}(\Omega) = \{\phi, \{H\}, \{T\}, \{H, T\}\}\]
     \[P: \mathcal{P}(\Omega) \mapsto [0, 1]\]
     \begin{align*}
-        p: \phi &\mapsto 0 \\
+        P: \phi &\mapsto 0 \\
         \{H\} &\mapsto \frac{1}{2} \\
         \{T\} &\mapsto \frac{1}{2} \\
         \{H, T\} &\mapsto 1
     \end{align*}
 \end{example}
 
-\begin{example}
-    The uniform/Lebesgue measure.
+\begin{example}[The Uniform/Lebesgue Measure][2.3]
     Let $\Omega =[L,U]$ for some $L < U \in \R$. Define
     \[P([a,b]) = \frac{b-a}{U-L} \quad \text{when } L \leq a \leq b \leq U\]
     We assume such a measure exists (and is well defined) for this class.
 \end{example}
 
-Proposition 2.3:
+\begin{proposition}[][2.3]
 The following properties are satisfied by any probability measure $P$
 \begin{enumerate}
     \item $\forall E \subseteq \Omega, P(E^C) = 1 - P(E)$
@@ -56,16 +54,16 @@ The following properties are satisfied by any probability measure $P$
     \item $\forall E, F \subseteq \Omega$, such that $E \subseteq F, P(E) \leq P(F)$ \aside{(``big event, big probability'')}
     \item $\forall E, F \subseteq \Omega, P(E\bigcup F) = P(E)+P(F) - P(E\bigcap F)$
     \item $\forall E, F \subseteq \Omega, P(E\bigcap F) = P(E)+P(F)-P(E\bigcup F)$
-    \item $\forall E, F \subset \Omega, P(F \setminus E) = P(F) - P(E\bigcap F)$
+    \item $\forall E, F \subseteq \Omega, P(F \setminus E) = P(F) - P(E\bigcap F)$
 \end{enumerate}
-
 Proof via Def 2.2 (probability axioms).
+\end{proposition}
 
-Lemma 2.4
-\begin{quote}
+\begin{lemma}[][2.4]
     For a sequence $E_1, \dots, E_n \subseteq \Omega$
     \[P(\bigcup_{i=1}^n E_i) \leq \sum_{i=1}^{n}P(E_i)\]
-    Proof: We define $F_i = E_i \setminus \bigcup_{j=1}^{i-1}E_j, F_1 = E_1$
+    \begin{proof}
+    We define $F_i = E_i \setminus \bigcup_{j=1}^{i-1}E_j, F_1 = E_1$
     \[\bigcup_{i=1}^{n} E_i = \bigcup_{i=1}^{n}F_i \text{ and } F_i \bigcap F_j = \phi \text{ if } i \neq j\]
     \begin{center}
     \begin{tikzpicture}[scale=1, every node/.style={font=\small}]
@@ -98,9 +96,9 @@ Lemma 2.4
     \[\text{We also know } F_i \subseteq E_i \text{ as } F_i = E_i \setminus \bigcup_{j=1}^{i-1}E_j\]
     \[P(F_i) \leq P(E_i)\]
     \[P(\bigcup_{i=1}^{n}E_i) = \sum_{i=1}^{n}P(F_i) \leq \sum_{i=1}^{n}P(E_i)\]
-\end{quote}
+    \end{proof}
+\end{lemma}
 
-Lemma 2.5
-\begin{quote}
+\begin{lemma}[][2.5]
     Let $P$ be the Lebesgue measure on $[0,1]$. Then $P(E) = 0$ for any \underline{countable} set $E$.
-\end{quote}
+\end{lemma}

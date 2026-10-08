@@ -5,24 +5,22 @@
 \begin{theorem}[Markov's Inequality][4.1]
     If $X \geq 0$ a.s., then for all $a>0$,
     \[P(X \geq a) \leq \frac{E(X)}{a}\]
-    Proof:
-    \begin{quote}
+    \begin{proof}
         Define $Z(\omega) = a \cdot I\left\{X(\omega) \geq a\right\}$. Then, $Z\leq X$ a.s., and since $Z$ is simple,
         \[E(Z) = a\cdot P(X\geq a)\]
         \[P(X\geq a) = \frac{E(Z)}{a} \leq \frac{E(X)}{a}\]
         \hfill $\square$
-    \end{quote}
+    \end{proof}
 \end{theorem}
 
 \begin{theorem}[Chebyshev's Inequality][4.2]
     For all $t > 0$,
     \[P(|X- E(X)|\geq t) \leq \frac{\Var(X)}{t^2}\]
-    Proof:
-    \begin{quote}
+    \begin{proof}
         Apply Markov's inequality to $Y = [X-E(X)]^2 \geq 0$:
         \[P(|X-E(X)| \geq t) = P([X-E(X)]^2 \geq t^2) \leq \frac{E[(X-E(X))^2]}{t^2} = \frac{\Var(X)}{t^2}\]
         \hfill $\square$
-    \end{quote}
+    \end{proof}
 \end{theorem}
 
 Both Chebyshev and Markov's inequality talk about
@@ -68,8 +66,7 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
     For all $t\geq 0$, \quad $P(X\geq E(X) + t) \leq \inf_{\lambda>0}M_{X - E(X)} (\lambda)e^{-\lambda t}$
     \[P(X\geq E(X) + t) \text{ roughly } P(\underbrace{X-E(X)}_{\substack{\text{distance between $X$} \\ \text{to its expected value}}}\geq t)\]
     \[\leq \inf_{\lambda>0} M_{X-E(X)} (\lambda)e^{-\lambda t}\]
-    Proof:
-    \begin{quote}
+    \begin{proof}
         the function $g(x) = e^x$ is monotonically increasing and non-negative.
         \[P(X-E(X) \geq t)\]
         \[=P(e^{X-E(X)} \geq e^t)\]
@@ -81,7 +78,7 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
         Since this inequality holds for any arbitrary $\lambda > 0$, we can take the inf:
         \[P(X-E(X) \geq t) \leq \inf_{\lambda>0}e^{-\lambda t}M_{X-E(X)}(\lambda)\]
         \hfill $\square$
-    \end{quote}
+    \end{proof}
 \end{theorem}
 
 \subsection{Hoeffding's Inequality (Thm 4.4)}
@@ -135,8 +132,7 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
 \begin{lemma}[Hoeffding's Lemma][4.4.2]
     If $Y$ satisfies $E(Y) = 0$ and $a\leq Y \leq b$ a.s., then for all $\lambda > 0$
     \[M_Y(\lambda) \leq e^{\lambda^2(b-a)^2/8}\]
-    Proof:
-    \begin{quote}
+    \begin{proof}
         Since $a \leq Y \leq b$ a.s., $Y = \alpha \cdot a + (1-\alpha)\cdot b$.
         \\ Transforming $Y \Rightarrow \alpha$, where $0 \leq \alpha \leq 1$,
         \[\alpha = \frac{b-Y}{b-a}, \qquad 1-\alpha = \frac{Y-a}{b-a}\]
@@ -166,15 +162,14 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
         \[\Rightarrow \log\{E[e^{\lambda Y}]\} \leq \frac{1}{8}u^2 = \frac{(b-a)^2\lambda^2}{8} \quad \text{as } u = (b-a)\lambda\]
         \[\Rightarrow M_Y(\lambda) \leq e^{\frac{(b-a)^2\lambda^2}{8}}\]
         \hfill $\square$
-    \end{quote}
+    \end{proof}
 \end{lemma}
 
 \begin{theorem}[Hoeffding's Inequality][4.4]
     Suppose $X_1, X_2, \dots, X_n, \dots$ are indep.\ with $a_i \leq X_i \leq b_i$ for all $i$.
     \\ Then letting $S_n = \sum_{i=1}^n X_i$, for all $t > 0$,
     \[P(|S_n - E(S_n)| \geq t) \leq 2 \cdot \exp\left\{-\frac{2t^2}{\sum_{i=1}^n (b_i - a_i)^2}\right\}\]
-    Proof:
-    \begin{quote}
+    \begin{proof}
         We first prove the $P(S_n - E(S_n) \geq t)$ part.
         \\ Applying Chernoff's inequality,
         \[P(\underbrace{S_n - E(S_n)}_{(1)} \geq t) \leq e^{-\lambda t}\underbrace{E[e^{\lambda(S_n - E(S_n))}]}_{(2)}\]
@@ -193,5 +188,5 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
         \aside{The other tail: apply the same argument to $-X_i$ (with $-b_i \leq -X_i \leq -a_i$, same width $b_i - a_i$) to get $P(S_n - E(S_n) \leq -t) \leq e^{-2t^2/D}$. Then by Lemma 2.4 (union bound),}
         \[P(|S_n - E(S_n)| \geq t) \leq P(S_n - E(S_n) \geq t) + P(S_n - E(S_n) \leq -t) \leq 2e^{-2t^2/D}\]
         \hfill $\square$
-    \end{quote}
+    \end{proof}
 \end{theorem}

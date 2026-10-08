@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1791217770.04355 "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" "main.pdf" "main" 1791217771.5526 0
+["pdflatex"] 1791476633.49946 "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" "main.pdf" "main" 1791476635.10022 0
   "../template/preamble.tex" 1791217002.22348 7297 0fd95ed11559886728354c86763c30db ""
   "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" 1791214429.18875 1314 b94f1b2206c2b40be4a78b97936332ca ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
@@ -212,11 +212,11 @@
   "entries/lec03.tex" 1791217112.52516 12972 4e42dad0c97988962e72482a7634acd5 ""
   "entries/lec04.tex" 1791215803.24275 13377 5343e7a5cfdff71b7efb36f6176a6008 ""
   "entries/lec05.tex" 1791215788.1164 8924 d3d3ba4436d196e85141aa7eeb22c7b5 ""
-  "entries/lec06.tex" 1791217769.80858 13872 066480e2f5fa829c32deb1ddd40e6ec7 ""
-  "main.aux" 1791217771.43686 887 48651a632365462cdf07543e7086351b "pdflatex"
-  "main.out" 1791217771.43736 1458 ad0ad10619112775cbdc8d9c7b82dd9b "pdflatex"
+  "entries/lec06.tex" 1791476633.18081 13916 23df368bae09a13d62df6a120abf93d9 ""
+  "main.aux" 1791476634.97395 887 48651a632365462cdf07543e7086351b "pdflatex"
+  "main.out" 1791476634.97456 1458 ad0ad10619112775cbdc8d9c7b82dd9b "pdflatex"
   "main.tex" 1791214429.18875 1314 b94f1b2206c2b40be4a78b97936332ca ""
-  "main.toc" 1791217771.43754 478 bc5b062221a1d47f17e4441c0a436556 "pdflatex"
+  "main.toc" 1791476634.97478 478 bc5b062221a1d47f17e4441c0a436556 "pdflatex"
   (generated)
   "main.aux"
   "main.log"

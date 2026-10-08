@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  2 OCT 2026 13:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  8 OCT 2026 12:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -880,6 +880,8 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 [2{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
 cal/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texliv
 e/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}]
+
+[3]
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10> on input line 73.
 LaTeX Font Info:    External font `lmex10' loaded for size
@@ -888,15 +890,13 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 73.
 
 
-[3]
-
 [4]) (./entries/lec02.tex
 
 [5{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}]
 
-[6]
+[6]) (./entries/lec03.tex
 
-[7]) (./entries/lec03.tex
+[7]
 
 [8]
 
@@ -904,20 +904,20 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 [10]
 
-[11]
+[11]) (./entries/lec04.tex
 
-[12]) (./entries/lec04.tex
-
-[13]
+[12]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
 5.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
-[14]) (./entries/lec05.tex
+[13]) (./entries/lec05.tex
 
-[15{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
+[14{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
+
+[15]
 
 [16]
 
@@ -930,7 +930,7 @@ File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 [20]) (./entries/lec06.tex
 
 [21]
-Overfull \hbox (17.48721pt too wide) detected at line 29
+Overfull \hbox (17.48721pt too wide) detected at line 26
 []
  []
 
@@ -952,24 +952,30 @@ Overfull \hbox (17.48721pt too wide) detected at line 29
 
 [29]
 
-[30])
+[30]) (./entries/lec09.tex
 
-[31] (./main.aux)
+[31]) (./entries/lec10.tex
+
+[32]
+
+[33])
+
+[34] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 862E121766485C3ED453785FF11A277F;2798.
+(rerunfilecheck)             Checksum: F280D785EC8B8CA8632058E73AAB30F3;3161.
  ) 
 Here is how much of TeX's memory you used:
- 24179 strings out of 473190
- 453295 string characters out of 5715801
- 812944 words of memory out of 5000000
- 46844 multiletter control sequences out of 15000+600000
+ 24246 strings out of 473190
+ 454399 string characters out of 5715801
+ 811984 words of memory out of 5000000
+ 46884 multiletter control sequences out of 15000+600000
  644133 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,15n,90p,541b,891s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,15n,90p,541b,947s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texliv
 e/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2025/tex
@@ -989,10 +995,10 @@ exlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2025
 /fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
 1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025/texmf-dist/fonts/
 type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (31 pages, 431653 bytes).
+Output written on main.pdf (34 pages, 444997 bytes).
 PDF statistics:
- 450 PDF objects out of 1000 (max. 8388607)
- 368 compressed objects within 4 object streams
- 137 named destinations out of 1000 (max. 500000)
- 117 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 494 PDF objects out of 1000 (max. 8388607)
+ 408 compressed objects within 5 object streams
+ 158 named destinations out of 1000 (max. 500000)
+ 133 words of extra memory for PDF output out of 10000 (max. 10000000)
 

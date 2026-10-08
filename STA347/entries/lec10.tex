@@ -1,0 +1,91 @@
+\newlecture[][Oct 8, 2026]
+
+\begin{definition}{Convergence in Probability}{5.4}
+    A sequence of random variables $X_n$ converges in Probability to $X$ if for all $\varepsilon > 0$
+    \[\lim_{n\to \infty} P(\left|X_n - X\right| \leq \varepsilon) = 1\]
+\end{definition}
+
+\begin{definition}[Almost Sure Convergence][5.5]
+    A sequence of random variables $X_n$ coverges almost surely to $X$ if
+    \[P(\lim_{n \to \infty} X_n = X) = 1\]
+    and is denoted by $X_n \overset{a.s.}{\longrightarrow} X$. 
+\end{definition}
+
+Comparing the two:
+\[X_n \overset{P}{\rightarrow} X \quad \lim_{n\to \infty} P(\left|X_n - X\right| < \varepsilon ) = 1\]
+\[X_n \overset{a.s.}{\longrightarrow} X \quad P(\lim_{n \to \infty} X_n = X) = 1\]
+\[\lim_{n \to \infty} X_n = X \Leftrightarrow \left\{\omega: \lim_{n\to \infty} X_n (\omega) = X(\omega)\right\}\]
+\[P(\lim_{n\to \infty} X_n = X) = P(\left\{\omega: \lim_{n \to \infty} X_n (\omega) = X(\omega)\right\})=1\]
+\begin{align*}
+    \text{for } &X_n \overset{P}{\rightarrow} X \quad \lim_{n\to \infty} P(\left|X_n - X\right| < \varepsilon) = 1 \\
+    &X_n \overset{a.s.}{\longrightarrow} \quad P(\left|X_n(\omega) - X\right| < \varepsilon a.a.) = 1
+\end{align*}
+
+\begin{proposition}[][5.5.1]
+    If for all $\varepsilon > 0$, $P(\left|X_n - X\right| > \varepsilon i.o.) = 0$, then
+    \[X_n \overset{a.s.}{\longrightarrow} X\]
+    \begin{proof}
+        \[P(\lim_{n\to \infty}X_n = X) = P(\forall \varepsilon > 0, \left|X_n(\omega) - X(\omega)\right| < \varepsilon a.a.)\]
+        \[= 1-P(\left|X_n(\omega) - X(\omega)\right|) \geq 1\]
+        \[= 1-0 = 1\]
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}[][5.5.2]
+    If for all $\varepsilon > 0$, 
+    \[\sum_{n=1}^{\infty} P(\left|X_n(\omega) - X(\omega)\right| \geq \varepsilon) < \infty\]
+    then $X_n \overset{a.s.}{\longrightarrow} X$
+    \begin{proof}
+        Applying the Berel Cantelli Lemma
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}[][5.5.3]
+    If $X_n \overset{a.s.}{\longrightarrow} X$, then $X_n \overset{P}{\rightarrow}X$. 
+    \\The opposite doesn't hold, $X_n \overset{P}{\rightarrow} X \nRightarrow X_n \overset{a.s.}{\longrightarrow} X$
+    \begin{proof}
+        For any $\varepsilon > 0$, let 
+        \[E_n = \left\{\omega: \exists m \geq n, \left|X_m(\omega) - X(\omega)\right| \geq \varepsilon\right\}\]
+        Observe that $E_{n+1} \leq E_n$
+        \\and if $\omega \in \bigcap_{n=1}^{\infty}$ then
+        \[\lim_{n\to \infty} P(\left|X_n(\omega) - X(\omega)\right|\geq \varepsilon)\]
+        \[\leq \lim_{n\to \infty} P(E_n)\]
+        \[=???\]
+        \[=P(\bigcap_{n=1}^{\infty}E_n)\]
+        \[=P(\left\{\omega : X_n(\omega)....bruh im not done\right\})\]
+    \end{proof}
+\end{proposition}
+
+\begin{example}[][5.5.4]
+    $X_n$ independent with $P(X_n = 1) = \frac{1}{n}$, $P(X_n = 0) = 1 - \frac{1}{n}$
+    \\For all $\varepsilon > 0$, 
+    \[P(X_n > \varepsilon) = \frac{1}{n} \to 0 \text{ as }n \to \infty\]
+    So, $X_n \overset{P}{\rightarrow} 0$
+    \\However,
+    \[P(X_n = 1 i.o.) = 1,\]
+    \[X_n \overset{a.s.}{\nrightarrow} 0\]
+\end{example}
+
+\begin{theorem}[][5.5.5]
+    If $X_n \overset{P}{\rightarrow} X$, there exists a subsequence such that
+    \[X_{n_k} \overset{a.s.}{\longrightarrow} X\]
+\end{theorem}
+
+\begin{theorem}[Continuous Mapping Theorem][5.6]
+    If $f$ is a continuous function, then
+    \begin{enumerate}[label = \roman*)]
+        \item $X_n \overset{a.s.}{\longrightarrow} X \Rightarrow f(X_n) \overset{a.s.}{\longrightarrow}f(x)$
+        \item $X_n \overset{P}{\rightarrow} X \Rightarrow f(X_n) \overset{P}{\rightarrow} X$
+    \end{enumerate}
+    \begin{proof}
+        \begin{enumerate}[label = \roman*)]
+            \item $f$ is continuous, it means
+            \[X_n(\omega) \to X(\omega) \Rightarrow f(X_n(\omega) \to f(X(\omega)))\]
+            \item For all $\varepsilon > 0$, there exists a $\delta > 0$, such that $\left|X_n(\omega) - X(\omega)\right| \leq \delta$ implies
+            \[f(X_n(\omega)) - f(X(\omega)) \leq \varepsilon\]
+            \[\lim_{n\to\infty}P(\left|X_n(\omega) - X(\omega)\right|\leq \delta) = \lim_{n\to\infty} P(\left|bruh\right|)\]
+        \end{enumerate}
+    \end{proof}
+\end{theorem}
+
+% 
