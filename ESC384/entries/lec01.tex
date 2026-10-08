@@ -1,0 +1,217 @@
+% !TeX root = ../main.tex
+
+\newlecture[Introduction to PDEs]
+
+\subsection{1.1 Introduction}
+Our goal in this lecture is to introduce some of the key concepts that we will revisit throughout this course. We provide a definition of partial differential equations (PDEs) and a few carefully chosen model PDEs. We then discuss several ways to classify PDEs with a particular emphasis on second-order PDEs, which are ubiquitous in science and engineering. We conclude the lecture with examples of PDEs in science and engineering.
+
+\subsection{1.2 Partial differential equations}
+We first provide a definition of PDEs:
+
+\begin{definition}[Partial Differential Equation (PDE)][1.1]
+    A PDE is an equation that relates an unknown function $u$ and some of its partial derivatives, where the function is defined on an $n$-dimensional spatial domain $\Omega \subset \R^n$ and time interval $I \subset \R$. In general, a PDE can be expressed as
+    \[G\left(x_1, \dots, x_n, t, u, \frac{\partial u}{\partial x_1}, \dots, \frac{\partial u}{\partial x_n}, \frac{\partial u}{\partial t}, \frac{\partial^2 u}{\partial x_1^2}, \frac{\partial^2 u}{\partial x_1 x_2}, \dots\right) = 0,\]
+    where $x_1, \cdots, x_n$ are the spatial coordinates, $t$ is the time, and $\frac{\partial u}{\partial x_1}, \dots$ denote the partial derivatives.
+\end{definition}
+
+We provide a few concrete examples of model PDEs that we will study throughout this course:
+\begin{itemize}
+    \item \textbf{Laplace's equation.} Laplace's equation is given by
+    \[-\Delta u = 0,\]
+    where $-\Delta = -\nabla \cdot \nabla = -\frac{\partial^2}{\partial x_1^2} - \cdots - \frac{\partial^2}{\partial x_n^2}$ is the Laplacian (under the positive Laplacian convention). Laplace's equation describes various physical phenomena including, but not limited to, the following: steady heat transfer (without a heat source), where $u$ is the temperature; electrostatics, where $u$ is the electrostatic potential; and steady, inviscid, incompressible, irrotational flow, where $u$ is the velocity potential.
+    \item \textbf{Poisson's equation.} Poisson's equation is given by
+    \[-\Delta u = f,\]
+    where $f$ is a source function. Poisson's equation describes the following: steady heat transfer in the presence of a heat source; and electrostatic potential in the presence of charge. Laplace's equation is a special case of Poisson's equation for $f = 0$.
+    \item \textbf{Heat equation.} The heat equation is given by
+    \[\frac{\partial u}{\partial t} - \nabla \cdot (a \nabla u) = f,\]
+    where $a$ is the diffusivity constant, and $f$ is the source term. The heat equation describes the following: unsteady heat transfer; and the diffusion of chemical species.
+    \item \textbf{Transport equation.} The transport equation is given by
+    \[\frac{\partial u}{\partial t} + b \cdot \nabla u = 0,\]
+    where $b$ is an advection field. The transport equation describes the transport of a conserved quantity (e.g., concentration of chemical species) in the presence of an advection field.
+    \item \textbf{Wave equation.} The wave equation is given by
+    \[\frac{\partial^2 u}{\partial t^2} - c^2 \Delta u = 0,\]
+    where $c$ is the wave propagation speed. The wave equation describes the propagation of waves through a medium, including the following: the propagation of acoustic pressure waves in air; the propagation of electromagnetic fields through space; and the vibration of taut strings and membranes.
+    \item \textbf{Burgers' equation.} The inviscid Burgers' equation is given by
+    \[\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} = 0.\]
+    Burgers' equation describes the propagation of a nonlinear wave, in which the speed of propagation depends on the solution value. The equation models features such as shocks and rarefaction waves that are encountered in compressible flows.
+\end{itemize}
+
+\subsection{1.3 Classification of PDEs}
+To facilitate our study of PDEs, we now classify PDEs by a few of their attributes. For each definition that we introduce, we provide a few concrete examples.
+
+\begin{definition}[Order of a PDE][1.2]
+    The \textbf{order} of a PDE is the order of the highest-order derivative that appears in the PDE.
+\end{definition}
+
+\begin{example}[][1.3]
+    Laplace's equation $-\Delta u = 0$ is a second-order PDE, and the transport equation $\frac{\partial u}{\partial t} + a \frac{\partial u}{\partial x} = 0$ is a first-order PDE.
+\end{example}
+
+\begin{example}[][1.4]
+    The heat equation $\frac{\partial u}{\partial t} - \Delta u = 0$ is a second-order PDE. More precisely, it is first-order in time and second-order in space. Note that time-dependent PDEs admit a more precise characterization.
+\end{example}
+
+\begin{definition}[Linear Operator][1.5]
+    An operator $\mathcal{L}$ is a \textbf{linear operator} if
+    \[\mathcal{L}(\alpha w + \beta v) = \alpha \mathcal{L} w + \beta \mathcal{L} v\]
+    for any functions $w$ and $v$ and any scalars $\alpha$ and $\beta$.
+\end{definition}
+
+\begin{definition}[Linear PDEs][1.6]
+    A PDE is said to be \textbf{linear} if the PDE can be expressed as
+    \[\mathcal{L} u = f,\]
+    where $\mathcal{L}$ is a linear operator and $f$ is a function independent of $u$. If a PDE is not linear, then it is called a \textbf{nonlinear} PDE.
+\end{definition}
+
+\begin{definition}[Linear Homogeneous PDEs][1.7]
+    A \textbf{linear homogeneous} PDE is a PDE of the form
+    \[\mathcal{L} u = 0,\]
+    where $\mathcal{L}$ is a linear operator; i.e., the term independent of $u$ vanishes. If a linear PDE is not homogeneous, then it is \textbf{nonhomogeneous} (or inhomogeneous).
+\end{definition}
+
+\begin{example}[][1.8]
+    Laplace's equation $-\Delta u = 0$ is a linear homogeneous PDE; the Laplacian $\mathcal{L} \equiv -\Delta$ is a linear operator, and the right hand side is zero. Poisson's equation $-\Delta u = f$ is a linear nonhomogeneous PDE for $f \neq 0$. The heat equation $\frac{\partial u}{\partial t} - \nabla \cdot a \nabla u = f$ is a linear homogeneous PDE if $f = 0$ and is a linear nonhomogeneous PDE if $f \neq 0$. The Burgers' equation $\frac{\partial u}{\partial t} + u \frac{\partial u}{\partial x} = 0$ is a nonlinear PDE, as there is no way to express $u \frac{\partial u}{\partial x}$ as a linear operator on $u$.
+\end{example}
+
+\header{The superposition principle.}
+Linear homogeneous PDEs, just like linear homogeneous ODEs, are particularly nice to study because we can appeal to the superposition principle to seek a solution. Specifically, if $u_1$ and $u_2$ satisfy $\mathcal{L} u_1 = 0$ and $\mathcal{L} u_2 = 0$, then $u_1 + u_2$ satisfies $\mathcal{L}(u_1 + u_2) = 0$. If, in addition, we find a solution $u_0$ to a nonhomogeneous PDE $\mathcal{L} u_0 = f$, then $u_0 + u_1 + u_2$ also satisfies the nonhomogeneous PDE $\mathcal{L}(u_0 + u_1 + u_2) = f$. We will exploit these properties in many solution techniques throughout this course.
+
+Due to the superposition principle, in general there are infinitely many functions that satisfy a given PDE. We must supply additional conditions to find a unique solution. In the context of PDEs, these conditions are provided by boundary conditions, if the problem is posed in a bounded domain, and by initial conditions, if the problem is time-dependent. (Initial conditions can be thought of as ``boundary conditions'' in the space-time domain.) We will study various boundary and initial conditions for each model PDE in later lectures.
+
+\subsection{1.4 Classification of second-order PDEs}
+We have introduced a few second-order linear PDEs including Laplace's equation, the heat equation, and the wave equation. In fact, second-order PDEs are ubiquitous in science and engineering, which justifies a finer classification of these PDEs.
+
+\begin{definition}[Classification of Second-Order Linear PDEs][1.9]
+    Consider a second-order linear PDE with a differential operator on $\R^n$:
+    \begin{equation*}
+        \mathcal{L} u = \sum_{i,j=1}^{n} a_{ij} \frac{\partial^2 u}{\partial x_i \partial x_j} + \sum_{i=1}^{n} b_i \frac{\partial u}{\partial x_i} + cu \tag{1.1}
+    \end{equation*}
+    for some coefficients $a_{ij}$, $b_i$, and $c$. Let $A \in \R^{n \times n}$ be a symmetric matrix such that $A_{ij} = a_{ij}$, $i, j = 1, \dots, n$. (Note that $A$ can always be symmetrized without loss of generality since the mixed partials are the same.) Let $\lambda_1, \dots, \lambda_n$ be the eigenvalues of $A$. Then we have the following classification of PDEs:
+    \begin{itemize}
+        \item \textit{elliptic:} all eigenvalues are nonzero and have the same sign (i.e., all positive or all negative).
+        \item \textit{hyperbolic:} all eigenvalues are nonzero, and one of them has the opposite sign from the $n-1$ others.
+        \item \textit{ultrahyperbolic:} all eigenvalues are nonzero, and at least two of them are positive and at least two of them are negative.
+        \item \textit{parabolic:} exactly one eigenvalue is zero and all other eigenvalues have the same sign.
+    \end{itemize}
+    If the PDE is time-dependent, then we treat time as the zeroth coordinate and run the summations from $0$ to $n$ in (1.1).
+\end{definition}
+
+\begin{example}[Classification: Laplace's Equation][1.10]
+    The differential operator for Laplace's equation in $\R^n$ is
+    \[\mathcal{L} = -\Delta = -\frac{\partial^2}{\partial x_1^2} - \cdots - \frac{\partial^2}{\partial x_n^2}.\]
+    We recognize that the associated matrix $A$ is $A = -I$. All eigenvalues are equal to $-1$, and hence Laplace's equation is elliptic.
+\end{example}
+
+\begin{example}[Classification: Poisson's Equation][1.11]
+    Poisson's equation is also elliptic because its differential operator is the Laplacian.
+\end{example}
+
+\begin{example}[Classification: Wave Equation][1.12]
+    The differential operator for the wave equation in $\R^n$ is
+    \[\mathcal{L} = \frac{\partial^2}{\partial t^2} - \Delta = \frac{\partial^2}{\partial t^2} - \frac{\partial^2}{\partial x_1^2} - \cdots - \frac{\partial^2}{\partial x_n^2}.\]
+    We treat the temporal coordinate as the zeroth coordinate and recognize the associated $A$ matrix is $A = \operatorname{diag}(1, -1, -1, \dots, -1) \in \R^{(n+1) \times (n+1)}$. We have one positive eigenvalue and $n$ negative eigenvalues. Hence, the wave equation is hyperbolic.
+\end{example}
+
+\begin{example}[Classification: Heat Equation][1.13]
+    The differential operator for the heat equation in $\R^n$ is
+    \[\mathcal{L} = \frac{\partial}{\partial t} - \Delta = \frac{\partial}{\partial t} - \frac{\partial^2}{\partial x_1^2} - \cdots - \frac{\partial^2}{\partial x_n^2}\]
+    We treat the temporal coordinate as the zeroth coordinate and recognize the associated $A$ matrix is $A = \operatorname{diag}(0, -1, -1, \dots, -1) \in \R^{(n+1) \times (n+1)}$. Note that the entry of $A$ associated with the temporal coordinate is $0$ because the differential operator does not contain a second derivative with respect to time. We have one zero eigenvalue and $n - 1$ negative eigenvalues. Hence, the heat equation is parabolic.
+\end{example}
+
+\begin{example}[Classification: Finding the $A$ Matrix][1.14]
+    Consider a second-order PDE
+    \[\frac{\partial^2 u}{\partial x_1^2} - 2 \frac{\partial^2 u}{\partial x_1 \partial x_2} + 2 \frac{\partial^2 u}{\partial x_2^2} = f\]
+    for some $f$. We note that the linear differential operator can be rearranged into the form (1.1):
+    \[\mathcal{L} u = 1 \frac{\partial^2 u}{\partial x_1^2} - 1 \frac{\partial^2 u}{\partial x_1 \partial x_2} - 1 \frac{\partial^2 u}{\partial x_2 \partial x_1} + 2 \frac{\partial^2 u}{\partial x_2^2},\]
+    where we have split the mixed partial term into two so that the coefficients in front of the terms are the same. We recognize that $a_{11} = 1$, $a_{12} = a_{21} = -1$, and $a_{22} = 2$, and hence
+    \[A = \begin{pmatrix} 1 & -1 \\ -1 & 2 \end{pmatrix}.\]
+    Note that the matrix is symmetric (as required for classification) thanks to the splitting of the mixed partial term. To find the eigenvalues, we form the characteristic equation $p_A(\lambda) \equiv \det(\lambda I - A) = \lambda^2 - 3\lambda + 1$ and find that its roots are $\lambda = \frac{3}{2} \pm \frac{\sqrt{5}}{2}$. Since both eigenvalues are positive, the equation is elliptic.
+\end{example}
+
+\begin{example}[Classification: PDE with Variable Coefficient][1.15]
+    For PDEs with variable coefficients, the classification may vary over the domain. For instance, consider the second-order PDE
+    \[y \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} = 0.\]
+    The matrix $A$ associated with the PDE is $A = \operatorname{diag}(y, 1)$, and its eigenvalues are $\lambda_1 = 1$ and $\lambda_2 = y$. Hence, the PDE is parabolic on the line $y = 0$, elliptic in the region $y > 0$, and hyperbolic in the region $y < 0$.
+\end{example}
+
+The classification of PDEs into elliptic, hyperbolic, and parabolic equations is useful because equations in a given class exhibit similar behaviors. For instance, the only difference between the wave equation (in spacetime, with time as the zeroth coordinate) and Laplace's equation is that one of the eigenvalues is positive in the wave equation; however, the wave equation is hyperbolic and Laplace's equation is elliptic, and they describe different physical processes and exhibit different solution behaviors. On the other hand, while Laplace's equation and the Navier--Cauchy equation of linear elasticity might look quite different, they are both elliptic and exhibit similar behaviors. Similarly, while the wave equation and Maxwell's equations might look quite different, they are both hyperbolic and exhibit similar behaviors.
+
+\subsection{1.5 PDEs in physics and engineering}
+Before we conclude this lecture, we provide some examples of more complex PDEs that are encountered in science and engineering. While we will not study these PDEs in detail, we will see that much of the behavior of these more complex PDEs is captured by our model PDEs.
+\begin{itemize}
+    \item \textbf{Navier--Cauchy equations.} The Navier--Cauchy equations are a system of PDEs of the form
+    \[\mu \sum_{j=1}^{d} \frac{\partial^2 u_i}{\partial x_j^2} + (\mu + \lambda) \sum_{j=1}^{d} \frac{\partial^2 u_j}{\partial x_i \partial x_j} = f_i, \quad i = 1, \dots, d,\]
+    where $u$ is the (vector-valued) displacement field, $f$ is the body force, and $\lambda$ and $\mu$ are the first and second Lam\'e parameters, respectively. The Navier--Cauchy equations, also known as the equations of linear elasticity, are a system of linear PDEs. The equations describe the deformation of a material under load (under the assumption of small displacements and strains), and hence the behavior of engineering structures.
+    \item \textbf{Maxwell's equations.} Maxwell's equations in free space are given by
+    \begin{align*}
+        \nabla \times E &= -\frac{\partial B}{\partial t}, \\
+        \nabla \cdot E &= 0, \\
+        \nabla \times B &= \frac{1}{c^2} \frac{\partial E}{\partial t}, \\
+        \nabla \cdot B &= 0,
+    \end{align*}
+    where $E$ is the electric field, $B$ is the magnetic field, and $c$ is the speed of light. Maxwell's equations are a system of linear, homogeneous PDEs. Maxwell's equations describe the propagation of electromagnetic waves in free space, and hence the behavior of electric circuits, electric motors, wireless communication, and power generation, among others.
+    \item \textbf{Incompressible Navier--Stokes equations.} The incompressible Navier--Stokes equations are given by
+    \begin{align*}
+        \frac{\partial u}{\partial t} + \nabla \cdot (u \otimes u) + \nabla p - \frac{1}{\mathrm{Re}} \Delta u &= f, \\
+        \nabla \cdot u &= 0,
+    \end{align*}
+    where $u$ is the (vector-valued) velocity field, $p$ is the (scalar-valued) pressure field, and $\mathrm{Re}$ is the Reynolds number. The incompressible Navier--Stokes equations comprise a system of nonlinear PDEs that describe the velocity and pressure of an incompressible (Newtonian) flow.
+    \item \textbf{Compressible Euler equations.} The compressible Euler equations are given by
+    \begin{align*}
+        \frac{\partial \rho}{\partial t} + \nabla \cdot \rho u &= 0 \\
+        \frac{\partial \rho u}{\partial t} + \nabla \cdot (\rho u \otimes u) + \nabla p &= 0 \\
+        \frac{\partial \rho e}{\partial t} + \nabla \cdot (\rho h u) &= 0,
+    \end{align*}
+    where $\rho$ is the density field, $u$ is the (vector-valued) velocity field, $e$ is the specific total energy field, $p$ is the pressure field, and $h$ is the specific enthalpy field. The compressible Euler equations form a system of nonlinear PDEs that describes the behavior of inviscid compressible flows.
+    \item \textbf{Schr\"odinger equation.} The Schr\"odinger equation for a single particle is given by
+    \[i\hbar \frac{\partial \Psi}{\partial t} = \left(-\frac{\hbar^2}{2m} \Delta + V\right) \Psi,\]
+    where $\Psi : \R^n \times \R \to \mathbb{C}$ is the wave function in position space, $\hbar$ is the reduced Planck constant, $m$ is the particle mass, and $V : \R^n \times \R \to \mathbb{C}$ is the potential function. The Schr\"odinger equation describes the quantum state of an isolated nonrelativistic quantum system.
+    \item \textbf{Black--Scholes equation.} The Black--Scholes equation is given by
+    \[\frac{\partial V}{\partial t} + \frac{1}{2} \sigma^2 S^2 \frac{\partial^2 V}{\partial S^2} + rS \frac{\partial V}{\partial S} - rV = 0,\]
+    where $V$ is the price of the option as a function of the stock price $S$ and time $t$, $r$ is the risk-free interest rate, and $\sigma$ is the volatility of the stock.
+\end{itemize}
+
+\subsection{1.6 Summary}
+We summarize key points of this lecture:
+\begin{enumerate}
+    \item A PDE is an equation that relates an unknown function $u$ and some of its partial derivatives.
+    \item PDEs can be classified in terms of order, linearity, and homogeneity.
+    \item PDEs are augmented by initial and/or boundary conditions to provide a well-posed problem.
+    \item Second-order PDEs can be further classified as elliptic, hyperbolic, ultrahyperbolic, or parabolic. The classification is based on the eigenvalues of the coefficient matrix of the second-derivative terms.
+    \item Laplace's equation, Poisson's equation, the heat equation, the transport equation, the wave equation, and Burgers' equation each serves as a model PDE of a given classification and will be closely studied throughout this course.
+\end{enumerate}
+
+\subsection{1.A Well-posedness of a problem}
+Throughout this course, we will introduce different techniques to solve PDEs. However, it only makes sense to seek a solution if the problem is \textit{well-posed}. We study this notion in this appendix.
+
+\begin{definition}[Well-Posedness in the Sense of Hadamard][1.16]
+    A mathematical problem is said to be \textbf{well-posed} if (i) a solution exists, (ii) the solution is unique, and (iii) the solution depends continuously on the data. If the problem is not well-posed, it is said to be \textbf{ill-posed}.
+\end{definition}
+
+As we are not yet equipped to study the well-posedness of PDEs, we consider a few examples of well-posedness in the context of linear algebra and ODEs.
+
+\begin{example}[Linear Algebra][1.17]
+    Consider the solution of a linear system associated with a matrix $A \in \R^{n \times n}$: find $x \in \R^n$ such that
+    \[Ax = b\]
+    for some data $b \in \R^n$. We recall that the problem has a unique solution for any data $b$ if $A$ is nonsingular. In addition, we can readily show that if $Ax_1 = b_1$ and $Ax_2 = b_2$, then $\|x_1 - x_2\| \leq (1/\sigma_{\min}(A)) \|b_1 - b_2\|$, where $\sigma_{\min}(A)$ is the minimum singular value of $A$, which is nonzero for a nonsingular $A$. A small perturbation in the data $b$ results in a small perturbation in the solution $x$. Hence the problem is well-posed if $A$ is nonsingular.
+
+    On the other hand, if $A$ is singular and $b \notin \operatorname{Img}(A)$, then the solution does not exist. If $A$ is singular and $b \in \operatorname{Img}(A)$, then there are infinitely many solutions; if $Ax = b$, then $x + y$ is also a solution for any $y \in \operatorname{Ker}(A)$. (Recall that $\operatorname{Ker}(A) = \{0\}$ for a nonsingular $A$, but $\operatorname{Ker}(A)$ includes other elements for a singular $A$.) Hence, if $A$ is singular, then the problem is ill-posed.
+\end{example}
+
+\begin{example}[Initial Value Problem][1.18]
+    Consider an initial value problem on $I \equiv (0, T]$ for the final time $T \in \R_{>0}$:
+    \begin{align*}
+        \frac{du}{dt} &= f(t, u) \quad \text{in } I, \\
+        u(t = 0) &= g,
+    \end{align*}
+    where $u : I \to \R$ is the solution, $f : I \times \R \to \R$ defines the ODE, and $g \in \R$ is the initial condition. Suppose $f$ is continuous in $t$ and uniformly Lipschitz continuous in $u$; i.e., there exists $\gamma < \infty$ such that for any $(t, u_1)$ and $(t, u_2)$ we have $|f(t, u_1) - f(t, u_2)| \leq \gamma |u_1 - u_2|$. Then the Picard--Lindel\"of theorem states that a unique solution to the initial value problem exists. In addition, the energy estimate states that $|u_1(t) - u_2(t)| \leq |g_1 - g_2| \exp(\gamma t)$, which means that the solution depends continuously on the data. Hence the problem is well-posed if the assumptions of the Picard--Lindel\"of theorem hold.
+
+    It is also relatively simple to find $f$ for which the problem is ill-posed. A classical example is
+    \begin{align*}
+        \frac{du}{dt} &= u^{1/3} \\
+        u(t = 0) &= 0;
+    \end{align*}
+    this initial value problem admits infinitely many solutions of the form
+    \[u(t) = \begin{cases} 0, & t \in (0, \tau), \\ \left(\frac{2}{3}(t - \tau)\right)^{3/2}, & t \in (\tau, T], \end{cases}\]
+    for any $\tau \in I$. We readily verify that $f(t, u) = u^{1/3}$ does not satisfy the uniform Lipschitz continuity condition of the Picard--Lindel\"of theorem.
+\end{example}

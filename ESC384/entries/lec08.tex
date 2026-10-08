@@ -1,0 +1,284 @@
+% !TeX root = ../main.tex
+
+% Fully discrete quantities carry a double tilde/hat-tilde in this lecture.
+\providecommand{\uu}{\tilde{\tilde{u}}}
+\providecommand{\fh}{\tilde{\hat{f}}}
+\providecommand{\hh}{\tilde{\hat{h}}}
+
+\newlecture[Heat Equation: Finite Difference Method]
+
+\subsection{8.1 Motivation}
+We have so far considered analytical approaches to ``solve'' for---or more precisely represent---the solution to the heat equation: separation of variables and fundamental solutions. While the analytical representations are useful in understanding properties of the PDE, they cannot readily treat general heat equations involving variable coefficients and general domains, which are frequently encountered in science and engineering. In practice, these more general initial-boundary value problems are solved---or more precisely approximated---using \textit{numerical methods}. In this lecture, we consider numerical approximation of the heat equation. For simplicity, we consider a one-dimensional heat equation; we will later consider the treatment of higher-dimensional problems.
+
+\textit{Note:} Our goal in this lecture is to introduce the basic construction and implementation of a finite difference method. Detailed analyses of stability, convergence, and computational efficiency are beyond the scope of this lecture and are typically covered in specialized courses on scientific computing.
+
+\subsection{8.2 Model equation}
+Throughout this lecture, we consider an initial-boundary value problem defined on the spatial domain $\Omega \equiv (x_L, x_R)$ and the time interval $I \equiv (0, t_f]$:
+\begin{align*}
+    \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= f \quad \text{in } \Omega \times I, \\
+    u &= h_L \quad \text{on } \{x = x_L\} \times I, \\
+    \frac{\partial u}{\partial x} &= h_R \quad \text{on } \{x = x_R\} \times I, \\
+    u &= g \quad \text{on } \overline{\Omega} \times \{t = 0\},
+\end{align*}
+where the functions $f : \overline{\Omega} \times [0, t_f] \to \R$, $g : \overline{\Omega} \to \R$, $h_L : [0, t_f] \to \R$, and $h_R : [0, t_f] \to \R$ depend on space and/or time in an arbitrary manner. We consider a problem with Dirichlet and Neumann boundary conditions on the left and right boundaries, respectively, to demonstrate the treatment of these two different boundary conditions.
+
+\subsection{8.3 Discretization in space and time}
+To approximate the solution to the heat equation, we first \textit{discretize} the closed space-time domain $[x_L, x_R] \times [0, t_f]$. To this end, we introduce a spatial computational grid comprising $n + 1$ points:
+\[x_L \equiv x_0 < x_1 < \cdots < x_{n-1} < x_n \equiv x_R.\]
+For simplicity we assume that the grid points are equispaced so that
+\[x_i = x_L + i\Delta x, \quad i = 0, 1, \dots, n,\]
+where $\Delta x \equiv (x_R - x_L)/n$. We similarly introduce a temporal computational grid comprising $J + 1$ points:
+\[0 \equiv t^0 < t^1 < \cdots < t^{J-1} < t^J \equiv t_f.\]
+For simplicity, we again assume that the time intervals are equispaced so that
+\[t^j = j\Delta t, \quad j = 0, 1, \dots, J,\]
+where $\Delta t \equiv t_f / J$. Our goal is to approximate the solution at the space-time grid points $u(x_i, t^j)$ by a computational approximation $\uu_i^j$ so that
+\[u(x_i, t^j) \approx \uu_i^j, \quad i = 0, \dots, n, \ j = 0, \dots, J.\]
+Figure 8.1 shows the space-time finite difference grid. We now introduce the \textit{finite difference method} in space and time to approximate the solution at the grid points.
+
+(While we will not consider non-equispaced grids or time intervals in this lecture, finite difference methods readily extend to these cases. In fact, adaptive and non-equispaced grids and time intervals can greatly improve the efficiency of the method for some problems.)
+
+\lecfig[0.4\linewidth]{heat_fd}{3}{212 536 207 72}{Figure 8.1: Space-time finite difference grid for one-dimensional heat equation for $n = 4$ and $J = 5$.}
+
+\subsection{8.4 Finite difference in space}
+The numerical approximation of PDEs requires the approximation of the (spatial) derivatives that appear in the PDEs. To this end, we introduce a generic function $f : [x_L, x_R] \to \R$ and illustrate an approach to estimate its derivative at a set of grid points. Specifically, given the function values at the grid points $x_0, \dots, x_n$ we wish to approximate the derivative at the same set of points. We first introduce an approximation of the first derivative:
+
+\begin{definition}[First-Derivative Central Difference Formula][8.1]
+    The \textbf{first-derivative central difference formula} is
+    \begin{equation*}
+        f'(x_i) \approx \frac{f_{i+1} - f_{i-1}}{2\Delta x}, \tag{8.1}
+    \end{equation*}
+    where $f_i \equiv f(x_i)$ and $\Delta x = x_{i+1} - x_i = x_i - x_{i-1}$.
+\end{definition}
+
+This is an example of a \textit{finite difference formula}, in which the derivative is approximated by a finite number of differences on a finite grid. Note that in the limit of $\Delta x \to 0$, the formula provides the definition of the derivative. We now formally analyze the \textit{truncation error}.
+
+\begin{proposition}[][8.2]
+    Given a thrice continuously differentiable function $f$,
+    \[\left|f'(x_i) - \frac{f_{i+1} - f_{i-1}}{2\Delta x}\right| \leq \frac{1}{6} \max_{\xi \in [x_{i-1}, x_{i+1}]} |f'''(\xi)| \Delta x^2,\]
+    where $f_i \equiv f(x_i)$ and $\Delta x = x_{i+1} - x_i = x_i - x_{i-1}$. The formula is \textit{second-order accurate}; i.e., the error $E$ is bounded by $E \leq C\Delta x^2$ for some $C$ independent of $\Delta x$, and in particular it depends on the \textit{square} of the grid spacing $\Delta x$.
+\end{proposition}
+\begin{proof}
+    We consider Taylor series expansions of $f_{i+1}$ and $f_{i-1}$ about $x_i$ to obtain
+    \begin{align*}
+        \frac{f_{i+1} - f_{i-1}}{2\Delta x} &= \frac{1}{2\Delta x} \Big(f_i + f_i'\Delta x + \frac{1}{2} f_i''\Delta x^2 + \frac{1}{6} f'''(\xi_1)\Delta x^3 \\
+        &\qquad\qquad - \big(f_i - f_i'\Delta x + \frac{1}{2} f_i''\Delta x^2 - \frac{1}{6} f'''(\xi_2)\Delta x^3\big)\Big) \\
+        &= \frac{1}{2\Delta x} \Big(2f_i'\Delta x + \frac{1}{6}(f'''(\xi_1) + f'''(\xi_2))\Delta x^3\Big) = f_i' + \frac{1}{12}(f'''(\xi_1) + f'''(\xi_2))\Delta x^2
+    \end{align*}
+    for some $\xi_1 \in [x_{i-1}, x_i]$ and $\xi_2 \in [x_i, x_{i+1}]$. It follows that
+    \[\left|f_i' - \frac{f_{i+1} - f_{i-1}}{2\Delta x}\right| = \frac{1}{12} |f'''(\xi_1) + f'''(\xi_2)| \Delta x^2 \leq \frac{1}{6} \max_{\xi \in [x_{i-1}, x_{i+1}]} |f'''(\xi)| \Delta x^2,\]
+    which is the desired relationship.
+\end{proof}
+
+We can similarly approximate the second derivative using the finite difference method.
+
+\begin{definition}[Second-Derivative Central Difference Formula][8.3]
+    The \textbf{second-derivative central difference formula} is
+    \begin{equation*}
+        f''(x_i) \approx \frac{f_{i+1} - 2f_i + f_{i-1}}{\Delta x^2}, \tag{8.2}
+    \end{equation*}
+    where $f_i \equiv f(x_i)$ and $\Delta x = x_{i+1} - x_i = x_i - x_{i-1}$.
+\end{definition}
+
+The denominator contains $\Delta x^2$ for the second derivative (as opposed to $\Delta x$ for the first derivative); perhaps this is not too surprising if we consider the definition of the derivative and the limit. We now formally analyze the truncation error.
+
+\begin{proposition}[][8.4]
+    Given a function $f$ with a continuous fourth derivative,
+    \[\left|f_i'' - \frac{f_{i+1} - 2f_i + f_{i-1}}{\Delta x^2}\right| \leq \frac{1}{12} \max_{\xi \in [x_{i-1}, x_{i+1}]} |f^{(4)}(\xi)| \Delta x^2,\]
+    where $f_i \equiv f(x_i)$ and $\Delta x = x_{i+1} - x_i = x_i - x_{i-1}$. The formula is \textit{second-order accurate}.
+\end{proposition}
+\begin{proof}
+    We express $f_{i+1}$, $-2f_i$, and $f_{i-1}$ using Taylor series expansions:
+    \begin{align*}
+        f_{i+1} &= f_i + f_i'\Delta x + \frac{1}{2} f_i''\Delta x^2 + \frac{1}{6} f_i'''\Delta x^3 + \frac{1}{24} f^{(4)}(\xi_1)\Delta x^4 \\
+        -2f_i &= -2f_i \\
+        f_{i-1} &= f_i - f_i'\Delta x + \frac{1}{2} f_i''\Delta x^2 - \frac{1}{6} f_i'''\Delta x^3 + \frac{1}{24} f^{(4)}(\xi_2)\Delta x^4
+    \end{align*}
+    for some $\xi_1 \in [x_i, x_{i+1}]$ and $\xi_2 \in [x_{i-1}, x_i]$. We sum the equations to obtain
+    \[f_{i+1} - 2f_i + f_{i-1} = f_i''\Delta x^2 + \frac{1}{24} [f^{(4)}(\xi_1) + f^{(4)}(\xi_2)] \Delta x^4;\]
+    note in particular that the odd-order terms cancel due to the symmetry. We finally obtain
+    \[\left|f_i'' - \frac{f_{i+1} - 2f_i + f_{i-1}}{\Delta x^2}\right| = \frac{1}{24} |f^{(4)}(\xi_1) + f^{(4)}(\xi_2)| \Delta x^2 \leq \frac{1}{12} \max_{s \in [x_{i-1}, x_{i+1}]} |f^{(4)}(s)| \Delta x^2,\]
+    which is the desired relationship.
+\end{proof}
+
+In general, it is possible to construct finite difference formulas for derivatives of arbitrary order. In addition, it is possible to construct finite difference formulas that are accurate to an arbitrary order, in which the error scales as $\Delta x^p$ for an arbitrarily large $p$. Higher-order and/or higher-derivative approximations are achieved by including more points $(x_i, f(x_i))$ in the finite difference formula and choosing the associated weights so that more terms of the Taylor series expansions cancel. This can be achieved in a systematic manner using a \textit{Taylor table}.
+
+\subsection{8.5 Semi-discrete heat equation}
+We now apply finite difference formulas to approximate the heat equation. In particular, we wish to approximate the value of the solution at nodes $x_1, \dots, x_n$ at time $t$ by
+\[\tilde{u}_i(t) \approx u(x_i, t), \quad i = 1, \dots, n, \ t \in \R_{>0}.\]
+Note that our goal is to approximate the solution $u : \Omega \times I \to \R$ that depends on both space and time by a set of $n$ functions $\tilde{u}_i : I \to \R$, $i = 1, \dots, n$, associated with the $n$ fixed grid points. To this end, we start with the heat equation
+\[\frac{\partial u}{\partial t}(x, t) - \frac{\partial^2 u}{\partial x^2}(x, t) = f(x, t) \quad x \in \Omega, \ t \in I,\]
+and approximate the Laplacian operator, which is the second derivative in space, using the central difference formula (8.2) to obtain the heat equation discretized in space:
+\begin{equation*}
+    \frac{d\tilde{u}_i}{dt}(t) - \frac{\tilde{u}_{i+1}(t) - 2\tilde{u}_i(t) + \tilde{u}_{i-1}(t)}{\Delta x^2} = \hat{f}_i(t), \quad t \in I, \tag{8.3}
+\end{equation*}
+where $\hat{f}_i(t) \equiv f(x_i, t)$. We use $\hat{f}_i(t)$ (instead of $\tilde{f}_i(t)$) to denote the evaluation of $f$ at $(x_i, t)$ because this evaluation is exact at $x_i$; this is unlike $\tilde{u}(x_i, t)$, which in general will not equal $u(x_i, t)$ at $x_i$.
+
+While (8.3) provides appropriate equations for the interior nodes $i = 2, \dots, n - 1$, we need to incorporate the boundary conditions for $i = 1$ and $n$ as follows:
+\begin{enumerate}
+    \item \textit{Left Dirichlet boundary.} On the left boundary, we wish to impose the Dirichlet boundary condition $u(x = x_L, t) = h_L(t)$. Because the solution at $i = 0$ is ``known'', we replace the difference equation (8.3) for $i = 0$ with
+    \[\tilde{u}_{i=0}(t) = h_L(t).\]
+    We substitute the expression in the difference equation (8.3) for $i = 1$ to obtain
+    \[\frac{d\tilde{u}_1}{dt}(t) - \frac{\tilde{u}_2(t) - 2\tilde{u}_1(t) + h_L(t)}{\Delta x^2} = \hat{f}_i(t),\]
+    which, after some rearrangement, yields
+    \[\frac{d\tilde{u}_1}{dt}(t) - \frac{\tilde{u}_2(t) - 2\tilde{u}_1(t)}{\Delta x^2} = \hat{f}_1(t) + \frac{h_L(t)}{\Delta x^2}.\]
+    Note that we have moved the ``known'' value to the right-hand side of the equation so that the left-hand side is linear in $\tilde{u}$.
+    \item \textit{Right Neumann boundary.} On the right boundary, we wish to impose the Neumann boundary condition $\frac{\partial u}{\partial x}(x = x_R, t) = h_R(t)$. We apply the central finite difference formula for the first derivative at $i = n$ to obtain
+    \[\frac{\tilde{u}_{n+1}(t) - \tilde{u}_{n-1}(t)}{2\Delta x} = h_R(t) \quad \Rightarrow \quad \tilde{u}_{n+1}(t) = \tilde{u}_{n-1}(t) + 2\Delta x h_R(t).\]
+    We substitute the relationship into the difference equation (8.3) for $i = n$ to obtain
+    \[\frac{d\tilde{u}_n}{dt}(t) - \frac{(\tilde{u}_{n-1}(t) + 2\Delta x h_R(t)) - 2\tilde{u}_n(t) + \tilde{u}_{n-1}(t)}{\Delta x^2} = \hat{f}_n(t), \quad t \in \R_{>0}\]
+    which, after some rearrangement, yields
+    \[\frac{d\tilde{u}_n}{dt}(t) - \frac{-2\tilde{u}_n(t) + 2\tilde{u}_{n-1}(t)}{\Delta x^2} = \hat{f}_n(t) + \frac{2h_R(t)}{\Delta x}.\]
+\end{enumerate}
+The finite difference approximation, which incorporates the boundary conditions, is hence given by
+\begin{equation*}
+    \begin{aligned}
+        \frac{d\tilde{u}_1}{dt}(t) - \frac{\tilde{u}_2(t) - 2\tilde{u}_1(t)}{\Delta x^2} &= \hat{f}_1(t) + \frac{h_L(t)}{\Delta x^2}, \\
+        \frac{d\tilde{u}_i}{dt}(t) - \frac{\tilde{u}_{i+1}(t) - 2\tilde{u}_i(t) + \tilde{u}_{i-1}(t)}{\Delta x^2} &= \hat{f}_i(t), \quad i = 2, \dots, n - 1, \\
+        \frac{d\tilde{u}_n}{dt}(t) - \frac{-2\tilde{u}_n(t) + 2\tilde{u}_{n-1}(t)}{\Delta x^2} &= \hat{f}_n(t) + \frac{2h_R(t)}{\Delta x}, \\
+        \tilde{u}_i(t = 0) &= \hat{g}_i, \quad i = 1, \dots, n,
+    \end{aligned} \tag{8.4}
+\end{equation*}
+where $\hat{g}_i \equiv g(x_i)$, $i = 1, \dots, n$. We make a few observations:
+\begin{enumerate}
+    \item The system (8.4) is called a \textit{semi-discrete} form of the heat equation (with appropriate boundary conditions) because the equation is discretized in space but not in time.
+    \item We have turned the original PDE-based initial-boundary value problem into an initial value problem based on a system of $n$ ODEs, where the unknowns are $\tilde{u}_1(t), \dots, \tilde{u}_n(t)$ (which excludes the left boundary with the known solution).
+    \item Assuming that the solution $u$ is sufficiently regular and that the semi-discrete scheme is stable, this approximation is \textit{second-order accurate in space}; i.e.,
+    \[|u(x_i, t) - \tilde{u}_i(t)| \leq C\Delta x^2, \quad i = 1, \dots, n, \ t \in \R_{>0}\]
+    for some constant $C < \infty$ independent of $\Delta x$. Decreasing the grid spacing $\Delta x$ by a factor of two causes the error to decrease by a factor of four.
+\end{enumerate}
+The system of ODEs can also be written in matrix form. We first concatenate $\tilde{u}_1(t), \dots, \tilde{u}_n(t)$ as a vector $\tilde{u}(t) \in \R^n$ whose $i$-th entry is $\tilde{u}_i(t)$. We then seek $\tilde{u} : \R_{>0} \to \R^n$ such that
+\begin{equation*}
+    \begin{aligned}
+        \frac{d\tilde{u}}{dt}(t) + \hat{A}\tilde{u}(t) &= \hat{f}(t) + \hat{h}(t) \quad \text{in } \R^n, \ t \in \R_{>0}, \\
+        \tilde{u}(t = 0) &= \hat{g} \quad \text{in } \R^n,
+    \end{aligned} \tag{8.5}
+\end{equation*}
+where $\hat{A} \in \R^{n \times n}$, $\hat{f}(t) \in \R^n$, $\hat{h}(t) \in \R^n$, and $\hat{g} \in \R^n$ are given by
+\[\hat{A} = \frac{1}{\Delta x^2} \begin{pmatrix} 2 & -1 & & & \\ -1 & 2 & -1 & & \\ & \ddots & \ddots & \ddots & \\ & & -1 & 2 & -1 \\ & & & -2 & 2 \end{pmatrix}, \quad \hat{f}(t) = \begin{pmatrix} \hat{f}_1(t) \\ \hat{f}_2(t) \\ \vdots \\ \hat{f}_{n-1}(t) \\ \hat{f}_n(t) \end{pmatrix},\]
+\[\hat{h}(t) = \begin{pmatrix} h_L(t)/\Delta x^2 \\ 0 \\ \vdots \\ 0 \\ 2h_R(t)/\Delta x \end{pmatrix}, \quad \hat{g} = \begin{pmatrix} \hat{g}_1 \\ \hat{g}_2 \\ \vdots \\ \hat{g}_{n-1} \\ \hat{g}_n \end{pmatrix}.\]
+The matrix form of the equation allows us to (i) more compactly express our finite difference approximation and (ii) efficiently implement our approximation in a computer program using a language such as \textsc{Matlab}.
+
+\subsection{8.6 Temporal discretization}
+We next wish to apply a time discretization to the semi-discrete form (8.4). There are many time-marching methods, but in this lecture we consider the \textit{Crank--Nicolson method}. To this end, we first introduce an initial-value problem associated with a system of $n$ ODEs: find $\tilde{u} : I \to \R^n$ such that
+\begin{align*}
+    \frac{d\tilde{u}}{dt}(t) &= F(\tilde{u}(t), t) \quad \text{in } \R^n, \ t \in I, \\
+    \tilde{u}(t = 0) &= \hat{g} \quad \text{in } \R^n,
+\end{align*}
+where $F : \R^n \times I \to \R^n$ describes the dynamics of the system, and $\hat{g} \in \R^n$ is the initial condition. We now wish to find a sequence of approximations $\uu^0, \dots, \uu^J$ such that
+\[\tilde{u}(t^j) \approx \uu^j, \quad j = 0, \dots, J.\]
+The Crank--Nicolson approximation is given by
+\begin{align*}
+    \frac{\uu^j - \uu^{j-1}}{\Delta t} &= \frac{1}{2} \left(F(\uu^j, t^j) + F(\uu^{j-1}, t^{j-1})\right) \quad \text{in } \R^n, \ j = 1, \dots, J, \\
+    \uu^{j=0} &= \hat{g} \quad \text{in } \R^n.
+\end{align*}
+As regards the accuracy of the Crank--Nicolson method, we have the following result:
+
+\begin{proposition}[][8.5]
+    Suppose $F$ is Lipschitz continuous in its first argument and the solution $\tilde{u}$ to the initial-value problem $\frac{d\tilde{u}}{dt} = F(\tilde{u}, t)$ is three times continuously differentiable in time. Then the Crank--Nicolson approximation of $\tilde{u}(t^j)$, $\uu^j$, satisfies
+    \[|\tilde{u}(t^j) - \uu^j| \leq C \max_{s \in [0, t^j]} |\tilde{u}'''(s)| \Delta t^2,\]
+    where $C$ is independent of $\Delta t$.
+\end{proposition}
+
+We make two observations:
+\begin{enumerate}
+    \item \textit{Convergence:} $\|\tilde{u}(t^j) - \uu^j\| \to 0$ as $\Delta t \to 0$ for any $t^j$ and hence the scheme is convergent;
+    \item \textit{Order of accuracy:} $\|\tilde{u}(t^j) - \uu^j\| \leq C\Delta t^2$ and hence the scheme is second-order accurate. Decreasing the time step $\Delta t$ by a factor of two causes the error to decrease by a factor of four.
+\end{enumerate}
+
+\begin{nremark}[][8.6]
+    This discussion is beyond the scope of this course, but we make one remark regarding the stability of time-marching schemes. The choice of the time-marching scheme is typically governed by three factors: accuracy; computational cost; and \textit{stability}. Stability may impose an upper bound on the time step $\Delta t$ that can be used without the numerical solution becoming unbounded. For the linear heat equation considered here, the Crank--Nicolson method is unconditionally stable; i.e., stability does not impose an upper bound on $\Delta t$. Nevertheless, $\Delta t$ must still be sufficiently small to achieve the desired accuracy. In short, accuracy is not the only consideration in choosing a time-marching scheme.
+\end{nremark}
+
+\subsection{8.7 Fully discrete equation}
+We now apply the Crank--Nicolson method to the semi-discrete form of the heat equation to obtain a fully discrete equation. We denote the finite difference approximation of the state at position $x_i$ and time $t^j$ by
+\[\uu_i^j \approx u(x_i, t^j), \quad i = 1, \dots, n, \ j = 1, \dots, J.\]
+The application of the Crank--Nicolson formula to (8.4) yields
+\begin{equation*}
+    \begin{aligned}
+        \frac{\uu_1^j - \uu_1^{j-1}}{\Delta t} &= \frac{1}{2} \sum_{k \in \{j-1, j\}} \left(\frac{\uu_2^k - 2\uu_1^k}{\Delta x^2} + \fh_1^k + \frac{h_L^k}{\Delta x^2}\right), \quad j = 1, \dots, J, \\
+        \frac{\uu_i^j - \uu_i^{j-1}}{\Delta t} &= \frac{1}{2} \sum_{k \in \{j-1, j\}} \left(\frac{\uu_{i+1}^k - 2\uu_i^k + \uu_{i-1}^k}{\Delta x^2} + \fh_i^k\right), \quad i = 2, \dots, n - 1, \ j = 1, \dots, J, \\
+        \frac{\uu_n^j - \uu_n^{j-1}}{\Delta t} &= \frac{1}{2} \sum_{k \in \{j-1, j\}} \left(\frac{-2\uu_n^k + 2\uu_{n-1}^k}{\Delta x^2} + \fh_n^k + \frac{2h_R^k}{\Delta x}\right), \quad j = 1, \dots, J, \\
+        \uu_i^{j=0} &= \hat{g}_i, \quad i = 1, \dots, n,
+    \end{aligned} \tag{8.6}
+\end{equation*}
+where $\fh_i^j = f(x_i, t^j)$, $h_L^j = h_L(t^j)$, and $h_R^j = h_R(t^j)$. We can also write the formulation in a more compact matrix-vector form:
+\begin{align*}
+    \frac{\uu^j - \uu^{j-1}}{\Delta t} &= \frac{1}{2} \left(-\hat{A}\uu^j + \fh^j + \hh^j - \hat{A}\uu^{j-1} + \fh^{j-1} + \hh^{j-1}\right) \quad \text{in } \R^n, \ j = 1, \dots, J, \\
+    \uu^{j=0} &= \hat{g} \quad \text{in } \R^n,
+\end{align*}
+where $\hat{A} \in \R^{n \times n}$, $\fh^j = \hat{f}(t^j) \in \R^n$, and $\hh^j = \hat{h}(t^j) \in \R^n$; the expressions for $\hat{f}(t)$ and $\hat{h}(t)$ are provided in the semi-discrete formulation (8.5). We make a few observations:
+\begin{enumerate}
+    \item The system (8.6) is a \textit{fully discrete} form of the heat equation because it is discretized in both space and time.
+    \item Assuming the solution $u$ is sufficiently regular and that the fully discrete scheme is stable, the approximation is second-order accurate in both space and time; i.e.,
+    \[\|u(x_i, t^j) - \uu_i^j\| \leq C\Delta x^2 + D\Delta t^2, \quad i = 1, \dots, n, \ j = 1, \dots, J,\]
+    for some constants $C < \infty$ and $D < \infty$ that are independent of $\Delta x$ and $\Delta t$. Decreasing both $\Delta x$ and $\Delta t$ by a factor of two causes the error to decrease by a factor of four.
+    \item Because the error bound is a \textit{sum} of spatial and temporal contributions, it is insufficient to decrease only $\Delta x$ or $\Delta t$. Both $\Delta x$ \textit{and} $\Delta t$ must be decreased to control the error.
+\end{enumerate}
+
+\subsection{8.8 Solution of the fully discrete equation}
+We can solve the fully discrete equation by marching in time as follows:
+\begin{enumerate}
+    \setcounter{enumi}{-1}
+    \item Initialize the state to $\uu^{j=0} = \hat{g}$.
+    \item Update the state by solving a linear system
+    \begin{equation*}
+        (I + \tfrac{1}{2}\Delta t\hat{A})\uu^j = (I - \tfrac{1}{2}\Delta t\hat{A})\uu^{j-1} + \tfrac{1}{2}\Delta t(\fh^j + \hh^j + \fh^{j-1} + \hh^{j-1}) \tag{8.7}
+    \end{equation*}
+    for $\uu^j \in \R^n$, starting with $j = 1$ and time-marching to $j = J$.
+\end{enumerate}
+We make a few observations:
+\begin{enumerate}
+    \item The matrix $I + \frac{1}{2}\Delta t\hat{A} \in \R^{n \times n}$ is nonsingular for all $\Delta t > 0$ and hence the linear system has a unique solution.
+    \item The matrices $I + \frac{1}{2}\Delta t\hat{A} \in \R^{n \times n}$ and $I - \frac{1}{2}\Delta t\hat{A} \in \R^{n \times n}$ are \textit{tridiagonal}. The matrices have nonzero entries only on the diagonal, superdiagonal, and subdiagonal. The matrices can be efficiently stored in $\mathcal{O}(n)$ space by only storing the indices and values of the nonzero entries; this is unlike a general dense $n \times n$ matrix, which requires $\mathcal{O}(n^2)$ space to store.
+    \item The tridiagonal system can be solved efficiently in $\mathcal{O}(n)$ operations using the Thomas algorithm, which is a specialization of LU factorization (or Gaussian elimination) for a tridiagonal matrix. A tridiagonal matrix is a special case of a more general \textit{sparse matrix}, which is a matrix whose entries are mostly zero.
+    \item While the matrix $I + \frac{1}{2}\Delta t\hat{A}$ is sparse, its inverse $(I + \frac{1}{2}\Delta t\hat{A})^{-1}$ is dense, with nonzero entries everywhere. Consequently, explicitly storing or applying the inverse requires $\mathcal{O}(n^2)$ memory or operations, respectively. (For a general, non-tridiagonal sparse matrix, the explicitly computing the inverse can require $\mathcal{O}(n^3)$ operations in the worst case.) Hence, the matrix $(I + \frac{1}{2}\Delta t\hat{A})^{-1}$ should never be explicitly formed merely to solve the linear system.
+    \item More pragmatically, to solve (8.7) using \textsc{Matlab}, we first store $I$ and $\hat{A}$ as sparse matrices using the \texttt{sparse} command. We then call
+    \[\uu^j \leftarrow (I + \tfrac{1}{2}\Delta t\hat{A}) \backslash \left((I - \tfrac{1}{2}\Delta t\hat{A})\uu^{j-1} + \tfrac{1}{2}\Delta t(\fh^j + \hh^j + \fh^{j-1} + \hh^{j-1})\right),\]
+    where ``$\backslash$'' is the backslash operator, which automatically uses an efficient direct solver that exploits the sparse matrix structure. We should \textit{never} use the \texttt{inv} function merely to solve the linear system, as explicitly forming the inverse is unnecessary and inefficient.
+\end{enumerate}
+
+\subsection{8.9 Example}
+We now consider the approximation of the heat equation on $(0, 1) \times (0, 1)$:
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial u}{\partial t}(x, t) - \frac{\partial^2 u}{\partial x^2}(x, t) &= \cos(t/2) \exp(x^2), \quad \forall x \in (0, 1), \ t \in (0, 1], \\
+        u(x = 0, t) &= 0, \quad \forall t \in (0, 1], \\
+        \frac{\partial u}{\partial x}(x = 1, t) &= 0, \quad \forall t \in (0, 1], \\
+        u(x, t = 0) &= \frac{1}{2} \sin(3\pi x/2), \quad \forall x \in [0, 1].
+    \end{aligned} \tag{8.8}
+\end{equation*}
+Figure 8.2 shows the finite difference solution for two different grid spacings $\Delta x$ and time steps $\Delta t$. We note that the arbitrary initial condition and the time-dependent source function can be handled without any difficulty using the numerical method. We also qualitatively observe that the approximation gets finer as $\Delta x$ decreases.
+
+\lecfig{heat_fd}{10}{101 533 94 79}{Figure 8.2: Approximation of the heat equation problem (8.8).}
+
+Table 8.1 shows (an estimate of) the maximum error
+\[\|u - \uu\|_\infty \equiv \max_{\substack{i=1,\dots,n \\ j=1,\dots,J}} |u(x_i, t^j) - \uu_i^j|\]
+as a function of $\Delta x$ and $\Delta t$. Because an analytical solution is not readily available, we estimate the error using a highly accurate numerical reference solution. We make some observations:
+\begin{enumerate}
+    \item The solution accuracy can be limited by either the lack of spatial resolution or the lack of temporal resolution. We must decrease both $\Delta x$ \textit{and} $\Delta t$ to control the error.
+    \item If $\Delta t$ is sufficiently small and the accuracy is limited by the spatial resolution, the error scales as $\mathcal{O}(\Delta x^2)$, consistent with the theory for the second-order accurate finite difference method. For example, the first three entries in the column corresponding to $\Delta t = 1/256$ decrease by approximately a factor of four when $\Delta x$ is halved. For the smallest grid spacing, the temporal error is no longer negligible, and hence the spatial convergence rate is obscured.
+    \item If $\Delta x$ is sufficiently small and the accuracy is limited by the temporal resolution, the error scales as $\mathcal{O}(\Delta t^2)$, consistent with the theory for the second-order accurate Crank--Nicolson method. For example, the first three entries in the row corresponding to $\Delta x = 1/64$ decrease by approximately a factor of four when $\Delta t$ is halved. For the smallest time step, the spatial error is no longer negligible, and hence the temporal convergence rate is obscured.
+    \item To minimize the computational cost (i.e., the number of grid points or time steps) required to achieve a given accuracy, we wish to choose a combination of $\Delta x$ and $\Delta t$ such that the spatial and temporal errors are balanced and neither dominates the other.
+\end{enumerate}
+
+\begin{center}
+    \begin{tabular}{c|cccc}
+        & $\Delta t = 1/32$ & $\Delta t = 1/64$ & $\Delta t = 1/128$ & $\Delta t = 1/256$ \\
+        \hline
+        $\Delta x = 1/8$ & $7.61 \times 10^{-3}$ & $7.54 \times 10^{-3}$ & $7.53 \times 10^{-3}$ & $7.52 \times 10^{-3}$ \\
+        $\Delta x = 1/16$ & $7.75 \times 10^{-3}$ & $1.91 \times 10^{-3}$ & $1.89 \times 10^{-3}$ & $1.89 \times 10^{-3}$ \\
+        $\Delta x = 1/32$ & $8.33 \times 10^{-3}$ & $1.84 \times 10^{-3}$ & $4.77 \times 10^{-4}$ & $4.73 \times 10^{-4}$ \\
+        $\Delta x = 1/64$ & $8.47 \times 10^{-3}$ & $1.97 \times 10^{-3}$ & $4.48 \times 10^{-4}$ & $2.09 \times 10^{-4}$
+    \end{tabular}\\[4pt]
+    {\small Table 8.1: Maximum error for the heat equation problem (8.8) as a function of the grid spacing $\Delta x$ and time step $\Delta t$.}
+\end{center}
+
+\subsection{8.10 Summary}
+We summarize key points of this lecture:
+\begin{enumerate}
+    \item The finite difference method provides an approximation of the solution to the heat equation at a set of grid points in space and time.
+    \item Given a function $f$, its derivative evaluated at a grid point $x_i$ can be approximated as a linear combination of $f$ evaluated at a set of grid points. The order of accuracy of the finite difference formula can be analyzed using Taylor series. The number of required grid points depends on the order of the derivative and the order of accuracy.
+    \item Semi-discrete form of a time-dependent PDE is a system of ODEs (initial value problems) that has been discretized in space but remains continuous in time.
+    \item The semi-discrete equation can be discretized in time using a time-marching method (e.g., the Crank--Nicolson method), which yields a fully discrete equation.
+    \item The fully discrete equation can be solved by starting with $t = 0$ and then marching forward in time. If the Crank--Nicolson method is used for the time discretization, we must solve a linear system at each time level; the linear system can be solved efficiently because it is a sparse matrix.
+\end{enumerate}

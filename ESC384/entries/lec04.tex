@@ -1,0 +1,247 @@
+% !TeX root = ../main.tex
+
+\newlecture[Sturm--Liouville Theory]
+
+\subsection{4.1 Introduction}
+We have so far formulated and analyzed Fourier series based on sinusoidal functions. In our formulation, we have found that orthogonal functions provide a particularly simple expression for the coefficients; in our analysis, we found that many of the convergence properties derive from the orthogonality and completeness of the sinusoidal functions. In this lecture, we study an important class of ordinary differential equations (ODEs): the Sturm--Liouville problem. The solution to the problem is a complete set of orthogonal functions, which can be used to form a generalized Fourier series, which shares many of the convergence properties of the ``classical'' Fourier series.
+
+\subsection{4.2 Motivation: Fourier series and eigenproblem}
+We first explore the connection between Fourier series and selected eigenproblems. To this end, consider an ODE eigenproblem: find eigenpairs $(\phi_n, \lambda_n)$ (i.e., an eigenfunction $\phi_n$ and its associated eigenvalue $\lambda_n$) such that
+\begin{equation*}
+    \begin{aligned}
+        -\phi_n'' &= \lambda_n \phi_n \quad \text{in } (0, 1), \\
+        \phi_n(0) &= \phi_n(1) = 0.
+    \end{aligned} \tag{4.1}
+\end{equation*}
+To find the solution, we consider three different cases for the eigenvalue:
+\begin{itemize}
+    \item \textit{Case 1: $\lambda_n < 0$.} Let $\mu_n = -\lambda_n$ so that $\mu_n > 0$. The general solution to (4.1) is of the form
+    \[\phi_n(x) = A_n \cosh(\sqrt{\mu_n} x) + B_n \sinh(\sqrt{\mu_n} x).\]
+    The boundary condition at $x = 0$ requires
+    \[\phi_n(x = 0) = A_n = 0.\]
+    The boundary condition at $x = 1$ requires
+    \[\phi_n(x = 1) = B_n \sinh(\sqrt{\mu_n}) = 0 \quad \Rightarrow \quad B_n = 0,\]
+    since $\sinh(x) = 0$ only if $x = 0$. The only solution to the eigenproblem (4.1) is the trivial solution $\phi_n = 0$. Hence $\lambda_n < 0$ does not yield a desired family of nontrivial functions.
+    \item \textit{Case 2: $\lambda_n = 0$.} If $\lambda_n = 0$, the general solution to (4.1) is of the form
+    \[\phi_n(x) = A_n x + B_n.\]
+    The boundary condition at $x = 0$ requires
+    \[\phi_n(x = 0) = B_n = 0.\]
+    The boundary condition at $x = 1$ requires
+    \[\phi_n(x = 1) = A_n = 0.\]
+    Again, if $\lambda_n = 0$, the only solution to the eigenproblem (4.1) is the trivial solution $\phi_n = 0$.
+    \item \textit{Case 3: $\lambda_n > 0$.} The general solution to (4.1) is of the form
+    \[\phi_n(x) = A_n \cos(\sqrt{\lambda_n} x) + B_n \sin(\sqrt{\lambda_n} x).\]
+    The boundary condition at $x = 0$ requires
+    \[\phi_n(x = 0) = A_n = 0.\]
+    The boundary condition at $x = 1$ requires
+    \[\phi_n(x = 1) = B_n \sin(\sqrt{\lambda_n}) = 0.\]
+    Since we seek a nontrivial solution, we require $B_n \neq 0$. It therefore follows that
+    \[\sin(\sqrt{\lambda_n}) = 0 \quad \Rightarrow \quad \lambda_n = n^2\pi^2, \quad n = 1, 2, \dots.\]
+    Hence $\phi_n(x) = \sin(n\pi x)$ and $\lambda_n = n^2\pi^2$ for $n = 1, 2, \dots$ are the nontrivial solutions to the eigenproblem (4.1).
+\end{itemize}
+The solution to the eigenproblem (4.1) is therefore
+\[\phi_n(x) = \sin(n\pi x) \quad \text{and} \quad \lambda_n = n^2\pi^2 \quad \text{for} \quad n = 1, 2, \dots.\]
+We make a few observations:
+\begin{enumerate}
+    \item The eigenfunctions are the basis of Fourier sine series, and hence the linear combination of the eigenfunctions can approximate any square-integrable function.
+    \item The eigenfunctions are orthogonal.
+    \item The eigenvalues are real and nonnegative.
+\end{enumerate}
+We now ask an important question:
+\begin{quote}
+    Could we have known all of the above properties just by looking at the eigenproblem \textit{without having to find the explicit expressions for the solution}?
+\end{quote}
+It turns out that the answer is \textit{yes}. All of the above properties are consequences of the Sturm--Liouville theory.
+
+\subsection{4.3 Sturm--Liouville theory}
+We introduce the \textit{regular Sturm--Liouville problem}.
+
+\begin{definition}[Regular Sturm--Liouville Problem][4.1]
+    The \textbf{regular Sturm--Liouville problem} is given by
+    \begin{align*}
+        -(p\phi')' + q\phi &= \lambda w \phi \quad \text{in } (a, b), \\
+        \alpha_1 \phi(a) - \alpha_2 \phi'(a) &= 0, \\
+        \beta_1 \phi(b) + \beta_2 \phi'(b) &= 0,
+    \end{align*}
+    where $p : [a, b] \to \R$, $p' : [a, b] \to \R$, $q : [a, b] \to \R$ and $w : [a, b] \to \R$ are continuous on $[a, b]$, $p > 0$ and $w > 0$ on $[a, b]$, and $\alpha_1^2 + \alpha_2^2 > 0$ and $\beta_1^2 + \beta_2^2 > 0$.
+\end{definition}
+
+While the particular form of the Sturm--Liouville equation might appear rather restrictive at first glance, the equation is quite general; specifically, second-order ODEs of the form
+\[-\gamma_2 \phi'' + \gamma_1 \phi' + \gamma_0 \phi = \lambda \phi \quad \text{in } (a, b)\]
+can be recast as the Sturm--Liouville equation through the change of variables
+\[p(x) = \exp\left(\int^x -\frac{\gamma_1(\xi)}{\gamma_2(\xi)} d\xi\right), \quad q(x) = \frac{\gamma_0(x)}{\gamma_2(x)} p(x), \quad w(x) = \frac{1}{\gamma_2(x)} p(x),\]
+provided that $\gamma_2$ is continuous and strictly positive on $[a, b]$.
+
+We now introduce some important properties of the Sturm--Liouville problem and its solutions. (\textit{Note:} proofs are provided for completeness, but they should be considered optional reading items.)
+
+\begin{theorem}[Self-Adjointness of Sturm--Liouville Operator][4.2]
+    The Sturm--Liouville operator $L \equiv -\frac{d}{dx}(p \frac{d}{dx}) + q$ is self-adjoint in the sense that
+    \[(Lw, v) = (w, Lv)\]
+    for any complex-valued functions $w, v \in C^2([a, b])$ that satisfy the boundary conditions. Here $(\cdot, \cdot) : \mathbb{C} \times \mathbb{C} \to \mathbb{C}$ is the $L^2$ inner product on complex-valued functions given by $(f, g) \equiv \int_a^b f \bar{g}\,dx$, where $\bar{g}$ denotes the complex conjugate of $g$.
+\end{theorem}
+\begin{proof}
+    We use integration by parts to obtain
+    \[(Lw, v) - (w, Lv) = \int_a^b (-(pw')' + qw)\bar{v} - (-(p\bar{v}')' + q\bar{v}) w\,dx = [p(-w'\bar{v} + \bar{v}'w)]_{x=a}^{b}.\]
+    We now appeal to the boundary condition at $x = a$ to find that
+    \begin{align*}
+        \alpha_1 w(a) - \alpha_2 w'(a) &= 0, \\
+        \alpha_1 \bar{v}(a) - \alpha_2 \bar{v}'(a) &= 0,
+    \end{align*}
+    which may be written as
+    \[\begin{pmatrix} w(a) & -w'(a) \\ \bar{v}(a) & -\bar{v}'(a) \end{pmatrix} \begin{pmatrix} \alpha_1 \\ \alpha_2 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix}.\]
+    Since $\alpha_1^2 + \alpha_2^2 > 0$, the linear system has a nontrivial solution and the matrix must be singular. It follows that
+    \[w(a)\bar{v}'(a) - w'(a)\bar{v}(a) = 0.\]
+    We also invoke the same argument at the boundary $x = b$ to find that
+    \[w(b)\bar{v}'(b) - w'(b)\bar{v}(b) = 0.\]
+    Hence
+    \[(Lw, v) - (w, Lv) = [p(-w'\bar{v} + \bar{v}'w)]_{x=a}^{b} = 0,\]
+    which is the desired equality.
+\end{proof}
+
+\begin{theorem}[Realness of Sturm--Liouville Eigenvalues][4.3]
+    All eigenvalues of the regular Sturm--Liouville problem are real.
+\end{theorem}
+\begin{proof}
+    Let $\phi$ and $\lambda$ be an eigenfunction and its associated eigenvalue, respectively, of a regular Sturm--Liouville problem. Then $L\phi = \lambda w \phi$, and hence
+    \[0 = (L\phi, \phi) - (\phi, L\phi) = (\lambda - \bar{\lambda}) \int_a^b w |\phi|^2 dx.\]
+    Since $\int_a^b w |\phi|^2 dx \neq 0$, $\lambda - \bar{\lambda} = 2i \operatorname{Im}(\lambda) = 0$, and $\lambda$ is real.
+\end{proof}
+
+\begin{theorem}[Orthogonality of Sturm--Liouville Eigenfunctions][4.4]
+    The eigenfunctions of the regular Sturm--Liouville problem associated with two distinct eigenvalues $\lambda_n$ and $\lambda_m$ are orthogonal with respect to the weight $w : [a, b] \to \R_{>0}$ in the sense that
+    \[\int_a^b w \phi_m \phi_n dx = 0, \quad n \neq m.\]
+\end{theorem}
+\begin{proof}
+    Suppose $\phi_m$ and $\phi_n$ are eigenfunctions associated with distinct eigenvalues $\lambda_m$ and $\lambda_n$ so that
+    \begin{align*}
+        -(p\phi_n')' + q\phi_n - \lambda_n w \phi_n &= L\phi_n - \lambda_n w \phi_n = 0 \\
+        -(p\phi_m')' + q\phi_m - \lambda_m w \phi_m &= L\phi_m - \lambda_m w \phi_m = 0.
+    \end{align*}
+    We multiply the first and second equations by $\phi_m$ and $\phi_n$, respectively, integrate over $(a, b)$, and take the difference of the two equations to find that
+    \begin{align*}
+        0 &= (L\phi_n, \phi_m) - \lambda_n (w\phi_n, \phi_m) - (\phi_n, L\phi_m) + \lambda_m (w\phi_n, \phi_m) \\
+        &= [(L\phi_n, \phi_m) - (\phi_n, L\phi_m)] - (\lambda_n - \lambda_m)(w\phi_n, \phi_m).
+    \end{align*}
+    Because the Sturm--Liouville operator $L$ is self-adjoint, the term in the bracket vanishes. It follows that
+    \[(\lambda_n - \lambda_m)(w\phi_n, \phi_m) = (\lambda_n - \lambda_m) \int_a^b w \phi_n \phi_m dx = 0.\]
+    Hence if $\lambda_m \neq \lambda_n$, the eigenfunctions are orthogonal with respect to the weight function $w$.
+\end{proof}
+
+\begin{theorem}[][4.5]
+    The regular Sturm--Liouville problem has an infinite number of eigenvalues and $\lambda_n \to \infty$ as $n \to \infty$. Moreover, if $q \geq 0$ on $[a, b]$ and $\alpha_1 \geq 0$, $\alpha_2 \geq 0$, $\beta_1 \geq 0$, and $\beta_2 \geq 0$, then $\lambda_n \geq 0$ for all $n$.
+\end{theorem}
+\begin{proof}
+    The proof that $\lambda_n \to \infty$ as $n \to \infty$ is beyond the scope of this course. We will, however, show that $\lambda_n \geq 0$. Suppose $\phi_n$ and $\lambda_n$ are an eigenfunction and its associated eigenvalue. We multiply the Sturm--Liouville ODE by $\phi_n$ and integrate over $(a, b)$ to obtain
+    \[\int_a^b \phi_n (-(p\phi_n')' + q\phi_n) dx = \lambda_n \int_a^b \phi_n \phi_n w\,dx.\]
+    We integrate by parts the first term to obtain
+    \[\int_a^b (p(\phi_n')^2 + q\phi_n^2) dx - p(b)\phi_n(b)\phi_n'(b) + p(a)\phi_n(a)\phi_n'(a) = \lambda_n \int_a^b \phi_n^2 w\,dx.\]
+    To proceed further, we first consider the case where $\alpha_2 \neq 0$ and $\beta_2 \neq 0$. Then, the boundary conditions $\alpha_1 \phi(a) - \alpha_2 \phi'(a) = 0$ and $\beta_1 \phi(b) + \beta_2 \phi'(b) = 0$ require that $\phi'(a) = \frac{\alpha_1}{\alpha_2} \phi(a)$ and $\phi'(b) = -\frac{\beta_1}{\beta_2} \phi(b)$, respectively. Hence
+    \begin{equation*}
+        \int_a^b (p(\phi_n')^2 + q\phi_n^2) dx + p(b) \frac{\beta_1}{\beta_2} \phi_n(b)^2 + p(a) \frac{\alpha_1}{\alpha_2} \phi_n(a)^2 = \lambda_n \int_a^b \phi_n^2 w\,dx. \tag{4.2}
+    \end{equation*}
+    We note that (i) the integral on the left-hand side is non-negative since $p \geq 0$ and $q \geq 0$, (ii) both boundary terms are non-negative since $\alpha_1 \geq 0$, $\alpha_2 \geq 0$, $\beta_1 \geq 0$, and $\beta_2 \geq 0$, and (iii) the integral on the right-hand side is (strictly) positive. We hence conclude that $\lambda_n \geq 0$.
+
+    We next consider the cases where either or both of $\alpha_2$ and $\beta_2$ are zero. If $\alpha_2 = 0$ and $\beta_2 \neq 0$, then the boundary condition requires $\phi(a) = 0$ and hence the second boundary term of (4.2) vanishes; however, all remaining terms on the left-hand side are non-negative and hence $\lambda_n \geq 0$. We make analogous arguments for the case where $\alpha_2 \neq 0$ and $\beta_2 = 0$ and the case where $\alpha_2 = \beta_2 = 0$ to conclude that $\lambda_n \geq 0$.
+\end{proof}
+
+These properties may look rather abstract at first glance. However, because the Sturm--Liouville operator is a linear operator, we can relate the above properties to the familiar properties of linear operators in $\R^n$: symmetric matrices (or Hermitian matrices if complex). First, self-adjointness $(Lw, v) = (w, Lv)$ is analogous to the condition $A = A^H$ for Hermitian matrices, where $\cdot^H$ denotes the conjugate transpose; i.e., $v^H A w = v^H A^H w$ for all $v, w \in \mathbb{C}^n$. For real symmetric matrices, the analogous condition is $A = A^T$. Second, all eigenvalues of the Sturm--Liouville problem are real, just like real symmetric matrices have all real eigenvalues. Third, the eigenfunctions of the Sturm--Liouville problem are orthogonal, just like the eigenvectors of real symmetric matrices are orthogonal. Finally, under certain conditions all eigenvalues of the Sturm--Liouville problem are nonnegative, just like all eigenvalues of symmetric positive-semidefinite matrices are nonnegative.
+
+\subsection{4.4 Examples of the Sturm--Liouville problem}
+We now provide some examples of orthogonal functions that arise as solutions of the regular Sturm--Liouville problem.
+
+\begin{example}[Sine Functions][4.6]
+    Consider an eigenproblem
+    \begin{align*}
+        -\phi_n'' &= \lambda_n \phi_n \quad \text{in } (0, 1), \\
+        \phi_n(0) &= \phi_n(1) = 0.
+    \end{align*}
+    We readily verify that this is a regular Sturm--Liouville problem with $p = 1$, $q = 0$, $w = 1$, $\alpha_1 = \beta_1 = 1$, and $\alpha_2 = \beta_2 = 0$. It follows that the eigenfunctions $\{\phi_n\}$ are orthogonal. Moreover, because $w, \alpha_1, \alpha_2, \beta_1$, and $\beta_2$ are all nonnegative, the eigenvalues are nonnegative. The power of the Sturm--Liouville theory is that we arrive at these conclusions without necessarily knowing the explicit expressions for the eigenvalues and eigenfunctions.
+
+    (Of course, we have seen in Section 4.2 that the explicit form of the solution is $\phi_n(x) = \sin(n\pi x)$ and $\lambda_n = n^2\pi^2$ for $n = 1, 2, \dots$. We readily verify that the solution satisfies all of the above properties.)
+\end{example}
+
+\begin{example}[Cosine Functions][4.7]
+    Consider an eigenproblem
+    \begin{align*}
+        -\phi_n'' &= \lambda_n \phi_n \quad \text{in } (0, 1), \\
+        \phi_n'(0) &= \phi_n'(1) = 0.
+    \end{align*}
+    We readily verify that this is a regular Sturm--Liouville problem with $p = 1$, $q = 0$, $w = 1$, $\alpha_1 = \beta_1 = 0$, and $\alpha_2 = \beta_2 = 1$. It follows that the eigenfunctions $\{\phi_n\}$ are orthogonal. Moreover, because $w, \alpha_1, \alpha_2, \beta_1$, and $\beta_2$ are all nonnegative, the eigenvalues are nonnegative.
+
+    We can again find explicit expressions for the solutions to verify the above claims. We consider three cases:
+    \begin{itemize}
+        \item \textit{Case 1: $\lambda_n < 0$.} Let $\mu_n = -\lambda_n$ so that $\mu_n > 0$. The general solution to the eigenproblem is of the form $\phi_n(x) = a_n \cosh(\sqrt{\mu_n} x) + b_n \sinh(\sqrt{\mu_n} x)$. The derivative of the function is $\phi_n'(x) = a_n \sqrt{\mu_n} \sinh(\sqrt{\mu_n} x) + b_n \sqrt{\mu_n} \cosh(\sqrt{\mu_n} x)$. The boundary condition at $x = 0$ requires that $\phi_n'(x = 0) = b_n \sqrt{\mu_n} = 0$; as $\mu_n > 0$, the condition requires $b_n = 0$. The boundary condition at $x = 1$ requires that $\phi_n'(x = 1) = a_n \sqrt{\mu_n} \sinh(\sqrt{\mu_n}) = 0$; as $\sinh$ is zero only at $x = 0$, the condition requires that $a_n = 0$. Hence there is no nontrivial solution to the boundary value eigenproblem for $\mu_n > 0$.
+        \item \textit{Case 2: $\lambda_n = 0$.} If $\lambda_n = 0$, the general solution to the eigenproblem is $\phi_n(x) = a_n + b_n x$. The derivative of the function is $\phi_n'(x) = b_n$. The boundary conditions at $x = 0$ and $x = 1$ require that $\phi_n'(x = 0) = \phi_n'(x = 1) = b_n = 0$. We therefore find that the nontrivial solutions are the constant functions, which we represent by $\phi_0(x) = 1$.
+        \item \textit{Case 3: $\lambda_n > 0$.} The general solution to the eigenproblem is of the form $\phi_n(x) = a_n \cos(\sqrt{\lambda_n} x) + b_n \sin(\sqrt{\lambda_n} x)$. The derivative of the function is $\phi_n'(x) = -a_n \sqrt{\lambda_n} \sin(\sqrt{\lambda_n} x) + b_n \sqrt{\lambda_n} \cos(\sqrt{\lambda_n} x)$. The boundary condition at $x = 0$ requires $\phi_n'(x = 0) = b_n \sqrt{\lambda_n} = 0$. The boundary condition at $x = 1$ requires $\phi_n'(x = 1) = -a_n \sqrt{\lambda_n} \sin(\sqrt{\lambda_n}) = 0$; the nontrivial solution is given by $\lambda_n = n^2\pi^2$, $n = 1, 2, \dots$. The nontrivial solutions are of the form $\phi_n(x) = \cos(n\pi x)$, $n = 1, 2, \dots$. In fact, we can include the constant solution found in Case 2 in this general family of solutions by starting from $n = 0$.
+    \end{itemize}
+    As expected from the Sturm--Liouville theory, the problem has eigenvalues which are real and nonnegative: $\lambda_n = n^2\pi^2 \geq 0$, $n = 0, 1, 2, \dots$. In addition, the eigenfunctions $\phi_n(x) = \cos(n\pi x)$ are orthogonal on $(0, 1)$, as we have already verified in the context of classical Fourier series.
+\end{example}
+
+\begin{example}[Sinusoidal Functions][4.8]
+    Consider an eigenproblem
+    \begin{align*}
+        -\phi_n'' &= \lambda_n \phi_n \quad \text{in } (-1, 1), \\
+        \phi_n(-1) &= \phi_n(1), \\
+        \phi_n'(-1) &= \phi_n'(1).
+    \end{align*}
+    This is a Sturm--Liouville equation with periodic boundary conditions. This is not a regular Sturm--Liouville problem, but a \textit{periodic Sturm--Liouville problem}. The solutions to this periodic Sturm--Liouville problem is given by
+    \[\lambda_n = m^2\pi^2 \quad \text{and} \quad \phi_n(x) = \begin{cases} \cos(m\pi x), & n \text{ even}, \\ \sin(m\pi x), & n \text{ odd} \end{cases}\]
+    for $m \equiv \lceil n/2 \rceil$, $n = 0, 1, 2, \dots$. We recognize that the eigenfunctions are the basis for the full Fourier series. All eigenvalues are nonnegative and the eigenfunctions are orthogonal, as we have already verified in the context of classical Fourier series. (The orthogonality proof holds for the periodic boundary conditions with little modification.)
+\end{example}
+
+\begin{example}[Legendre Polynomials][4.9]
+    Consider an eigenproblem
+    \[-((1 - x^2)\phi_n')' = \lambda_n \phi_n \quad \text{in } (-1, 1).\]
+    This is a Sturm--Liouville equation, with coefficients $p(x) = (1 - x^2)$, $q = 0$, and $w = 1$. Because $p(x = -1) = p(x = 1) = 0$, the boundary term arising from integration by parts vanishes; the problem hence does not require a boundary condition. A problem associated with a Sturm--Liouville equation with $p$ that vanishes at either or both boundaries is called a \textit{singular Sturm--Liouville problem}. The solutions to this singular Sturm--Liouville problem are the \textit{Legendre polynomials}, which form an orthogonal set of polynomials. (The orthogonality proof holds without any boundary conditions because $p$ vanishes at both boundaries.)
+\end{example}
+
+\subsection{4.5 Generalized Fourier series by eigenfunctions}
+We now use the orthogonality and completeness of eigenfunctions of the Sturm--Liouville problem to form generalized Fourier series.
+
+\begin{definition}[Generalized Fourier Series][4.10]
+    Let $(\phi_n)_{n=1}^{\infty}$ be eigenfunctions of a regular Sturm--Liouville problem with $q \geq 0$ on $[a, b]$, $\alpha_1 \geq 0$, $\alpha_2 \geq 0$, $\beta_1 \geq 0$, and $\beta_2 \geq 0$. We can then approximate any function $f : (a, b) \to \R$ that is square-integrable with respect to the weight $w$ by a \textbf{generalized Fourier series}
+    \begin{equation*}
+        f(x) \sim \sum_{n=1}^{\infty} \hat{f}_n \phi_n(x) \tag{4.3}
+    \end{equation*}
+    for coefficients
+    \[\hat{f}_n = \frac{\int_a^b f \phi_n w\,dx}{\int_a^b \phi_n^2 w\,dx}.\]
+\end{definition}
+
+As with the classical Fourier series, the expression for the coefficients is a consequence of the orthogonality of the functions $(\phi_n)_{n=1}^{\infty}$. Our expression for the coefficient has (the square of) the norm of the function as the denominator, as we did not assume that the functions are orthonormal (i.e., functions in general do not have a unit norm); the expression could be simplified if we had normalized the functions.
+
+We conclude this section by stating without proof the pointwise, uniform, and $L^2$ convergence properties of generalized Fourier series.
+
+\begin{theorem}[Pointwise Convergence of Generalized Fourier Series][4.11]
+    Let $f : [a, b] \to \R$ be a piecewise continuously differentiable function that satisfies the boundary conditions of the regular Sturm--Liouville problem. Then the generalized Fourier series (4.3) converges for any $x \in (a, b)$ to $\frac{1}{2}(f(x^+) + f(x^-))$.
+\end{theorem}
+
+\begin{theorem}[Uniform Convergence of Generalized Fourier Series][4.12]
+    Let $f : [a, b] \to \R$ be a twice continuously differentiable function that satisfies the boundary conditions of the regular Sturm--Liouville problem. Then the generalized Fourier series (4.3) converges uniformly to $f$.
+\end{theorem}
+
+\begin{theorem}[$L^2$ Convergence of Generalized Fourier Series][4.13]
+    Let $f : (a, b) \to \R$ be a function that is square integrable with respect to the weight function $w$. Then the generalized Fourier series (4.3) converges with respect to the $w$-weighted norm $\int_a^b (\cdot)^2 w\,dx$.
+\end{theorem}
+
+\subsection{4.6 Summary}
+We summarize key points of this lecture:
+\begin{enumerate}
+    \item The Sturm--Liouville operator is self-adjoint. As a result, all eigenvalues of a regular Sturm--Liouville problem are real, and its eigenfunctions are orthogonal.
+    \item The families of sine, cosine, and combined sine--cosine functions used in Fourier series arise as solutions to Sturm--Liouville problems. As a result, the functions are orthogonal.
+    \item Solutions of a Sturm--Liouville problem can be used to construct a generalized Fourier series. The coefficients of the series can be found using the relevant orthogonality relation. The series converges as a result of the completeness of the eigenfunctions.
+\end{enumerate}
+
+\subsection{4.A $L^2$ properties of generalized Fourier series}
+We now state some relationships between the coefficients of a generalized Fourier series and the function it approximates.
+
+\begin{theorem}[Generalized Parseval's Identity][4.14]
+    Let $f : (a, b) \to \R$ be a function that is square integrable with respect to the weight function $w$ and satisfies the boundary conditions of the regular Sturm--Liouville problem. Then
+    \[\sum_{n=1}^{\infty} \hat{f}_n^2 \int_a^b \phi_n^2 w\,dx = \int_a^b f^2 w\,dx.\]
+    In other words, the eigenfunctions of the regular Sturm--Liouville problem are complete with respect to the $w$-weighted $L^2$ norm $\int_a^b (\cdot)^2 w\,dx$.
+\end{theorem}
+
+\begin{corollary}[Generalized Bessel's Inequality][4.15]
+    As a consequence of Parseval's identity, a weaker condition, \textit{Bessel's inequality},
+    \[\sum_{n=1}^{\infty} \hat{f}_n^2 \int_a^b \phi_n^2 w\,dx \leq \int_a^b f^2 w\,dx,\]
+    also holds.
+\end{corollary}

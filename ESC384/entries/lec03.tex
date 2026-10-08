@@ -1,0 +1,341 @@
+% !TeX root = ../main.tex
+
+\newlecture[Fourier Series: Analysis]
+
+\subsection{3.1 Introduction}
+In the previous lecture we introduced Fourier series as a means to represent (i) periodic functions on $\R$ or (ii) a periodic extension of functions defined on an interval. We have yet to answer the all-important question: do Fourier series converge and, if so, for what classes of functions and in what sense? In this lecture, we introduce a few different types of convergence for a sequence of functions and then discuss the regularity that the underlying function must possess to achieve each type of convergence.
+
+\subsection{3.2 Regularity of functions}
+We first review a few different characterizations of the regularity of functions. We will use these characterizations in the subsequent discussion of Fourier series.
+
+\begin{definition}[Continuous Functions][3.1]
+    A function $f : (a, b) \to \R$ defined on an open interval $(a, b)$ is \textbf{continuous} on $(a, b)$ if $\lim_{x \to c} f(x) = f(c)$ for all $c \in (a, b)$. A function $f : [a, b] \to \R$ defined on a closed interval $[a, b]$ is continuous on $[a, b]$ if (i) $\lim_{x \to c} f(x) = f(c)$ for all $c \in (a, b)$, (ii) $\lim_{x \to a^+} f(x) = f(a)$, and (iii) $\lim_{x \to b^-} f(x) = f(b)$. The space of continuous functions on an interval $I$ is denoted $C^0(I)$.
+\end{definition}
+
+\begin{definition}[Continuously Differentiable Functions][3.2]
+    Let $I \subset \R$ be an open or closed interval. A function $f : I \to \R$ is \textbf{continuously differentiable} on $I$ if its derivative $f'$ is continuous on $I$. The space of continuously differentiable functions is denoted $C^1(I)$.
+\end{definition}
+
+\begin{definition}[Piecewise Continuous Functions][3.3]
+    Let $(a, b) \subset \R$. A function $f : (a, b) \to \R$ is \textbf{piecewise continuous} on $(a, b)$ if there exists a set of points $a \equiv x_1 < x_2 < \cdots < x_N \equiv b$ such that $f$ is continuous on each interval $(x_i, x_{i+1})$ and one-sided limits $\lim_{x \to x_i^+} f(x)$ and $\lim_{x \to x_{i+1}^-} f(x)$ exist for $i = 1, \dots, N - 1$.
+\end{definition}
+
+\begin{definition}[Piecewise Continuously Differentiable Functions][3.4]
+    Let $(a, b) \subset \R$. A function $f : (a, b) \to \R$ is \textbf{piecewise continuously differentiable} on $(a, b)$ if there exists a set of points $a \equiv x_1 < x_2 < \cdots < x_N \equiv b$ such that $f$ is continuously differentiable on each interval $(x_i, x_{i+1})$ and one-sided limits $\lim_{x \to x_i^+} f'(x)$ and $\lim_{x \to x_{i+1}^-} f'(x)$ exist for $i = 1, \dots, N - 1$.
+\end{definition}
+
+A function $f$ is continuous on $(a, b)$ if there are no discontinuities in the function. A function $f$ is piecewise continuous on $(a, b)$ if we can construct a finite number of open subintervals such that $f$ is continuous on each of the open subintervals and limits exist at the endpoints; in other words, the function may have a finite number of discontinuities, provided that finite one-sided limits exist at each discontinuity. Note that if $f$ is continuous on $(a, b)$, then it is also piecewise continuous on $(a, b)$; however, the converse is not true in general. We now consider a few concrete examples.
+
+\begin{example}[Continuous Function][3.5]
+    Let $f(x) = 1/x$ for $x \in [0, 1]$. The function is not continuous on the closed interval $[0, 1]$ as the function is not defined at $x = 0$. The function is, however, continuous on the open interval $(0, 1)$.
+\end{example}
+
+\begin{example}[Continuously Differentiable Function][3.6]
+    Let $f(x) = \sqrt{x}$ for $x \in [0, 1]$. The function is continuous on the interval $[0, 1]$ but is not continuously differentiable on the interval; the derivative $f'(x) = 1/(2\sqrt{x})$ is not defined at $x = 0$. (The function is similarly piecewise continuous but not piecewise continuously differentiable.)
+\end{example}
+
+\begin{example}[Piecewise Continuous Function][3.7]
+    Let
+    \[f(x) = \begin{cases} 0, & x \in [-1, 0], \\ 1, & x \in (0, 1]. \end{cases}\]
+    The function is not continuous on $[-1, 1]$ because $\lim_{x \to 0^-} f(x) = 0 \neq 1 = \lim_{x \to 0^+} f(x)$. However, the function is piecewise continuous on $[-1, 1]$ because it is continuous on $(-1, 0)$ and $(0, 1)$ and the limits at the endpoints exist.
+\end{example}
+
+\begin{example}[][3.8]
+    Let $f(x) = \tan(x)$ for $x \in \R$, and consider subintervals $I_n \equiv (n\pi - \pi/2, n\pi + \pi/2)$, $n \in \Z$. While the function is continuous on each open subinterval $I_n$, the function is not piecewise continuous because the one-sided limits do not exist at the endpoints of the subintervals.
+\end{example}
+
+\subsection{3.3 Convergence of Fourier series}
+We have so far discussed the representation of various functions as Fourier series but have not discussed two important questions: does the series converge, and, if so, in what sense does it converge? To facilitate the discussion of convergence, we recall the truncated Fourier series defined in Definition 2.13,
+\[s_N(x) \equiv \frac{1}{2} a_0 + \sum_{n=1}^{N} \left(a_n \cos(n\pi x) + b_n \sin(n\pi x)\right),\]
+which is the $N$-term partial sum of the Fourier series. We now provide definitions for \textit{pointwise convergence}, \textit{uniform convergence}, and \textit{$L^2$ convergence} of Fourier series.
+
+\begin{theorem}[Pointwise Convergence of Fourier Series][3.9]
+    Let $f$ be a piecewise continuously differentiable function with a period $2$, and let $s_N$ be the associated truncated Fourier series. Then for any fixed $x \in \R$,
+    \[s_N(x) \to \frac{1}{2} [f(x^-) + f(x^+)] \quad \text{as } N \to \infty.\]
+    The result also holds for the Fourier cosine (resp.\ sine) series if $f$ is a piecewise continuously differentiable, even (resp.\ odd) function with a period $2$.
+\end{theorem}
+\begin{proof}
+    See Appendix 3.A. (Optional)
+\end{proof}
+
+\begin{corollary}[][3.10]
+    Consider the setting of Theorem 3.9. If $f$ is continuous at $x$, then $s_N(x) \to f(x)$ as $N \to \infty$. If $f$ is not continuous at $x$, then $s_N(x)$ converges to the average of the two one-sided limits $f(x^-)$ and $f(x^+)$ as $N \to \infty$.
+\end{corollary}
+
+\begin{theorem}[Uniform Convergence of Fourier Series][3.11]
+    Let $f$ be a continuous and piecewise continuously differentiable function with a period $2$, and let $s_N$ be the associated truncated Fourier series. Then $s_N$ converges uniformly to $f$; i.e.,
+    \[\max_{x \in \R} |f(x) - s_N(x)| \to 0 \quad \text{as } N \to \infty.\]
+    The result also holds for the Fourier cosine (resp.\ sine) series if $f$ is a continuous, piecewise continuously differentiable, even (resp.\ odd) function with a period $2$.
+\end{theorem}
+\begin{proof}
+    See Appendix 3.B. (Optional)
+\end{proof}
+
+\begin{theorem}[$L^2$ Convergence of Fourier Series][3.12]
+    Let $f$ be a square-integrable function with a period $2$; i.e., $f$ is $2$-periodic and
+    \[\int_{-1}^{1} f(x)^2 dx < \infty.\]
+    Then $s_N$ converges in $L^2$ to $f$; i.e.,
+    \[\int_{-1}^{1} (f(x) - s_N(x))^2 dx \to 0 \quad \text{as } N \to \infty.\]
+    The result also holds for the Fourier cosine (resp.\ sine) series if $f$ is a square-integrable, even (resp.\ odd) function with a period $2$.
+\end{theorem}
+\begin{proof}
+    See Appendix 3.C. (Optional)
+\end{proof}
+
+\begin{example}[Pointwise, Uniform, and $L^2$ Convergence][3.13]
+    In this example, we illustrate pointwise, uniform, and $L^2$ convergence using a simple sequence of functions (which is not a truncated Fourier series). Consider a sequence of functions $f_N : [0, 1] \to \R$, $N = 1, 2, \dots$, given by
+    \[f_N(x) = x^N.\]
+    For any fixed $x \in [0, 1)$, this function converges to
+    \[f_N(x) \to 0 \quad \text{as } N \to \infty\]
+    because $x < 1$. For $x = 1$, the function evaluates to
+    \[f_N(x = 1) = 1^N = 1 \quad \forall N.\]
+
+    \lecfig[0.45\linewidth]{fourier_series_analysis}{4}{184 554 198 72}{Figure 3.1: Convergence of $f_N(x) = x^N$.}
+
+    Hence, the functions $f_N$ converge to $f : [0, 1] \to \R$ given by
+    \[f(x) = \begin{cases} 0, & x \in [0, 1) \\ 1, & x = 1. \end{cases}\]
+    This convergence is pointwise, since we considered the convergence $f_N(x) \to f(x)$ for each fixed $x$.
+
+    While $f_N \to f$ pointwise, the sequence does not converge uniformly. To see this, we observe that, for any $N$,
+    \[\max_{x \in [0,1]} |f(x) - f_N(x)| = \max_{x \in (0,1)} |f(x) - f_N(x)| = \max_{x \in (0,1)} |0 - x^N| = \max_{x \in (0,1)} |x^N| = 1 \neq 0,\]
+    where the first equality follows from $|f(x) - f_N(x)| = 0$ at $x = 0$ and $1$. (Technically, the ``max'' should be replaced by ``sup'', the least upper bound.) The maximum error is equal to $1$ for all $N$ and does not converge to $0$ as $N \to \infty$; hence the convergence is not uniform.
+
+    While the sequence does not converge uniformly, it does converge in $L^2$ because
+    \[\int_0^1 (f(x) - f_N(x))^2 dx = \int_0^1 (0 - x^N)^2 dx = \frac{1}{2N + 1} x^{2N+1} \Big|_{x=0}^{1} = \frac{1}{2N + 1},\]
+    which converges to $0$ as $N \to \infty$.
+
+    In summary, $f_N \to f$ pointwise and in $L^2$, but not uniformly. In general, uniform convergence is a stronger condition than pointwise or $L^2$ convergence; i.e., if $f_N \to f$ uniformly, then the sequence also converges pointwise and in $L^2$, but the converse is not true.
+\end{example}
+
+\begin{example}[Pointwise Versus Uniform Convergence of Fourier Series][3.14]
+    We now consider uniform and pointwise convergence for Fourier series for a $2$-periodic square-wave function
+    \[f(x) = \operatorname{sgn}(\sin(\pi x));\]
+    here $\operatorname{sgn}(z)$ evaluates to $1$ if $z > 0$, $0$ if $z = 0$, and $-1$ if $z < 0$. Since this is an odd function, we approximate the function using the Fourier sine series of the form $\sum_{n=1}^{\infty} \hat{f}_n \sin(n\pi x)$. We find that the coefficients must satisfy
+    \[\hat{f}_n = 2 \int_{x=0}^{1} \sin(n\pi x) dx = \begin{cases} \frac{4}{n\pi}, & n \text{ odd}, \\ 0, & n \text{ even}. \end{cases}\]
+    Hence, our Fourier sine series representation of the square wave is
+    \[f(x) \sim \sum_{k=1}^{\infty} \frac{4}{(2k - 1)\pi} \sin((2k - 1)\pi x).\]
+    Note that the square wave function is piecewise continuously differentiable but is not (globally) continuous. Hence, it satisfies the condition for pointwise convergence but not uniform convergence.
+
+    \lecfig{fourier_series_analysis}{5}{86 535 86 76}{Figure 3.2: Convergence of the Fourier series for a square wave.}
+
+    Figure 3.2(a) shows the truncated Fourier series for the square wave for $N = 10$, $30$, $100$, and $1000$. We observe that (i) the truncated Fourier series at least visually gets ``closer'' to the exact square wave almost everywhere as $N$ increases, but (ii) the magnitude of the oscillations near the discontinuities does not decrease. (It can be shown that the peak value is approximately $1.18$ as $N \to \infty$.) In particular, for \textit{any given fixed} $x$ (e.g., $x = 0.5$), we (at least visually) observe that the truncated Fourier series converges to the exact square wave as $N \to \infty$; this suggests pointwise convergence. However, regardless of how large $N$ may be, we can always find some $x$ for which the error is large (i.e., the peak of the oscillation); this suggests the series is not uniformly convergent.
+
+    We study the behavior in more detail in Figure 3.2(b), which shows the error in the truncated Fourier series as a function of the number of terms $N$ for three different points of the square wave. To observe convergence, we fix the value of $x$ to (say) $x = 0.5$ and observe that the error $|f(x = 0.5) - s_N(x = 0.5)|$ decreases as $N$ increases; i.e., $s_N(x = 0.5) \to f(x = 0.5)$ as $N$ increases. This convergence for a fixed $x$ is also shown for $x = 0.1$ and $x = 0.01$ and in fact is observed for any $x$; i.e., for any fixed $x$, there exists $N$ sufficiently large such that $|f(x) - s_N(x)| < \delta$ for any $\delta$. \textit{However, this value of $N$ depends on $x$.} In particular, as $x \to 0$, the number of terms $N$ required to achieve a given error grows in an unbounded manner. This is a manifestation of the fact that the truncated Fourier series $s_N(x)$ is a continuous function that evaluates to $s_N(x = 0) = 0$, and hence a large number of terms is required for $s_N(x = \epsilon)$ to evaluate to $1$ as $\epsilon \to 0$. Hence, the Fourier series does not converge uniformly for this discontinuous function.
+\end{example}
+
+We note that the key difference between the conditions for pointwise convergence and uniform convergence is the (global) continuity of the function. Namely, if $f : \R \to \R$ is discontinuous anywhere, we cannot expect the Fourier series to converge uniformly; the condition for uniform convergence is more stringent than for pointwise convergence. The condition for $L^2$ convergence is even weaker than the condition for pointwise convergence; all piecewise continuously differentiable functions are square integrable since the function is necessarily bounded, but a square-integrable function need not be piecewise continuously differentiable. (In fact, the square integrability condition is even weaker than the piecewise continuity condition by the same argument.)
+
+\subsection{3.4 Convergence of Fourier series on finite intervals}
+While the convergence theorems, Theorems 3.9, 3.11, and 3.12, are provided for periodic functions on the entire $\R$, we can readily apply the theorems to a function defined on a finite interval by considering an appropriate periodic extension of the function. For instance, the (full) Fourier series of $f : (-L, L) \to \R$ is pointwise convergent if $f$ is piecewise continuously differentiable; it converges to $f$ on $(-L, L)$ in the pointwise sense (and to the periodic extension of $f$ on the entire $\R$). Similarly, the Fourier cosine and sine series of $f : (0, L) \to \R$ are each pointwise convergent if $f$ is piecewise continuously differentiable; they each converge to $f$ on $(0, L)$ in the pointwise sense (and to the even and odd periodic extensions, respectively, of $f$ on the entire $\R$).
+
+The same extension also applies to uniform convergence; however, it is important to note that the (global) continuity condition for uniform convergence applies to the periodic, even-periodic, and odd-periodic extensions for the Fourier, Fourier cosine, and Fourier sine series, respectively. We illustrate this in a concrete example:
+
+\begin{example}[Uniform Convergence on a Finite Interval][3.15]
+    Let $f(x) = x$ on $(0, 1)$. The Fourier cosine series of the function converges uniformly on $(0, 1)$ as the even periodic extension of $f$ is a continuous and piecewise continuously differentiable function on $\R$. On the other hand, the Fourier sine series of the function does not converge uniformly on $(0, 1)$ as the odd periodic extension of $f$ is not a continuous function on $\R$; see Figure 2.1. (The Fourier sine series is nevertheless pointwise convergent because the odd periodic extension of $f$ is piecewise continuously differentiable.)
+\end{example}
+
+The continuity requirement for each type of periodic extension, which is required for uniform convergence, can be summarized via the following conditions for the endpoints:
+\begin{itemize}
+    \item (Full) Fourier series. For $f : (-L, L) \to \R$, the values at the endpoints should match: i.e., $f(-L^+) = f(L^-)$.
+    \item Fourier sine series. For $f : (0, L) \to \R$, the function must vanish at the endpoints: i.e., $f(0^+) = f(L^-) = 0$.
+    \item Fourier cosine series. For $f : (0, L) \to \R$, there are no additional endpoint conditions.
+\end{itemize}
+We readily arrive at these results by considering appropriate periodic extensions of $f$.
+
+\subsection{3.5 Uniform and absolute convergence}
+Theorem 3.11 provides conditions that a function $f$ must satisfy for its Fourier series to be uniformly convergent. We now provide an alternative condition for uniform convergence in terms of the coefficients of the Fourier series.
+
+\begin{theorem}[Absolute Convergence][3.16]
+    Let $f : \R \to \R$ be a periodic function with the Fourier series
+    \[f(x) \sim \frac{1}{2} a_0 + \sum_{n=1}^{\infty} \left(a_n \cos(n\pi x) + b_n \sin(n\pi x)\right),\]
+    where the coefficients are given by (2.2). The Fourier series converges uniformly to $f$ if
+    \[\sum_{n=1}^{\infty} (|a_n| + |b_n|) < \infty.\]
+\end{theorem}
+\begin{proof}
+    See Appendix 3.B. (Optional)
+\end{proof}
+
+This theorem is useful because it allows us to assess the uniform convergence of an arbitrary series based solely on the decay of its Fourier coefficients, as illustrated in the following examples.
+
+\begin{example}[][3.17]
+    Consider a Fourier cosine series
+    \[f(x) \sim \sum_{n=1}^{\infty} \frac{2}{n^2\pi^2} ((-1)^n - 1) \cos(n\pi x).\]
+    We recognize that the Fourier cosine coefficients are $\hat{f}_n = \frac{2}{n^2\pi^2} ((-1)^n - 1)$. To determine whether the series is uniformly convergent, we check the absolute convergence of the coefficients and observe that
+    \[\sum_{n=1}^{\infty} |\hat{f}_n| \leq \sum_{n=1}^{\infty} \frac{4}{n^2\pi^2} < \infty.\]
+    Because the coefficients are absolutely convergent, the Fourier series converges uniformly. (Note that this Fourier cosine series is associated with $f(x) = x$, $x \in (0, 1)$, considered in Example 2.17. Because the even periodic extension of the function is continuous and piecewise continuously differentiable, Theorem 3.11 also states the Fourier series is uniformly convergent. However, Theorem 3.16, unlike Theorem 3.11, does not require us to know an explicit form of $f$.)
+\end{example}
+
+\begin{example}[][3.18]
+    Consider a Fourier sine series
+    \[f(x) \sim \sum_{n=1}^{\infty} (-1)^{n+1} \frac{2}{n\pi} \sin(n\pi x).\]
+    We recognize that the Fourier sine coefficients are $\hat{f}_n = (-1)^{n+1} \frac{2}{n\pi}$. To determine whether the series is uniformly convergent, we check the absolute convergence of the coefficients and observe that
+    \[\sum_{n=1}^{\infty} |\hat{f}_n| = \sum_{n=1}^{\infty} \frac{2}{n\pi},\]
+    which diverges. Because the coefficients are not absolutely convergent, the Fourier series does not necessarily converge uniformly. (Note that this Fourier sine series is associated with $f(x) = x$, $x \in (0, 1)$, considered in Example 2.18. Because the odd periodic extension of the function is not continuous, Theorem 3.11 states the Fourier series is not uniformly convergent.)
+\end{example}
+
+\subsection{3.6 Differentiation of Fourier series}
+We now summarize the properties of Fourier series with respect to differentiation. These properties will play a crucial role as we use Fourier series to represent solutions to (partial) differential equations.
+
+\begin{theorem}[Differentiation of Fourier Series][3.19]
+    Let $f$ be a continuous periodic function with piecewise continuously differentiable derivative $f'$. Then the Fourier series of $f'$ can be obtained by term-by-term differentiation of the Fourier series of $f$; i.e., if
+    \[f(x) \sim \frac{1}{2} a_0 + \sum_{n=1}^{\infty} \left(a_n \cos(n\pi x) + b_n \sin(n\pi x)\right),\]
+    then
+    \[f'(x) \sim \sum_{n=1}^{\infty} \left(-a_n n\pi \sin(n\pi x) + b_n n\pi \cos(n\pi x)\right).\]
+    For any fixed $x \in \R$, the differentiated series converges to $\frac{1}{2}(f'(x^-) + f'(x^+))$.
+\end{theorem}
+
+\begin{theorem}[Uniform Convergence of Derivatives][3.20]
+    Let $f$ be a periodic function with Fourier coefficients $a_n$ and $b_n$. Suppose
+    \[\sum_{n=1}^{\infty} (|n^k a_n| + |n^k b_n|) < \infty\]
+    for some $k \in \N_{>0}$. Then $f$ has continuous derivatives $f', \dots, f^{(k)}$, whose Fourier series are obtained by term-by-term differentiation of the Fourier series of $f$.
+\end{theorem}
+\begin{proof}
+    Proof follows from Theorems 3.19 and 3.16.
+\end{proof}
+
+\begin{example}[$C^\infty$, or Smooth, Functions][3.21]
+    One particular form of Fourier series that we encounter in the analysis of the heat equation is
+    \[f(x) = \sum_{n=1}^{\infty} \exp(-\lambda n) \sin(n\pi x)\]
+    for $\lambda > 0$. We recognize that $a_n = 0$ and $b_n = \exp(-\lambda n)$. To verify whether the derivative of order $k$ exists, we consider the series
+    \[\sum_{n=1}^{\infty} n^k \exp(-\lambda n),\]
+    and observe that this series converges for any $k \in \N_{>0}$. Hence $f$ is infinitely differentiable; an infinitely differentiable function is said to be \textit{smooth} and belongs to $C^\infty$. (To prove the series converges, use, for instance, the comparison test with $\sum_{n=1}^{\infty} c_n = \sum_{n=1}^{\infty} 1/n^2$ and note that (i) $a_n / c_n = n^{k+2} \exp(-\lambda n) < 1$ for $n$ sufficiently large, and (ii) $\sum_{n=1}^{\infty} c_n$ converges.)
+\end{example}
+
+\subsection{3.7 Summary}
+We summarize key points of this lecture:
+\begin{enumerate}
+    \item Uniform, pointwise, and $L^2$ convergence are three different ways to characterize the convergence of a sequence of functions $(f_n)_n$ to $f$. Uniform convergence implies both pointwise and $L^2$ convergence on bounded intervals.
+    \item The Fourier series of $f : \R \to \R$ converges in $L^2$ for any periodic function $f$ that is square integrable.
+    \item The Fourier series of $f : \R \to \R$ converges pointwise to $f$ at points of continuity and to the average of the one-sided limits at points of discontinuity for any periodic function $f$ that is piecewise continuously differentiable.
+    \item The Fourier series of $f : \R \to \R$ converges uniformly for any periodic function $f$ that is continuous and piecewise continuously differentiable.
+    \item A Fourier series is uniformly convergent if its coefficients are absolutely convergent.
+    \item The conditions for pointwise, uniform, and $L^2$ convergence readily extend to functions defined on a bounded domain as long as the appropriate periodic extension of the function satisfies the required continuity and differentiability conditions.
+    \item The term-by-term differentiation applies when the function is continuous and its derivative is piecewise continuously differentiable.
+\end{enumerate}
+
+\subsection{3.A Proof of pointwise convergence}
+We prove the pointwise convergence of Fourier series, Theorem 3.9. We prove the result for $f : \R \to \R$ with a period $2$, but the result readily generalizes to functions with any period through the transformation considered in Section 2.5. The presentations in this and subsequent appendices closely follow Strauss, \textit{Partial Differential Equations: An Introduction}.
+
+For simplicity, we prove the result for a continuous $f$. To begin, we recall that the Fourier series and the associated partial sum are given by
+\begin{align*}
+    f(x) &\sim \frac{1}{2} a_0 + \sum_{n=1}^{\infty} \left(a_n \cos(n\pi x) + b_n \sin(n\pi x)\right), \\
+    s_N(x) &= \frac{1}{2} a_0 + \sum_{n=1}^{N} \left(a_n \cos(n\pi x) + b_n \sin(n\pi x)\right),
+\end{align*}
+for coefficients
+\[a_n = \int_{-1}^{1} \cos(n\pi y) f(y) dy \quad \text{and} \quad b_n = \int_{-1}^{1} \sin(n\pi y) f(y) dy.\]
+We now substitute the expressions for the coefficients into the partial sum to obtain
+\begin{align*}
+    s_N(x) &= \int_{y=-1}^{1} \left[\frac{1}{2} + \sum_{n=1}^{N} \left(\cos(n\pi y) \cos(n\pi x) + \sin(n\pi y) \sin(n\pi x)\right)\right] f(y) dy \\
+    &= \int_{y=-1}^{1} \left[\frac{1}{2} + \sum_{n=1}^{N} \cos(n\pi(y - x))\right] f(y) dy.
+\end{align*}
+We now introduce the \textit{Dirichlet kernel}
+\[K_N(\xi) \equiv \frac{1}{2} + \sum_{n=1}^{N} \cos(n\pi\xi)\]
+so that
+\[s_N(x) = \int_{y=-1}^{1} K_N(y - x) f(y) dy.\]
+The Dirichlet kernel has two important properties. The first is that the sum can be expressed in a simple form:
+\[K_N(\xi) = \frac{\sin((N + 1/2)\pi\xi)}{2 \sin(\pi\xi/2)};\]
+this result can be readily shown using the de Moivre's formula and rearranging the exponentials. The second property is that
+\[\int_{-1}^{1} K_N(\xi) d\xi = 1,\]
+since only the leading term, $1/2$, contributes to the integral. We now set $\xi = y - x$ to obtain
+\[s_N(x) = \int_{y=-1}^{1} K_N(y - x) f(y) dy = \int_{\xi=-1-x}^{1-x} K_N(\xi) f(x + \xi) d\xi = \int_{\xi=-1}^{1} K_N(\xi) f(x + \xi) d\xi,\]
+where the last equality follows since $K_N$ and $f$ are both $2$-periodic. We now appeal to $\int_{-1}^{1} K_N(\xi) d\xi = 1$ to obtain
+\[f(x) - s_N(x) = \int_{\xi=-1}^{1} K_N(\xi) (f(x) - f(x + \xi)) d\xi.\]
+We now rearrange the expression as follows:
+\[f(x) - s_N(x) = \int_{\xi=-1}^{1} \frac{\sin((N + 1/2)\pi\xi)}{2 \sin(\pi\xi/2)} (f(x) - f(x + \xi)) d\xi = \int_{\xi=-1}^{1} g(\xi; x) \phi_N(\xi) d\xi,\]
+where
+\begin{align*}
+    g(\xi; x) &\equiv \frac{f(x) - f(x + \xi)}{2 \sin(\pi\xi/2)}, \\
+    \phi_N(\xi) &\equiv \sin((N + 1/2)\pi\xi), \quad N = 1, 2, \dots.
+\end{align*}
+We note that $\{\phi_N\}_{N=1}^{\infty}$ is an orthonormal set on $(-1, 1)$ because
+\[\int_{-1}^{1} \sin((N + 1/2)\pi\xi) \sin((M + 1/2)\pi\xi) d\xi = \int_{-1}^{1} \sin(N\pi\xi) \sin(M\pi\xi) d\xi = \delta_{MN},\]
+where the first equality follows from the periodicity of the sine functions. Hence by Bessel's inequality
+\[\sum_{N=1}^{\infty} (g(\cdot; x), \phi_N)^2 \leq \|g(\cdot; x)\|^2.\]
+It follows that if $\|g(\cdot; x)\| < \infty$ then the series converges, which implies that $(g(\cdot; x), \phi_N) = f(x) - s_N(x) \to 0$ as $N \to \infty$.
+
+We finally verify that $\|g(\cdot; x)\| < \infty$. We have
+\[\|g(\cdot; x)\|^2 = \int_{\xi=-1}^{1} \left(\frac{f(x) - f(x + \xi)}{2 \sin(\pi\xi/2)}\right)^2 d\xi.\]
+Since $f$ is continuous, the numerator is bounded. The only potential difficulty arises when the denominator goes to $0$ at $\xi = 0$. However, we find that
+\[\lim_{\xi \to 0} g(\xi) = \lim_{\xi \to 0} \frac{f(x) - f(x + \xi)}{2 \sin(\pi\xi/2)} = \lim_{\xi \to 0} \frac{-f'(x + \xi)}{\pi \cos(\pi\xi/2)} = -f'(x)/\pi < \infty\]
+by l'Hopital's rule since $f$ is differentiable at $x$ (by assumption). Hence $g$ is bounded everywhere and the integral $\|g\|$ is finite.
+
+\subsection{3.B Proof of uniform convergence}
+We prove two theorems regarding the uniform convergence of Fourier series: Theorems 3.11 and 3.16. We first prove Theorem 3.16, which states that the Fourier series converges uniformly to $f$ if its coefficients are absolutely convergent. For a given $x \in [-1, 1]$, we take the difference between $f(x)$ and the truncated Fourier series $s_N(x)$ to obtain
+\begin{align*}
+    f(x) - s_N(x) &= \frac{1}{2} a_0 + \sum_{n=1}^{\infty} \left(a_n \cos(n\pi x) + b_n \sin(n\pi x)\right) - \frac{1}{2} a_0 - \sum_{n=1}^{N} \left(a_n \cos(n\pi x) + b_n \sin(n\pi x)\right) \\
+    &= \sum_{n=N+1}^{\infty} \left(a_n \cos(n\pi x) + b_n \sin(n\pi x)\right).
+\end{align*}
+It follows that
+\[\max_{x \in [-1,1]} |f(x) - s_N(x)| = \max_{x \in [-1,1]} \left|\sum_{n=N+1}^{\infty} \left(a_n \cos(n\pi x) + b_n \sin(n\pi x)\right)\right| \leq \sum_{n=N+1}^{\infty} (|a_n| + |b_n|).\]
+Because (by assumption) the series is a tail of the absolutely convergent series $\sum_{n=1}^{\infty} (|a_n| + |b_n|) < \infty$, it must vanish as $N \to \infty$. It follows that
+\[\max_{x \in [-1,1]} |f(x) - s_N(x)| \leq \sum_{n=N+1}^{\infty} (|a_n| + |b_n|) \to 0 \quad \text{as } N \to \infty,\]
+if the coefficients are absolutely convergent.
+
+We next prove Theorem 3.11, which states that the Fourier series converges uniformly to $f : \R \to \R$ if $f$ is continuously differentiable and has a period of $2$. To begin, let $a_n$ and $b_n$ denote the Fourier coefficients of $f$ and $a_n'$ and $b_n'$ denote the Fourier coefficients of $f'$. We observe that
+\begin{align*}
+    a_n &= \int_{-1}^{1} \cos(n\pi x) f(x) dx = \frac{1}{n\pi} f(x) \sin(n\pi x) \Big|_{x=-1}^{1} - \frac{1}{n\pi} \int_{-1}^{1} \sin(n\pi x) f'(x) dx = -\frac{1}{n\pi} b_n', \\
+    b_n &= \int_{-1}^{1} \sin(n\pi x) f(x) dx = -\frac{1}{n\pi} f(x) \cos(n\pi x) \Big|_{x=-1}^{1} + \frac{1}{n\pi} \int_{-1}^{1} \cos(n\pi x) f'(x) dx = \frac{1}{n\pi} a_n',
+\end{align*}
+where the integration by parts is valid because $f$ is continuously differentiable, and the last equality follows from periodicity for each case. It follows that
+\[\sum_{n=1}^{\infty} (|a_n| + |b_n|) = \sum_{n=1}^{\infty} \frac{1}{n\pi} (|b_n'| + |a_n'|) \leq \left(\sum_{n=1}^{\infty} \frac{1}{n^2}\right)^{1/2} \left(\sum_{n=1}^{\infty} 2(|a_n'|^2 + |b_n'|^2)\right)^{1/2} < \infty,\]
+where the last inequality follows from the convergence of the $p$-series for $p = 2$, which implies $\sum_{n=1}^{\infty} \frac{1}{n^2} < \infty$, and Bessel's inequality for the derivative $f'$, which implies $\sum_{n=1}^{\infty} (|a_n'|^2 + |b_n'|^2) \leq \|f'\|^2 < \infty$. Since the Fourier coefficients of $f$ are absolutely convergent, the Fourier series converges uniformly to $f$ by Theorem 3.16, which we just proved.
+
+\subsection{3.C $L^2$ convergence and optimality of Fourier series}
+We now introduce some properties of Fourier series related to their convergence in $L^2$. In fact, all properties we will consider apply to any series representation of functions based on a (complete) set of orthonormal functions $(\phi_n)_{n=1}^{\infty}$. We therefore write our Fourier series in the following form:
+\[f(x) \sim \sum_{n=1}^{\infty} \hat{f}_n \phi_n(x)\]
+for coefficients
+\[\hat{f}_n = \int_{-1}^{1} \phi_n(x) f(x) dx.\]
+The associated truncated Fourier series is defined by
+\[s_N(x) \equiv \sum_{n=1}^{N} \hat{f}_n \phi_n(x).\]
+(If the functions $(\phi_n)_{n=1}^{\infty}$ are orthogonal (but not orthonormal), then the coefficients are normalized by the norm of $\phi_n$: i.e., $\hat{f}_n = \frac{\int_{-1}^{1} \phi_n(x) f(x) dx}{\int_{-1}^{1} \phi_n(x)^2 dx}$.)
+
+\begin{proposition}[Optimality of Fourier Series][3.22]
+    Consider functions of the form
+    \[g_N(x) \equiv \sum_{n=1}^{N} \hat{g}_n \phi_n(x),\]
+    where $\hat{g}_n$, $n = 1, 2, \dots$, are some arbitrary coefficients. The truncated Fourier series $s_N$ of $f$ is the best $N$-term approximation associated with the basis $(\phi_n)$ in the sense that
+    \[\|f - s_N\| \leq \|f - g_N\| \quad \forall g_N.\]
+\end{proposition}
+\begin{proof}
+    We find
+    \begin{equation*}
+        \begin{aligned}
+            E_N \equiv \|f - g_N\|^2 &= \|f\|^2 - 2(f, g_N) + (g_N, g_N) = \|f\|^2 - 2\Big(f, \sum_{n=1}^{N} \hat{g}_n \phi_n\Big) + \Big(\sum_{n=1}^{N} \hat{g}_n \phi_n, \sum_{m=1}^{N} \hat{g}_m \phi_m\Big) \\
+            &= \|f\|^2 - 2 \sum_{n=1}^{N} \hat{g}_n (f, \phi_n) + \sum_{n,m=1}^{N} \hat{g}_n \hat{g}_m (\phi_n, \phi_m) = \|f\|^2 - 2 \sum_{n=1}^{N} \hat{g}_n \hat{f}_n + \sum_{n=1}^{N} \hat{g}_n^2,
+        \end{aligned} \tag{3.1}
+    \end{equation*}
+    where the last equality follows from the definition of the (generalized) Fourier coefficients ($\hat{f}_n = (f, \phi_n)$) and the orthonormality of functions ($(\phi_m, \phi_n) = \delta_{mn}$).
+
+    We recall that $E_N$ is minimized if (i) all first derivatives of $E_N$ with respect to the coefficients vanish and (ii) the Hessian (i.e., the matrix of second derivatives) of $E_N$ with respect to the coefficients is positive definite. To this end, we evaluate the first derivative of $E_N$ with respect to the coefficients:
+    \[\frac{\partial E_N}{\partial \hat{g}_n} = x - 2 \sum_{n=1}^{N} \hat{f}_n + 2 \sum_{n=1}^{N} \hat{g}_n = 0 \quad \Rightarrow \quad \hat{g}_n = \hat{f}_n.\]
+    In addition, the second derivative is
+    \[\frac{\partial^2 E_N}{\partial \hat{g}_n^2} = 2,\]
+    and all mixed second derivatives vanish; hence the Hessian is positive definite. It follows that the set of coefficients that minimizes the square-integral error $E_N$ is given by $\hat{g}_n = \hat{f}_n = (f, \phi_n)$, which are the generalized Fourier coefficients.
+\end{proof}
+
+\begin{theorem}[Bessel's Inequality][3.23]
+    Let $f : (-1, 1) \to \R$ be a square-integrable function, $(\phi_n)_{n=1}^{\infty}$ be an orthonormal set of functions, and $\hat{f}_n = (f, \phi_n)$ be the associated coefficients. Then,
+    \[\sum_{n=1}^{\infty} \hat{f}_n^2 \leq \int_{-1}^{1} f(x)^2 dx.\]
+\end{theorem}
+\begin{proof}
+    We substitute $\hat{g}_n = \hat{f}_n$ in (3.1) to obtain, for all $N \in \N$,
+    \[E_N \equiv \|f - s_N\|^2 = \|f\|^2 - \sum_{n=1}^{N} \hat{f}_n^2 \geq 0.\]
+    We rearrange the inequality to obtain
+    \[\sum_{n=1}^{N} \hat{f}_n^2 \leq \|f\|^2.\]
+    Since the relationship holds for any $N$, we take $N \to \infty$ to obtain the desired inequality.
+\end{proof}
+
+\begin{theorem}[Parseval's Identity][3.24]
+    The Fourier series of $f : (-1, 1) \to \R$ converges to $f$ in the mean-square sense if and only if
+    \[\sum_{n=1}^{\infty} \hat{f}_n^2 = \int_{-1}^{1} f^2 dx.\]
+\end{theorem}
+\begin{proof}
+    Parseval's identity is a consequence of the $L^2$ convergence of Fourier series. Namely,
+    \[\lim_{N \to \infty} E_N \equiv \lim_{N \to \infty} \|f - s_N\|^2 = \lim_{N \to \infty} \Big(\|f\|^2 - \sum_{n=1}^{N} \hat{f}_n^2\Big) = \|f\|^2 - \sum_{n=1}^{\infty} \hat{f}_n^2 = 0,\]
+    which is the desired equality.
+\end{proof}
+
+\begin{nremark}[Decay of Fourier Coefficients][3.25]
+    Let $f : (-1, 1) \to \R$ be a square-integrable function, $(\phi_n)_{n=1}^{\infty}$ be an orthonormal set of functions, and $\hat{f}_n = (f, \phi_n)$ be the associated coefficients. Then
+    \[\hat{f}_n = (f, \phi_n) \to 0 \quad \text{as } n \to \infty.\]
+    This is a direct consequence of Bessel's inequality. Since the series $\sum_{n=1}^{\infty} \hat{f}_n^2 < \infty$, the coefficients must converge to $0$.
+\end{nremark}

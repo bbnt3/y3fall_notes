@@ -1,0 +1,444 @@
+% !TeX root = ../main.tex
+
+\newlecture[Heat Equation: Fundamental Solution]
+
+\subsection{7.1 Introduction}
+In this lecture we seek the solution of initial or initial-boundary value problems associated with the heat equation in unbounded domains. To find the solutions, we generalize Fourier series to unbounded domains to form Fourier integrals. We then identify, using Fourier integrals, the fundamental solution (or heat kernel) for heat equations in unbounded domains. We next employ the method of reflection to solve problems on the half-line (as opposed to the entire real line). We finally introduce Duhamel's principle, which allows us to express the solution to nonhomogeneous problems as a linear combination of the solutions to a family of homogeneous problems.
+
+\subsection{7.2 Fourier integral representation}
+We have so far represented functions on bounded domains as Fourier series. For instance, the Fourier series of $f : (-L, L) \to \R$ is given by
+\[f(x) = \frac{1}{2} a_0 + \sum_{n=1}^{\infty} \left(a_n \cos(n\pi x/L) + b_n \sin(n\pi x/L)\right),\]
+where
+\[a_0 \equiv \frac{1}{L} \int_{-L}^{L} f(x) dx, \quad a_n \equiv \frac{1}{L} \int_{-L}^{L} \cos(n\pi x/L) f(x) dx, \quad b_n \equiv \frac{1}{L} \int_{-L}^{L} \sin(n\pi x/L) f(x) dx.\]
+We now introduce \textit{Fourier integrals} which provide similar representations for functions on unbounded domains (i.e., $L \to \infty$).
+
+\begin{definition}[Fourier Integral][7.1]
+    Let $f : \R \to \R$ be a function that satisfies $\int_{-\infty}^{\infty} |f(x)| dx < \infty$. The \textbf{Fourier integral} representation of $f$ is given by
+    \[f(x) \sim \int_{\lambda=0}^{\infty} \left(a(\lambda) \cos(\lambda x) + b(\lambda) \sin(\lambda x)\right) d\lambda,\]
+    where the Fourier coefficients are given by
+    \[a(\lambda) \equiv \frac{1}{\pi} \int_{-\infty}^{\infty} \cos(\lambda x) f(x) dx, \quad b(\lambda) \equiv \frac{1}{\pi} \int_{-\infty}^{\infty} \sin(\lambda x) f(x) dx.\]
+\end{definition}
+
+The Fourier integral, just like the Fourier series, converges for piecewise continuously differentiable functions in a pointwise sense. We state a key result without a proof.
+
+\begin{theorem}[Convergence of Fourier Integral][7.2]
+    Let $f : \R \to \R$ be a function that (i) is piecewise continuously differentiable on every bounded interval and (ii) satisfies $\int_{-\infty}^{\infty} |f(x)| dx < \infty$. Then for any $x \in \R$,
+    \[\int_{\lambda=0}^{\infty} \left(a(\lambda) \cos(\lambda x) + b(\lambda) \sin(\lambda x)\right) d\lambda = \frac{1}{2}(f(x^+) + f(x^-)).\]
+\end{theorem}
+
+The Fourier integral, just like the Fourier series, can be extended to odd and even functions.
+
+\begin{definition}[Fourier Cosine Integral][7.3]
+    Let $f : \R \to \R$ be an even function that satisfies $\int_0^{\infty} |f(x)| dx < \infty$. The \textbf{Fourier cosine integral} representation of $f$ is given by
+    \[f(x) = \int_{\lambda=0}^{\infty} \hat{f}(\lambda) \cos(\lambda x) d\lambda,\]
+    where the Fourier cosine coefficient is given by
+    \[\hat{f}(\lambda) = \frac{1}{\pi} \int_{-\infty}^{\infty} \cos(\lambda x) f(x) dx = \frac{2}{\pi} \int_0^{\infty} \cos(\lambda x) f(x) dx.\]
+\end{definition}
+
+\begin{definition}[Fourier Sine Integral][7.4]
+    Let $f : \R \to \R$ be an odd function that satisfies $\int_0^{\infty} |f(x)| dx < \infty$. The \textbf{Fourier sine integral} representation of $f$ is given by
+    \[f(x) = \int_{\lambda=0}^{\infty} \hat{f}(\lambda) \sin(\lambda x) d\lambda,\]
+    where the Fourier sine coefficient is given by
+    \[\hat{f}(\lambda) = \frac{1}{\pi} \int_{-\infty}^{\infty} \sin(\lambda x) f(x) dx = \frac{2}{\pi} \int_0^{\infty} \sin(\lambda x) f(x) dx.\]
+\end{definition}
+
+The Fourier cosine and sine integrals exhibit the same convergence property as the (full) Fourier integral.
+
+\subsection{7.3 Heat equation in $\R \times \R_{>0}$}
+We now consider the heat equation on the entire real line $\R$:
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } \R \times \R_{>0}, \\
+        u &= g \quad \text{on } \R \times \{t = 0\}, \\
+        \sup_{x \in \R} |u(x, t)| &< \infty \quad \forall t \in \R_{>0}.
+    \end{aligned} \tag{7.1}
+\end{equation*}
+The boundary condition is replaced by a boundedness condition which requires the solution to be bounded everywhere.
+
+As before, we apply separation of variables and express the solution as a linear combination of homogeneous solutions of the form $u(x, t) = \phi(x) T(t)$. As usual, the substitution of the separable expression into the heat equation yields a condition that
+\[\frac{T'}{T} = \frac{\phi''}{\phi} = -\alpha,\]
+for some constant $\alpha$. The boundedness condition excludes $\alpha < 0$, since the associated hyperbolic functions are unbounded as $x \to \pm\infty$. The case $\alpha = 0$ yields a constant spatial solution. For $\alpha > 0$, we set $\alpha = \lambda^2$ and obtain the eigenproblem,
+\begin{align*}
+    -\phi'' &= \lambda^2 \phi \quad \text{in } \R, \\
+    |\phi(x)| &< \infty \quad \text{as } x \to \pm\infty,
+\end{align*}
+are of the form
+\[\phi(x) = a \cos(\lambda x) + b \sin(\lambda x);\]
+the expression is bounded for any $x \in \R$, $\lambda \in \R_{>0}$. The associated temporal functions are
+\[T(t) = \exp(-\lambda^2 t).\]
+We consider the ``linear combination'' of the solutions $\phi(x) T(t)$ to obtain
+\begin{equation*}
+    u(x, t) = \int_{\lambda=0}^{\infty} \left(a(\lambda) \cos(\lambda x) + b(\lambda) \sin(\lambda x)\right) \exp(-\lambda^2 t) d\lambda. \tag{7.2}
+\end{equation*}
+The coefficient functions $a(\lambda)$ and $b(\lambda)$ are determined from the initial condition:
+\[u(x, t = 0) = \int_{\lambda=0}^{\infty} \left(a(\lambda) \cos(\lambda x) + b(\lambda) \sin(\lambda x)\right) d\lambda = g(x).\]
+We deduce that $a(\lambda)$ and $b(\lambda)$ are the Fourier coefficients of the Fourier integral of $g$; i.e.,
+\begin{equation*}
+    a(\lambda) \equiv \frac{1}{\pi} \int_{x=-\infty}^{\infty} \cos(\lambda x) g(x) dx, \quad b(\lambda) \equiv \frac{1}{\pi} \int_{x=-\infty}^{\infty} \sin(\lambda x) g(x) dx. \tag{7.3}
+\end{equation*}
+The solution to (7.1) is hence given by (7.2) with the coefficients (7.3).
+
+\subsection{7.4 Fundamental solution of the heat equation in $\R \times \R_{>0}$}
+We can rearrange the Fourier integral of the solution (7.2) to gain further insight about the structure of the heat equation. To begin, we substitute the coefficients (7.3) into the Fourier integral (7.2) to obtain
+\begin{align*}
+    u(x, t) &= \frac{1}{\pi} \int_{\lambda=0}^{\infty} \left(\int_{\xi=-\infty}^{\infty} \cos(\lambda\xi) g(\xi) d\xi \cos(\lambda x) + \int_{\xi=-\infty}^{\infty} \sin(\lambda\xi) g(\xi) d\xi \sin(\lambda x)\right) \exp(-\lambda^2 t) d\lambda \\
+    &= \frac{1}{\pi} \int_{\lambda=0}^{\infty} \int_{\xi=-\infty}^{\infty} \left(\cos(\lambda\xi) \cos(\lambda x) + \sin(\lambda\xi) \sin(\lambda x)\right) g(\xi) d\xi \exp(-\lambda^2 t) d\lambda \\
+    &= \frac{1}{\pi} \int_{\lambda=0}^{\infty} \int_{\xi=-\infty}^{\infty} \cos(\lambda(\xi - x)) g(\xi) d\xi \exp(-\lambda^2 t) d\lambda,
+\end{align*}
+where the last equality follows from a trigonometric identity. We now assume that the order of integration can be reversed to obtain
+\[u(x, t) = \frac{1}{\pi} \int_{\xi=-\infty}^{\infty} \int_{\lambda=0}^{\infty} \cos(\lambda(\xi - x)) \exp(-\lambda^2 t) d\lambda\, g(\xi) d\xi.\]
+The inner integral with respect to $\lambda$ over $(0, \infty)$ can be computed using an integration technique in complex analysis:
+\[\int_{\lambda=0}^{\infty} \cos(\lambda(\xi - x)) \exp(-\lambda^2 t) d\lambda = \sqrt{\frac{\pi}{4t}} \exp\left(\frac{-(\xi - x)^2}{4t}\right).\]
+(The evaluation is beyond the scope of this course, but those who have taken complex analysis may wish to evaluate it.) We hence find that
+\begin{equation*}
+    u(x, t) = \frac{1}{\sqrt{4\pi t}} \int_{\xi=-\infty}^{\infty} \exp\left(\frac{-(\xi - x)^2}{4t}\right) g(\xi) d\xi. \tag{7.4}
+\end{equation*}
+This final expression shows how the initial condition $g$ affects the solution $u$.
+
+Because the solution of the form (7.4) provides much useful information about the behavior of the PDE, we now formalize the solution representation of this form using the concept of \textit{the fundamental solution}.
+
+\begin{definition}[Fundamental Solution of the Heat Equation][7.5]
+    The \textbf{fundamental solution} of the heat equation $\frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} = 0$ in $\R \times \R_{>0}$ is
+    \[\Phi(x, t) \equiv \begin{cases} \dfrac{1}{\sqrt{4\pi t}} \exp\left(\dfrac{-x^2}{4t}\right), & t > 0 \\ 0, & t < 0. \end{cases}\]
+    The fundamental solution is also called the \textit{heat kernel} or \textit{diffusion kernel}.
+\end{definition}
+
+For each $t > 0$, the fundamental solution $\Phi(\cdot, t)$ is a Gaussian with variance $2t$ (or standard deviation $\sqrt{2t}$). The height of the Gaussian is $1/\sqrt{4\pi t}$, and the integral $\int_{x=-\infty}^{\infty} \Phi(x, t) dx = 1$. The fundamental solution for three different times is shown in Figure 7.1. The fundamental solution spreads and decays over time. As $t \to 0^+$, the Gaussian becomes increasingly concentrated at the origin while preserving its spatial integral. In this sense,
+\[\Phi(\cdot, t) \to \delta \quad \text{as } t \to 0^+,\]
+where $\delta$ is the \textit{Dirac delta distribution}, defined as follows.
+
+\begin{definition}[Dirac Delta Distribution][7.6]
+    The \textbf{delta distribution} centered at the origin, denoted $\delta$, is characterized by
+    \[\int_{\R} \delta(x) f(x)\,dx = f(0)\]
+    for any sufficiently regular function $f$.
+\end{definition}
+
+\lecfig[0.45\linewidth]{heat_funsoln}{5}{202 562 209 72}{Figure 7.1: Fundamental solution of the heat equation.}
+
+Using the fundamental solution, the solution to the initial-value problem with $u(x, t = 0) = g(x)$ can be represented for any $t > 0$ as
+\[u(x, t) = \int_{-\infty}^{\infty} \Phi(x - \xi, t) g(\xi) d\xi = \int_{-\infty}^{\infty} \frac{1}{\sqrt{4\pi t}} \exp\left(\frac{-(x - \xi)^2}{4t}\right) g(\xi) d\xi.\]
+Moreover, because $\Phi(\cdot, t) \to \delta$ as $t \to 0^+$, at every point $x$ at which $g$ is continuous,
+\[\lim_{t \to 0^+} u(x, t) = \int_{-\infty}^{\infty} \delta(x - \xi) g(\xi) d\xi = g(x).\]
+Thus, the fundamental solution may be viewed as the solution corresponding to the delta distribution as its initial condition:
+\begin{align*}
+    \frac{\partial \Phi}{\partial t} - \frac{\partial^2 \Phi}{\partial x^2} &= 0 \quad \text{in } \R \times \R_{>0}, \\
+    \Phi(\cdot, t) &\to \delta \quad \text{as } t \to 0^+.
+\end{align*}
+The expression $u(x, t) = \int_{-\infty}^{\infty} \Phi(x - \xi, t) g(\xi) d\xi$ can be viewed as a continuous ``linear combination'' of translated fundamental solutions $\Phi(x - \xi, t)$, where the initial condition $g(\xi)$ provides the coefficient associated with each source point $\xi$. This representation builds on the linearity of the heat equation with respect to the initial condition.
+
+We now make several observations:
+\begin{enumerate}
+    \item \textit{Isotropy.} The fundamental solution is even in $x$; i.e., $\Phi(x, t) = \Phi(-x, t)$. The initial condition $g$ spreads to the left and right in an equal manner, or more generally isotropically in higher dimensions. (This is in contrast to the transport equation, where the solution transports in a directional manner.)
+    \item \textit{Conservation of thermal energy.} The spatial integral of the fundamental solution over $(-\infty, \infty)$ is
+    \[\int_{-\infty}^{\infty} \Phi(x, t) dx = 1.\]
+    Consequently,
+    \begin{align*}
+        \int_{-\infty}^{\infty} u(x, t)\,dx &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \Phi(x - \xi, t) g(\xi)\,d\xi\,dx = \int_{-\infty}^{\infty} g(\xi) \left(\int_{-\infty}^{\infty} \Phi(x - \xi, t)\,dx\right) d\xi \\
+        &= \int_{-\infty}^{\infty} g(\xi)\,d\xi.
+    \end{align*}
+    Recalling that the spatial integral of the solution over $(a, b) \subset \R$ represents the thermal energy in the domain $(a, b)$, we conclude that (i) the solution spreads out over time but (ii) the thermal energy is conserved. This is consistent with our understanding of the conservation of thermal energy.
+    \item \textit{Infinite propagation speed.} The expression (7.4) shows that the solution $u$ at a (space-time) point $(x, t)$, $t > 0$, depends on the initial solution $g$ everywhere because $\exp(-(x - \xi)^2/(4t))$ is nonzero for all $\xi \in \R$. Conversely, the initial solution $g$ at any point $\xi$ affects the solution everywhere and immediately because the function $\exp(-(\xi - x)^2/4t)$ is nonzero everywhere in $\R \times \R_{>0}$. In other words, any change in the initial condition at some point $\xi$ is felt for any $x$ immediately for $t > 0$, regardless of how far apart $x$ and $\xi$ are; i.e., disturbances propagate at infinite speed. (This is in contrast to the finite propagation speed observed for the transport and wave equations.)
+    \item \textit{Exponential decay of influence.} While any disturbance affects the solution instantaneously everywhere, its effect decays exponentially with the distance from the disturbance. In particular, the kernel $\exp(-(\xi - x)^2/(4t))$ is nearly zero unless $|\xi - x|$ is comparable to or smaller than $\sqrt{t}$. Hence, for a sufficiently large $C$, the dominant contribution to $u(x, t)$ is approximately
+    \[u(x, t) \approx \frac{1}{\sqrt{4\pi t}} \int_{\xi=x-C\sqrt{t}}^{x+C\sqrt{t}} \exp\left(\frac{-(\xi - x)^2}{4t}\right) g(\xi)\,d\xi.\]
+    \item \textit{Positivity.} Suppose $g \geq 0$ and $g$ is positive on some nonempty open interval. Then the solution $u$ is positive for all $x \in \R$ and $t > 0$. In words, if the initial temperature is nonnegative everywhere and positive somewhere, then the temperature is positive everywhere at any later time no matter how small.
+    \item \textit{Smoothness.} It can be shown that the solution to the heat equation is smooth; the solution is infinitely differentiable in both space and time. The smoothness holds even if the initial condition $g$ is not differentiable. This is consistent with our observation for the solution on a bounded domain obtained using the Fourier series.
+\end{enumerate}
+
+\begin{example}[Heat Equation on $\R \times \R_{>0}$][7.7]
+    Consider the heat equation initial value problem (7.1) with an initial condition
+    \[g(x) = \begin{cases} 1, & x \in (-1, 1), \\ 0, & x \in \R \setminus (-1, 1). \end{cases}\]
+    Using the fundamental solution, we can express the solution as
+    \[u(x, t) = \frac{1}{\sqrt{4\pi t}} \int_{-1}^{1} \exp\left(\frac{-(\xi - x)^2}{4t}\right) d\xi.\]
+    The integration is over $(-1, 1)$ as the initial condition $g$ vanishes outside of this interval. Figure 7.2 shows the solution to the heat equation. We readily confirm some of the observations we made earlier. Even though the initial condition is discontinuous, the solution diffuses quickly and is smooth for $t > 0$. While the solution is formally positive everywhere for any $t > 0$ (i.e., infinite propagation speed), quantitatively the effect of the initial condition decays exponentially away from $x = \pm 1$.
+\end{example}
+
+\lecfig[0.45\linewidth]{heat_funsoln}{7}{202 554 202 72}{Figure 7.2: The solution to the heat equation with a square initial condition.}
+
+\begin{nremark}[][7.8]
+    Fundamental solutions also exist in $\R^n \times \R_{>0}$ for $n > 1$; see Appendix 7.B.
+\end{nremark}
+
+\subsection{7.5 Heat equation in $\R_{>0} \times \R_{>0}$: homogeneous Dirichlet}
+We now consider the heat equation on the positive half-line $\R_{>0}$:
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } \R_{>0} \times \R_{>0}, \\
+        u &= 0 \quad \text{on } \{x = 0\} \times \R_{>0}, \\
+        u &= g \quad \text{on } \R_{\geq 0} \times \{t = 0\}, \\
+        \sup_{x \in \R_{\geq 0}} |u(x, t)| &< \infty \quad \forall t \in \R_{>0}.
+    \end{aligned} \tag{7.5}
+\end{equation*}
+We seek the solution using the \textit{method of reflection}. The idea is to identify a problem on the entire real line $\R$ whose solution restricted to $\R_{>0}$ solves the problem (7.5) on the half line. To find the equivalent problem on $\R$, we recall a key fact: if a function is (i) continuous and (ii) odd, then the function vanishes at $x = 0$. The continuity requirement is satisfied for any solution to the heat equation because the solution is smooth (i.e., infinitely differentiable). We hence wish to find a problem on $\R$ whose solution is the odd extension of the solution of (7.5). We achieve this goal by using the initial condition $\tilde{g} : \R \to \R$ that is the odd extension of $g : \R_{>0} \to \R$. The resulting problem on the entire real line $\R$ is as follows:
+\begin{align*}
+    \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } \R \times \R_{>0}, \\
+    u &= \tilde{g} \quad \text{on } \R \times \{t = 0\}, \\
+    |u(x, t)| &< \infty \quad \text{as } x \to \pm\infty
+\end{align*}
+where $\tilde{g}$ is the odd extension of $g$,
+\[\tilde{g}(x) = \begin{cases} g(x), & x \in \R_{>0}, \\ -g(-x), & x \in \R_{<0}. \end{cases}\]
+The associated solution is
+\begin{align*}
+    u(x, t) &= \int_{-\infty}^{\infty} \Phi(x - \xi, t) \tilde{g}(\xi) d\xi = \int_0^{\infty} \Phi(x - \xi, t) g(\xi) d\xi - \int_{-\infty}^{0} \Phi(x - \xi, t) g(-\xi) d\xi \\
+    &= \int_0^{\infty} \left(\Phi(x - \xi, t) - \Phi(x + \xi, t)\right) g(\xi) d\xi \\
+    &= \frac{1}{\sqrt{4\pi t}} \int_0^{\infty} \left(\exp\left(\frac{-(x - \xi)^2}{4t}\right) - \exp\left(\frac{-(x + \xi)^2}{4t}\right)\right) g(\xi) d\xi
+\end{align*}
+Because the method of reflection applied to the homogeneous Dirichlet boundary condition is based on the odd extension of the initial condition, the method is also called the \textit{method of odd extensions}.
+
+\begin{example}[][7.9]
+    We consider the heat equation initial-boundary value problem (7.5) with the initial condition $g = 1$ on $\R_{\geq 0}$. The solution is
+    \[u(x, t) = \frac{1}{\sqrt{4\pi t}} \int_0^{\infty} \left(\exp\left(\frac{-(x - \xi)^2}{4t}\right) - \exp\left(\frac{-(x + \xi)^2}{4t}\right)\right) d\xi.\]
+    We substitute $z = (x - \xi)/\sqrt{4t}$ and $z = (x + \xi)/\sqrt{4t}$ to the first and second integrals, respectively, and obtain
+    \begin{align*}
+        u(x, t) &= \frac{1}{\sqrt{\pi}} \left(\int_{-\infty}^{x/\sqrt{4t}} \exp(-z^2) dz - \int_{x/\sqrt{4t}}^{\infty} \exp(-z^2) dz\right) \\
+        &= \frac{1}{\sqrt{\pi}} \int_{-x/\sqrt{4t}}^{x/\sqrt{4t}} \exp(-z^2) dz \equiv \operatorname{erf}(x/\sqrt{4t});
+    \end{align*}
+    here the first equality follows from the aforementioned substitution, the second equality follows from the symmetry of the integrand and the cancellation of the integrals over $(-\infty, -x/\sqrt{4t})$ and $(x/\sqrt{4t}, \infty)$, and the last equality follows from the definition of the \textit{error function}. (Note: although we introduced the Fourier integral for integrable initial conditions which the present $g$ does not satisfy, the fundamental-solution representation also applies to bounded initial conditions.)
+
+    Figure 7.3 shows the odd extension on the entire $\R$. We make a few observations, the latter three of which reiterate our earlier observations about the solution of the heat equation (on $\R \times \R_{>0}$).
+
+    \lecfig[0.45\linewidth]{heat_funsoln}{9}{202 558 202 72}{Figure 7.3: Solution of Example 7.9.}
+
+    \begin{enumerate}
+        \item \textit{Satisfying boundary and initial conditions.} The initial condition prescribes $u(0, 0) = 1$, whereas the boundary condition prescribes $u(0, t) = 0$ for $t > 0$. Hence, the boundary trace is discontinuous at $t = 0$. Nevertheless, the solution satisfies the homogeneous Dirichlet boundary condition for every $t > 0$ and approaches the initial condition for every fixed $x > 0$ as $t \to 0^+$.
+        \item \textit{Smoothness.} Despite the discontinuity in the boundary trace, the solution is infinitely differentiable for $x > 0$ and $t > 0$.
+        \item \textit{Infinite propagation speed.} The change in the boundary value affects the solution immediately and everywhere. The disturbance propagates at infinite speed.
+        \item \textit{Exponential decay of influence.} However, quantitatively, only the solution in the region $x \lesssim \sqrt{4t}$ sees significant deviation from the initial condition; significant impact of the diffusion process is only felt in this region, and the width of the region grows as $\sqrt{4t}$.
+    \end{enumerate}
+\end{example}
+
+\subsection{7.6 Heat equation in $\R_{>0} \times \R_{>0}$: homogeneous Neumann}
+We now consider the heat equation on a half-line $\R_{>0}$:
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } \R_{>0} \times \R_{>0}, \\
+        \frac{\partial u}{\partial x} &= 0 \quad \text{on } \{x = 0\} \times \R_{>0}, \\
+        u &= g \quad \text{on } \R_{\geq 0} \times \{t = 0\}, \\
+        \sup_{x \in \R_{\geq 0}} |u(x, t)| &< \infty \quad \forall t \in \R_{>0}.
+    \end{aligned} \tag{7.6}
+\end{equation*}
+We again seek the solution using the method of reflection; i.e., we seek a problem on the entire $\R$ whose solution restricted to the half line $\R_{>0}$ is the solution to the homogeneous Neumann problem. We recall a key fact: any continuously differentiable and even function has a vanishing derivative at $x = 0$. The continuous-differentiability requirement is satisfied for any solution to the heat equation because the solution is smooth (i.e., infinitely differentiable). We hence wish to find a problem on $\R$ whose solution is an even extension of the solution to the homogeneous Neumann problem. To this end, we recast the problem on the entire $\R$ whose initial condition is the even extension of the initial condition $g$. (Note that, to ensure the derivative (instead of the value) vanishes at $x = 0$, we consider the even (instead of the odd) extension.)
+
+The resulting problem on the entire real line $\R$ is
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } \R \times \R_{>0}, \\
+        u &= \tilde{g} \quad \text{on } \R \times \{t = 0\}, \\
+        |u(x, t)| &< \infty \quad \text{as } x \to \pm\infty,
+    \end{aligned} \tag{7.7}
+\end{equation*}
+where $\tilde{g}$ is the even extension of $g$,
+\[\tilde{g}(x) = \begin{cases} g(x), & x \in \R_{>0}, \\ g(-x), & x \in \R_{<0}. \end{cases}\]
+The associated solution is
+\begin{align*}
+    u(x, t) &= \int_0^{\infty} \left(\Phi(x - \xi, t) + \Phi(x + \xi, t)\right) g(\xi) d\xi \\
+    &= \frac{1}{\sqrt{4\pi t}} \int_0^{\infty} \left(\exp\left(\frac{-(x - \xi)^2}{4t}\right) + \exp\left(\frac{-(x + \xi)^2}{4t}\right)\right) g(\xi) d\xi.
+\end{align*}
+The method of reflection applied to the homogeneous Neumann problem is also called the \textit{method of even extension}. We can readily verify the earlier observations about (i) smoothness and (ii) infinite propagation speed.
+
+\subsection{7.7 Nonhomogeneous problems and Duhamel's principle}
+We now consider solutions to nonhomogeneous problems of the form
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= f \quad \text{in } \R \times \R_{>0}, \\
+        u &= g \quad \text{on } \R \times \{t = 0\}.
+    \end{aligned} \tag{7.8}
+\end{equation*}
+We immediately note that, by the linearity of the PDE, the solution can be decomposed into $u = w + v$, where $w$ satisfies the homogeneous heat equation with a nontrivial initial condition
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial w}{\partial t} - \frac{\partial^2 w}{\partial x^2} &= 0 \quad \text{in } \R \times \R_{>0}, \\
+        u &= g \quad \text{on } \R \times \{t = 0\}.
+    \end{aligned} \tag{7.9}
+\end{equation*}
+and $v$ satisfies the nonhomogeneous heat equation with the trivial initial condition
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial v}{\partial t} - \frac{\partial^2 v}{\partial x^2} &= f \quad \text{in } \R \times \R_{>0}, \\
+        u &= 0 \quad \text{on } \R \times \{t = 0\}.
+    \end{aligned} \tag{7.10}
+\end{equation*}
+We have already seen how to solve (7.9) in previous sections; we hence focus on the solution of (7.10). One approach to solving the problem is to appeal to \textit{Duhamel's principle}:
+
+\begin{theorem}[Duhamel's Principle for the Heat Equation][7.10]
+    Let $u : \R \times \R_{>0} \to \R$ be the solution to the initial value problem
+    \begin{align*}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= f \quad \text{in } \R \times \R_{>0}, \\
+        u &= 0 \quad \text{on } \R \times \{t = 0\},
+    \end{align*}
+    for some source function $f : \R \times \R_{>0} \to \R$. For any fixed $s \in \R_{\geq 0}$, let $u^s : \R \times \R_{>s} \to \R$ be the solution to
+    \begin{align*}
+        \frac{\partial u^s}{\partial t} - \frac{\partial^2 u^s}{\partial x^2} &= 0 \quad \text{in } \R \times \R_{>s}, \\
+        u^s &= f(\cdot, s) \quad \text{on } \R \times \{t = s\}.
+    \end{align*}
+    Then, the solution $u : \R \times \R_{>0}$ is given by
+    \begin{equation*}
+        u(x, t) = \int_{s=0}^{t} u^s(x, t) ds, \quad x \in \R, \ t \in \R_{>0}. \tag{7.11}
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    Assuming sufficient regularity to interchange differentiation and integration, we differentiate (7.11) in time to obtain
+    \[\frac{\partial u}{\partial t}(x, t) = u^t(x, t) + \int_{s=0}^{t} \frac{\partial u^s}{\partial t}(x, t) ds = f(x, t) + \int_{s=0}^{t} \frac{\partial u^s}{\partial t}(x, t) ds.\]
+    Similarly we apply the spatial differential operator to obtain
+    \[\frac{\partial^2 u}{\partial x^2}(x, t) = \int_{s=0}^{t} \frac{\partial^2 u^s}{\partial x^2}(x, t) ds = \int_{s=0}^{t} \frac{\partial u^s}{\partial t}(x, t) ds.\]
+    It follows that
+    \[\frac{\partial u}{\partial t}(x, t) - \frac{\partial^2 u}{\partial x^2}(x, t) = f(x, t) + \int_{s=0}^{t} \frac{\partial u^s}{\partial t}(x, t) ds - \int_{s=0}^{t} \frac{\partial u^s}{\partial t}(x, t) ds = f(x, t),\]
+    and hence the solution (7.11) satisfies the PDE. We also observe that
+    \[u(x, t = 0) = \int_{s=0}^{t=0} u^s(x, t = 0) ds = 0, \quad x \in \R,\]
+    as $u^s(\cdot, t = 0) = f(\cdot, s)$ is bounded, and hence the solution satisfies the homogeneous initial condition.
+\end{proof}
+
+Intuitively, Duhamel's principle states that the solution $u$ to a nonhomogeneous heat equation can be expressed as a continuous ``linear combination'' of the solutions $\{u^s\}_{s \in (0,t)}$ to homogeneous heat equations with initial conditions associated with the nonhomogeneous source term $f$. We note that each solution $u^s : \R \times \R_{>s} \to \R$ can be expressed using the fundamental solution:
+\[u^s(x, t) = \int_{\R} \Phi(x - \xi, t - s) f(\xi, s) d\xi.\]
+It follows that the solution to (7.10) with the homogeneous initial condition is
+\[v(x, t) = \int_{s=0}^{t} u^s(x, t) ds = \int_{s=0}^{t} \int_{\R} \Phi(x - \xi, t - s) f(\xi, s) d\xi ds.\]
+The complete solution to (7.8) with the initial condition $u(\cdot, t = 0) = g$ is hence
+\begin{align*}
+    u(x, t) &= \int_{\R} \Phi(x - \xi, t) g(\xi) d\xi + \int_{s=0}^{t} \int_{\R} \Phi(x - \xi, t - s) f(\xi, s) d\xi ds \\
+    &= \int_{\R} \frac{1}{\sqrt{4\pi t}} \exp\left(-\frac{(x - \xi)^2}{4t}\right) g(\xi) d\xi + \int_{s=0}^{t} \int_{\R} \frac{1}{\sqrt{4\pi(t - s)}} \exp\left(-\frac{(x - \xi)^2}{4(t - s)}\right) f(\xi, s) d\xi ds.
+\end{align*}
+
+\begin{nremark}[][7.11]
+    The proof of Duhamel's principle relies on the linearity of the spatial operator, which is $\frac{\partial^2}{\partial x^2}$ for the one-dimensional heat equation. Hence, under appropriate regularity assumptions, the principle extends to linear evolution equations of the form
+    \[\frac{\partial u}{\partial t} + \mathcal{L} u = f\]
+    in any spatial dimension, where $\mathcal{L}$ is a linear spatial operator.
+\end{nremark}
+
+\begin{example}[Nonhomogeneous Heat Equation: Revisited][7.12]
+    In Section 6.5, we considered the solution of a nonhomogeneous one-dimensional heat equation using the separation of variables. For homogeneous Dirichlet problems on $\Omega \equiv (0, 1)$ with the initial condition $g = 0$, we found that the solution is given by $u(x, t) = \sum_{n=1}^{\infty} \hat{u}_n(t) \sin(n\pi x)$, where
+    \[\hat{u}_n(t) = \int_{\tau=0}^{t} \exp(-n^2\pi^2(t - \tau)) \hat{f}_n(\tau) d\tau,\]
+    and $\hat{f}_n(\tau)$ are the Fourier sine coefficients of the source function $f(\cdot, \tau)$.
+
+    We can derive the same relationship using Duhamel's principle. To see this, we first recall that the solution to the homogeneous heat equation for any fixed $s \in \R_{>0}$,
+    \begin{align*}
+        \frac{\partial u^s}{\partial t} - \frac{\partial^2 u^s}{\partial x^2} &= 0 \quad \text{in } (0, 1) \times \R_{>s}, \\
+        u^s &= 0 \quad \text{on } \{0, 1\} \times \R_{>s}, \\
+        u^s &= f(\cdot, s) \quad \text{on } (0, 1) \times \{t = s\},
+    \end{align*}
+    is given by
+    \[u^s(x, t) = \sum_{n=1}^{\infty} \hat{f}_n(s) \exp(-n^2\pi^2(t - s)) \sin(n\pi x).\]
+    We now appeal to Duhamel's principle to observe that
+    \[u(x, t) = \int_{s=0}^{t} u^s(x, t) ds = \sum_{n=1}^{\infty} \underbrace{\left(\int_{s=0}^{t} \exp(-n^2\pi^2(t - s)) \hat{f}_n(s) ds\right)}_{\hat{u}_n(t)} \sin(n\pi x),\]
+    which is identical to the expression obtained in Section 6.5 through an explicit manipulation of the Fourier sine series coefficients.
+\end{example}
+
+\subsection{7.8 Nonhomogeneous boundary conditions}
+We now consider the solution of a nonhomogeneous heat equation on a half-line $\R_{>0}$ with nonhomogeneous boundary conditions. Our approach is similar to the approach we used to treat nonhomogeneous boundary conditions on bounded domains using separation of variables in Section 6.6.
+
+We first consider the case with a nonhomogeneous Dirichlet boundary condition:
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= f \quad \text{in } \R_{>0} \times \R_{>0}, \\
+        u &= h \quad \text{on } \{x = 0\} \times \R_{>0}, \\
+        u &= g \quad \text{on } \R_{\geq 0} \times \{t = 0\},
+    \end{aligned} \tag{7.12}
+\end{equation*}
+where $f : \R_{>0} \times \R_{>0} \to \R$ is the source function, $h : \R_{>0} \to \R$ is the boundary function and is assumed to be differentiable in time, and $g : \R_{>0} \to \R$ is the initial condition. We decompose the solution into two parts:
+\[u(x, t) = v(x, t) + h(t);\]
+note that the second term matches the boundary condition for all $t$, and hence the first term vanishes on the boundary. (Here $h(t)$ plays the role of $u^{\mathrm{b}}$ in Section 6.6.) The substitution of the decomposition into (7.12) yields another IBVP for $v : \R_{>0} \times \R_{>0} \to \R$:
+\begin{align*}
+    \frac{\partial v}{\partial t} - \frac{\partial^2 v}{\partial x^2} &= f - \frac{dh}{dt} \quad \text{in } \R_{>0} \times \R_{>0}, \\
+    v &= 0 \quad \text{on } \{x = 0\} \times \R_{>0}, \\
+    v &= g - h(0) \quad \text{on } \R_{\geq 0} \times \{t = 0\}.
+\end{align*}
+This is a nonhomogeneous heat equation with a homogeneous Dirichlet boundary condition, which can be solved using Duhamel's principle and fundamental solution as shown in Section 7.7.
+
+We next consider the case with a nonhomogeneous Neumann boundary condition:
+\begin{equation*}
+    \begin{aligned}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= f \quad \text{in } \R_{>0} \times \R_{>0}, \\
+        \frac{\partial u}{\partial x} &= h \quad \text{on } \{x = 0\} \times \R_{>0}, \\
+        u &= g \quad \text{on } \R_{\geq 0} \times \{t = 0\},
+    \end{aligned} \tag{7.13}
+\end{equation*}
+where $f : \R_{>0} \times \R_{>0} \to \R$ is the source function, $h : \R_{>0} \to \R$ is the boundary derivative function and is assumed to be differentiable in time, and $g : \R_{>0} \to \R$ is the initial condition. In this case, we consider the decomposition
+\[u(x, t) = v(x, t) + (1 - \exp(-x)) h(t).\]
+The second term is bounded on the half-line and satisfies
+\[\frac{\partial}{\partial x} \left(h(t)(1 - \exp(-x))\right) \Big|_{x=0} = h(t).\]
+Hence, the function $v$ satisfies a homogeneous Neumann boundary condition. Substitution into (7.13) yields another IBVP for $v : \R_{>0} \times \R_{>0} \to \R$:
+\begin{align*}
+    \frac{\partial v}{\partial t} - \frac{\partial^2 v}{\partial x^2} &= f - x \frac{dh}{dt} \quad \text{in } \R_{>0} \times \R_{>0}, \\
+    \frac{\partial v}{\partial x} &= 0 \quad \text{on } \{x = 0\} \times \R_{>0}, \\
+    v &= g - (1 - \exp(-x)) h(0) \quad \text{on } \R_{\geq 0} \times \{t = 0\},
+\end{align*}
+This is a nonhomogeneous heat equation with a homogeneous Neumann boundary condition, which again can be solved using Duhamel's principle and fundamental solution as shown in Section 7.7.
+
+We conclude the section with an example with a nonhomogeneous Dirichlet boundary condition.
+
+\begin{example}[][7.13]
+    Consider the heat equation on a half-line,
+    \begin{equation*}
+        \begin{aligned}
+            \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } \R_{>0} \times \R_{>0}, \\
+            u &= 1 \quad \text{on } \{x = 0\} \times \R_{>0}, \\
+            u &= 0 \quad \text{on } \R_{\geq 0} \times \{t = 0\},
+        \end{aligned} \tag{7.14}
+    \end{equation*}
+    Our initial condition is the zero solution, and we impose the boundary condition $u = 1$ at $x = 0$; we hence intuitively expect the temperature to increase with time, and the ``warm region'' to spread with time.
+
+    We recognize $h(t) = 1$ and decompose the solution $u$ as
+    \[u(x, t) = v(x, t) + 1.\]
+    The substitution of the decomposition into (7.14) yields an IBVP for $v : \R_{>0} \times \R_{>0} \to \R$:
+    \begin{align*}
+        \frac{\partial v}{\partial t} - \frac{\partial^2 v}{\partial x^2} &= 0 \quad \text{in } \R_{>0} \times \R_{>0}, \\
+        v &= 0 \quad \text{on } \{x = 0\} \times \R_{>0}, \\
+        v &= -1 \quad \text{on } \R_{\geq 0} \times \{t = 0\}.
+    \end{align*}
+    This problem was considered in Example 7.9, and it has the solution
+    \[v(x, t) = -\operatorname{erf}(x/\sqrt{4t}).\]
+    Hence the solution to our original problem (7.14) is given by
+    \[u(x, t) = 1 - \operatorname{erf}(x/\sqrt{4t}) = \operatorname{erfc}(x/\sqrt{4t}).\]
+    We now make a few observations about the solutions $v$ and $u$:
+    \begin{enumerate}
+        \item \textit{Satisfying boundary and initial conditions.} The initial condition prescribes $u(0, 0) = 0$, whereas the boundary condition prescribes $u(0, t) = 1$ for $t > 0$. Hence, the boundary trace is discontinuous at $t = 0$. Nevertheless, the solution satisfies the boundary condition for every $t > 0$ and approaches the initial condition for every fixed $x > 0$ as $t \to 0^+$.
+        \item \textit{Smoothness.} Despite the discontinuity in the boundary trace, the solution is infinitely differentiable for $x > 0$ and $t > 0$.
+        \item \textit{Infinite propagation speed.} The change in the boundary value affects the solution immediately and everywhere. The disturbance propagates at infinite speed.
+        \item \textit{Exponential decay of influence.} However, quantitatively, only the solution in the region $x \lesssim \sqrt{4t}$ sees significant deviation from the initial condition; significant impact of the diffusion process is only felt in this region, and the width of the region grows as $\sqrt{4t}$.
+    \end{enumerate}
+\end{example}
+
+\lecfig[0.45\linewidth]{heat_funsoln}{15}{202 554 202 72}{Figure 7.4: Solution to the heat-equation initial-boundary value problem (7.14).}
+
+\subsection{7.9 Summary}
+We summarize key points of this lecture:
+\begin{enumerate}
+    \item A Fourier integral is a ``generalization'' of Fourier series to nonperiodic functions on the entire $\R$.
+    \item The solution to the heat equation on $\R$ can be expressed as a convolution of the initial condition and the fundamental solution (i.e., the heat kernel).
+    \item Important properties of the heat kernel include isotropy, conservation of thermal energy, infinite propagation speed, exponential decay of influence, positivity, and smoothness.
+    \item The solution to the heat equation on $\R_{>0}$ with homogeneous Dirichlet boundary condition can be found using the method of odd extension, which belongs to a family of reflection methods.
+    \item The solution to the heat equation on $\R_{>0}$ with homogeneous Neumann boundary condition can be found using the method of even extension.
+    \item Duhamel's principle can be used to express the solution to a nonhomogeneous heat equation as a linear combination of a family of solutions to homogeneous heat equations with particular initial conditions.
+    \item Nonhomogeneous boundary conditions can be treated by decomposing the solution into a (known) boundary function that satisfies the boundary condition and an auxiliary solution. The solution to the auxiliary problem, with homogeneous boundary conditions, can be obtained using Duhamel's principle and the fundamental solution.
+\end{enumerate}
+
+\subsection{7.A ``Derivation'' of Fourier integrals}
+We note that the following ``derivation'' of Fourier integrals is not rigorous; nevertheless it provides the correct final expression for Fourier integrals. We first analyze the constant term of the Fourier series:
+\[f_0(x) \equiv \frac{1}{2} a_0 \equiv \frac{1}{2L} \int_{-L}^{L} f(x) dx \leq \frac{1}{2L} \int_{-L}^{L} |f(x)| dx \xrightarrow{L \to \infty} 0,\]
+where we have used the fact that the integral of $f$ over $\R$ is finite. (Note that if $\int_{\R} |f(x)| dx$ is finite, then $\frac{1}{2L} \int_{-L}^{L} |f(x)| dx \to 0$ as $L \to \infty$.) We next analyze the cosine terms of the Fourier series:
+\[f_c(x) \equiv \sum_{n=1}^{\infty} \left(\frac{1}{L} \int_{-L}^{L} \cos(n\pi\xi/L) f(\xi) d\xi\right) \cos(n\pi x/L),\]
+where $\xi$ is a ``dummy variable'' for the integration to avoid conflation with ``$x$''. We now consider the change of variables $\lambda_n \equiv n\pi/L$ and note $\Delta\lambda \equiv \lambda_{n+1} - \lambda_n = \pi/L$ to obtain
+\[f_c(x) \equiv \sum_{n=1}^{\infty} \Delta\lambda \left(\frac{1}{\pi} \int_{-L}^{L} \cos(\lambda_n \xi) f(\xi) d\xi\right) \cos(\lambda_n x).\]
+We then interpret the sum as a Riemann sum and take $L \to \infty$ (and hence $\Delta\lambda \to 0$) to replace the sum with an integral and obtain
+\[f_c(x) \equiv \int_{\lambda=0}^{\infty} \left(\frac{1}{\pi} \int_{-\infty}^{\infty} \cos(\lambda\xi) f(\xi) d\xi\right) \cos(\lambda x) d\lambda.\]
+We can apply the same transformation to the sine terms of the Fourier series to obtain
+\[f_s(x) \equiv \int_{\lambda=0}^{\infty} \left(\frac{1}{\pi} \int_{-\infty}^{\infty} \sin(\lambda\xi) f(\xi) d\xi\right) \sin(\lambda x) d\lambda.\]
+We again note that the above ``derivation'' is not rigorous; however, it leads us to the following (correct) definition of Fourier integral.
+
+\subsection{7.B Fundamental solution in $\R^n \times \R_{>0}$}
+The idea of fundamental solution readily extends to higher spatial dimensions. We here omit the derivation and state the key results.
+
+\begin{definition}[Fundamental Solution of the Heat Equation in $\R^n$][7.14]
+    The \textbf{fundamental solution} of the heat equation $\frac{\partial u}{\partial t} - \Delta u = 0$ in $\R^n$ is
+    \[\Phi(x, t) \equiv \begin{cases} \dfrac{1}{(4\pi t)^{n/2}} \exp\left(-\dfrac{|x|^2}{4t}\right), & t > 0 \\ 0, & t < 0. \end{cases}\]
+\end{definition}
+
+We verify the particular result we derived for $\R^1$ is a specialization of this general result to $n = 1$. We now consider the initial value problem
+\begin{align*}
+    \frac{\partial u}{\partial t} - \Delta u &= 0 \quad \text{in } \R^n \times \R_{>0}, \\
+    u &= g \quad \text{on } \R^n \times \{t = 0\}, \\
+    |u| &< \infty \quad \text{in } \R^n \times \R_{>0}.
+\end{align*}
+Analogously to the problem on $\R \times \R_{>0}$, the solution to this problem on $\R^n \times \R_{>0}$ can be expressed using the fundamental solution:
+\begin{equation*}
+    u(x, t) = \int_{\R^n} \Phi(x - \xi, t) g(\xi) d\xi = \int_{\R^n} \frac{1}{(4\pi t)^{n/2}} \exp\left(-\frac{|x - \xi|^2}{4t}\right) g(\xi) d\xi. \tag{7.15}
+\end{equation*}
+We can readily show that the observations we have made about the solution of the heat equation in $\R^1$---smoothness, infinite propagation speed, exponential decay of influence, and positivity---also hold for the heat equation in $\R^n$; the observations follow from the form of the fundamental solution.

@@ -1,8 +1,78 @@
-\contentsline {section}{\ignorespaces Lecture 1: Introduction to PDEs}{3}{section*.2}%
-\contentsline {section}{\ignorespaces Lecture 2: Fourier series: formulation}{11}{section*.3}%
-\contentsline {section}{\ignorespaces Lecture 3: Fourier series: analysis}{24}{section*.4}%
-\contentsline {section}{\ignorespaces Lecture 4: Sturm–Liouville theory}{38}{section*.5}%
-\contentsline {section}{\ignorespaces Lecture 5: Heat equation: introduction}{47}{section*.6}%
-\contentsline {section}{\ignorespaces Lecture 6: Heat equation: separation of variables}{58}{section*.7}%
-\contentsline {section}{\ignorespaces Lecture 7: Heat equation: fundamental solution}{73}{section*.8}%
-\contentsline {section}{\ignorespaces Lecture 8: Heat equation: finite difference method}{91}{section*.9}%
+\contentsline {section}{Lecture 1: Introduction to PDEs}{3}{section*.2}%
+\contentsline {subsection}{1.1 Introduction}{3}{section*.3}%
+\contentsline {subsection}{1.2 Partial differential equations}{3}{section*.4}%
+\contentsline {subsection}{1.3 Classification of PDEs}{4}{section*.5}%
+\contentsline {subsection}{1.4 Classification of second-order PDEs}{5}{section*.6}%
+\contentsline {subsection}{1.5 PDEs in physics and engineering}{8}{section*.8}%
+\contentsline {subsection}{1.6 Summary}{9}{section*.9}%
+\contentsline {subsection}{1.A Well-posedness of a problem}{9}{section*.10}%
+\contentsline {section}{Lecture 2: Fourier Series: Formulation}{11}{section*.11}%
+\contentsline {subsection}{2.1 Introduction}{11}{section*.12}%
+\contentsline {subsection}{2.2 Periodic, even, and odd functions}{11}{section*.13}%
+\contentsline {subsection}{2.3 Fourier series}{14}{section*.14}%
+\contentsline {subsection}{2.4 Fourier sine and cosine series}{16}{section*.17}%
+\contentsline {subsection}{2.5 Fourier series on arbitrary intervals}{18}{section*.20}%
+\contentsline {subsection}{2.6 Summary}{19}{section*.21}%
+\contentsline {subsection}{2.A Complex form of Fourier series}{20}{section*.22}%
+\contentsline {subsection}{2.B List of useful integrals}{21}{section*.24}%
+\contentsline {section}{Lecture 3: Fourier Series: Analysis}{22}{section*.25}%
+\contentsline {subsection}{3.1 Introduction}{22}{section*.26}%
+\contentsline {subsection}{3.2 Regularity of functions}{22}{section*.27}%
+\contentsline {subsection}{3.3 Convergence of Fourier series}{23}{section*.28}%
+\contentsline {subsection}{3.4 Convergence of Fourier series on finite intervals}{27}{section*.29}%
+\contentsline {subsection}{3.5 Uniform and absolute convergence}{28}{section*.30}%
+\contentsline {subsection}{3.6 Differentiation of Fourier series}{29}{section*.31}%
+\contentsline {subsection}{3.7 Summary}{30}{section*.32}%
+\contentsline {subsection}{3.A Proof of pointwise convergence}{30}{section*.33}%
+\contentsline {subsection}{3.B Proof of uniform convergence}{32}{section*.34}%
+\contentsline {subsection}{3.C $L^2$ convergence and optimality of Fourier series}{33}{section*.35}%
+\contentsline {section}{Lecture 4: Sturm--Liouville Theory}{36}{section*.37}%
+\contentsline {subsection}{4.1 Introduction}{36}{section*.38}%
+\contentsline {subsection}{4.2 Motivation: Fourier series and eigenproblem}{36}{section*.39}%
+\contentsline {subsection}{4.3 Sturm--Liouville theory}{37}{section*.41}%
+\contentsline {subsection}{4.4 Examples of the Sturm--Liouville problem}{40}{section*.43}%
+\contentsline {subsection}{4.5 Generalized Fourier series by eigenfunctions}{42}{section*.44}%
+\contentsline {subsection}{4.6 Summary}{43}{section*.46}%
+\contentsline {subsection}{4.A $L^2$ properties of generalized Fourier series}{43}{section*.47}%
+\contentsline {section}{Lecture 5: Heat Equation: Introduction}{45}{section*.48}%
+\contentsline {subsection}{5.1 Introduction}{45}{section*.49}%
+\contentsline {subsection}{5.2 Derivation of the heat equation}{45}{section*.50}%
+\contentsline {subsection}{5.3 Boundary and initial conditions}{46}{section*.52}%
+\contentsline {subsection}{5.4 Nonhomogeneous heat equation}{47}{section*.58}%
+\contentsline {subsection}{5.5 Nondimensionalization}{48}{section*.59}%
+\contentsline {subsection}{5.6 Maximum principle}{49}{section*.60}%
+\contentsline {subsection}{5.7 Uniqueness by the maximum principle}{52}{section*.61}%
+\contentsline {subsection}{5.8 Uniform stability by the maximum principle}{52}{section*.62}%
+\contentsline {subsection}{5.9 Energy method: uniqueness and stability in $L^2$ sense}{53}{section*.64}%
+\contentsline {subsection}{5.10 Summary}{54}{section*.66}%
+\contentsline {section}{Lecture 6: Heat Equation: Separation of Variables}{56}{section*.67}%
+\contentsline {subsection}{6.1 Introduction}{56}{section*.68}%
+\contentsline {subsection}{6.2 Homogeneous Dirichlet boundary conditions}{56}{section*.69}%
+\contentsline {subsection}{6.3 Homogeneous Neumann boundary conditions}{60}{section*.72}%
+\contentsline {subsection}{6.4 Mixed boundary conditions}{63}{section*.73}%
+\contentsline {subsection}{6.5 Nonhomogeneous source term}{64}{section*.76}%
+\contentsline {subsection}{6.6 Nonhomogeneous boundary conditions}{67}{section*.80}%
+\contentsline {subsection}{6.7 Summary}{69}{section*.81}%
+\contentsline {section}{Lecture 7: Heat Equation: Fundamental Solution}{71}{section*.82}%
+\contentsline {subsection}{7.1 Introduction}{71}{section*.83}%
+\contentsline {subsection}{7.2 Fourier integral representation}{71}{section*.84}%
+\contentsline {subsection}{7.3 Heat equation in $\mathbb {R}\times \mathbb {R}_{>0}$}{72}{section*.85}%
+\contentsline {subsection}{7.4 Fundamental solution of the heat equation in $\mathbb {R}\times \mathbb {R}_{>0}$}{73}{section*.89}%
+\contentsline {subsection}{7.5 Heat equation in $\mathbb {R}_{>0} \times \mathbb {R}_{>0}$: homogeneous Dirichlet}{77}{section*.91}%
+\contentsline {subsection}{7.6 Heat equation in $\mathbb {R}_{>0} \times \mathbb {R}_{>0}$: homogeneous Neumann}{79}{section*.93}%
+\contentsline {subsection}{7.7 Nonhomogeneous problems and Duhamel's principle}{80}{section*.96}%
+\contentsline {subsection}{7.8 Nonhomogeneous boundary conditions}{82}{section*.101}%
+\contentsline {subsection}{7.9 Summary}{85}{section*.105}%
+\contentsline {subsection}{7.A ``Derivation'' of Fourier integrals}{85}{section*.106}%
+\contentsline {subsection}{7.B Fundamental solution in $\mathbb {R}^n \times \mathbb {R}_{>0}$}{86}{section*.107}%
+\contentsline {section}{Lecture 8: Heat Equation: Finite Difference Method}{87}{section*.109}%
+\contentsline {subsection}{8.1 Motivation}{87}{section*.110}%
+\contentsline {subsection}{8.2 Model equation}{87}{section*.111}%
+\contentsline {subsection}{8.3 Discretization in space and time}{87}{section*.112}%
+\contentsline {subsection}{8.4 Finite difference in space}{88}{section*.113}%
+\contentsline {subsection}{8.5 Semi-discrete heat equation}{90}{section*.116}%
+\contentsline {subsection}{8.6 Temporal discretization}{92}{section*.120}%
+\contentsline {subsection}{8.7 Fully discrete equation}{93}{section*.121}%
+\contentsline {subsection}{8.8 Solution of the fully discrete equation}{94}{section*.123}%
+\contentsline {subsection}{8.9 Example}{95}{section*.125}%
+\contentsline {subsection}{8.10 Summary}{97}{section*.127}%

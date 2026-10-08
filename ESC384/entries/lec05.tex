@@ -1,0 +1,269 @@
+% !TeX root = ../main.tex
+
+\newlecture[Heat Equation: Introduction]
+
+\subsection{5.1 Introduction}
+The heat equation describes heat conduction in media and plays an important role in the thermal analysis of many engineering systems. The heat equation is also of mathematical interest, as it is an archetype of parabolic PDEs. In this lecture, we derive the heat equation and the associated boundary conditions. We then explore various properties of the equation and the solution---such as the maximum principle, energy stability, and the uniqueness of the solution---\textit{without finding a closed-form expression for the solution.} We will introduce a few different approaches for finding a solution representation of the heat equation in the subsequent lectures.
+
+\subsection{5.2 Derivation of the heat equation}
+We derive the heat equation based on three principles of heat transfer:
+\begin{enumerate}
+    \item The thermal energy density $e$ is given by $e = \rho c u$, where $\rho > 0$ is the density, $c > 0$ is the specific heat capacity, and $u$ is the temperature.
+    \item Fourier's law. The rate of heat transfer is proportional to the temperature gradient: $q = -k \nabla u$, where $q$ is the heat flux and $k > 0$ is the thermal conductivity.
+    \item Conservation of energy. The change in the thermal energy in a volume over a time interval $\Delta t$ is equal to the net heat entering the volume over $\Delta t$.
+\end{enumerate}
+From these three principles, we can readily derive the heat equation.
+
+To begin, we introduce a domain $\Omega \subset \R^n$ and the associated fixed subdomain $\omega \subset \Omega$. We denote the boundary of the subdomain by $\partial\omega$. (In general, the boundary of any domain $D \subset \R^n$ is denoted by $\partial D$.) We next note that the total energy in the subdomain $\omega$ is $E = \int_\omega \rho c u\,dx$. We then note that by the conservation of energy
+\[\underbrace{\frac{d}{dt} \int_\omega \rho c u\,dx}_{\text{change in thermal energy}} = \underbrace{-\int_{\partial\omega} q \cdot \nu\,ds}_{\text{net heat entering } \omega},\]
+where $\nu$ is the outward-pointing unit normal vector on $\partial\omega$. We make two observations: (i) the subdomain $\omega$ is independent of time and hence the time derivative can be brought inside the integral; (ii) the integral over $\partial\omega$ can be converted to an integral over $\omega$ using the divergence theorem. We therefore obtain
+\[\int_\omega \rho c \frac{\partial u}{\partial t} dx = -\int_\omega \nabla \cdot q\,dx.\]
+We next note that, since the relationship above should hold for \textit{any} $\omega \subset \Omega$, the integrands must be equal to each other:
+\[\rho c \frac{\partial u}{\partial t} = -\nabla \cdot q \quad \text{in } \Omega \times \R_{>0}.\]
+We then appeal to Fourier's law, $q = -k \nabla u$, to obtain
+\[\rho c \frac{\partial u}{\partial t} = \nabla \cdot (k \nabla u) \quad \text{in } \Omega \times \R_{>0}.\]
+This is the general form of the heat equation that can treat spatially varying density, specific heat capacity, and thermal conductivity.
+
+\textit{If} we assume that the density, specific heat capacity, and thermal conductivity are constant in space and time, we can further simplify the equation. Namely, we introduce the thermal diffusivity $\kappa \equiv \frac{k}{\rho c}$ (and appeal to our constant coefficient assumption) to obtain
+\begin{equation*}
+    \frac{\partial u}{\partial t} = \kappa \Delta u \quad \text{in } \Omega \times \R_{>0}. \tag{5.1}
+\end{equation*}
+This form of the equation is often referred to as the heat equation in the mathematics community; in this course we will follow the same convention.
+
+\subsection{5.3 Boundary and initial conditions}
+To define a complete initial-boundary value problem, we now complement the heat equation (5.1) with boundary and initial conditions. There are three different types of boundary conditions for the heat equation:
+\begin{enumerate}
+    \item Dirichlet (first-type) boundary conditions; i.e., prescribed temperature. If the temperature at the boundary is prescribed, we obtain a boundary condition of the form
+    \[u = u^{\mathrm{b}} \quad \text{on } \Gamma_D \times \R_{>0},\]
+    where $u^{\mathrm{b}}$ is the prescribed boundary temperature and $\Gamma_D \subset \partial\Omega$ is the Dirichlet boundary. The Dirichlet boundary condition only depends on the value (and not the derivative) of the state $u$. If $u^{\mathrm{b}} = 0$, then the condition is called a \textit{homogeneous} Dirichlet boundary condition; otherwise it is a \textit{nonhomogeneous} Dirichlet boundary condition.
+    \item Neumann (second-type) boundary conditions; i.e., prescribed heat flux. If the heat flux at the boundary is prescribed, we obtain a boundary condition of the form
+    \[\nu \cdot (k \nabla u) = q^{\mathrm{b}} \quad \text{on } \Gamma_N \times \R_{>0},\]
+    where $q^{\mathrm{b}}$ is the prescribed boundary heat flux into the domain and $\Gamma_N \subset \partial\Omega$ is the Neumann boundary. Note $q^{\mathrm{b}} > 0$ indicates heat is transferred into the domain (i.e., the boundary is heated) and $q^{\mathrm{b}} < 0$ indicates heat is transferred out of the domain (i.e., the boundary is cooled). (Note that the signs are ``flipped'' from Fourier's law because Fourier's law characterizes the heat transfer from the domain into the boundary, whereas in the above $q^{\mathrm{b}}$ characterizes the heat transfer from the boundary into the domain.) The Neumann boundary condition only depends on the derivative (and not the value) of the state $u$. If $q^{\mathrm{b}} = 0$, then the condition is called a \textit{homogeneous} Neumann boundary condition (i.e., insulated boundary); otherwise it is a \textit{nonhomogeneous} Neumann boundary condition.
+    \item Robin (third-type) boundary conditions; i.e., Newton's law of cooling. If a boundary is exposed to a different medium (e.g., fluid), then the heat is transferred from/to the surrounding medium. Newton's law states that the rate of this heat transfer is proportional to the difference between the temperature of the material and that of the surroundings. The associated boundary condition is of the form
+    \[\nu \cdot (k \nabla u) = h(u^{\mathrm{env}} - u) \quad \text{on } \Gamma_R \times \R_{>0},\]
+    where $h > 0$ is the heat transfer coefficient, $u^{\mathrm{env}}$ is the temperature of the environment, and $\Gamma_R \subset \partial\Omega$ is the Robin boundary. The Robin boundary condition depends on both the value and derivative of the state $u$. If $u^{\mathrm{env}} = 0$, then the condition is called a \textit{homogeneous} Robin boundary condition; otherwise it is a \textit{nonhomogeneous} Robin boundary condition.
+\end{enumerate}
+As the heat equation (5.1) is second-order in space, one (and only one) boundary condition must be specified at each point on the boundary. In other words, we partition the domain boundary into nonoverlapping sets so that
+\begin{align*}
+    \partial\Omega &= \overline{\Gamma}_D \cup \overline{\Gamma}_N \cup \overline{\Gamma}_R, \tag{5.2} \\
+    \Gamma_D \cap \Gamma_N &= \Gamma_D \cap \Gamma_R = \Gamma_N \cap \Gamma_R = \emptyset, \tag{5.3}
+\end{align*}
+and impose the appropriate boundary condition on each part of the boundary. (Some of the sets $\Gamma_D$, $\Gamma_N$, and $\Gamma_R$ may be empty. \textit{Optional note:} $\overline{D}$ denotes the closure of $D$; we need to close each set in the first equality because $\Gamma_D$, $\Gamma_N$, and $\Gamma_R$ are open.)
+
+To completely specify the initial-boundary value problem, we must also specify the initial condition. As the heat equation is first order in time, we need to specify the value of the state at the initial time:
+\[u = g \quad \text{on } \overline{\Omega} \times \{t = 0\},\]
+where $g$ is the prescribed initial temperature.
+
+\begin{example}[Heat Equation Initial-Boundary Value Problem][5.1]
+    A one-dimensional heat equation over the domain $\Omega \equiv (0, L)$ with homogeneous Dirichlet boundary conditions is given by
+    \begin{equation*}
+        \begin{aligned}
+            \frac{\partial u}{\partial t} &= \kappa \frac{\partial^2 u}{\partial x^2} \quad \text{in } (0, L) \times \R_{>0}, \\
+            u &= 0 \quad \text{on } \{0, L\} \times \R_{>0}, \\
+            u &= g \quad \text{on } [0, L] \times \{t = 0\}.
+        \end{aligned} \tag{5.4}
+    \end{equation*}
+    It can be shown that this initial-boundary value problem is well-posed assuming the initial condition $g$ is sufficiently regular.
+\end{example}
+
+\subsection{5.4 Nonhomogeneous heat equation}
+In Section 5.2, we derived the heat equation assuming that there is no ``volume heating''. In the presence of volume heating, the change in the thermal energy in the volume $\omega$ depends not only on the net heat entering through the surface $\partial\omega$ but also on the volume heating from inside the domain:
+\[\underbrace{\frac{d}{dt} \int_\omega \rho c u\,dx}_{\text{change in thermal energy}} = \underbrace{-\int_{\partial\omega} q \cdot \nu\,ds}_{\text{net heat entering } \omega} + \underbrace{\int_\omega \tilde{f}\,dx}_{\text{volume heating}}.\]
+After the application of the divergence theorem we obtain a PDE
+\[\frac{\partial u}{\partial t} = \kappa \Delta u + f \quad \text{in } \Omega \times \R_{>0}\]
+for $f \equiv \tilde{f}/(\rho c)$. Note that this is a nonhomogeneous equation, because the PDE cannot be expressed as $\mathcal{L} u = 0$ for any linear operator $\mathcal{L}$ due to the presence of the source term $f$ that is independent of $u$.
+
+\subsection{5.5 Nondimensionalization}
+In studying any PDE, it is often convenient to nondimensionalize the equations. To provide a concrete example, we consider the one-dimensional heat equation (5.4). To nondimensionalize the equation, we introduce the following scales:
+\begin{enumerate}
+    \item Length scale. We choose for our length scale the domain length $L$. The nondimensionalized spatial coordinate is $\tilde{x} = x/L$ and the nondimensionalized domain is $\tilde{\Omega} = (0, 1)$.
+    \item Time scale. We choose for our time scale $T \equiv L^2/\kappa$. The nondimensionalized time is $\tilde{t} = t/(L^2/\kappa)$.
+    \item Temperature scale. We choose for our temperature scale $U \equiv \max_{x \in \overline{\Omega}} (|g(x)|)$. The nondimensionalized temperature is $\tilde{u} = u/U$. The nondimensional initial temperature is bounded in absolute value by $1$.
+\end{enumerate}
+While the choice of the length and temperature scales may be rather obvious, the choice of the time scale is perhaps not. The choice is motivated by the following simplification of the heat equation. Namely, since
+\[\frac{\partial u}{\partial t} = \frac{U}{T} \frac{\partial \tilde{u}}{\partial \tilde{t}} = \frac{U\kappa}{L^2} \frac{\partial \tilde{u}}{\partial \tilde{t}} \quad \text{and} \quad \frac{\partial^2 u}{\partial x^2} = \frac{U}{L^2} \frac{\partial^2 \tilde{u}}{\partial \tilde{x}^2},\]
+we obtain
+\[\frac{\partial u}{\partial t} = \kappa \frac{\partial^2 u}{\partial x^2} \quad \Rightarrow \quad \frac{U\kappa}{L^2} \frac{\partial \tilde{u}}{\partial \tilde{t}} = \kappa \frac{U}{L^2} \frac{\partial^2 \tilde{u}}{\partial \tilde{x}^2} \quad \Rightarrow \quad \frac{\partial \tilde{u}}{\partial \tilde{t}} = \frac{\partial^2 \tilde{u}}{\partial \tilde{x}^2};\]
+in other words, the nondimensionalized diffusion coefficient is one. The nondimensionalized initial-boundary value problem is hence
+\begin{align*}
+    \frac{\partial \tilde{u}}{\partial \tilde{t}} &= \frac{\partial^2 \tilde{u}}{\partial \tilde{x}^2} \quad \text{in } (0, 1) \times \R_{>0}, \\
+    \tilde{u} &= 0 \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+    \tilde{u} &= \tilde{g} \quad \text{on } [0, 1] \times \{\tilde{t} = 0\}.
+\end{align*}
+where $\tilde{g} \equiv g/U$.
+
+The nondimensionalization offers simplicity without any loss of generality. Specifically, we can always recover the solution to the dimensional equation as
+\[u(x, t) = U\tilde{u}(x/L, t/T) = U\tilde{u}(x/L, \kappa t/L^2).\]
+For this reason, we will focus on the nondimensionalized form of the heat equation (or any other equations) in this course.
+
+\begin{example}[Nondimensionalization][5.2]
+    Suppose the solution to the nondimensionalized heat equation is given by
+    \[\tilde{u}(\tilde{x}, \tilde{t}) = \sin(\pi\tilde{x}) \exp(-\pi^2 \tilde{t}).\]
+    (This is in fact the solution to the one-dimensional heat equation above for $\tilde{g}(x) = \sin(\pi\tilde{x})$.) The solution to the dimensional equation is then given by
+    \[u(x, t) = \max(|g|) \tilde{u}(x/L, \kappa t/L^2) = \max(|g|) \sin\left(\frac{\pi x}{L}\right) \exp\left(-\frac{\pi^2 \kappa t}{L^2}\right).\]
+\end{example}
+
+\subsection{5.6 Maximum principle}
+We now introduce a property of the heat equation that is important in both theory and practice: \textit{the maximum principle}. The maximum principle facilitates the verification of two of the three conditions of well-posedness---uniqueness and stability (but not existence)---of the initial and/or boundary value problems associated with the heat equation. (\textit{Note:} proofs are provided in this and subsequent sections for completeness, but they should be considered optional reading items.)
+
+\begin{theorem}[Maximum Principle for the Heat Equation][5.3]
+    Suppose we are given an open spatial domain $\Omega$, which may be unbounded, and a time interval $I \equiv (t_0, t_f]$ for $t_f < \infty$. We define a \textit{parabolic cylinder} $\Omega \times I$ and a \textit{parabolic boundary}
+    \[\Gamma \equiv (\overline{\Omega} \times \{t = t_0\}) \cup (\partial\Omega \times I) = (\overline{\Omega \times I}) \setminus (\Omega \times I),\]
+    which includes the spatial boundary and initial-time ``boundary'' (but not the final-time ``boundary''). If $u \in C_1^2(\Omega \times I) \cap C^0(\overline{\Omega \times I})$ is bounded above and satisfies the heat equation
+    \[\frac{\partial u}{\partial t} - \Delta u = 0 \quad \text{in } \Omega \times I,\]
+    then
+    \[\sup_{(x,t) \in \overline{\Omega \times I}} u(x, t) = \sup_{(x,t) \in \Gamma} u(x, t).\]
+\end{theorem}
+
+Here, the supremum, denoted ``sup'', is the least upper bound of a set of values. It generalizes ``max'' to cases in which the largest value is approached but not attained. For example, $\sup_{x \in \R} \tanh(x) = 1$, although $\tanh(x) < 1$ for every $x \in \R$. If the largest value is attained, then the supremum equals the maximum and ``sup'' can be replaced by ``max''.
+
+In words, the values of the solution over the entire parabolic cylinder $\overline{\Omega \times I}$ are bounded above by the values approached on the parabolic boundary $\Gamma$. The parabolic boundary $\Gamma$ in the space-time domain is shown in Figure 5.1. The space $C_1^2(\Omega \times I)$ comprises functions that are twice continuously differentiable in space and once continuously differentiable in time.
+
+\lecfig[0.4\linewidth]{heat}{6}{212 572 207 72}{Figure 5.1: Parabolic boundary $\Gamma$ in the space-time domain for the maximum principle.}
+
+\begin{proof}
+    For $\epsilon > 0$, we introduce an auxiliary function
+    \[v(x, t) = u(x, t) - \epsilon(\|x\|^2 + (2n + 1)(t - t_0)).\]
+    Since $\Delta \|x\|^2 = 2n$,
+    \[\frac{\partial v}{\partial t} - \Delta v = \frac{\partial u}{\partial t} - \Delta u - \epsilon(2n + 1) + \epsilon 2n = -\epsilon < 0.\]
+    Because $u$ is bounded above and $v(x, t) \leq \sup_{\overline{\Omega \times I}} u - \epsilon \|x\|^2$, we have $v(x, t) \to -\infty$ as $\|x\| \to \infty$ uniformly in $t \in [t_0, t_f]$, and $v$ cannot attain its supremum ``at infinity''; its maximum is attained in the closure of the parabolic cylinder.
+
+    Suppose $v$ attains its maximum at $(x^\star, t^\star) \in \Omega \times I$. Then $\Delta v(x^\star, t^\star) \leq 0$, since its spatial Hessian is negative semidefinite at a spatial maximum. In addition, (i) $\frac{\partial v}{\partial t}(x^\star, t^\star) = 0$ if $t^\star \in (t_0, t_f)$ due to the first-order optimality condition, and (ii) $\frac{\partial v}{\partial t}(x^\star, t^\star) \geq 0$ if $t^\star = t_f$ since the left time derivative must be nonnegative at a maximum attained at the final time. In either case, $\frac{\partial v}{\partial t} - \Delta v \geq 0$ at the maximum point. However, this contradicts $\frac{\partial v}{\partial t} - \Delta v < 0$. We therefore conclude that $v$ must attain its maximum on the parabolic boundary $\Gamma$.
+
+    Consequently, for every $(x, t) \in \overline{\Omega \times I}$,
+    \[u(x, t) - \epsilon(\|x\|^2 + (2n + 1)(t - t_0)) = v(x, t) \leq \sup_\Gamma v \leq \sup_\Gamma u.\]
+    It follows that, for every $(x, t) \in \overline{\Omega \times I}$,
+    \[u(x, t) \leq \sup_\Gamma u + \epsilon(\|x\|^2 + (2n + 1)(t - t_0)),\]
+    and letting $\epsilon \to 0$ gives $u(x, t) \leq \sup_\Gamma u$. The reverse inequality $\sup_\Gamma u \leq \sup_{\overline{\Omega \times I}} u$ follows from $\Gamma \subset \overline{\Omega \times I}$, and hence we conclude $\sup_{\overline{\Omega \times I}} u = \sup_\Gamma u$.
+\end{proof}
+
+\begin{nremark}[][5.4]
+    The maximum principle (Theorem 5.3) is sometimes referred to as the \textit{weak maximum principle}. A closely related \textit{strong maximum principle} states that the maximum value cannot be attained anywhere in $\Omega \times I$ unless $u$ is constant in $\Omega \times I$; i.e., if there exists a point $(x^\star, t^\star) \in \Omega \times I$ such that
+    \[u(x^\star, t^\star) = \sup_{\overline{\Omega \times I}} u(x, t),\]
+    then $u$ is constant in $\Omega \times I$. (We recall that $\Omega$ is open and $I$ is open at $t = t_0$)
+\end{nremark}
+
+\begin{theorem}[Minimum Principle for the Heat Equation][5.5]
+    In the same setting as Theorem 5.3, we obtain
+    \[\inf_{(x,t) \in \overline{\Omega \times I}} u(x, t) = \inf_{(x,t) \in \Gamma} u(x, t).\]
+    Here, the infimum, denoted by ``inf'', is the greatest lower bound of a set of values. It generalizes ``min'' to cases in which the smallest value is approached but not attained, just as ``sup'' generalizes ``max''. If the smallest value is attained, then ``inf'' can be replaced by ``min''.
+\end{theorem}
+\begin{proof}
+    Let $w = -u$. We recognize that $w$ is also the solution to a heat equation and apply the maximum principle to obtain
+    \[\sup_{(x,t) \in \overline{\Omega \times I}} w(x, t) = \sup_{(x,t) \in \Gamma} w(x, t).\]
+    We expand the left-hand side and the right-hand side to obtain
+    \begin{align*}
+        (\text{LHS}) &= \sup_{(x,t) \in \overline{\Omega \times I}} w(x, t) = \sup_{(x,t) \in \overline{\Omega \times I}} -u(x, t) = -\inf_{(x,t) \in \overline{\Omega \times I}} u(x, t), \\
+        (\text{RHS}) &= \sup_{(x,t) \in \Gamma} w(x, t) = \sup_{(x,t) \in \Gamma} -u(x, t) = -\inf_{(x,t) \in \Gamma} u(x, t).
+    \end{align*}
+    It follows that
+    \[-\inf_{(x,t) \in \overline{\Omega \times I}} u(x, t) = -\inf_{(x,t) \in \Gamma} u(x, t) \quad \Rightarrow \quad \inf_{(x,t) \in \overline{\Omega \times I}} u(x, t) = \inf_{(x,t) \in \Gamma} u(x, t). \qedhere\]
+\end{proof}
+
+\begin{example}[Maximum Principle for the Heat Equation][5.6]
+    Consider the initial-boundary value problem
+    \begin{align*}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } (-1, 2) \times \R_{>0}, \\
+        u(x = -1, t) &= \exp(-t), \quad t \in \R_{>0}, \\
+        u(x = 2, t) &= |\cos(3\pi t)|, \quad t \in \R_{>0}, \\
+        u(x, t = 0) &= \frac{4}{9}(x - 1/2)^2, \quad x \in [-1, 2].
+    \end{align*}
+    We observe that the value of the solution along the left and right boundaries, as well as at the initial time, are in $[0, 1]$. Hence by the maximum and minimum principles, for $u \in C_1^2(\Omega \times I) \cap C^0(\overline{\Omega \times I})$,
+    \[0 \leq u(x, t) \leq 1 \quad \forall (x, t) \in [-1, 2] \times \R_{\geq 0}.\]
+    We arrive at this conclusion even though we have not found the solution.
+\end{example}
+
+\subsection{5.7 Uniqueness by the maximum principle}
+We now appeal to the maximum (and minimum) principle to show that the solution to the initial-boundary value problem, if it exists, is unique.
+
+\begin{theorem}[Uniqueness of the Solution to the Heat Equation][5.7]
+    Let $\Omega \subset \R^n$ be a spatial domain and $I = (0, t_f]$ be the time interval. There is at most one solution $u \in C_1^2(\Omega \times I) \cap C^0(\overline{\Omega \times I})$ that satisfies
+    \begin{align*}
+        \frac{\partial u}{\partial t} - \Delta u &= f \quad \text{in } \Omega \times I, \\
+        u &= h \quad \text{on } \partial\Omega \times I, \\
+        u &= g \quad \text{on } \overline{\Omega} \times \{t = 0\},
+    \end{align*}
+    where $f : \Omega \times I \to \R$ is a source function, $h : \partial\Omega \times I \to \R$ is the boundary function, and $g : \overline{\Omega} \to \R$ is the initial condition.
+\end{theorem}
+\begin{proof}
+    Let $u_1$ and $u_2$ be the solutions to the heat equation initial-boundary value problem. Since the equation is linear, we know by the principle of superposition that the function $w \equiv u_1 - u_2$ satisfies the initial-boundary value problem associated with the homogeneous heat equation:
+    \begin{align*}
+        \frac{\partial w}{\partial t} - \Delta w &= 0 \quad \text{in } \Omega \times I, \\
+        w &= 0 \quad \text{on } \partial\Omega \times I, \\
+        w &= 0 \quad \text{on } \overline{\Omega} \times \{t = 0\}.
+    \end{align*}
+    By the maximum and minimum principles, we find that
+    \begin{align*}
+        \sup_{(x,t) \in \overline{\Omega \times I}} w(x, t) = \sup_{(x,t) \in \Gamma} w(x, t) = 0 \quad &\Rightarrow \quad w \leq 0 \quad \text{in } \Omega \times I, \\
+        \inf_{(x,t) \in \overline{\Omega \times I}} w(x, t) = \inf_{(x,t) \in \Gamma} w(x, t) = 0 \quad &\Rightarrow \quad w \geq 0 \quad \text{in } \Omega \times I,
+    \end{align*}
+    where $\Gamma \equiv (\overline{\Omega} \times \{t = 0\}) \cup (\partial\Omega \times I)$ is the parabolic boundary. Since $w \leq 0$ and $w \geq 0$, it follows that $w = u_1 - u_2 = 0$ in $\Omega \times I$.
+\end{proof}
+
+\subsection{5.8 Uniform stability by the maximum principle}
+We recall that the third ingredient of well-posedness is stability. In the study of PDEs, we are often interested in stability in two different senses: ``uniform'' and ``square-integral''. In this section we study the uniform stability of the heat equation using the maximum principle.
+
+\begin{theorem}[Uniform Stability of the Heat Equation][5.8]
+    Let $u_1$ and $u_2$ be solutions (in $C_1^2(\Omega \times I) \cap C^0(\overline{\Omega \times I})$) to the initial-boundary value problems associated with two different sets of boundary and initial data $(h_1, g_1)$ and $(h_2, g_2)$, respectively:
+    \begin{align*}
+        \frac{\partial u_i}{\partial t} - \Delta u_i &= 0 \quad \text{in } \Omega \times I, \\
+        u_i &= h_i \quad \text{on } \partial\Omega \times I, \\
+        u_i &= g_i \quad \text{on } \overline{\Omega} \times \{t = 0\}
+    \end{align*}
+    for $i = 1, 2$. Then the solution depends continuously on data in the sense that
+    \begin{equation*}
+        \sup_{(x,t) \in \overline{\Omega \times I}} |u_1(x, t) - u_2(x, t)| = \max\left\{\sup_{(x,t) \in \partial\Omega \times I} |h_1(x, t) - h_2(x, t)|, \ \sup_{x \in \overline{\Omega}} |g_1(x) - g_2(x)|\right\}. \tag{5.5}
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    We appeal to the linearity of the differential operators and take the difference of the two sets of equations to obtain
+    \begin{align*}
+        \frac{\partial(u_1 - u_2)}{\partial t} - \Delta(u_1 - u_2) &= 0 \quad \text{in } \Omega \times I, \\
+        (u_1 - u_2) &= (h_1 - h_2) \quad \text{on } \partial\Omega \times I, \\
+        (u_1 - u_2) &= (g_1 - g_2) \quad \text{on } \overline{\Omega} \times \{t = 0\}.
+    \end{align*}
+    The maximum and minimum principles require, for any $(x, t) \in \Omega \times I$,
+    \begin{align*}
+        u_1(x, t) - u_2(x, t) &\leq \max\left\{\sup_{(x,t) \in \partial\Omega \times I} (h_1(x, t) - h_2(x, t)), \ \sup_{x \in \overline{\Omega}} (g_1(x) - g_2(x))\right\}, \\
+        u_1(x, t) - u_2(x, t) &\geq \min\left\{\inf_{(x,t) \in \partial\Omega \times I} (h_1(x, t) - h_2(x, t)), \ \inf_{x \in \overline{\Omega}} (g_1(x) - g_2(x))\right\},
+    \end{align*}
+    and each relationship holds as an equality for some point $(x, t)$ on the parabolic boundary $\Gamma$. It follows that
+    \[\sup_{(x,t) \in \overline{\Omega \times I}} |u_1(x, t) - u_2(x, t)| = \max\left\{\sup_{(x,t) \in \partial\Omega \times I} |h_1(x, t) - h_2(x, t)|, \ \sup_{x \in \overline{\Omega}} |g_1(x) - g_2(x)|\right\},\]
+    which is the desired equality.
+\end{proof}
+
+The left-hand side of (5.5) measures the closeness of the solutions and its right-hand side measures the closeness of initial and boundary data. The equation shows that the difference in the two solutions $u_1$ and $u_2$ over any point $x \in \overline{\Omega}$ at any time $t \in \overline{I}$ is bounded by the maximum difference in the boundary data $h_1 - h_2$ and the initial data $g_1 - g_2$. Hence a small change in the data results in a small change in the solution; the problem is therefore stable. As the stability statement applies to all points in the space-time domain $\Omega \times I$, this is called stability in the ``uniform'' sense.
+
+\subsection{5.9 Energy method: uniqueness and stability in $L^2$ sense}
+We have so far appealed to the maximum principle to show the uniqueness and stability of the solution to the heat equation initial-boundary value problem. We can also prove uniqueness and stability using the \textit{energy method}. Unlike the results associated with the maximum principle which are in the uniform sense, the results associated with the energy method are in the square-integral (or $L^2$) sense.
+
+We first consider uniqueness. As in the proof of Theorem 5.7, suppose $u_1$ and $u_2$ are the two solutions to the heat equation initial-boundary value problem. Then their difference $w \equiv u_1 - u_2$ satisfies
+\begin{align*}
+    \frac{\partial w}{\partial t} - \Delta w &= 0 \quad \text{in } \Omega \times I, \\
+    w &= 0 \quad \text{on } \partial\Omega \times I, \\
+    w &= 0 \quad \text{on } \overline{\Omega} \times \{t = 0\}.
+\end{align*}
+We now define
+\[E(t) \equiv \frac{1}{2} \int_\Omega w(x, t)^2 dx, \quad t \in I.\]
+We then observe
+\[\frac{d}{dt} E = \int_\Omega w \frac{\partial w}{\partial t} dx = \int_\Omega w \Delta w\,dx = -\int_\Omega \nabla w \cdot \nabla w\,dx + \int_{\partial\Omega} w \nu \cdot \nabla w\,ds = -\int_\Omega |\nabla w|^2 dx \leq 0;\]
+in the last equality, the integral on the boundary vanishes because $w = 0$ on $\partial\Omega$. Since $\frac{dE}{dt} \leq 0$, $E(t) = \frac{1}{2} \int_\Omega w(\cdot, t)^2 dx$ is a nonincreasing function of time and
+\begin{equation*}
+    \int_\Omega w(\cdot, t)^2 dx \leq \int_\Omega w(\cdot, t = 0)^2 dx = 0, \tag{5.6}
+\end{equation*}
+where the last equality follows from $w(\cdot, t = 0) = u_1(\cdot, t = 0) - u_2(\cdot, t = 0) = g - g = 0$. Consequently, $w(\cdot, t) = u_1(\cdot, t) - u_2(\cdot, t) = 0$ for each $t \in I$, and $u_1 = u_2$ in $\Omega \times I$. This energy method can be readily extended to problems that involve Neumann and Robin boundary conditions. In addition, as we will see in later lectures, the method also extends to equations that do not possess the maximum principle.
+
+We next consider stability. To this end, we consider the same setting as Theorem 5.8, but, for simplicity, we consider the case where only the initial data is changed and boundary data is fixed; i.e., $g_1 \neq g_2$ but $h_1 = h_2$. We appeal to energy balance (5.6) and obtain, for any $t \in I$,
+\[\int_\Omega (u_1(\cdot, t) - u_2(\cdot, t))^2 dx \leq \int_\Omega (g_1 - g_2)^2 dx.\]
+Again the left-hand side measures the closeness of the solution and the right-hand side measures the closeness of the initial data. We again observe that a small change in the data results in a small change in the solution; the problem is stable. However, the measure of ``closeness'' is not in the maximum (or uniform) sense but rather in the square-integral sense. We hence refer to this form of stability as stability in the square-integral (or $L^2$) sense.
+
+\subsection{5.10 Summary}
+We summarize key points of this lecture:
+\begin{enumerate}
+    \item The heat equation describes the temperature distribution in a medium and is derived from the definition of thermal energy, Fourier's law, and conservation of energy.
+    \item The three different types of boundary conditions that are relevant for the heat equation are associated with prescribed temperature, prescribed heat flux, and Newton's law of cooling. The three conditions are called, respectively, Dirichlet, Neumann, and Robin conditions, or first-type, second-type, and third-type conditions.
+    \item The heat equation (just like any other equation) can be nondimensionalized. In particular, if we choose the time scale $T \equiv L^2/\kappa$, the resulting equation has a diffusion coefficient equal to one.
+    \item The maximum principle states that the value of the solution to the (homogeneous) heat equation over the entire space-time domain is bounded from above by the maximum value along the boundaries and in the initial condition. The minimum principle similarly holds.
+    \item The maximum principle can be used to prove the solution to the heat equation, if it exists, is unique. The principle also asserts that the solution is stable in the uniform sense.
+    \item The energy method can also be used to prove the uniqueness and $L^2$ stability of the heat equation.
+\end{enumerate}

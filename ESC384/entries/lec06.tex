@@ -1,0 +1,348 @@
+% !TeX root = ../main.tex
+
+\newlecture[Heat Equation: Separation of Variables]
+
+\subsection{6.1 Introduction}
+In this lecture, we consider the solution of initial-boundary value problems associated with the heat equation in a bounded domain. To find a solution representation, we introduce \textit{separation of variables}, which seeks solutions to the PDE that are separable in space and time, and then consider a linear combination of these separable solutions that satisfies the particular boundary and initial conditions. The approach builds on the Fourier series representation of various functions. We consider various boundary conditions; we then provide physical and mathematical interpretations of the associated solutions.
+
+\subsection{6.2 Homogeneous Dirichlet boundary conditions}
+We consider the heat equation over the one-dimensional spatial domain $(0, 1)$ with the homogeneous Dirichlet boundary conditions:
+\begin{align*}
+    \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } (0, 1) \times \R_{>0}, \\
+    u &= 0 \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+    u &= g \quad \text{on } [0, 1] \times \{t = 0\}.
+\end{align*}
+Our solution procedure builds on \textit{separation of variables} and \textit{the principle of superposition}:
+\begin{enumerate}
+    \item \textit{Separation of variables.} We seek a family of solutions to the heat equation of the form
+    \[u_n(x, t) = \phi_n(x) T_n(t), \quad n = 1, 2, \dots,\]
+    which satisfy the PDE and the boundary conditions but not necessarily the initial condition. As we will see shortly, the separable form allows us to use standard ODE techniques to find $\phi_n$ and $T_n$.
+    \item \textit{The principle of superposition.} We then consider a linear combination of the above separable functions
+    \[u(x, t) = \sum_{n=1}^{\infty} a_n u_n(x, t)\]
+    that satisfies the initial condition. Note that due to the linearity and homogeneity of the PDE and boundary conditions, any linear combination of the separable functions also satisfies the PDE and the boundary conditions. Hence, if we find the coefficients $(a_n)$ that satisfy the initial condition, then the solution will satisfy the PDE, boundary conditions, and initial condition.
+\end{enumerate}
+This two-step procedure can be used to find a solution---and in fact a unique solution---to the heat equation. (As we will see, the completeness of the spatial eigenfunctions allows us to choose the coefficients so that the initial condition is satisfied.)
+
+We first seek a family of solutions of the form $u_n(x, t) = \phi_n(x) T_n(t)$ that satisfy the heat equation and boundary conditions (but not the initial condition). To begin, we substitute the separable form $u_n(x, t) = \phi_n(x) T_n(t)$ into the heat equation to obtain
+\[\phi_n T_n' = \phi_n'' T_n,\]
+where $(\cdot)'$ and $(\cdot)''$ denote the first and second derivatives, respectively, of the single-variable function. At points where $\phi_n(x) T_n(t) \neq 0$, we divide the equation by $\phi_n T_n$ to obtain
+\[\frac{T_n'}{T_n} = \frac{\phi_n''}{\phi_n}.\]
+We make a key observation: since the left-hand side $T_n'/T_n$ is a function of $t$ (only) and the right-hand side $\phi_n''/\phi_n$ is a function of $x$ (only), each side must be independent of both $x$ and $t$ and hence be a constant. We denote this constant by $-\alpha_n$ to obtain
+\[\frac{T_n'}{T_n} = -\alpha_n \quad \text{and} \quad \frac{\phi_n''}{\phi_n} = -\alpha_n.\]
+(As we will see shortly, the choice of $-\alpha_n$ (instead of $\alpha_n$) will make the presentation slightly cleaner.) Equivalently, we obtain a pair of ODEs
+\begin{align*}
+    \phi_n'' &= -\alpha_n \phi_n \quad \text{in } (0, 1), \\
+    T_n' &= -\alpha_n T_n \quad \text{in } (0, \infty);
+\end{align*}
+note that each equation is an ODE (rather than a PDE) since each problem is associated with either $x$ or $t$ (but not both). In addition, the homogeneous Dirichlet boundary condition requires that
+\begin{align*}
+    u_n(x = 0, t) &= \phi_n(0) T_n(t) = 0, \\
+    u_n(x = 1, t) &= \phi_n(1) T_n(t) = 0.
+\end{align*}
+As we seek a nontrivial solution (i.e., $T_n \neq 0$), we deduce that $\phi_n(0) = \phi_n(1) = 0$. Hence the spatial function $\phi_n$ must satisfy a boundary-value eigenproblem
+\begin{equation*}
+    \begin{aligned}
+        -\phi_n'' &= \alpha_n \phi_n \quad \text{in } (0, 1), \\
+        \phi_n(0) &= \phi_n(1) = 0.
+    \end{aligned} \tag{6.1}
+\end{equation*}
+We recognize that this is a Sturm--Liouville problem. The problem was analyzed in Section 4.4 and in particular Example 4.6; we found that the eigenvalues and eigenfunctions are $\alpha_n = \pi^2 n^2$ and $\phi_n(x) = \sin(n\pi x)$, respectively, $n = 1, 2, \dots$. (The eigenfunction $\phi_n$ is unique up to multiplication by a constant.)
+
+Having found nontrivial solutions to the spatial eigenproblem, we now seek the associated solutions to the temporal ODE, $T_n' = -\alpha_n T_n$. The general solution to the ODE is of the form
+\[T_n(t) = \exp(-\alpha_n t) = \exp(-n^2\pi^2 t),\]
+which again is unique up to multiplication by a constant. We combine the expressions for $\phi_n$ and $T_n$ to conclude that any functions of the form
+\[u_n(x, t) = \phi_n(x) T_n(t) = \exp(-n^2\pi^2 t) \sin(n\pi x), \quad n = 1, 2, \dots,\]
+satisfy the homogeneous PDE and boundary conditions (but not the initial condition).
+
+We now appeal to the \textit{principle of superposition} to find the solution to the initial-boundary value problem. The key observation is that if each $u_n$ for $n = 1, 2, \dots$ satisfies the homogeneous PDE and boundary conditions, so does
+\[u(x, t) = \sum_{n=1}^{\infty} a_n u_n(x, t) = \sum_{n=1}^{\infty} a_n \exp(-n^2\pi^2 t) \sin(n\pi x),\]
+for any $a_n$, $n = 1, 2, \dots$. The principle of superposition is a direct consequence of the linearity of the heat equation and the homogeneous boundary condition. Namely,
+\begin{align*}
+    \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= \frac{\partial}{\partial t}\Big(\sum_{n=1}^{\infty} a_n u_n\Big) - \frac{\partial^2}{\partial x^2}\Big(\sum_{n=1}^{\infty} a_n u_n\Big) = \sum_{n=1}^{\infty} a_n \left(\frac{\partial u_n}{\partial t} - \frac{\partial^2 u_n}{\partial x^2}\right) = 0, \\
+    u(x = 0, t) &= \sum_{n=1}^{\infty} a_n u_n(x = 0, t) = 0, \\
+    u(x = 1, t) &= \sum_{n=1}^{\infty} a_n u_n(x = 1, t) = 0,
+\end{align*}
+since each $u_n$ satisfies the heat equation and the boundary conditions. This calculation requires that the series and its relevant derivatives converge appropriately so that the temporal and spatial derivatives can be taken term by term. As we will verify shortly, the exponential decay of the coefficients ensures the required convergence for $t > 0$.
+
+We make one key remark: the fact that both the PDE and boundary conditions are homogeneous is crucial for applying the principle of superposition. Any linear combination of functions that satisfy a homogeneous PDE and boundary conditions satisfy the PDE and the boundary conditions (simply because the sum of the multiples of $0$ is always $0$), but this would not be the case if the PDE or a boundary condition were not homogeneous.
+
+Having satisfied the PDE and boundary conditions, we now seek a set of coefficients $a_n$ that satisfies the initial condition:
+\[u(x, t = 0) = \sum_{n=1}^{\infty} a_n \sin(n\pi x) = g(x).\]
+We recognize that this is a Fourier sine series, and the coefficients are given by
+\[a_n = \hat{g}_n = 2 \int_0^1 g(x) \sin(n\pi x) dx, \quad n = 1, 2, \dots.\]
+(Note that we denote the Fourier sine coefficients of $g$ by $\hat{g}_n$, $n = 1, 2, \dots$.) Hence the solution to our initial-boundary value problem is given by
+\begin{equation*}
+    u(x, t) = \sum_{n=1}^{\infty} \hat{g}_n \exp(-n^2\pi^2 t) \sin(n\pi x), \tag{6.2}
+\end{equation*}
+where $\hat{g}_n = 2 \int_0^1 g(x) \sin(n\pi x) dx$. We make a few observations.
+\begin{enumerate}
+    \item \textit{Convergence.} If the initial condition $g$ is square integrable, then the Fourier series is uniformly convergent for $u(\cdot, t)$, $t > 0$. To see this, we observe that (i) the Fourier coefficients are $b_n = \hat{g}_n \exp(-n^2\pi^2 t)$ and (ii) the associated infinite sum $\sum_{n=1}^{\infty} |b_n|$ is convergent. The absolute convergence of the series follows from a comparison test with $\sum_{n=1}^{\infty} c_n = \sum_{n=1}^{\infty} 1/n^2$, which we know is convergent. We first note that $|\hat{g}_n| \to 0$ as $n \to \infty$ because the initial condition $g$ is square integrable and then find that $b_n / c_n = |\hat{g}_n| \exp(-n^2\pi^2 t)/(1/n^2) = |\hat{g}_n| n^2 \exp(-n^2\pi^2 t) \to 0$ as $n \to \infty$, and hence the series converges.
+    \item \textit{Smoothness.} For $t > 0$, the solution to the heat equation is smooth in both space and time (i.e., infinitely differentiable). To first verify spatial smoothness, we recall that the function has a continuous $k$-th order spatial derivative if
+    \[\sum_{n=1}^{\infty} n^k |b_n| = \sum_{n=1}^{\infty} |\hat{g}_n| n^k \exp(-n^2\pi^2 t) < \infty.\]
+    We again perform a comparison test with a convergent series $\sum_{n=1}^{\infty} c_n = \sum_{n=1}^{\infty} 1/n^2$. We find that $(n^k |b_n|)/c_n = |\hat{g}_n| n^k \exp(-n^2\pi^2 t)/(1/n^2) = |\hat{g}_n| n^{k+2} \exp(-n^2\pi^2 t) \to 0$ as $n \to \infty$ for any $k \in \N_{\geq 0}$ and $t > 0$, and hence the series converges. The same argument applies to temporal and mixed space-time derivatives, since each temporal derivative introduces an additional factor of $n^2\pi^2$. Hence the solution is infinitely differentiable in both space and time for $t > 0$, even if the initial condition is only square-integrable (e.g., it could be discontinuous or unbounded).
+    \item \textit{Steady state solution.} As $t \to \infty$, the solution decays and converges to $u = 0$. This agrees with our physical intuition that at steady state the temperature should be equal to the ambient temperature (i.e., the temperature on the boundary) which is $0$.
+    \item \textit{Mode shape and decay rate.} We observe that each mode exponentially decays with time. We also observe that higher-frequency modes decay more rapidly than lower-frequency modes. As a result, the solution gets qualitatively ``smoother'' as the time evolves.
+\end{enumerate}
+
+\begin{example}[Heat Equation with Homogeneous Dirichlet Boundary Conditions][6.1]
+    We consider the heat equation initial-boundary value problem
+    \begin{align*}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } (0, 1) \times \R_{>0}, \\
+        u &= 0 \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+        u(x, t = 0) &= x \quad \forall x \in [0, 1].
+    \end{align*}
+    We have already computed the Fourier sine series representation of the initial condition $g(x) = x$ on $(0, 1)$ in Example 2.18; the expression is
+    \[g(x) \sim \sum_{n=1}^{\infty} \hat{g}_n \sin(n\pi x) = \sum_{n=1}^{\infty} \frac{2(-1)^{n+1}}{n\pi} \sin(n\pi x).\]
+    It follows that the solution to the heat equation is given by
+    \[u(x, t) = \sum_{n=1}^{\infty} \hat{g}_n \exp(-n^2\pi^2 t) \sin(n\pi x) = \sum_{n=1}^{\infty} \frac{2(-1)^{n+1}}{n\pi} \exp(-n^2\pi^2 t) \sin(n\pi x).\]
+    Figure 6.1 shows the solution to the heat equation at a few different times. We observe that the solution (i) decays in time and (ii) qualitatively becomes smoother. Both behaviors are readily predicted from our Fourier series representation of the solution. We also observe that (iii) the initial condition $g(x) = x$ does not approach $0$ on the $x = 1$ boundary. Hence, the initial and boundary conditions are incompatible at the corner $(x, t) = (1, 0)$. Nevertheless, the series provides a solution for $t > 0$ that satisfies the homogeneous boundary conditions and approaches the initial condition in $L^2$ as $t \to 0^+$.
+\end{example}
+
+\lecfig[0.45\linewidth]{heat_sov}{5}{194 551 198 72}{Figure 6.1: Solution to the heat equation with homogeneous Dirichlet boundary condition.}
+
+\subsection{6.3 Homogeneous Neumann boundary conditions}
+We now consider a heat equation with a homogeneous Neumann boundary condition
+\begin{align*}
+    \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } (0, 1) \times \R_{>0}, \\
+    \frac{\partial u}{\partial x} &= 0 \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+    u &= g \quad \text{on } [0, 1] \times \{t = 0\}.
+\end{align*}
+We apply separation of variables and consider solutions of the form $u_n(x, t) = \phi_n(x) T_n(t)$. The substitution of the separable form of the solution yields
+\[\phi_n T_n' - \phi_n'' T_n = 0 \quad \Rightarrow \quad \frac{\phi_n''}{\phi_n} = \frac{T_n'}{T_n} = -\alpha_n;\]
+here we appeal to the fact that $\phi_n''/\phi_n$ is a function of $x$ only and $T_n'/T_n$ is a function of $t$ only, and hence each expression must be a constant.
+
+We now focus on the solution of the spatial problem. We appeal to the boundary conditions and find that
+\begin{align*}
+    \frac{\partial u_n}{\partial x}(x = 0, t) &= \phi_n'(0) T_n(t) = 0, \\
+    \frac{\partial u_n}{\partial x}(x = 1, t) &= \phi_n'(1) T_n(t) = 0;
+\end{align*}
+since we seek a nontrivial solution (i.e., $T_n \neq 0$), we require $\phi_n'(0) = \phi_n'(1) = 0$. Hence the boundary-value eigenproblem associated with the spatial function $\phi_n$ is
+\begin{align*}
+    -\phi_n'' &= \alpha_n \phi_n \quad \text{in } (0, 1), \\
+    \phi_n'(0) &= \phi_n'(1) = 0.
+\end{align*}
+This is again a Sturm--Liouville problem. The problem was studied in Example 4.7; the eigenvalues are $\alpha_n = n^2\pi^2$ and the eigenfunctions are $\phi_n = \cos(n\pi x)$ for $n = 0, 1, 2, \dots$.
+
+We now seek the solution to the temporal ODE
+\[T_n'(t) = -\alpha_n T_n(t)\]
+for $\alpha_n = n^2\pi^2$. The solution to this ODE is of the form $T(t) = \exp(-\alpha_n t) = \exp(-n^2\pi^2 t)$ (up to multiplication by a constant). Hence the general solution is of the form
+\[u(x, t) = \sum_{n=0}^{\infty} a_n T_n(t) \phi_n(x) = \sum_{n=0}^{\infty} a_n \exp(-n^2\pi^2 t) \cos(n\pi x).\]
+We now impose the initial condition to find
+\[u(x, t = 0) = \sum_{n=0}^{\infty} a_n \cos(n\pi x) = g(x).\]
+We recognize that this is almost a Fourier cosine series, with the exception of the constant term having a factor of $1$ instead of $1/2$. We rescale the representation and find that the solution is given by
+\[u(x, t) = \frac{1}{2} a_0 + \sum_{n=1}^{\infty} a_n \exp(-n^2\pi^2 t) \cos(n\pi x),\]
+where
+\[a_n = \hat{g}_n = 2 \int_0^1 \cos(n\pi x) g(x) dx.\]
+We make a few observations:
+\begin{enumerate}
+    \item \textit{Zero mode and steady-state solution.} The $n = 0$ mode is constant in both space and time and represents the mean initial temperature:
+    \[\frac{1}{2} a_0 = \frac{1}{2} \hat{g}_0 = \int_0^1 g(x)\,dx.\]
+    In addition, as all higher modes decay exponentially, we have
+    \[u(x, t) \to \frac{1}{2} \hat{g}_0 = \int_0^1 g(x)\,dx \quad \text{as } t \to \infty.\]
+    \item \textit{Energy conservation.} We recall that the total thermal energy in a domain $\Omega$ at time $t$ is $E(t) = \int_\Omega u(x, t) dx$ (for the nondimensionalized equation with $\rho c = 1$). We observe that, for homogeneous Neumann boundary condition, the total energy is conserved:
+    \[E(t) = \int_0^1 u(x, t) dx = \int_0^1 \left[\frac{1}{2} \hat{g}_0 + \sum_{n=1}^{\infty} \hat{g}_n \exp(-n^2\pi^2 t) \cos(n\pi x)\right] dx = \frac{1}{2} \hat{g}_0 = \int_0^1 g(x) dx;\]
+    the terms associated with $n = 1, 2, \dots$ vanish due to the orthogonality of the cosine function with the constant function. Hence the total thermal energy is conserved. Physically, the homogeneous Neumann boundary condition corresponds to an insulated boundary (i.e., a boundary without any heat transfer), and hence the observed conservation of thermal energy agrees with our physical intuition.
+    \item \textit{Convergence; smoothness; mode shape and decay rate.} The observations we made for the homogeneous Dirichlet solution (6.2) also hold for the homogeneous Neumann solution.
+\end{enumerate}
+
+\begin{example}[Heat Equation with Homogeneous Neumann Boundary Condition][6.2]
+    We consider the heat equation initial-boundary value problem
+    \begin{align*}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } (0, 1) \times \R_{>0}, \\
+        \frac{\partial u}{\partial x} &= 0 \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+        u(x, t = 0) &= x \quad \text{for } x \in [0, 1].
+    \end{align*}
+    We have already computed the Fourier cosine series representation of the initial condition $g(x) = x$ on $(0, 1)$ in Example 2.17; the expression is
+    \[g(x) \sim \frac{1}{2} \hat{g}_0 + \sum_{n=1}^{\infty} \hat{g}_n \cos(n\pi x) = \frac{1}{2} - \sum_{k=1}^{\infty} \frac{4}{(2k - 1)^2\pi^2} \cos((2k - 1)\pi x)\]
+    It follows that the solution to the heat equation is given by
+    \begin{align*}
+        u(x, t) &= \frac{1}{2} + \sum_{n=1}^{\infty} \hat{g}_n \exp(-n^2\pi^2 t) \cos(n\pi x) \\
+        &= \frac{1}{2} - \sum_{k=1}^{\infty} \frac{4}{(2k - 1)^2\pi^2} \exp(-(2k - 1)^2\pi^2 t) \cos((2k - 1)\pi x).
+    \end{align*}
+    Figure 6.2 shows the solution to the heat equation at a few different times. We observe that the solution (i) satisfies the homogeneous Neumann condition (i.e., the derivative vanishes at the endpoints) and (ii) is smooth for any time. Both behaviors are readily predicted from our Fourier series representation of the solution.
+\end{example}
+
+\lecfig[0.45\linewidth]{heat_sov}{8}{194 551 198 72}{Figure 6.2: Solution to the heat equation with homogeneous Neumann boundary condition.}
+
+\subsection{6.4 Mixed boundary conditions}
+We now consider a heat equation with mixed boundary conditions
+\begin{align*}
+    \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } (0, 1) \times \R_{>0}, \\
+    u &= 0 \quad \text{on } \{x = 0\} \times \R_{>0}, \\
+    \frac{\partial u}{\partial x} &= 0 \quad \text{on } \{x = 1\} \times \R_{>0}, \\
+    u &= g \quad \text{on } [0, 1] \times \{t = 0\}.
+\end{align*}
+As the procedure is similar to the case for the homogeneous Dirichlet (or Neumann) boundary condition considered earlier, we highlight only the steps that are different from the previous cases.
+
+We apply separation of variables and arrive at the following boundary-value eigenproblem associated with the spatial function $\phi_n$
+\begin{align*}
+    -\phi_n'' &= \alpha_n \phi_n \quad \text{in } (0, 1), \\
+    \phi_n(0) &= 0, \\
+    \phi_n'(1) &= 0.
+\end{align*}
+This is a Sturm--Liouville problem with a mixed boundary condition; we know that the eigenvalues are real and the eigenfunctions are orthogonal. Moreover, because the conditions for Theorem 4.5 are satisfied, the eigenvalues satisfy $\alpha_n \geq 0$. The case $\alpha_n = 0$ yields only the trivial solution. Indeed, in this case $\phi_n(x) = a_n x + b_n$, and the boundary conditions $\phi_n(0) = 0$ and $\phi_n'(1) = 0$ require $b_n = 0$ and $a_n = 0$, respectively. Hence, $\alpha_n > 0$, and the solutions are of the form $\phi_n(x) = a_n \cos(\sqrt{\alpha_n} x) + b_n \sin(\sqrt{\alpha_n} x)$. The boundary condition $\phi_n(x = 0) = 0$ requires that $a_n = 0$. The boundary condition $\phi_n'(1) = 0$ requires that $\phi_n'(1) = b_n \sqrt{\alpha_n} \cos(\sqrt{\alpha_n}) = 0$, which implies $\sqrt{\alpha_n} = (n - 1/2)\pi$, $n = 1, 2, \dots$.
+
+The temporal ODE $T_n'(t) = -\alpha_n T_n(t)$ is the same as before, and its solution is of the form $T(t) = \exp(-\alpha_n t) = \exp(-(n - 1/2)^2\pi^2 t)$ (up to multiplication by a constant). It follows that the solution to the mixed boundary value problem is of the form
+\begin{equation*}
+    u(x, t) = \sum_{n=1}^{\infty} a_n \exp(-(n - 1/2)^2\pi^2 t) \sin((n - 1/2)\pi x). \tag{6.3}
+\end{equation*}
+We impose the initial condition to find
+\[u(x, t = 0) = \sum_{n=1}^{\infty} a_n \sin((n - 1/2)\pi x) = g(x).\]
+We know that $\{\sin((n - 1/2)\pi x)\}_{n=1}^{\infty}$ forms an orthogonal basis because these functions are the eigenfunctions of a Sturm--Liouville problem. We therefore multiply both sides of the equation by $\sin((m - 1/2)\pi x)$ and integrate over $(0, 1)$ to obtain
+\[a_m \int_0^1 \sin((m - 1/2)\pi x)^2 dx = \int_0^1 \sin((m - 1/2)\pi x) g(x) dx, \quad m = 1, 2, \dots.\]
+The integral on the left-hand side evaluates to
+\[\int_0^1 \sin((m - 1/2)\pi x)^2 dx = \int_0^1 \frac{1}{2}(1 - \cos(2(m - 1/2)\pi x)) dx = \frac{1}{2},\]
+where the last equality follows from the fact that the integral of $\cos(2(m - 1/2)\pi x)$ over $(0, 1)$ is $0$ for any $m$. Hence
+\[\frac{1}{2} a_n = \int_0^1 \sin((n - 1/2)\pi x) g(x) dx\]
+or equivalently
+\begin{equation*}
+    a_n = 2 \int_0^1 \sin((n - 1/2)\pi x) g(x) dx. \tag{6.4}
+\end{equation*}
+The series (6.3) with the coefficients (6.4) provide a solution representation of the mixed boundary value problem.
+
+\subsection{6.5 Nonhomogeneous source term}
+We now consider the heat equation with a nonhomogeneous source term:
+\begin{align*}
+    \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= f \quad \text{in } (0, 1) \times \R_{>0}, \\
+    u &= 0 \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+    u &= g \quad \text{on } [0, 1] \times \{t = 0\},
+\end{align*}
+where the source function $f : (0, 1) \times \R_{>0} \to \R$ in general depends on both space and time. This nonhomogeneous problem can also be solved using separation of variables.
+
+To begin, we first apply separation of variables to the homogeneous PDE $\frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} = 0$ with the homogeneous Dirichlet boundary condition to find appropriate spatial basis functions $(\phi_n)$. This homogeneous problem, considered in Section 6.2, yields the basis functions $\phi_n(x) = \sin(n\pi x)$. We express the solution as a linear combination of these spatial basis functions to obtain a solution representation
+\[u(x, t) = \sum_{n=1}^{\infty} \hat{u}_n(t) \sin(n\pi x).\]
+Note that the Fourier sine series will satisfy the homogeneous Dirichlet boundary condition for any time-dependent coefficients $(\hat{u}_n(t))_{n=1}^{\infty}$ at each time. We now substitute the Fourier representation of $u$ into the PDE to obtain
+\[\sum_{n=1}^{\infty} [\hat{u}_n'(t) + n^2\pi^2 \hat{u}_n(t)] \sin(n\pi x) = f(x, t).\]
+We next multiply the equation by $2\sin(m\pi x)$, integrate from $x = 0$ to $x = 1$, and appeal to the orthogonality of the Fourier basis to obtain
+\begin{equation*}
+    \hat{u}_m'(t) + m^2\pi^2 \hat{u}_m(t) = \hat{f}_m(t), \quad m = 1, 2, \dots, \tag{6.5}
+\end{equation*}
+where the Fourier coefficients of $f$ are given by
+\[\hat{f}_m(t) = 2 \int_{x=0}^{1} f(x, t) \sin(m\pi x) dx, \quad m = 1, 2, \dots.\]
+The time-dependent coefficients $\hat{u}_n : \R_{\geq 0} \to \R$, $n = 1, 2, \dots$, must therefore satisfy the ODE (6.5).
+
+We now wish to identify the appropriate initial conditions for (6.5). To this end, we substitute the solution representation into the initial condition to obtain
+\[u(x, t = 0) = \sum_{n=1}^{\infty} \hat{u}_n(t = 0) \sin(n\pi x) = g(x).\]
+This is a Fourier sine series and hence we deduce that
+\begin{equation*}
+    \hat{u}_n(t = 0) = \hat{g}_n \equiv 2 \int_{x=0}^{1} g(x) \sin(n\pi x) dx. \tag{6.6}
+\end{equation*}
+The combination of (6.5) and (6.6) yields
+\begin{align*}
+    \hat{u}_n'(t) + n^2\pi^2 \hat{u}_n(t) &= \hat{f}_n(t), \\
+    \hat{u}_n(t = 0) &= \hat{g}_n
+\end{align*}
+for $n = 1, 2, \dots$, which is a set of ODE initial-value problems.
+
+We find the solution to the ODE initial value problem using an integrating factor. To this end, we multiply each ODE by $\exp(n^2\pi^2 t)$ and note that
+\[\exp(n^2\pi^2 t) \hat{u}_n'(t) + n^2\pi^2 \exp(n^2\pi^2 t) \hat{u}_n(t) = \frac{d}{dt}\left(\exp(n^2\pi^2 t) \hat{u}_n(t)\right) = \exp(n^2\pi^2 t) \hat{f}_n(t).\]
+We integrate the expression from $0$ to $t$ to obtain
+\[\exp(n^2\pi^2 t) \hat{u}_n(t) - \hat{u}_n(t = 0) = \int_{\tau=0}^{t} \exp(n^2\pi^2 \tau) \hat{f}_n(\tau) d\tau.\]
+We divide through by $\exp(n^2\pi^2 t)$ and rearrange the expression to obtain
+\[\hat{u}_n(t) = \hat{u}_n(t = 0) \exp(-n^2\pi^2 t) + \int_{\tau=0}^{t} \exp(-n^2\pi^2(t - \tau)) \hat{f}_n(\tau) d\tau.\]
+Since $\hat{u}_n(t = 0) = \hat{g}_n$, it follows that
+\begin{equation*}
+    \hat{u}_n(t) = \hat{g}_n \exp(-n^2\pi^2 t) + \int_{\tau=0}^{t} \exp(-n^2\pi^2(t - \tau)) \hat{f}_n(\tau) d\tau. \tag{6.7}
+\end{equation*}
+Hence the solution to the nonhomogeneous heat equation is given by
+\[u(x, t) = \sum_{n=1}^{\infty} \hat{u}_n(t) \sin(n\pi x),\]
+where the coefficient functions are given by (6.7).
+
+We make a few observations:
+\begin{enumerate}
+    \item The solution to the nonhomogeneous heat equation is a sum of the solutions to two initial-boundary value problem. The first problem is the homogeneous problem with nonzero initial condition: $\frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} = 0$ and $u = g$ at $t = 0$. The second problem is the nonhomogeneous problem with a zero initial condition: $\frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} = f$ and $u = 0$ at $t = 0$. The result is an application of the principle of superposition.
+    \item The term due to the nonhomogeneous source, $\int_{\tau=0}^{t} \exp(n^2\pi^2(\tau - t)) \hat{f}_n(\tau) d\tau$, shows that heat added at time $\tau$ affects the solution at all later times $t > \tau$, which agrees with our physical intuition. The influence of this particular contribution decays exponentially with the elapsed time $t - \tau$.
+\end{enumerate}
+
+\begin{example}[Heat Equation with a Source Term][6.3]
+    We consider a nonhomogeneous heat equation
+    \begin{align*}
+        \frac{\partial u}{\partial t}(x, t) - \frac{\partial^2 u}{\partial x^2}(x, t) &= x, \quad x \in (0, 1), \ t \in \R_{>0}, \\
+        u &= 0 \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+        u &= 0 \quad \text{on } [0, 1] \times \{t = 0\}.
+    \end{align*}
+    The heat equation has a nonzero but time-independent source term.
+
+    We first note that our boundary conditions are homogeneous Dirichlet, and hence our spatial basis is given by $\phi_n(x) = \sin(n\pi x)$, $n = 1, 2, \dots$; the basis for Fourier sine series. To find the Fourier sine series representation of the problem, we first identify the Fourier sine coefficients of the source term $f(x) = x$ on $x \in (0, 1)$:
+    \[\hat{f}_n = \frac{2(-1)^{n+1}}{n\pi} \quad n \in \Z_{>0}.\]
+    We appeal to (6.7), note that $\hat{g}_n = 0$ since the initial condition is $g = 0$, and find the Fourier sine coefficients of the solution:
+    \[\hat{u}_n(t) = \int_{\tau=0}^{t} \exp(n^2\pi^2(\tau - t)) \hat{f}_n d\tau = \frac{1}{n^2\pi^2} (1 - \exp(-n^2\pi^2 t)) \hat{f}_n = \frac{2(-1)^{n+1}}{n^3\pi^3} (1 - \exp(-n^2\pi^2 t)).\]
+    Hence the solution is given by
+    \[u(x, t) = \sum_{n=1}^{\infty} \frac{2(-1)^{n+1}}{n^3\pi^3} (1 - \exp(-n^2\pi^2 t)) \sin(n\pi x).\]
+    Figure 6.3 shows the solution to the heat equation at a few different times. As $t \to \infty$, the solution converges to the nontrivial steady-state solution
+    \[u_{\text{steady}}(x) = \sum_{n=1}^{\infty} \frac{2(-1)^{n+1}}{n^3\pi^3} \sin(n\pi x) = \frac{x - x^3}{6}.\]
+    This again agrees with our intuition that, in the presence of a steady heat source, the temperature approaches a steady nonzero distribution over time.
+\end{example}
+
+\lecfig[0.45\linewidth]{heat_sov}{12}{194 551 198 72}{Figure 6.3: Solution to the heat equation with a nonhomogeneous source term and homogeneous Dirichlet boundary conditions.}
+
+\subsection{6.6 Nonhomogeneous boundary conditions}
+We now consider the heat equation with nonhomogeneous boundary conditions:
+\begin{align*}
+    \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= f \quad \text{in } (0, 1) \times \R_{>0}, \\
+    u &= h \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+    u &= g \quad \text{on } [0, 1] \times \{t = 0\},
+\end{align*}
+where the boundary function $h : \{0, 1\} \times \R_{>0} \to \R$ in general depends on time and is assumed to be differentiable with respect to time. To solve this problem, we consider the decomposition of the solution into two parts: (i) a function $u^{\mathrm{b}}$ that satisfies the boundary condition and (ii) the remainder of the solution $w$ such that $u = u^{\mathrm{b}} + w$. We first note that the function $u^{\mathrm{b}}$ can be obtained by ``extending'' the boundary function $h$ to the interior of the domain:
+\[u^{\mathrm{b}}(x, t) = h(0, t) + (h(1, t) - h(0, t)) x;\]
+this is obviously not a unique choice of a function that satisfies the boundary conditions, but it is a convenient choice because the Laplacian of the linear function vanishes. We substitute $u = u^{\mathrm{b}} + w$ into our initial-boundary value problem to obtain
+\begin{align*}
+    \frac{\partial u^{\mathrm{b}}}{\partial t} + \frac{\partial w}{\partial t} - \frac{\partial^2 w}{\partial x^2} &= f \quad \text{in } (0, 1) \times \R_{>0}, \\
+    u^{\mathrm{b}} + w &= h \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+    u^{\mathrm{b}} + w &= g \quad \text{on } [0, 1] \times \{t = 0\},
+\end{align*}
+where we have appealed to $\frac{\partial^2 u^{\mathrm{b}}}{\partial x^2} = 0$. In other words, the function $w$ must satisfy
+\begin{align*}
+    \frac{\partial w}{\partial t} - \frac{\partial^2 w}{\partial x^2} &= f - \frac{\partial u^{\mathrm{b}}}{\partial t} \quad \text{in } (0, 1) \times \R_{>0}, \\
+    w &= 0 \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+    w &= g - u^{\mathrm{b}} \quad \text{on } [0, 1] \times \{t = 0\}.
+\end{align*}
+This is a heat equation with a nonhomogeneous source term but with a homogeneous boundary condition, which was considered in Section 6.5. We may therefore solve for $w$ using the procedure outlined in the section and set $u = u^{\mathrm{b}} + w$. In the special case in which the boundary condition does not depend on time, the heat equation for $w$ simplifies to $\frac{\partial w}{\partial t} - \frac{\partial^2 w}{\partial x^2} = f$.
+
+\begin{example}[Nonhomogeneous Dirichlet Boundary Conditions][6.4]
+    We consider the solution of a heat equation initial-boundary value problem
+    \begin{align*}
+        \frac{\partial u}{\partial t} - \frac{\partial^2 u}{\partial x^2} &= 0 \quad \text{in } (0, 1) \times \R_{>0}, \\
+        u(x = 0, t) &= T_L, \quad t \in \R_{>0}, \\
+        u(x = 1, t) &= T_R, \quad t \in \R_{>0}, \\
+        u &= 0 \quad \text{on } [0, 1] \times \{t = 0\}
+    \end{align*}
+    for some fixed temperatures $T_L$ and $T_R$. The boundary condition is nonhomogeneous but is time-independent. We seek the solution of a form $u = u^{\mathrm{b}} + w$, for some $u^{\mathrm{b}}$ that satisfies the boundary condition and $w$ which solves the initial-boundary value problem. We choose the function
+    \[u^{\mathrm{b}}(x, t) = T_L + (T_R - T_L) x\]
+    as our boundary function, which satisfies the boundary conditions. We then note that $w$ must satisfy
+    \begin{align*}
+        \frac{\partial w}{\partial t} - \frac{\partial^2 w}{\partial x^2} &= 0 \quad \text{in } (0, 1) \times \R_{>0}, \\
+        w &= 0 \quad \text{on } \{0, 1\} \times \R_{>0}, \\
+        w &= -u^{\mathrm{b}} = -T_L - (T_R - T_L) x \quad \text{on } [0, 1] \times \{t = 0\}.
+    \end{align*}
+    This is a homogeneous heat equation with homogeneous boundary conditions, the solution approach to which was discussed in Section 6.2.
+
+    The Fourier sine coefficients for the initial condition are
+    \begin{align*}
+        b_n &= 2 \int_0^1 \sin(n\pi x)(-T_L - (T_R - T_L) x) dx \\
+        &= 2T_L \left[\frac{\cos(n\pi x)}{n\pi}\right]_{x=0}^{1} + 2(T_R - T_L) \left[-\frac{\sin(n\pi x)}{n^2\pi^2} + \frac{x \cos(n\pi x)}{n\pi}\right]_{x=0}^{1} \\
+        &= 2T_L \left(\frac{\cos(n\pi) - 1}{n\pi}\right) + 2(T_R - T_L) \left(\frac{\cos(n\pi)}{n\pi}\right) = \frac{2}{n\pi} \left((-1)^n T_L - T_L + (-1)^n (T_R - T_L)\right) \\
+        &= \frac{2}{n\pi} (-T_L + (-1)^n T_R).
+    \end{align*}
+    Hence the function $w$ is given by
+    \[w(x, t) = \sum_{n=1}^{\infty} b_n \exp(-n^2\pi^2 t) \sin(n\pi x) = \sum_{n=1}^{\infty} \frac{2}{n\pi} (-T_L + (-1)^n T_R) \exp(-n^2\pi^2 t) \sin(n\pi x).\]
+    The solution $u$ is given by
+    \[u(x, t) = u^{\mathrm{b}}(x, t) + w(x, t) = T_L + (T_R - T_L) x + \sum_{n=1}^{\infty} \frac{2}{n\pi} (-T_L + (-1)^n T_R) \exp(-n^2\pi^2 t) \sin(n\pi x).\]
+
+    \lecfig[0.45\linewidth]{heat_sov}{14}{194 551 198 72}{Figure 6.4: Solution to the heat equation with a nonhomogeneous source term and homogeneous Dirichlet boundary conditions.}
+
+    Note that, unless $T_L = T_R = 0$, the initial and boundary conditions are incompatible at the corners $(0, 0)$ and $(1, 0)$. Nevertheless, the series provides a solution for $t > 0$ that satisfies the boundary conditions and approaches the initial condition in $L^2$ as $t \to 0^+$.
+
+    Figure 6.4 shows the solution to the heat equation for $T_L = 1/3$ and $T_R = 1$ at a few different times. We make a few observations. First, for a small $t$, the series representation of $w$ is almost equal to $-u^{\mathrm{b}}$ and hence the solution $u$ is close to zero (i.e., the initial condition). Second, as $t \to \infty$, the function $w \to 0$ and hence the solution $u$ converges to $u^{\mathrm{b}}$.
+\end{example}
+
+\subsection{6.7 Summary}
+We summarize the key points of this lecture:
+\begin{enumerate}
+    \item Using separation of variables and the principle of superposition, we can find Fourier series representations of the solution to the heat equation on a one-dimensional bounded spatial domain.
+    \item The application of separation of variables to the heat equation yields a Sturm--Liouville problem for the spatial modes. For homogeneous Dirichlet, Neumann, and mixed boundary conditions, the Sturm--Liouville theory can be used to deduce that all eigenvalues are nonnegative and the eigenfunctions are orthogonal.
+    \item The solution to the heat equation is smooth (i.e., infinitely differentiable) for $t > 0$ for any boundary conditions.
+    \item The solution to the heat equation with homogeneous Dirichlet boundary condition is given by Fourier sine series. All modes decay in time, and higher spatial modes decay more rapidly in time.
+    \item The solution to the heat equation with homogeneous Neumann boundary condition is given by Fourier cosine series. The total energy is conserved in time.
+    \item The solutions to a heat equation with a nonhomogeneous source term or a nonhomogeneous boundary condition can also be found using separation of variables. The solution is the sum of the solutions associated with (i) a nonhomogeneous PDE (i.e., finite source) and a homogeneous initial condition and (ii) a nonhomogeneous initial condition and a homogeneous PDE (i.e., zero source).
+\end{enumerate}
