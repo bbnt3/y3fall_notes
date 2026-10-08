@@ -34,8 +34,8 @@ The duration of $A + B$ (cash flows add, so PVs add):
 \begin{align*}
     D^{A+B} &= \sum_{k=0}^{n}\frac{t_k\left(PV_k^A + PV_k^B\right)}{P^A + P^B}
     = \sum_{k=0}^{n}\frac{t_kPV_k^A}{P^A + P^B} + \sum_{k=0}^{n}\frac{t_kPV_k^B}{P^A + P^B}\\
-    &= \sum_{k=0}^{n}\frac{t_kPV_k^A}{P^A + P^B}\cdot\textcolor{red!70!black}{\frac{P^A}{P^A}} + \sum_{k=0}^{n}\frac{t_kPV_k^B}{P^A + P^B}\cdot\textcolor{red!70!black}{\frac{P^B}{P^B}} && \text{(multiply by 1)}\\
-    &= \underbrace{\sum_{k=0}^{n}\frac{t_kPV_k^A}{\textcolor{red!70!black}{P^A}}}_{D^A}\left(\frac{\textcolor{red!70!black}{P^A}}{P^A + P^B}\right) + \underbrace{\sum_{k=0}^{n}\frac{t_kPV_k^B}{\textcolor{red!70!black}{P^B}}}_{D^B}\left(\frac{\textcolor{red!70!black}{P^B}}{P^A + P^B}\right) && \text{(swap denominators)}
+    &= \sum_{k=0}^{n}\frac{t_kPV_k^A}{P^A + P^B}\cdot\emphbox{\frac{P^A}{P^A}} + \sum_{k=0}^{n}\frac{t_kPV_k^B}{P^A + P^B}\cdot\emphbox{\frac{P^B}{P^B}} && \text{(multiply by 1)}\\
+    &= \underbrace{\sum_{k=0}^{n}\frac{t_kPV_k^A}{\cancel{P^A}}}_{D^A}\left(\frac{\cancel{P^A}}{P^A + P^B}\right) + \underbrace{\sum_{k=0}^{n}\frac{t_kPV_k^B}{\cancel{P^B}}}_{D^B}\left(\frac{\cancel{P^B}}{P^A + P^B}\right) && \text{(swap denominators)}
 \end{align*}
 \[\boxed{D^{A+B} = \left(\frac{P^A}{P^A + P^B}\right)D^A + \left(\frac{P^B}{P^A + P^B}\right)D^B = w_AD^A + w_BD^B}\]
 The weights add to 1 ($w_A + w_B = 1$), so $D^{A+B}$ always lies \ul{between} $D^A$ and $D^B$ (for positive prices). Repeating this for more streams gives the general formula.

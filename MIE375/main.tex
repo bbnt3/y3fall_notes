@@ -5,6 +5,8 @@
 \input{../template/preamble.tex}
 \usepackage{framed}
 \usepackage{soul} % \ul: underline that can break across lines
+\usepackage{cancel} % \cancel: strike out terms that cancel
+\renewcommand{\CancelColor}{\color{red!70!black}}
 
 % Definitions in this course aren't numbered.
 \theoremstyle{boldheadnp}
@@ -23,6 +25,9 @@
 
 % Red-bordered box for key takeaways (like the boxed statements on the slides).
 \newcommand{\keypoint}[1]{\par\begin{center}{\setlength{\fboxsep}{6pt}\setlength{\fboxrule}{0.8pt}\fcolorbox{red!70!black}{white}{\parbox{0.9\linewidth}{\centering #1}}}\end{center}}
+
+% Tight rounded box to circle a term inside an equation (e.g. a factor being multiplied in).
+\newcommand{\emphbox}[1]{\tikz[baseline=(X.base)]\node[draw=red!70!black, thick, rounded corners=3pt, inner sep=1.5pt] (X) {$\displaystyle #1$};}
 
 % Replace these details for each course.
 \newcommand{\coursecode}{MIE375}
