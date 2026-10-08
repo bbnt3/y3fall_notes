@@ -17,6 +17,16 @@ In general, for
 \end{itemize}
 After 1 period, $V=A(1+r) = A + Ar$ is received, where $Ar$ is the interest earned on the principal for one period.
 
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (-0.3,0) -- (5,0) node[right] {time};
+    \node[below] at (0,-0.05) {$0$};
+    \node[below] at (4,-0.05) {$1$};
+    \draw[->, thick] (0,0) -- (0,0.8) node[above] {$A$};
+    \draw[->, thick] (4,0) -- (4,1.2) node[above] {$A(1+r)$};
+\end{tikzpicture}
+\end{center}
+
 \begin{example}
     Invest \$1 for 1 year at 8\%: after 1 year you receive
     \[\$1.08 = \underbrace{\$1.00}_{\text{principal}} + \underbrace{\$0.08}_{\text{interest}}\]
@@ -25,10 +35,37 @@ After 1 period, $V=A(1+r) = A + Ar$ is received, where $Ar$ is the interest earn
 Interest over multiple periods depend on the compounding rules:
 \begin{enumerate}
     \item \rb{Simple}: Money grows linearly, receiving $V=A(1+nr)$ over $n$ periods.
-    \item \rb{Compound}: Money grows geometrically, receiving $V=A(1+r)^n$ over $n$ periods.
+    \item \rb{Compound}: Money grows geometrically (interest on interest), receiving $V=A(1+r)^n$ over $n$ periods.
 \end{enumerate}
 
-The Rule of 72: Money invested at $r\%$ per year doubles in approximately $72/r$ years.
+\begin{center}
+\begin{tikzpicture}
+    \foreach \sx/\lab in {0/Simple, 6.5/Compound} {
+        \begin{scope}[xshift=\sx cm]
+            \node at (2.2,3.1) {\b{\lab}};
+            \draw[->] (-0.3,0) -- (5,0) node[right] {time};
+            \node[below] at (0,-0.05) {$0$};
+            \node[below] at (1,-0.05) {$1$};
+            \node[below] at (4,-0.05) {$n$};
+            \draw[->, thick] (0,0) -- (0,0.8) node[above left] {$A$};
+        \end{scope}
+    }
+    % simple: linear growth
+    \draw[->, thick] (1,0) -- (1,1.1) node[above] {$A(1+r)$};
+    \draw[->, thick] (4,0) -- (4,2.0) node[above] {$A(1+nr)$};
+    \draw[dashed] (0,0.8) -- (4,2.0);
+    \node[below] at (2.2,-0.5) {money grows linearly};
+    % compound: geometric growth
+    \begin{scope}[xshift=6.5cm]
+        \draw[->, thick] (1,0) -- (1,1.0) node[above] {$A(1+r)$};
+        \draw[->, thick] (4,0) -- (4,2.2) node[above] {$A(1+r)^n$};
+        \draw[dashed, domain=0:4, smooth, variable=\x] plot ({\x}, {0.8*exp(0.253*\x)});
+        \node[below] at (2.2,-0.5) {money grows geometrically};
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
+\keypoint{\b{Rule of 72} (rule of thumb): money invested at $r\%$ per year doubles in approximately $72/r$ years.}
 
 \begin{example}
     \textit{Simple:} \$5000 borrowed for 5 years at 10\% per year simple interest is owed
@@ -36,13 +73,29 @@ The Rule of 72: Money invested at $r\%$ per year doubles in approximately $72/r$
     \textit{Compound:} \$100 deposited at 7\% compounded yearly for 10 years grows to
     \[V = A(1+r)^n = 100(1+0.07)^{10} = \$196.72\]
 \end{example}
-Simple interest is not used often in practice.
+\keypoint{Simple interest is not used often in practice.}
 
 
 \begin{definition}
     \rb{Nominal Interest Rate}: annual quote, compounding interest is in fractions corresponding to the compounding period.
     \\For $m$ periods per year for $k$ periods, $V=A(1+\frac{r}{m})^k$
 \end{definition}
+
+\begin{center}
+\begin{tikzpicture}
+    \draw[line width=1.2pt] (0,0) -- (8,0);
+    \foreach \x in {0,1.2,2.4,3.6,6.8,8} {
+        \draw[line width=1.2pt] (\x,-0.15) -- (\x,0.15);
+    }
+    \foreach \x in {0.6,1.8,3.0,7.4} {
+        \node[above] at (\x,0.15) {$r/m$};
+    }
+    \node at (5.2,0.4) {$\cdots$};
+    \node[below] at (0,-0.2) {$0$};
+    \node[below] at (8,-0.2) {$1$ year};
+    \draw[decorate, decoration={brace, mirror, amplitude=8pt}] (0,-0.7) -- (8,-0.7) node[midway, below=10pt] {$m$ periods};
+\end{tikzpicture}
+\end{center}
 
 \begin{example}
     Invest \$10 at 8\% compounded quarterly for 3 quarters:
@@ -72,6 +125,16 @@ For $r$ the nominal interest rate quoted:
 \end{definition}
 
 Relationship between Nominal and Effective Rate (with $m$ compounding periods per year, so the rate per compounding period is $r = r_{nom}/m$):
+
+\begin{center}
+\begin{tikzpicture}
+    \draw (0,0) -- (8,0);
+    \foreach \x in {0,2,4,6,8} { \draw (\x,-0.15) -- (\x,0.15); }
+    \draw[decorate, decoration={brace, amplitude=8pt}] (0,0.4) -- (8,0.4) node[midway, above=10pt] {nominal yearly rate $r_{nom}$};
+    \draw[decorate, decoration={brace, mirror, amplitude=8pt}] (0,-0.4) -- (8,-0.4) node[midway, below=10pt] {$m$ compounding periods};
+    \draw[<-] (7,0.05) -- (9.2,-1.2) node[below, align=center] {rate per period\\$r = r_{nom}/m$};
+\end{tikzpicture}
+\end{center}
 \[1+ r_{eff} = (1+ \frac{r_{nom}}{m})^m \quad \Rightarrow \quad \boxed{r_{eff} = (1+ \frac{r_{nom}}{m})^m - 1}\]
 \[\text{1 + Simple One-year Rate = the Explicit Compound}\]
 

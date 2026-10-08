@@ -112,7 +112,7 @@ Perpetuity starting at period $n+1$:
 
 
 \begin{example}[Loan Calculation]
-    Suppose \$1,000 is borrowed at 12\% interest compounded monthly, repayed with equal monthly payments over 5 years. How much are the monthly payments?
+    Suppose \$1,000 is borrowed at 12\% interest compounded monthly, repaid with equal monthly payments over 5 years. How much are the monthly payments?
 
     Given: $P = \$1,000 \quad r = \frac{12\%}{12} = 1\%/\text{mo} \quad n = 5\times12 = 60$
     \[P = \frac{A}{r}\left(1-\frac{1}{(1+r)^n}\right) \quad \Rightarrow \quad A = \frac{rP}{\left(1-\frac{1}{(1+r)^n}\right)} = \$22.24/\text{mo}\]
@@ -235,7 +235,7 @@ The IRR of this cash flow stream is the \rb{yield} (or \rb{yield to maturity}) o
         n: \text{coupon payments remaining}
     \end{array}
 \end{gathered}}\]
-Note this equation \underline{only} holds when $\lambda$ is the yield, with \underline{exactly} $n$ coupon payments remaining.
+\keypoint{This formula relates price and yield only with \b{exactly} $n$ coupon payments remaining (i.e.\ right after a coupon is paid).}
 
 \begin{example}
     Price of a bond with par value \$1,000 paid in ten years, coupon rate 10\%, yield 12\%, coupons paid semi-annually. Then $n = 20$, $C/m = 50$, $\lambda/m = 6\%$:
@@ -253,7 +253,7 @@ Note this equation \underline{only} holds when $\lambda$ is the yield, with \und
 E.g.\ the bond above has a 10\% coupon but a 12\% yield, so it sells at a discount ($\$885.30 < \$1,000$).
 
 \header{The Price-Yield Curve}
-For a fixed maturity, \underline{price and yield are inversly related}:
+For a fixed maturity, \underline{price and yield are inversely related}:
 \begin{itemize}
     \item Rates Rise $\rightarrow$ Existing bond prices Fall
     \item Rates Fall $\rightarrow$ Existing bond prices Rise
@@ -272,7 +272,7 @@ The longer the time to maturity, the more sensitive the price of the bond is to 
 \end{center}
 
 \begin{example}
-    A 30-year zero-coupon bond with face value \$1,000, priced at different yields:
+    A 30-year zero-coupon bond with face value \$1,000, priced at different yields (compounded semi-annually):
     \begin{center}
     \begin{tabular}{lcccccc}
         \toprule
@@ -282,7 +282,16 @@ The longer the time to maturity, the more sensitive the price of the bond is to 
         \bottomrule
     \end{tabular}
     \end{center}
-    Price falls steeply as yield rises: $P = 1000/(1+\lambda)^{30}$.
+    \begin{center}
+    \begin{tikzpicture}[x=30cm, y=0.004cm]
+        \draw[->] (0,0) -- (0.21,0) node[right] {yield};
+        \draw[->] (0,0) -- (0,850) node[above] {price};
+        \foreach \x/\l in {0.05/5\%,0.1/10\%,0.15/15\%,0.2/20\%} { \draw (\x,8) -- (\x,-8) node[below] {\small \l}; }
+        \foreach \y in {250,500,750} { \draw (0.002,\y) -- (-0.002,\y) node[left] {\small \y}; }
+        \draw[thick, blue, domain=0.01:0.2, samples=60, smooth, variable=\l] plot ({\l}, {1000/(1+\l/2)^60});
+    \end{tikzpicture}
+    \end{center}
+    Price falls steeply as yield rises: $P = 1000/\left(1+\frac{\lambda}{2}\right)^{60}$.
 \end{example}
 
 The \b{current yield} is the coupon divided by the current price. In this course, \dbb{yield} always means \dbb{yield to maturity}.

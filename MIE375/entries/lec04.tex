@@ -16,6 +16,19 @@ In general, yields on bonds of different maturities are different, i.e. \ul{inte
 
 Real U.S.\ Treasury yield curves (yahoo.com): on Sep 10, 2004 the curve rose steeply from about 1.5\% (3 months) to 5\% (30 years); on Oct 4, 2005 it was much flatter, from about 3.5\% to 4.6\%. The \ul{shape of the curve changes over time}.
 
+\begin{center}
+\begin{tikzpicture}[x=0.2cm, y=0.6cm]
+    \draw[->] (0,0) -- (32,0) node[right] {maturity (years)};
+    \draw[->] (0,0) -- (0,5.8) node[above] {yield (\%)};
+    \foreach \x in {5,10,30} { \draw (\x,0.1) -- (\x,-0.1) node[below] {\small \x}; }
+    \foreach \y in {1,...,5} { \draw (0.3,\y) -- (-0.3,\y) node[left] {\small \y}; }
+    \draw[thick, red, smooth] plot coordinates {(0.25,1.55) (0.5,1.75) (2,2.45) (3,2.8) (5,3.4) (10,4.2) (20,4.75) (30,4.98)};
+    \draw[thick, blue, smooth] plot coordinates {(0.25,3.45) (0.5,3.8) (1,4.2) (2,4.15) (3,4.18) (5,4.2) (10,4.35) (20,4.5) (30,4.57)};
+    \node[red, right] at (12,3.3) {Sep 10, 2004 (steep)};
+    \node[blue, right] at (12,5.3) {Oct 4, 2005 (flat)};
+\end{tikzpicture}
+\end{center}
+
 The yield curve is not exactly what we want, since bonds may have coupons (intermediate cash flows). We would really like to know the interest rate on a \dbb{single cash flow at time $t$}, with no intermediate cash flows.
 
 \begin{center}
@@ -50,7 +63,7 @@ Plotting spot rates vs.\ time gives the \rb{spot rate curve}, also known as the 
 
 
 \heading{Present Value and Spot Rates}
-When computing present value, the \ul{spot rate corresponding to the time of each cash flow} must be used for discounting:
+\keypoint{When computing present value, the spot rate corresponding to the time of each cash flow must be used for discounting.}
 \[\boxed{PV = x_0 + \frac{x_1}{1+s_1} + \frac{x_2}{(1+s_2)^2} + \cdots + \frac{x_n}{(1+s_n)^n}}\]
 
 \begin{example}
@@ -130,7 +143,7 @@ Three equations for the portfolio:
     \text{Face:} &\quad xF_1 + yF_2 = F_0 \\
     \text{Price:} &\quad xP_1 + yP_2 = P_0
 \end{aligned}}\]
-To construct a zero, set $C_0 = 0$ and $F_0 = \$100$, assuming $F_0 = F_1 = F_2$. Then solve for $x$ and $y$. 
+To construct a zero, set $C_0 = 0$ and $F_0 = \$100$ (e.g.\ with $F_1 = F_2 = \$100$). Then solve for $x$ and $y$. 
 \\The price of the zero is then $P_0 = xP_1 + yP_2$, and the spot rate could be computed.
 
 \begin{example}
@@ -145,6 +158,28 @@ To construct a zero, set $C_0 = 0$ and $F_0 = \$100$, assuming $F_0 = F_1 = F_2$
         Portfolio & 0 & 0 & $\cdots$ & 50\\
         \bottomrule
     \end{tabular}
+    \end{center}
+    \begin{center}
+    \begin{tikzpicture}[x=0.95cm, y=0.022cm]
+        \draw[->] (0,0) -- (10.6,0) node[right] {time};
+        \draw[->] (0,0) -- (0,125) node[above] {cash flow};
+        \foreach \y in {50,100} { \draw (0.08,\y) -- (-0.08,\y) node[left] {\small \y}; }
+        \foreach \i in {1,...,10} {
+            \pgfmathsetmacro{\t}{\i/2}
+            \node[below] at (\i,0) {\small \t};
+            \ifnum\i<10
+                \fill[green!50!black] (\i-0.3,0) rectangle (\i-0.05,10);
+                \fill[blue] (\i-0.05,0) rectangle (\i+0.2,12);
+            \else
+                \fill[green!50!black] (\i-0.4,0) rectangle (\i-0.15,110);
+                \fill[blue] (\i-0.15,0) rectangle (\i+0.1,112);
+                \fill[red] (\i+0.1,0) rectangle (\i+0.35,50);
+            \fi
+        }
+        \fill[green!50!black] (1,115) rectangle (1.3,122); \node[right] at (1.3,118) {\small Bond 1};
+        \fill[blue] (3,115) rectangle (3.3,122); \node[right] at (3.3,118) {\small Bond 2};
+        \fill[red] (5,115) rectangle (5.3,122); \node[right] at (5.3,118) {\small Portfolio};
+    \end{tikzpicture}
     \end{center}
     Coupons cancel: $3(10) - 2.5(12) = 0$, leaving only $3(110) - 2.5(112) = 50$ at maturity, a zero.
 \end{example}
@@ -167,7 +202,7 @@ To construct a zero, set $C_0 = 0$ and $F_0 = \$100$, assuming $F_0 = F_1 = F_2$
 \begin{definition}[\rb{Forward Rates}]
     The interest rate for money to be borrowed between two dates \ul{in the future}, but under terms \ul{agreed upon today}. 
     \[f_{t_1,t_2}: \text{the forward rate between $t_1$ and $t_2$.}\]
-    Note: $t_1$ can be 0, but not negative, when $t_1 = 0$, $f_{0, t_2} = $ to the spot rate of $t_2$.
+    Note: $t_1$ can be 0, but not negative, when $t_1 = 0$, $f_{0, t_2} = s_{t_2}$, the spot rate of $t_2$.
 \end{definition}
 How can forward rates be computed from the spot rate curve?
 
@@ -201,7 +236,7 @@ Starting with \$1 at time 1 and moving it to time 2, we should have $1+f_{1,2}$ 
 \begin{example}
     Spot rates for 1 and 2 years are 7\% and 8\%. The implied forward rate is
     \[f_{1,2} = \frac{(1.08)^2}{1.07} - 1 = 0.0901\]
-    Note that the forward rate has to be \dbb{larger} than 8\% to balance out the \((1+0.0.8)^2\)
+    Note that the forward rate has to be \dbb{larger} than 8\%: the first year only earns 7\%, so the second year must make up the difference to reach $(1+0.08)^2$.
 \end{example}
 
 \heading{Formula for Forward Rates}
@@ -257,7 +292,7 @@ Short rates can be determined from the spot rate curve and vice versa.
 Why isn't the term structure (spot rate curve) flat? Three explanations:
 \begin{enumerate}[label=(\arabic*)]
     \item \b{Expectations Theory}: spot rates are determined by the expectations of what interest rates will be. E.g.\ if the spot rate curve slopes upward, it is because people expect interest rates to increase in the future.
-    \item \b{Liquidity Preference}: investors prefer short term securities over long term ones, since long term securities ``tie up'' money for long. There are also secure investments that are both easy to get in and out of.
+    \item \b{Liquidity Preference}: investors prefer short term securities over long term ones, since long term securities ``tie up'' capital that may be needed before maturity. However, there are well developed markets for both short and long term securities, so investors can easily get out. More likely, long term investments are \dbb{more sensitive to interest rates}, so to lessen risk investors prefer short term securities (and demand higher rates for long term ones).
     \item \b{Market Segmentation}: the fixed income market is segmented by maturity dates. The rate for each maturity is determined by the group of investors interested in that maturity, i.e.\ simple supply and demand among those investors.
 \end{enumerate}
 
@@ -277,7 +312,7 @@ If interest rates evolve according to expectation dynamics, then a sum of money 
     \draw[->, thick] (0,0) -- (0,0.8) node[above] {$1$};
     \draw[->, thick] (6,0) -- (6,1.3) node[above] {$(1+s_n)^n$};
     \draw[->, blue] (2.8,-0.9) -- (2.8,-0.1);
-    \node[blue, below] at (2.8,-0.9) {even if I reinvest with the foward rate here};
+    \node[blue, below] at (2.8,-0.9) {even if I reinvest with the forward rate here};
 \end{tikzpicture}
 \end{center}
 
@@ -285,4 +320,4 @@ If interest rates evolve according to expectation dynamics, then a sum of money 
 \\So even if you don't lock in a future interest rate now, you can still use forward rates for discounting, \ul{as long as you assume expectation dynamics}.
 
 
-If expectation dynamics are assumed, the invariance thoerem is true (will always equal the same return value regardless of investment strategies.)
+If expectation dynamics are assumed, the invariance theorem is true (will always equal the same return value regardless of investment strategies.)

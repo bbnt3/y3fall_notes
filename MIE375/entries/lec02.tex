@@ -10,12 +10,56 @@ Used for two ways:
     \item \rb{Discounting}: when cash flow is moved \b{backward}, \dbb{divided} by $(1+r)$ each period.
 \end{itemize}
 
+\begin{center}
+\begin{tikzpicture}
+    \node at (2,2.3) {\rb{Compounding} (deposit)};
+    \draw[->] (-0.3,0) -- (4.6,0);
+    \foreach \x in {0,1,2} { \node[below] at (2*\x,-0.05) {$\x$}; }
+    \draw[->, thick] (0,0) -- (0,0.8) node[above] {$A$};
+    \draw[->, thick] (2,0) -- (2,1.1) node[above] {$A(1+r)$};
+    \draw[->, thick] (4,0) -- (4,1.4) node[above] {$A(1+r)^2$};
+    \draw[->, blue, dashed] (0.3,0.4) -- (1.7,0.4);
+    \draw[->, blue, dashed] (2.3,0.4) -- (3.7,0.4);
+    \begin{scope}[xshift=7cm]
+        \node at (2,2.3) {\rb{Discounting} (loan)};
+        \draw[->] (-0.3,0) -- (4.6,0);
+        \foreach \x in {0,1,2} { \node[below] at (2*\x,-0.05) {$\x$}; }
+        \draw[->, thick] (0,0) -- (0,0.8) node[above] {$\frac{A}{(1+r)^2}$};
+        \draw[->, thick] (2,0) -- (2,1.1) node[above] {$\frac{A}{1+r}$};
+        \draw[->, thick] (4,0) -- (4,1.4) node[above] {$A$};
+        \draw[<-, blue, dashed] (0.3,0.4) -- (1.7,0.4);
+        \draw[<-, blue, dashed] (2.3,0.4) -- (3.7,0.4);
+    \end{scope}
+\end{tikzpicture}
+\end{center}
+
 \header{The Comparison Principle}
 The ideal bank brings cash flow stream to the same time, then is compared.
 \begin{itemize}
     \item When all cash flows are moved to \textit{present time}, it is called \rb{present value}.
-    \item When all cash flows are moved to the \textit{same future timeline}, it is called \rb{future value}.
+    \item When all cash flows are moved to the \textit{time of the final cash flow}, it is called \rb{future value}.
 \end{itemize}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.85]
+    \foreach \row/\lab/\px in {0/PV/0, -3.4/FV/4} {
+        \begin{scope}[yshift=\row cm]
+            \draw[->] (-0.3,0) -- (4.5,0) node[right] {time};
+            \filldraw (0,0) circle (2pt);
+            \draw[->, thick] (0,0) -- (0,-1) node[below] {$x_0$};
+            \draw[->, thick] (0.8,0) -- (0.8,1) node[above] {$x_1$};
+            \draw[->, thick] (1.4,0) -- (1.4,0.4) node[above] {$x_2$};
+            \draw[->, thick] (2.0,0) -- (2.0,-0.6) node[below] {$x_3$};
+            \draw[->, thick] (2.8,0) -- (2.8,0.8) node[above] {$x_4$};
+            \draw[->, thick] (3.4,0) -- (3.4,0.5) node[above] {$x_5$};
+            \draw[->, thick] (4.0,0) -- (4.0,1) node[above] {$x_6$};
+            \node at (5.9,0.2) {\Large$\Rightarrow$};
+            \draw[->] (7,0) -- (11.5,0) node[right] {time};
+            \draw[->, very thick, red!70!black] (7+\px,0) -- (7+\px,1.2) node[above] {\lab};
+        \end{scope}
+    }
+\end{tikzpicture}
+\end{center}
 
 \begin{example}
     Cash flow stream $(-2,1,1,1)$ at $r = 10\%$ (yearly compounding, but any compounding convention works):
@@ -27,7 +71,21 @@ The ideal bank brings cash flow stream to the same time, then is compared.
 \end{example}
 
 \header{General Formula for Present Value}
-Let $x = (x_0, x_1, x_2, \dots, x_n)$
+\begin{center}
+\begin{tikzpicture}
+    \draw[->] (-0.3,0) -- (7.5,0);
+    \foreach \x/\l in {0/0,1.3/1,2.6/2,3.9/3,6.3/n} { \node[below] at (\x,-0.05) {$\l$}; }
+    \node[below] at (5.1,-0.05) {$\cdots$};
+    \draw[->, thick] (0,0) -- (0,0.8) node[above] {$x_0$};
+    \draw[->, thick] (1.3,0) -- (1.3,1.1) node[above] {$x_1$};
+    \draw[->, thick] (2.6,0) -- (2.6,-0.9) node[below] {$x_2$};
+    \draw[->, thick] (3.9,0) -- (3.9,0.6) node[above] {$x_3$};
+    \draw[->, thick] (6.3,0) -- (6.3,1.4) node[above] {$x_n$};
+    \foreach \x/\y in {0/0.5,1.3/0.6,3.9/0.4,6.3/0.75} { \draw[red] (\x,\y) ellipse (0.42 and 0.95); }
+    \draw[red] (2.6,-0.55) ellipse (0.42 and 0.95);
+\end{tikzpicture}
+\end{center}
+Each cash flow (circled) is discounted separately, then all are summed. Let $x = (x_0, x_1, x_2, \dots, x_n)$
 \begin{align*}
     PV(x) &= x_0 + \frac{x_1}{(1+r)} + \frac{x_2}{(1+r)^2} + \cdots + \frac{x_n}{(1+r)^n} \\
     &= \boxed{\sum_{k=0}^{n}\frac{x_k}{(1+r)^k}}
@@ -36,7 +94,8 @@ Note that it's usually assumed that $x_0$ is negative, for the initial investmen
 
 
 \header{Main Theorem on Present Value}
-Two cash flow streams are equivalent for an ideal bank iff \underline{they have the same present value}.
+\keypoint{Two cash flow streams are equivalent for an ideal bank \b{if and only if} they have the same present value.}
+Importance: to compare two cash flow streams, compute their present values and compare.
 
 \header{Internal Rate of Return}
 Captures the idea on the "return" on an investment.
@@ -44,7 +103,7 @@ Captures the idea on the "return" on an investment.
 \begin{example}
     Invest \$100 today, receive \$110 in one year. What is your return?
     \\Intuitively: 10\%, why?
-    \[x(-100, 110)\]
+    \[x = (-100, 110)\]
     \[PV(x) = -100 + \frac{110}{1+0.1} = 0\]
     Because under 10\% interest, the present value of \$110 is exactly \$100.
 \end{example}
@@ -57,9 +116,9 @@ Captures the idea on the "return" on an investment.
     \end{gathered}}\]
     To solve for this $r$, its more convenient to set 
     \[c = \frac{1}{(1+r)}\]
-    and solve
+    and solve the degree-$n$ polynomial
     \[x_0 + x_1c+ x_2 c^2 + \cdots + x_n c^n = 0\]
-    with the fundamental theory of algebra.
+    (by the fundamental theorem of algebra, it has $n$ roots, possibly complex).
 \end{definition}
 
 \begin{example}
@@ -80,12 +139,26 @@ The polynomial can have many roots, which can be a problem. Fortunately, most st
         \bottomrule
     \end{tabular}
     \end{center}
+    \begin{center}
+    \begin{tikzpicture}[x=6cm, y=0.45cm]
+        \fill[gray!12] (-0.62,-3.6) rectangle (0.75,3);
+        \draw[->] (-0.62,0) -- (0.8,0) node[right] {$r$};
+        \draw[->] (-0.62,-3.6) -- (-0.62,3.2) node[above] {$PV$};
+        \foreach \x in {-0.5,-0.25,0,0.25,0.5,0.75} { \draw (\x,0.1) -- (\x,-0.1) node[below] {\small $\x$}; }
+        \foreach \y in {-2,2} { \draw (-0.63,\y) -- (-0.61,\y) node[left] {\small $\y$}; }
+        \draw[thick, blue, domain=-0.5:0.75, samples=80, smooth, variable=\r]
+            plot ({\r}, {-5 - 2/(1+\r) + 12/(1+\r)^2 - 5/(1+\r)^3});
+        \foreach \x in {-0.479,0} { \draw[red, thick] (\x,0) circle (0.06cm and 0.14cm); }
+        \node[red, above right] at (0,0) {\small IRR};
+        \node[red, below right] at (-0.479,0) {\small IRR};
+    \end{tikzpicture}
+    \end{center}
     $PV = 0$ at both $r = 0$ and $r \approx -0.48$, so this stream has \dbb{two IRRs}. The sign of the cash flows changes more than once, so the Main Theorem on IRR below does not apply.
 \end{example}
 
 
 \heading{Main Theorem on IRR}
-Suppose the cash flow stream $x = (x_0, x_1, \dots, x_n)$ has $x_0 < 0$ and $x_k \geq 0$ where at least one term is strictly positive. Then, there is a unique positive root to the equation
+Suppose the cash flow stream $x = (x_0, x_1, \dots, x_n)$ has $x_0 < 0$ and $x_k \geq 0$ for all $k > 0$, where at least one term is strictly positive. Then, there is a unique positive root to the equation
 \[x_0+x_1c + x_2 c^2 + \dots + x_n c^n = 0\]
 Proof: plot $f(c) = x_0 + x_1c + x_2c^2 + \dots + x_n c^n$
 
@@ -101,29 +174,28 @@ Proof: plot $f(c) = x_0 + x_1c + x_2c^2 + \dots + x_n c^n$
     \node[left] at (0,-1) {$x_0$};
 \end{tikzpicture}
 \end{center}
-Since $f(0) = x_0 < 0$ and $f'(c) = x_1 + 2x_2c + \dots + nx_nc^{n-1} \geq 0$ for $c \geq 0$ (as each $x_k \geq 0$, with at least one strictly positive), $f$ is nondecreasing and unbounded above. So $f$ crosses zero exactly once, at some $c^* > 0$.
+Since $f(0) = x_0 < 0$ and $f'(c) = x_1 + 2x_2c + \dots + nx_nc^{n-1} \geq 0$ for $c \geq 0$ (as each $x_k \geq 0$, with at least one strictly positive), $f$ is strictly increasing for $c > 0$ and unbounded above. So $f$ crosses zero exactly once, at some $c^* > 0$, giving the unique IRR $r = 1/c^* - 1 > -1$.
 
 \heading{Net Present Value (NPV)}
 Computes all present values of \textit{all} cash flows associated with an investment. Includes the investment term $x_0$ as well.
 
-\begin{example}
-    Given two cash flow vectors
+\begin{example}[When to Cut a Tree]
+    You can plant trees to be sold for lumber later, with two options for when to cut (interest rate 10\%):
     \begin{enumerate}[label=(\arabic*)]
         \item After 1 year: $(-1,2)$
         \item After 2 years: $(-1,0, 3)$
-        \\Using NPV solution (choose largest NPV):
-        \[-1 + \frac{2}{1.1} = 0.82 \quad \text{vs} \quad -1 + \frac{0}{1.1} + \frac{3}{1.1^2} = 1.48\]
-        NPV says choose option (2).
-        \\Using IRR (choose greatest IRR):
-        \[-1 + 2c = 0 \Rightarrow c = 0.5 \Rightarrow r = 1.0 \quad \text{vs} \quad -1+3c^2 = 0 \Rightarrow c = 0.577 \Rightarrow r = 0.7\]
-        IRR says choose option (1).
     \end{enumerate}
+    Using NPV (choose largest NPV):
+    \[-1 + \frac{2}{1.1} = 0.82 \quad \text{vs} \quad -1 + \frac{0}{1.1} + \frac{3}{1.1^2} = 1.48\]
+    NPV says choose option (2).
+    \\Using IRR (choose greatest IRR):
+    \[-1 + 2c = 0 \Rightarrow c = 0.5 \Rightarrow r = 1.0 \quad \text{vs} \quad -1+3c^2 = 0 \Rightarrow c = 0.577 \Rightarrow r = 0.7\]
+    IRR says choose option (1).
 \end{example}
 
-\underline{IRR and NPV give conflicting recommendations.}
-\\When scaled, \underline{IRR is scale-invariant, PV is not}. 
-\\PV also \underline{distinguishes between single and repeated cash flows}, IRR does not.
-\\In general, NPV is preferred.
+\keypoint{IRR and NPV give conflicting recommendations.}
+\keypoint{IRR is scale invariant, Present Value is not.\\PV distinguishes between single and repeated cash flows, IRR does not.}
+In general, NPV is preferred.
 
 \begin{example}
     Scaling and repetition (PV at 10\%):
@@ -159,7 +231,26 @@ Relate to activities that can be repeated. With NPV you arrive at a different an
 \begin{example}[Refrigerator Purchase]
     Model A: price \$600, yearly cost \$180 (beginning of year), life 3 years.
     \\Model B: price \$800, yearly cost \$120 (beginning of year), life 5 years.
-    \\Interest rate is 10\%. One cycle of each (price and first cost at time 0):
+    \\Interest rate is 10\%. Over 15 years (costs drawn as arrows, tall arrows mark a new purchase):
+    \begin{center}
+    \begin{tikzpicture}[x=0.65cm]
+        \foreach \row/\name/\life/\pr/\yc in {0/A/3/600/180, -2.2/B/5/800/120} {
+            \begin{scope}[yshift=\row cm]
+                \node[left] at (-0.4,0.6) {Model \name};
+                \draw[->] (0,0) -- (16,0);
+                \foreach \t in {0,...,14} {
+                    \pgfmathtruncatemacro{\buy}{mod(\t,\life)==0}
+                    \ifnum\buy=1 \draw[->, thick] (\t,0) -- (\t,1.3); \else \draw[->, thick] (\t,0) -- (\t,0.5); \fi
+                }
+                \node[above] at (0,1.3) {\small \$\pr + \$\yc};
+                \node[above] at (1,0.5) {\small \$\yc};
+                \draw[red] (\life/2-0.5,0.6) ellipse ({\life/2+0.1} and 1.05);
+            \end{scope}
+        }
+        \foreach \t in {0,5,10,15} { \node[below] at (\t,-2.25) {\small \t}; }
+    \end{tikzpicture}
+    \end{center}
+    One cycle of each (circled; price and first cost at time 0):
     \[PV_A = 780 + 180\sum_{k=1}^{2}\frac{1}{1.1^k} = \$1,092.40 \qquad PV_B = 920 + 120\sum_{k=1}^{4}\frac{1}{1.1^k} = \$1,300.38\]
     \b{Approach 1}: equal horizons, 15 years = 5 cycles of A = 3 cycles of B
     \begin{align*}
