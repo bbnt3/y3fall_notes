@@ -11,7 +11,7 @@
     \begin{itemize}
         \item Conceptualization $\to$ detailed economic analysis $\to$ go / no go decision $\to$ design $\to$ build $\to$ utilize / produce $\to$ phase out / dispose
     \end{itemize}
-    \item Most of the project's cost is \b{committed} early, during conceptual and detailed design, even though the money is mostly spent later (production, operation)
+    \item Most of the project's cost is \dbb{committed early}, during conceptual and detailed design, even though the money is mostly \dbb{spent later} (production, operation)
     \item We \rb{invest} in projects to gain benefits (economic and societal)
 \end{itemize}
 
@@ -67,8 +67,8 @@
 \end{tikzpicture}
 \end{center}
 \begin{itemize}
-    \item A higher payoff ($F$) is expected as $i$ increases
-    \item For a given $F$ with increased $i$, $P$ decreases
+    \item A \dbb{higher} payoff ($F$) is expected as $i$ increases
+    \item For a given $F$ with increased $i$, $P$ \dbb{decreases}
 \end{itemize}
 
 
@@ -77,18 +77,18 @@
     \item Expressed as \%
     \item Vary widely over time and different types of investments.
     \begin{itemize}
-        \item A \b{T-Bill} (Treasury Bill, short term loan to the Bank of Canada) will earn the lowest rate of return, as it's considered "risk-free"
-        \item Canadian and provincial bonds pay typically slightly higher interest rates
-        \item Personal/small business loans are much riskier and earn significantly higher interest rates
+        \item A \b{T-Bill} (Treasury Bill, short term loan to the Bank of Canada) will earn the \dbb{lowest} rate of return, as it's considered "risk-free"
+        \item Canadian and provincial bonds pay typically \dbb{slightly higher} interest rates
+        \item Personal/small business loans are much riskier and earn \dbb{significantly higher} interest rates
     \end{itemize}
 \end{itemize}
 
 \heading{Factors that Affect Interest Rates}
 \begin{itemize}
-    \item \b{Inflation}: prices generally tend to increase over time. Higher expected inflation generally leads to higher interest rates
-    \item \b{Credit (default) Risk}: associated with the borrower being able to pay back interest and principal. Higher risk of default $\Rightarrow$ higher interest rates
-    \item \b{Liquidity Risk}: associated with being able to access the invested funds during the investment. The less liquid the investment (greater the risk), the higher the interest rate
-    \item \b{Maturity Risk}: associated with the time horizon. Longer the maturity, longer payoff, increases credit (and potential liquidity) risk $\Rightarrow$ higher interest rates
+    \item \b{Inflation}: prices generally tend to increase over time. Higher expected inflation generally leads to \dbb{higher interest rates}
+    \item \b{Credit (default) Risk}: associated with the borrower being able to pay back interest and principal. Higher risk of default $\Rightarrow$ \dbb{higher interest rates}
+    \item \b{Liquidity Risk}: associated with being able to access the invested funds during the investment. The less liquid the investment (greater the risk), the \dbb{higher the interest rate}
+    \item \b{Maturity Risk}: associated with the time horizon. Longer the maturity, longer payoff, increases credit (and potential liquidity) risk $\Rightarrow$ \dbb{higher interest rates}
 \end{itemize}
 \db{Generally, as \dbb{risk} increases, the \dbb{interest rate} increases.}
 
@@ -131,9 +131,9 @@
 
 \heading{Simple vs Compound Interest}
 \begin{itemize}
-    \item \rb{Simple} applies only to the original principal (GIC, aka Certificate of Deposit (CD) in the U.S.)
-    \item \rb{Compound} interest applies to the principal AND to all interest already accrued (mortages, credit card debt...)
-    \item Assume compound unless stated otherwise
+    \item \rb{Simple} applies \dbb{only to the original principal} (GIC, aka Certificate of Deposit (CD) in the U.S.)
+    \item \rb{Compound} interest applies to the \dbb{principal AND all interest already accrued} (mortages, credit card debt...)
+    \item Assume \dbb{compound} unless stated otherwise
 \end{itemize}
 
 \heading{Simple Interest}
@@ -145,6 +145,15 @@
     ... & ... & ... & ... \\
     $N$ & $P+(N-1)Pi$ & $Pi$ & $P+NPi = P(1+Ni)$
 \end{tabular}
+\[\boxed{\begin{gathered}
+    F_N = P(1+Ni)\\[4pt]
+    \begin{array}{@{}l@{}}
+        F_N: \text{amount owed after } N \text{ periods}\\
+        P: \text{principal}\\
+        i: \text{interest rate per period}\\
+        N: \text{number of periods}
+    \end{array}
+\end{gathered}}\]
 
 \heading{Compound Interest}
 \begin{tabular}{c|c|c|c}
@@ -155,6 +164,15 @@
     ... & ... & ... & ... \\
     $N$ & $P(1+i)^{N-1}$ & $P(1+i)^{N-1}i$ & $P(1+i)^N$
 \end{tabular}
+\[\boxed{\begin{gathered}
+    F_N = P(1+i)^N\\[4pt]
+    \begin{array}{@{}l@{}}
+        F_N: \text{amount owed after } N \text{ periods}\\
+        P: \text{principal}\\
+        i: \text{interest rate per period}\\
+        N: \text{number of periods}
+    \end{array}
+\end{gathered}}\]
 
 \begin{example}[Simple Interest]
     If you borrow \$100 for 3 years at 10\% annual interest (simple interest), how much interest will you pay, and how much will you owe after 3 years?
@@ -226,8 +244,15 @@
     \item \rb{$r$}: \b{nominal interest rate} (usually for 1 year)
     \item \rb{$m$}: times compounded in a year, aka \b{subperiods}
     \item \rb{$i_s$}: \b{subperiod interest rate}
-    \[i_s = \frac{r}{m}\]
 \end{itemize}
+\[\boxed{\begin{gathered}
+    i_s = \frac{r}{m}\\[4pt]
+    \begin{array}{@{}l@{}}
+        i_s: \text{subperiod interest rate}\\
+        r: \text{nominal interest rate (usually per year)}\\
+        m: \text{number of subperiods per year}
+    \end{array}
+\end{gathered}}\]
 
 \begin{example}
     You lend \$100. The nominal interest rate is 6\%.
@@ -258,10 +283,18 @@
 \heading{Effective Interest Rate}
 \begin{itemize}
     \item How do we compare investments with different compounding periods?
-    \item \rb{$i_e$}: \b{effective interest rate}, the equivalent interest rate of an account that is compounded just \textit{once} over the stated time period (usually 1 year)
+    \item \rb{$i_e$}: \b{effective interest rate}, the equivalent interest rate of an account that is compounded just \dbb{once} over the stated time period (usually 1 year)
     \item Set one year of subperiod compounding equal to one compounding at $i_e$:
-    \[P(1+i_e) = P\left(1+\frac{r}{m}\right)^m \quad\Rightarrow\quad \boxed{i_e = \left(1+\frac{r}{m}\right)^m - 1}\]
+    \[P(1+i_e) = P\left(1+\frac{r}{m}\right)^m\]
 \end{itemize}
+\[\boxed{\begin{gathered}
+    i_e = \left(1+\frac{r}{m}\right)^m - 1\\[4pt]
+    \begin{array}{@{}l@{}}
+        i_e: \text{effective interest rate (per year)}\\
+        r: \text{nominal interest rate (per year)}\\
+        m: \text{number of subperiods per year}
+    \end{array}
+\end{gathered}}\]
 
 \begin{example}
     Which account earns you more money after 1 year?
@@ -273,14 +306,14 @@
         \text{A: } i_e &= \left(1+\frac{0.06}{12}\right)^{12} - 1 = (1.005)^{12} - 1 = 6.17\%\\
         \text{B: } i_e &= r = 6.3\% \quad (m = 1)
     \end{align*}
-    \db{Option B earns more, since $6.3\% > 6.17\%$. Compare the effective rates, not the nominal ones.}
+    \db{Option B earns more, since $6.3\% > 6.17\%$. Compare the \dbb{effective} rates, not the nominal ones.}
 \end{example}
 
 \heading{Continuous Compounding}
 \begin{itemize}
-    \item As the compounding period shortens ($m$ increases), $i_e$ increases
-    \item As the compounding period becomes infinitesimally small, $i_e$ approaches a finite limit $\Rightarrow$ \rb{continuous compounding}
-    \[i_e = \lim_{m\to\infty}\left(1+\frac{r}{m}\right)^m - 1 = e^r - 1\]
+    \item As the compounding period shortens ($m$ increases), $i_e$ \dbb{increases}
+    \item As the compounding period becomes infinitesimally small, $i_e$ approaches a \dbb{finite limit} $\Rightarrow$ \rb{continuous compounding}
+    \[i_e = \lim_{m\to\infty}\left(1+\frac{r}{m}\right)^m - 1 \quad\Rightarrow\quad \boxed{i_e = e^r - 1}\]
     \item e.g.\ $r = 6\%$: $i_e = e^{0.06} - 1 = 6.18\%$, only slightly more than monthly (6.17\%)
 \end{itemize}
 

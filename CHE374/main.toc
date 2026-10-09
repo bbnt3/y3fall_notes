@@ -1,21 +1,21 @@
 \contentsline {section}{Week 1 - Introduction and Time Value of Money}{3}{section*.2}%
 \contentsline {subsection}{1.1 - Interest Rate}{3}{section*.4}%
 \contentsline {subsection}{1.2 - Simple and Compound Interest}{5}{section*.6}%
-\contentsline {subsection}{1.3 - Subperiod Compounding \& Effective Interest Rates}{7}{section*.8}%
-\contentsline {section}{Week 2 - Cash-flow Analysis}{10}{section*.9}%
-\contentsline {subsection}{2.1 - Cash-flow Diagrams}{10}{section*.11}%
-\contentsline {subsection}{2.2 - Categories of Regular Cash-flows}{12}{section*.13}%
-\contentsline {subsection}{2.3 - Cash-flow Equivalence}{13}{section*.15}%
-\contentsline {subsection}{2.4 - Cash-flow Factors}{15}{section*.17}%
-\contentsline {subsection}{2.5 - Worked Examples}{19}{section*.19}%
-\contentsline {section}{Week 3 - Financial Instruments}{22}{section*.20}%
-\contentsline {subsection}{3.1 - Mortgages}{22}{section*.22}%
-\contentsline {subsection}{3.2 - Bonds}{23}{section*.24}%
-\contentsline {subsection}{3.3 - Bond Examples}{27}{section*.26}%
-\contentsline {section}{Week 4 - Risk, Reward and Arbitrage}{28}{section*.27}%
-\contentsline {subsection}{4.1 - Capital Asset Pricing Model}{28}{section*.29}%
-\contentsline {subsection}{4.2 - Arbitrage}{32}{section*.31}%
-\contentsline {section}{Week 5 - Comparison Methods}{36}{section*.32}%
-\contentsline {subsection}{5.1 - Project Relationships and Alternatives}{36}{section*.34}%
-\contentsline {subsection}{5.2 - Present Worth and Annual Worth}{37}{section*.36}%
-\contentsline {subsection}{5.3 - Evaluating Mutually Exclusive Projects (PW/AW)}{39}{section*.38}%
+\contentsline {subsection}{1.3 - Subperiod Compounding \& Effective Interest Rates}{8}{section*.8}%
+\contentsline {section}{Week 2 - Cash-flow Analysis}{11}{section*.9}%
+\contentsline {subsection}{2.1 - Cash-flow Diagrams}{11}{section*.11}%
+\contentsline {subsection}{2.2 - Categories of Regular Cash-flows}{13}{section*.13}%
+\contentsline {subsection}{2.3 - Cash-flow Equivalence}{15}{section*.15}%
+\contentsline {subsection}{2.4 - Cash-flow Factors}{16}{section*.17}%
+\contentsline {subsection}{2.5 - Worked Examples}{21}{section*.19}%
+\contentsline {section}{Week 3 - Financial Instruments}{25}{section*.20}%
+\contentsline {subsection}{3.1 - Mortgages}{25}{section*.22}%
+\contentsline {subsection}{3.2 - Bonds}{27}{section*.24}%
+\contentsline {subsection}{3.3 - Bond Examples}{30}{section*.26}%
+\contentsline {section}{Week 4 - Risk, Reward and Arbitrage}{32}{section*.27}%
+\contentsline {subsection}{4.1 - Capital Asset Pricing Model}{32}{section*.29}%
+\contentsline {subsection}{4.2 - Arbitrage}{36}{section*.31}%
+\contentsline {section}{Week 5 - Comparison Methods}{41}{section*.32}%
+\contentsline {subsection}{5.1 - Project Relationships and Alternatives}{41}{section*.34}%
+\contentsline {subsection}{5.2 - Present Worth and Annual Worth}{43}{section*.36}%
+\contentsline {subsection}{5.3 - Evaluating Mutually Exclusive Projects (PW/AW)}{45}{section*.38}%

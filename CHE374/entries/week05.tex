@@ -10,11 +10,15 @@
 \end{definition}
 \b{Objective}: evaluate and compare projects when there are multiple
 solutions or opportunities. It is important to consider how these projects
-are \b{related} to each other: \rb{independent}, \rb{mutually exclusive},
-or \rb{related but not mutually exclusive}.
+are \b{related} to each other:
+\begin{itemize}
+    \item \rb{Independent}
+    \item \rb{Mutually exclusive}
+    \item \rb{Related but not mutually exclusive}
+\end{itemize}
 
 \begin{definition}[Independent]
-    The expected costs and benefits of each project \b{do not depend} on
+    The expected costs and benefits of each project \dbb{do not depend} on
     whether or not the other one is chosen.
 \end{definition}
 
@@ -25,7 +29,7 @@ or \rb{related but not mutually exclusive}.
 \end{example}
 
 \begin{definition}[Mutually Exclusive]
-    When one project is chosen, \b{all the other ones are excluded}.
+    When one project is chosen, \dbb{all the other ones are excluded}.
 \end{definition}
 
 \begin{example}[Buying a Car]
@@ -39,7 +43,7 @@ or \rb{related but not mutually exclusive}.
         \item \b{Not mutually exclusive}: you can select more than one
         \item \b{Related}: selecting one may affect the selection of another option
     \end{itemize}
-    A common cause is a budget limitation.
+    A common cause is a \dbb{budget limitation}.
 \end{definition}
 
 \begin{example}[Reflection: Budget Limits]
@@ -69,9 +73,9 @@ or \rb{related but not mutually exclusive}.
 
 \heading{How to Decide on Projects}
 \begin{itemize}
-    \item \b{Independent} $\to$ consider each option separately
-    \item \b{Mutually exclusive} $\to$ find the best option
-    \item \b{Related but not mutually exclusive} $\to$ form \rb{mutually exclusive alternatives} (combinations), then find the best one
+    \item \b{Independent} $\to$ consider each option \dbb{separately}
+    \item \b{Mutually exclusive} $\to$ find the \dbb{best} option
+    \item \b{Related but not mutually exclusive} $\to$ form \rb{mutually exclusive alternatives} (combinations), then find the \dbb{best} one
 \end{itemize}
 
 \begin{example}[Mutually Exclusive Combinations]
@@ -124,19 +128,28 @@ or \rb{related but not mutually exclusive}.
 
 \begin{definition}[MARR]
     The \rb{Minimum Acceptable Rate of Return}: based on risk and/or the
-    expected rate of return from the \b{best alternative}. Also known as
-    the \rb{hurdle rate}: projects that earn less than MARR are not
+    expected rate of return from the \dbb{best alternative}. Also known as
+    the \rb{hurdle rate}: projects that earn \dbb{less than MARR} are not
     acceptable.
 \end{definition}
 
 \begin{remark}
-    Assume money can \textbf{always} be invested at MARR. This means that
-    \textbf{doing nothing} is earning at MARR.
+    Assume money can \dbb{always} be invested at MARR. This means that
+    \dbb{doing nothing} is earning at MARR.
 \end{remark}
 
 \begin{definition}[Present Worth (PW)]
     Also called \rb{Net Present Value (NPV)}: the present value of
-    benefits $-$ costs, discounted at MARR. For \b{independent} projects:
+    benefits $-$ costs, discounted at MARR:
+    \[\boxed{\begin{gathered}
+        \text{PW} = \sum_{t=0}^{N} \frac{F_t}{(1+\text{MARR})^t}\\[4pt]
+        \begin{array}{@{}l@{}}
+            F_t: \text{net cash-flow (benefits} - \text{costs) at time } t\\
+            \text{MARR}: \text{minimum acceptable rate of return}\\
+            N: \text{project life (periods)}
+        \end{array}
+    \end{gathered}}\]
+    For \b{independent} projects:
     \begin{itemize}
         \item $\text{PW} > 0 \to$ acceptable
         \item $\text{PW} < 0 \to$ unacceptable
@@ -159,11 +172,20 @@ or \rb{related but not mutually exclusive}.
         &= -20{,}000 + 3000(7.7217) + 4000(0.61391) = \db{\$5621}
     \end{align*}
     \db{$\text{PW} > 0$, so buying the car is acceptable.}
+    \factornote{\fPA; \fPF}
 \end{example}
 
 \begin{definition}[Annual Worth (AW)]
-    The \b{equivalent annuity} of PW:
-    \[\boxed{\text{AW} = \text{PW}(A/P,\text{MARR},N)}\]
+    The \dbb{equivalent annuity} of PW:
+    \[\boxed{\begin{gathered}
+        \text{AW} = \text{PW}(A/P,\text{MARR},N)\\[4pt]
+        \begin{array}{@{}l@{}}
+            \text{PW}: \text{present worth of the project}\\
+            \text{MARR}: \text{minimum acceptable rate of return}\\
+            N: \text{project life (periods)}
+        \end{array}
+    \end{gathered}}\]
+    \factornote{\fAP}
     For \b{independent} projects:
     \begin{itemize}
         \item $\text{AW} > 0 \to$ acceptable
@@ -180,6 +202,7 @@ or \rb{related but not mutually exclusive}.
         &= -20{,}000(0.12950) + 3000 + 4000(0.07950) = \db{\$728}
     \end{align*}
     \db{Check: $5621(A/P,5\%,10) = 5621(0.12950) = \$728$.}
+    \factornote{\fAP; \fAF}
 \end{example}
 
 \heading{Summary}
@@ -192,7 +215,7 @@ or \rb{related but not mutually exclusive}.
 \topic{Evaluating Mutually Exclusive Projects (PW/AW)}
 
 \heading{Mutually Exclusive Projects}
-We can only choose one option, so we must choose the \b{best}. Steps to
+We can only choose one option, so we must choose the \dbb{best}. Steps to
 evaluate projects with PW:
 \begin{enumerate}
     \item Define the \b{time horizon}
@@ -226,6 +249,7 @@ evaluate projects with PW:
         \text{PW}_T &= -100{,}000 + 12{,}000(7.7217) + 14{,}000(0.61391) = \$1256
     \end{align*}
     \db{Both beat doing nothing, but $\text{PW}_H > \text{PW}_T$: \dbb{buy the Honda Civic}.}
+    \factornote{\fPA; \fPF}
 \end{example}
 
 \heading{PW Comparison for Different Lives}
@@ -235,7 +259,7 @@ toothbrush: one costs \$5 and lasts 2 years, the other costs \$4 and lasts
 \\\db{Comparing \$5 against \$4 directly is unfair: the \$4 one only covers half the time. We need a common time horizon.}
 
 \begin{definition}[Repeated Lives]
-    Assume each project \b{repeats itself} (e.g.\ you always need a
+    Assume each project \dbb{repeats itself} (e.g.\ you always need a
     car/toothbrush). Compare over the \rb{least common multiple (LCM)} of
     the individual lives.
 \end{definition}
@@ -287,16 +311,17 @@ toothbrush: one costs \$5 and lasts 2 years, the other costs \$4 and lasts
         &= \$8600
     \end{align*}
     \db{$\text{PW}_H = \$5621$ (from before). $\text{PW}_L > \text{PW}_H$: \dbb{buy the Lexus RX}.}
+    \factornote{\fPA; \fPF}
 \end{example}
 
 \heading{AW of Repeated Lives}
 We can also compare options using AW (the equivalent annuity of PW). A
-repeated project has the \b{same} AW in every cycle, so the AW over one life
+repeated project has the \dbb{same} AW in every cycle, so the AW over one life
 equals the AW over the LCM.
 
 \begin{remark}
     Comparing AW is equivalent to comparing PW of repeated projects, and
-    only needs \textbf{one life} of each project.
+    only needs \dbb{one life} of each project.
 \end{remark}
 
 \begin{example}[AW (Repeated Lives)]
@@ -307,11 +332,12 @@ equals the AW over the LCM.
         &= -40{,}000(0.23097) + 8000 + 13{,}000(0.18097) = \$1114
     \end{align*}
     \db{$\text{AW}_L > \text{AW}_H$: \dbb{buy the Lexus RX}, the same decision as PW. Check: $8600(A/P,5\%,10) = \$1114$.}
+    \factornote{\fAP; \fAF}
 \end{example}
 
 \begin{definition}[Study Period]
-    Adopt a \b{specified time period} for comparison (e.g.\ when projects
-    will not be repeated), and \b{adjust the salvage value} of any project
+    Adopt a \dbb{specified time period} for comparison (e.g.\ when projects
+    will not be repeated), and \dbb{adjust the salvage value} of any project
     whose life extends past the study period.
 \end{definition}
 
@@ -362,6 +388,7 @@ equals the AW over the LCM.
         \text{PW}_L &= -40{,}000 + 8000(4.3295) + 13{,}000(0.78353) = \$4822
     \end{align*}
     \db{$\text{PW}_L > \text{PW}_H$: \dbb{buy the Lexus RX}. Note the Honda alone would be rejected ($\text{PW}_H < 0$) over a 5-year horizon.}
+    \factornote{\fPA; \fPF}
 \end{example}
 
 \heading{Summary}

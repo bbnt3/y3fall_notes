@@ -6,7 +6,7 @@
 \topic{Mortgages}
 
 \begin{definition}[Mortgage]
-    A loan secured by \textbf{real property}: you borrow money and use the
+    A loan secured by \b{real property}: you borrow money and use the
     property as collateral. From French law, ``death contract'' (\emph{mort-}
     = death): the pledge ends when the obligation is fulfilled.
 \end{definition}
@@ -29,14 +29,27 @@ Buying a \$500,000 house:
     \item \rb{Loan-to-value ratio (LTV)}: mortgage loan / value of house $= 400{,}000/500{,}000 = 0.8$
     \item \rb{Mortgage rate}: the interest rate the bank charges on the principal (e.g.\ 5\%/year)
     \item \rb{Amortization period}: the agreed time horizon for full repayment (e.g.\ 25 years)
-    \item \rb{Term}: the shorter period over which the agreed rate is fixed (e.g.\ 5 years). After the term ends, the rate is renegotiated and the payments may change
+    \item \rb{Term}: the shorter period over which the agreed rate is fixed (e.g.\ 5 years). After the term ends, the rate is \dbb{renegotiated} and the payments may change
 \end{itemize}
 
 \begin{remark}
-    Payments are calculated based on the \textbf{amortization period},
-    \textbf{not} the term! Canadian mortgage rates are quoted as nominal
-    annual rates with \textbf{semi-annual compounding}, so convert to the
-    equivalent monthly rate before using $(A/P,i,N)$.
+    \leavevmode
+    \begin{itemize}
+        \item Payments are calculated based on the \dbb{amortization period}, \dbb{not} the term!
+        \item Canadian mortgage rates are quoted as nominal annual rates with \dbb{semi-annual compounding}, so convert to the equivalent monthly rate before using $(A/P,i,N)$
+    \end{itemize}
+    \[\boxed{\begin{gathered}
+        (1+i_m)^6 = 1+\frac{r}{2} \quad\Rightarrow\quad i_m = \left(1+\frac{r}{2}\right)^{1/6} - 1\\[4pt]
+        A = P(A/P,i_m,N)\\[4pt]
+        \begin{array}{@{}l@{}}
+            r: \text{quoted (nominal annual) mortgage rate}\\
+            i_m: \text{equivalent monthly rate}\\
+            P: \text{principal}\\
+            N: \text{amortization period in months}\\
+            A: \text{monthly payment}
+        \end{array}
+    \end{gathered}}\]
+    \factornote{\fAP}
 \end{remark}
 
 \begin{example}[Mortgage Payments Across Terms]
@@ -53,6 +66,7 @@ Buying a \$500,000 house:
         \db{Re-amortize this over the remaining 20 years at the new rate, $i_m' = 1.03^{1/6} - 1 = 0.49386\%$:}
         \[A' = 354{,}030(A/P,0.49386\%,240) = \db{\$2{,}521.36 \text{ per month}}\]
     \end{enumerate}
+    \factornote{\fAP; \fPA}
 \end{example}
 
 \begin{center}
@@ -74,7 +88,7 @@ Buying a \$500,000 house:
 \heading{Some Canadian Mortgage Rules}
 \begin{itemize}
     \item Since 2012, amortization periods of up to 25 years are allowed
-    \item For 25-year amortization, the down payment must be at least 20\%
+    \item For 25-year amortization, the down payment must be \dbb{at least 20\%}
     \item For shorter amortization periods, the down payment may be smaller ($<20\%$), but \b{mortgage insurance} is required
     \item Real-life mortgages can be more complicated: rates can be variable within a term, you can pay the mortgage down faster, \dots
 \end{itemize}
@@ -97,7 +111,7 @@ Buying a \$500,000 house:
         \item a stated amount at specified intervals for a defined period: the \rb{coupon payments}
         \item a final amount at a specific date: the \rb{face value}
     \end{itemize}
-    Bonds are usually tradeable at any time.
+    Bonds are usually \dbb{tradeable at any time}.
 \end{definition}
 
 \heading{Reading a Bond (Ontario Hydro)}
@@ -129,8 +143,17 @@ period for $N$ periods, plus the face value $F$ at maturity.
         \node[below] at (7,-0.05) {\scriptsize $N$};
     \end{tikzpicture}
 \end{center}
-\[\boxed{P = C(P/A,i,N) + F(P/F,i,N)}\]
-where $i$ is the yield per coupon period.
+\[\boxed{\begin{gathered}
+    P = C(P/A,i,N) + F(P/F,i,N)\\[4pt]
+    \begin{array}{@{}l@{}}
+        P: \text{bond price}\\
+        C: \text{coupon payment per period } (= F \times \text{coupon rate} / \text{coupons per year})\\
+        F: \text{face value}\\
+        i: \text{yield per coupon period}\\
+        N: \text{number of coupon periods to maturity}
+    \end{array}
+\end{gathered}}\]
+\factornote{\fPA; \fPF}
 
 \begin{example}[How Much Is This Bond Worth?]
     Ontario Hydro will pay you \$1,000 in 10 years, plus coupons at 9.25\%
@@ -143,11 +166,12 @@ where $i$ is the yield per coupon period.
     \end{align*}
     Would you be willing to pay \$953?
     \\\db{Only if the bond were as safe as the bank. Ontario Hydro might default, so you should demand a lower price.}
+    \factornote{\fPA; \fPF}
 \end{example}
 
 \begin{definition}[Yield]
     Risk == reward: the buyer must be compensated for the risk of default by
-    paying a \textbf{lower} price. The \rb{yield} is the (hypothetical)
+    paying a \dbb{lower} price. The \rb{yield} is the (hypothetical)
     interest rate that makes the discounted bond payments equal to the price.
     The yield reflects the time value of money for the bond's payments.
 \end{definition}
@@ -157,12 +181,18 @@ where $i$ is the yield per coupon period.
     what annual interest rate gives that price?
     \[700 = 46.25(P/A,i,20) + 1000(P/F,i,20)\]
     \db{Solving numerically (trial and error or a solver): $i = 7.587\%$ per half-year, i.e.\ a nominal yield of $\approx 15.2\%$/year (effective $15.75\%$).}
+    \factornote{\fPA; \fPF}
 \end{example}
 
 \heading{Bond Price Is Determined by Yield}
 \begin{itemize}
-    \item Price $=$ payments discounted at the yield, so a higher yield means a lower price
-    \item When yield $=$ coupon rate, price $=$ face value (``at par''). When yield $>$ coupon rate, price $<$ face value (``at a discount''), and vice versa
+    \item Price $=$ payments discounted at the yield, so a \dbb{higher yield} means a \dbb{lower price}
+    \item Comparing the yield to the coupon rate:
+    \begin{itemize}
+        \item Yield $=$ coupon rate $\Rightarrow$ price $=$ face value (\rb{at par})
+        \item Yield $>$ coupon rate $\Rightarrow$ price $<$ face value (\rb{at a discount})
+        \item Yield $<$ coupon rate $\Rightarrow$ price $>$ face value (\rb{at a premium})
+    \end{itemize}
 \end{itemize}
 \begin{center}
     \begin{tikzpicture}[xscale=0.45, yscale=0.35]
@@ -225,7 +255,7 @@ where $i$ is the yield per coupon period.
         \\[2pt] \textit{\small Longer time to maturity $\Rightarrow$ higher yield}
     \end{minipage}
 \end{center}
-\db{This is the same idea as the Week 1 interest-rate factors: yield rises with credit (default) risk and maturity risk.}
+\db{This is the same idea as the Week 1 interest-rate factors: yield rises with \dbb{credit (default) risk} and \dbb{maturity risk}.}
 
 \heading{Summary}
 \begin{enumerate}
@@ -245,6 +275,7 @@ where $i$ is the yield per coupon period.
         &= 300(21.8492) + 10{,}000(0.45377) = \db{\$11{,}092.46}
     \end{align*}
     \db{Price $>$ face value, because the coupon rate (12\%) exceeds the yield (10\%).}
+    \factornote{\fPA; \fPF}
 \end{example}
 
 \begin{example}[Yield on a Bond]
@@ -255,4 +286,5 @@ where $i$ is the yield per coupon period.
     \[1000 = 45(P/A,i,4) + 880(P/F,i,4) \;\Rightarrow\; i = 1.570\% \text{ per half-year}\]
     \[i_e = (1 + 0.01570)^2 - 1 = \db{3.16\%}\]
     \db{The yield is low despite the 9\%/year coupons, because you only get \$880 back on a \$1,000 purchase.}
+    \factornote{\fPA; \fPF}
 \end{example}

@@ -65,6 +65,17 @@
     \addcontentsline{toc}{subsection}{\theweek.\arabic{topic} - #1}%
 }
 
+% CHE374-only: \factornote{\fPA; \fPF} prints a small "given X, find Y"
+% key under any calculation that uses interest factors.
+\newcommand{\factornote}[1]{\par\smallskip\noindent{\small\color{blue!55!black}\itshape Factors:\ #1}\par}
+\newcommand{\fFP}{$(F/P)$ compound amount: given $P$, find $F$}
+\newcommand{\fPF}{$(P/F)$ present worth: given $F$, find $P$}
+\newcommand{\fFA}{$(F/A)$ series compound amount: given $A$, find $F$}
+\newcommand{\fAF}{$(A/F)$ sinking fund: given $F$, find $A$}
+\newcommand{\fPA}{$(P/A)$ series present worth: given $A$, find $P$}
+\newcommand{\fAP}{$(A/P)$ capital recovery: given $P$, find $A$}
+\newcommand{\fPG}{$(P/G)$ arithmetic gradient: given $G$, find $P$}
+
 \begin{document}
 \maketitle
 \tableofcontents

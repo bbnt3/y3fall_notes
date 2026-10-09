@@ -21,14 +21,21 @@ Auger and Guzman (2010) looked at 51 copper-mining investments (1957--1999):
 \begin{itemize}
     \item Half of the projects were invested in at a sub-optimal time
     \item 36 projects should have been designed with a 40\% larger or smaller capacity
-    \item Sub-optimal decisions led to a total NPV \b{49\% lower} than optimal
+    \item Sub-optimal decisions led to a total NPV \dbb{49\% lower} than optimal
 \end{itemize}
 \db{Conclusion: use better valuation methods (Real Options Analysis).}
 
 \heading{Risk versus Reward}
 You have \$10,000 to buy a car after graduation (2 years from now). Where do
-you put it? Bank account, government bond, corporate bond, a stock, a
-startup, a loan to an acquaintance\dots
+you put it?
+\begin{enumerate}
+    \item Bank account
+    \item Government bond
+    \item Corporate bond
+    \item A stock
+    \item A startup
+    \item A loan to an acquaintance
+\end{enumerate}
 \db{Going down this list, the payoff gets more uncertain, so you would demand a higher expected return.}
 
 \begin{definition}[Stock Market (``The Market'')]
@@ -43,15 +50,25 @@ startup, a loan to an acquaintance\dots
 \end{definition}
 
 \begin{example}[Two-State Future]
-    Only two future states are possible. Asset A pays \$100 in either state;
-    Asset B pays \$120 in state 1 and \$70 in state 2.
-    \\\db{A is risk-free, so we discount it at the risk-free rate. B is risky: what rate should we use? (Answered by replication in Topic 4.2.)}
+    Only two future states are possible.
+    \begin{itemize}
+        \item Asset A pays \$100 in either state
+        \item Asset B pays \$120 in state 1 and \$70 in state 2
+    \end{itemize}
+    \db{A is risk-free, so we discount it at the risk-free rate. B is risky: what rate should we use? (Answered by replication in Topic 4.2.)}
 \end{example}
 
 \heading{Project or Company Returns}
 With prices $P_{t_j}$ observed every $\Delta t$, the (continuously
 compounded) return over each period is
-\[P_{t_j} = P_{t_{j-1}}e^{r_{t_j}\Delta t} \quad\Longleftrightarrow\quad r_{t_j} = \frac{1}{\Delta t}\ln\frac{P_{t_j}}{P_{t_{j-1}}}\]
+\[\boxed{\begin{gathered}
+    P_{t_j} = P_{t_{j-1}}e^{r_{t_j}\Delta t} \quad\Longleftrightarrow\quad r_{t_j} = \frac{1}{\Delta t}\ln\frac{P_{t_j}}{P_{t_{j-1}}}\\[4pt]
+    \begin{array}{@{}l@{}}
+        P_{t_j}: \text{price at time } t_j\\
+        r_{t_j}: \text{return over the period ending at } t_j\\
+        \Delta t: \text{time between observations}
+    \end{array}
+\end{gathered}}\]
 Stack the returns of the $i$-th stock into a vector
 $\vec R_i = [r_{t_1}, r_{t_2}, \dots, r_{t_m}]^T$ and define
 \[\sigma_i^2 = \operatorname{Var}(\vec R_i), \qquad \rb{Volatility} = \sigma_i\]
@@ -73,14 +90,22 @@ $\vec R_i = [r_{t_1}, r_{t_2}, \dots, r_{t_m}]^T$ and define
 \heading{Modern Portfolio Theory (MPT)}
 \begin{itemize}
     \item Introduced by Harry Markowitz (1952)
-    \item An investment's risk and return should not be viewed alone, but by how it affects the \b{overall portfolio's} risk and return
-    \item MPT gives a mathematical framework for building a portfolio that \b{maximizes expected return for a given level of risk}
+    \item An investment's risk and return should not be viewed alone, but by how it affects the \dbb{overall portfolio's} risk and return
+    \item MPT gives a mathematical framework for building a portfolio that \dbb{maximizes expected return for a given level of risk}
 \end{itemize}
 Invest a fraction $x_i$ of wealth in the $i$-th asset:
 \[\vec X = \begin{bmatrix} x_1\\ \vdots\\ x_n\end{bmatrix}, \qquad
 \Sigma = \begin{bmatrix} \sigma_{11} & \cdots & \sigma_{1n}\\ \vdots & \ddots & \vdots\\ \sigma_{n1} & \cdots & \sigma_{nn}\end{bmatrix},
 \qquad \sigma_{ii} = \operatorname{Var}(\vec R_i),\; \sigma_{ij} = \sigma_{ji} = \operatorname{Cov}(\vec R_i, \vec R_j)\]
-\[\boxed{\E[R_p] = x_1\E[R_1] + \dots + x_n\E[R_n], \qquad \sigma_p = \sqrt{\vec X^T\Sigma\vec X}}\]
+\[\boxed{\begin{gathered}
+    \E[R_p] = x_1\E[R_1] + \dots + x_n\E[R_n], \qquad \sigma_p = \sqrt{\vec X^T\Sigma\vec X}\\[4pt]
+    \begin{array}{@{}l@{}}
+        x_i: \text{fraction of wealth in asset } i\\
+        \E[R_i]: \text{expected return of asset } i\\
+        \Sigma: \text{covariance matrix of the asset returns}\\
+        \E[R_p],\ \sigma_p: \text{portfolio expected return and volatility}
+    \end{array}
+\end{gathered}}\]
 \db{Optimize: maximize $\E[R_p]$ for a given $\sigma_p$.}
 
 \heading{CAPM Assumptions}
@@ -89,7 +114,7 @@ Invest a fraction $x_i$ of wealth in the $i$-th asset:
     \item All investors maximize economic utility (make as much money as possible) and are rational and risk-averse
     \item All investors have the same information at the same time, and their probability beliefs match the true distribution of returns
     \item No taxes or transaction costs
-    \item All investors are \b{price takers} (their actions do not influence prices)
+    \item All investors are \rb{price takers} (their actions do not influence prices)
     \item Anyone can lend and borrow unlimited amounts at the risk-free rate
     \item All securities can be divided into parcels of any size
 \end{itemize}
@@ -114,7 +139,7 @@ Invest a fraction $x_i$ of wealth in the $i$-th asset:
 \begin{itemize}
     \item \rb{Efficient frontier}: the best expected return achievable for each volatility using portfolios of risky assets
     \item \rb{Capital market line (CML)}: the line from $r_f$ tangent to the frontier. The tangent point is the \rb{market portfolio (MP)}
-    \item Mixing the MP with lending/borrowing at $r_f$ reaches any point on the CML, which beats the frontier everywhere else
+    \item Mixing the MP with lending/borrowing at $r_f$ reaches any point on the CML, which \dbb{beats the frontier} everywhere else
 \end{itemize}
 
 \begin{example}[Leveraging Up the CML]
@@ -130,13 +155,21 @@ Regress a company's return on the market's:
 \begin{itemize}
     \item Volatility in $R_{MP,t}$ is \rb{systematic} (``market'') risk
     \item Volatility in $\varepsilon_{C,t}$ is \rb{idiosyncratic} (``firm-specific'') risk
-    \item Investors can ``diversify away'' idiosyncratic risk with portfolios, so there is \b{no reward} for bearing it. Investors are only rewarded for market risk, measured by $\beta$
+    \item Investors can ``diversify away'' idiosyncratic risk with portfolios, so there is \dbb{no reward} for bearing it. Investors are only rewarded for \dbb{market risk}, measured by $\beta$
 \end{itemize}
 
 \begin{definition}[CAPM]
     The expected return of the $i$-th asset is
-    \[\boxed{\E[R_i] = r_f + \beta_i\big(\E[R_{MP}] - r_f\big)}, \qquad
-    \beta_i = \frac{\sigma_{i,MP}}{\sigma_{MP}^2} = \frac{\rho_{i,MP}\,\sigma_i}{\sigma_{MP}}\]
+    \[\boxed{\begin{gathered}
+        \E[R_i] = r_f + \beta_i\big(\E[R_{MP}] - r_f\big), \qquad
+        \beta_i = \frac{\sigma_{i,MP}}{\sigma_{MP}^2} = \frac{\rho_{i,MP}\,\sigma_i}{\sigma_{MP}}\\[4pt]
+        \begin{array}{@{}l@{}}
+            r_f: \text{risk-free rate}\\
+            \E[R_{MP}]: \text{expected return of the market portfolio}\\
+            \sigma_i,\ \sigma_{MP}: \text{volatility of asset } i \text{ and of the market}\\
+            \sigma_{i,MP},\ \rho_{i,MP}: \text{covariance and correlation of asset } i \text{ with the market}
+        \end{array}
+    \end{gathered}}\]
     $\E[R_{MP}] - r_f$ is the \rb{market risk premium}. The MP is often
     estimated with a stock index.
 \end{definition}
@@ -177,6 +210,7 @@ Regress a company's return on the market's:
     \[\E[R_C] = 3\% + 1.2(10\% - 3\%) = 11.4\%/\text{yr}\]
     \db{Dividends are quarterly, so convert: $(1 + i_q)^4 = 1.114 \Rightarrow i_q = 2.736\%$. Today's price is the PV of 12 dividends plus the price at year 3:}
     \[10 = 0.10(P/A,2.736\%,12) + P_3(P/F,11.4\%,3) \;\Rightarrow\; P_3 = \db{\$12.43}\]
+    \factornote{\fPA; \fPF}
 \end{example}
 
 \topic{Arbitrage}
@@ -184,7 +218,7 @@ Regress a company's return on the market's:
 \begin{definition}[Arbitrage]
     \begin{itemize}
         \item \b{In financial markets}: taking advantage of a price difference between two or more markets
-        \item \b{Academic use}: an opportunity to achieve a \b{risk-free} gain at a rate \b{greater than the risk-free rate}
+        \item \b{Academic use}: an opportunity to achieve a \dbb{risk-free} gain at a rate \dbb{greater than the risk-free rate}
         \item \rb{Statistical arbitrage}: a gain at a higher rate than one should get for a given level of risk
     \end{itemize}
     Fundamental to finance theory (and to valuation) is the
@@ -202,7 +236,7 @@ Regress a company's return on the market's:
 
 \heading{Futures and Forwards}
 \begin{itemize}
-    \item Contracts used to \b{hedge} against risks or to \b{speculate}
+    \item Contracts used to \dbb{hedge} against risks or to \dbb{speculate}
     \item Examples of \rb{derivative} assets: their value derives from an underlying asset
     \item Both lock in a specific price for a certain asset
 \end{itemize}
@@ -210,13 +244,13 @@ Regress a company's return on the market's:
 \begin{definition}[Forward Contract]
     An obligation to buy or sell a certain asset at a specified price (the
     \rb{forward price}) at a specified time (the \rb{maturity} or expiration
-    date). Typically not traded on exchanges; both buyer and seller are
-    obligated to fulfill their end at maturity.
+    date). Typically \dbb{not traded on exchanges}; both buyer and seller are
+    \dbb{obligated} to fulfill their end at maturity.
 \end{definition}
 
 \begin{definition}[Futures Contract]
-    The same as a forward, except futures are \b{settled daily} (so they can
-    be bought or sold at any time) and are traded on a \b{standardized
+    The same as a forward, except futures are \dbb{settled daily} (so they can
+    be bought or sold at any time) and are traded on a \dbb{standardized
     exchange}.
 \end{definition}
 
@@ -238,7 +272,13 @@ Regress a company's return on the market's:
     Given a yield curve $r(t)$, find the forward rate $r_{1,2}$ that one
     could lock in today for borrowing/lending from $t_1$ to $t_2$.
     \\\db{Invest $P_0$ today. Directly to $t_2$: $F_2 = P_0e^{r_{0,2}t_2}$. Or to $t_1$ then roll at the forward rate: $F_2' = P_0e^{r_{0,1}t_1}e^{r_{1,2}(t_2 - t_1)}$. No arbitrage requires $F_2' = F_2$:}
-    \[\boxed{r_{1,2} = \frac{r_{0,2}t_2 - r_{0,1}t_1}{t_2 - t_1}}\]
+    \[\boxed{\begin{gathered}
+        r_{1,2} = \frac{r_{0,2}t_2 - r_{0,1}t_1}{t_2 - t_1}\\[4pt]
+        \begin{array}{@{}l@{}}
+            r_{0,t}: \text{continuously compounded rate from now to } t\\
+            r_{1,2}: \text{forward rate from } t_1 \text{ to } t_2
+        \end{array}
+    \end{gathered}}\]
 \end{example}
 
 \begin{example}[Foreign Exchange Forward]
@@ -253,7 +293,7 @@ Regress a company's return on the market's:
 \end{example}
 
 \heading{Using Replication to Price an Asset}
-Build a portfolio of assets we can already price that has the \b{same
+Build a portfolio of assets we can already price that has the \dbb{same
 payoff in every state}. By no-arbitrage, the asset's price equals the
 portfolio's price.
 
@@ -349,6 +389,7 @@ portfolio's price.
         \[96.88 = 5(P/A,y,5) + 100(P/F,y,5) \;\Rightarrow\; y = \db{5.735\%}\]
         \db{The yield is above the 3\% risk-free rate (and the 5\% coupon) to compensate for default risk.}
     \end{enumerate}
+    \factornote{\fPA; \fPF}
 \end{example}
 
 \heading{Summary}

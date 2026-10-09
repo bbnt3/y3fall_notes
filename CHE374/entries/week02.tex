@@ -6,19 +6,24 @@
 \topic{Cash-flow Diagrams}
 
 \begin{remark}[Project Life-Cycle Cost Categories]
+    \leavevmode
     \begin{itemize}
-        \item \textbf{Start}: \textbf{First (capital) cost} --- expense to
-        build/buy and install.
-        \item \textbf{During}: \textbf{Revenues (sales)} --- receipts from
-        sale of products/services; \textbf{O\&M costs} --- expenses
-        incurred on a regular basis (electricity, labour, repairs);
-        \textbf{Overhaul} --- a major capital expenditure partway through
-        the asset's life.
-        \item \textbf{End}: \textbf{Salvage value} --- net receipt from
-        sale/disposal at the end of the asset's \emph{useful} life;
-        \textbf{Scrap value} --- value of the materials at the end of the
-        asset's \emph{physical} life; \textbf{Disposal costs} --- cost to
-        dispose of waste (removal, shipping, tipping fees, etc.).
+        \item \b{Start}
+        \begin{itemize}
+            \item \rb{First (capital) cost}: expense to build/buy and install
+        \end{itemize}
+        \item \b{During}
+        \begin{itemize}
+            \item \rb{Revenues (sales)}: receipts from sale of products/services
+            \item \rb{O\&M costs}: expenses incurred on a regular basis (electricity, labour, repairs)
+            \item \rb{Overhaul}: a major capital expenditure partway through the asset's life
+        \end{itemize}
+        \item \b{End}
+        \begin{itemize}
+            \item \rb{Salvage value}: net receipt from sale/disposal at the end of the asset's \dbb{useful} life
+            \item \rb{Scrap value}: value of the materials at the end of the asset's \dbb{physical} life
+            \item \rb{Disposal costs}: cost to dispose of waste (removal, shipping, tipping fees, etc.)
+        \end{itemize}
     \end{itemize}
 \end{remark}
 
@@ -26,7 +31,7 @@
     A table showing the ``money consequences'' of a situation and the timing
     of the cash-flows: for each point in time, the activity and the
     resulting cash-flow. Costs/benefits occurring at the start, during, or
-    end of a project are together called the \textbf{project life-cycle
+    end of a project are together called the \rb{project life-cycle
     costs}.
 \end{definition}
 
@@ -48,11 +53,16 @@
 \end{example}
 
 \begin{definition}[Cash-flow Diagram]
-    A simple graph summarizing the \textbf{timing} and \textbf{magnitude} of
-    cash-flows. The $x$-axis is discrete time periods; the (implicit)
-    $y$-axis is the size and direction of each cash-flow, drawn as a
-    vertical arrow: an \textbf{up} arrow is a receipt (inflow, $+\$$), a
-    \textbf{down} arrow is a disbursement (outflow, $-\$$).
+    A simple graph summarizing the \b{timing} and \b{magnitude} of
+    cash-flows.
+    \begin{itemize}
+        \item $x$-axis: discrete time periods
+        \item (implicit) $y$-axis: the size and direction of each cash-flow, drawn as a vertical arrow
+        \begin{itemize}
+            \item \b{Up} arrow: a receipt (inflow, $+\$$)
+            \item \b{Down} arrow: a disbursement (outflow, $-\$$)
+        \end{itemize}
+    \end{itemize}
 \end{definition}
 
 \begin{center}
@@ -66,17 +76,18 @@
 \end{center}
 
 \begin{remark}[Diagram Conventions]
+    \leavevmode
     \begin{itemize}
         \item The end of one period is the beginning of the next: time $0$
         is the start of period 1, time 1 is the end of period 1 and the
         start of period 2, and $N$ periods from now is the end of period
         $N$ / start of period $N+1$.
         \item Unless stated otherwise: interest compounds once per
-        period, and cash-flows occur at the \textbf{end} of the period.
+        period, and cash-flows occur at the \dbb{end} of the period.
         \item Cash-flows occurring \emph{during} a period are
-        \textbf{summed} and accounted for at the \textbf{end} of that
+        \dbb{summed} and accounted for at the \dbb{end} of that
         period.
-        \item First costs are typically accounted for at \textbf{time 0}.
+        \item First costs are typically accounted for at \dbb{time 0}.
     \end{itemize}
 \end{remark}
 
@@ -87,11 +98,11 @@
 \begin{example}[Loan Repayment Diagram]
     \$1,000 is borrowed on January 1 and repaid in 6 monthly installments
     of \$172.50 ($i=1\%$ per month). The time line's origin is the start of
-    the analysis (time 0 = January 1, intervals are monthly). From the
-    \textbf{borrower's} perspective: an inflow of \$1,000 at $t=0$, and
-    outflows of \$172.50 at $t=1,\dots,6$. From the \textbf{bank's}
-    perspective the diagram flips: an outflow of \$1,000 at $t=0$, and
-    inflows of \$172.50 at $t=1,\dots,6$.
+    the analysis (time 0 = January 1, intervals are monthly).
+    \begin{itemize}
+        \item \b{Borrower's} perspective: an inflow of \$1,000 at $t=0$, and outflows of \$172.50 at $t=1,\dots,6$
+        \item \b{Bank's} perspective (the diagram flips): an outflow of \$1,000 at $t=0$, and inflows of \$172.50 at $t=1,\dots,6$
+    \end{itemize}
 \end{example}
 
 \begin{center}
@@ -152,7 +163,7 @@
 
 \begin{definition}[Single Payment/Receipt]
     A single cash-flow $P$ (now) or $F$ (in the future), occurring only
-    once, $N$ periods apart.
+    \dbb{once}, $N$ periods apart.
 \end{definition}
 
 \begin{center}
@@ -167,7 +178,7 @@
 \end{center}
 
 \begin{definition}[Perpetuity]
-    A constant cash-flow $A$ occurring every period, forever (an
+    A constant cash-flow $A$ occurring every period, \dbb{forever} (an
     \emph{infinite annuity}).
 \end{definition}
 
@@ -182,7 +193,7 @@
 
 \begin{definition}[Annuity]
     A constant (uniform) cash-flow $A$ occurring every period, for a
-    \emph{finite} number of periods $N$.
+    \dbb{finite} number of periods $N$.
 \end{definition}
 
 \begin{center}
@@ -195,7 +206,7 @@
 \end{center}
 
 \begin{definition}[Arithmetic Gradient]
-    A cash-flow that grows (or shrinks) by the same \emph{amount} $G$
+    A cash-flow that grows (or shrinks) by the same \dbb{amount} $G$
     each period, starting from a base $A'$ at $t=1$:
     \[A',\ A'+G,\ A'+2G,\ \dots,\ A'+(N-1)G.\]
     It splits into an annuity of $A'$ (red, below) plus a pure gradient
@@ -207,10 +218,10 @@
 \end{center}
 
 \begin{definition}[Geometric Gradient]
-    A cash-flow that grows (or shrinks) by the same \emph{percentage} $g$
+    A cash-flow that grows (or shrinks) by the same \dbb{percentage} $g$
     each period, starting from $A$ at $t=1$:
     \[A,\ A(1+g),\ A(1+g)^2,\ \dots,\ A(1+g)^{N-1}.\]
-    There must be a cash-flow at the end of period 1, otherwise there is
+    There \dbb{must} be a cash-flow at the end of period 1, otherwise there is
     nothing for the percentage to grow from.
 \end{definition}
 
@@ -243,10 +254,12 @@
 
 \begin{definition}[Market Equivalence]
     A consequence of being able to exchange one cash-flow for another at
-    \emph{zero cost}. Exchanging a future cash-flow for a present one is
-    \textbf{borrowing}; giving up a present cash-flow for a future one is
-    \textbf{lending/investing}. In real markets, borrowing and lending
-    rates usually differ.
+    \dbb{zero cost}.
+    \begin{itemize}
+        \item \b{Borrowing}: exchanging a future cash-flow for a present one
+        \item \b{Lending/investing}: giving up a present cash-flow for a future one
+    \end{itemize}
+    In real markets, borrowing and lending rates usually \dbb{differ}.
 \end{definition}
 
 \begin{example}[T-bill Market Equivalence]
@@ -260,7 +273,7 @@
 
 \begin{definition}[Decisional Equivalence]
     Two cash-flows $P_t$ and $F_{t+N}$ are equivalent for a decision
-    maker if they are \emph{indifferent} between them. Here the interest
+    maker if they are \dbb{indifferent} between them. Here the interest
     rate is not known a priori --- instead, an \rb{implied} rate can be
     backed out from the decision that the two are equivalent.
 \end{definition}
@@ -274,7 +287,7 @@
 \end{example}
 
 \begin{remark}
-    Financial analysis uses \textbf{mathematical} and \textbf{market}
+    Financial analysis uses \b{mathematical} and \b{market}
     equivalence to decide whether to invest or not invest.
 \end{remark}
 
@@ -291,11 +304,12 @@
 \end{remark}
 
 \begin{definition}[Cash-flow Symbols]
-    $P$: a single cash-flow today. $F$: a single cash-flow in the
-    future. $A$: a finite series of equal cash-flows at regular
-    intervals (annuity). $G$: a cash-flow growing by a fixed
-    \emph{amount} each period (arithmetic gradient) or fixed
-    \emph{percentage} $g$ each period (geometric gradient, ``Geom'').
+    \begin{itemize}
+        \item \rb{$P$}: a single cash-flow today
+        \item \rb{$F$}: a single cash-flow in the future
+        \item \rb{$A$}: a finite series of equal cash-flows at regular intervals (annuity)
+        \item \rb{$G$}: a cash-flow growing by a fixed \dbb{amount} each period (arithmetic gradient) or fixed \dbb{percentage} $g$ each period (geometric gradient, ``Geom'')
+    \end{itemize}
 \end{definition}
 
 \begin{definition}[Factor Notation]
@@ -306,18 +320,18 @@
 \end{definition}
 
 \begin{center}
-    \begin{tabular}{ll}
+    \begin{tabular}{llcc}
         \toprule
-        Factor & Name \\
+        Factor & Name & Given & Find \\
         \midrule
-        $(F/P,i,N)$ & Compound amount factor \\
-        $(P/F,i,N)$ & Present worth factor \\
-        $(A/F,i,N)$ & Sinking fund factor \\
-        $(F/A,i,N)$ & Series compound amount factor \\
-        $(A/P,i,N)$ & Capital recovery factor \\
-        $(P/A,i,N)$ & Series present worth factor \\
-        $(P/G,i,N)$ & Arithmetic gradient to present worth \\
-        $(P/\text{Geom},i,g,N)$ & Geometric gradient to present worth \\
+        $(F/P,i,N)$ & Compound amount factor & $P$ & $F$ \\
+        $(P/F,i,N)$ & Present worth factor & $F$ & $P$ \\
+        $(A/F,i,N)$ & Sinking fund factor & $F$ & $A$ \\
+        $(F/A,i,N)$ & Series compound amount factor & $A$ & $F$ \\
+        $(A/P,i,N)$ & Capital recovery factor & $P$ & $A$ \\
+        $(P/A,i,N)$ & Series present worth factor & $A$ & $P$ \\
+        $(P/G,i,N)$ & Arithmetic gradient to present worth & $G$ & $P$ \\
+        $(P/\text{Geom},i,g,N)$ & Geometric gradient to present worth & $A$, $g$ & $P$ \\
         \bottomrule
     \end{tabular}
 \end{center}
@@ -331,7 +345,15 @@
 \begin{definition}[Single-Payment Factors]
     $P$ and $F$ are related by compounding one period at a time,
     $F_n = F_{n-1}(1+i)$, so $F = P(1+i)^N$:
-    \[(F/P,i,N) = (1+i)^N, \qquad (P/F,i,N) = (1+i)^{-N}.\]
+    \[\boxed{\begin{gathered}
+        (F/P,i,N) = (1+i)^N, \qquad (P/F,i,N) = \frac{1}{(1+i)^N}\\[4pt]
+        \begin{array}{@{}l@{}}
+            P: \text{single cash-flow at time } 0\\
+            F: \text{single cash-flow at time } N\\
+            i: \text{interest rate per period}\\
+            N: \text{number of periods}
+        \end{array}
+    \end{gathered}}\]
 \end{definition}
 
 \begin{center}
@@ -352,11 +374,13 @@
 \begin{example}[F/P]
     If you had \$2,000 now and invested it at 10\%, how much would it be worth in 8 years?
     \[F = 2000(F/P,10\%,8) = 2000(1.10)^8 = 2000(2.1436) = \db{\$4{,}287.18}\]
+    \factornote{\fFP}
 \end{example}
 
 \begin{example}[P/F: Solving for $i$]
     You invest \$1,100 today and expect \$2,000 in 8 years. What is the interest rate?
     \[1100 = 2000(P/F,i,8) \;\Rightarrow\; (1+i)^8 = \frac{2000}{1100} = 1.8182 \;\Rightarrow\; i = 1.8182^{1/8} - 1 = \db{7.76\%}\]
+    \factornote{\fPF}
 \end{example}
 
 \begin{example}[Present Value of a Perpetuity]
@@ -375,26 +399,52 @@
         \bottomrule
     \end{tabular}
     \end{center}
-    \db{So \$100 today is equivalent to \$5/year forever, i.e.\ $P = A/i = 5/0.05 = 100$.} In general, a constant amount $A$ paid forever has a finite present value:
-    \[P = \frac{A}{1+i}+\frac{A}{(1+i)^2}+\cdots = \boxed{\frac{A}{i}}.\]
+    \db{So \$100 today is equivalent to \$5/year forever, i.e.\ $P = A/i = 5/0.05 = 100$.} In general, a constant amount $A$ paid forever has a \dbb{finite} present value:
+    \[P = \frac{A}{1+i}+\frac{A}{(1+i)^2}+\cdots = \frac{A}{i}\]
+    \[\boxed{\begin{gathered}
+        P = \frac{A}{i}\\[4pt]
+        \begin{array}{@{}l@{}}
+            P: \text{present worth, one period before the first payment}\\
+            A: \text{payment every period, forever}\\
+            i: \text{interest rate per period}
+        \end{array}
+    \end{gathered}}\]
 \end{example}
 
 \begin{definition}[Present Worth of an Annuity]
     An annuity of $A$ for $N$ periods is a perpetuity starting now minus a
     perpetuity starting at $N$ (worth $A/i$ at time $N$, discounted back):
     \[(P/A,i,N) = \frac{1}{i}-\frac{1}{i(1+i)^N}
-    = \frac{(1+i)^N - 1}{i(1+i)^N}.\]
+    = \frac{(1+i)^N - 1}{i(1+i)^N}\]
     Combining with $(F/P)$ and inverting gives the rest of the uniform-series factors:
-    \[(F/A,i,N) = \frac{(1+i)^N-1}{i}, \qquad (A/F,i,N) = \frac{i}{(1+i)^N-1}, \qquad (A/P,i,N) = \frac{i(1+i)^N}{(1+i)^N-1}.\]
+    \[\boxed{\begin{gathered}
+        (P/A,i,N) = \frac{(1+i)^N - 1}{i(1+i)^N}, \qquad (A/P,i,N) = \frac{i(1+i)^N}{(1+i)^N-1}\\[6pt]
+        (F/A,i,N) = \frac{(1+i)^N-1}{i}, \qquad (A/F,i,N) = \frac{i}{(1+i)^N-1}\\[4pt]
+        \begin{array}{@{}l@{}}
+            A: \text{equal payment at the end of each period } 1,\dots,N\\
+            P: \text{present worth at time } 0\\
+            F: \text{future worth at time } N \text{ (same time as the last payment)}\\
+            i: \text{interest rate per period}\\
+            N: \text{number of payments}
+        \end{array}
+    \end{gathered}}\]
 \end{definition}
 
 \begin{definition}[Present Worth of an Arithmetic Gradient]
     For a gradient contributing $G,2G,\dots,(N-1)G$ starting at $t=2$
-    (no cash-flow at $t=0$ or $t=1$):
-    \[(P/G,i,N) = \frac{1}{i^2}\left(1-\frac{1+iN}{(1+i)^N}\right).\]
+    (\dbb{no cash-flow at $t=0$ or $t=1$}):
+    \[(P/G,i,N) = \frac{1}{i^2}\left(1-\frac{1+iN}{(1+i)^N}\right)\]
     A series with initial amount $A$ growing by $G$ each period splits
     into an annuity plus a gradient:
-    \[P = A(P/A,i,N) + G(P/G,i,N).\]
+    \[\boxed{\begin{gathered}
+        P = A(P/A,i,N) + G(P/G,i,N)\\[4pt]
+        \begin{array}{@{}l@{}}
+            A: \text{cash-flow at } t=1\\
+            G: \text{amount added each period after}\\
+            i: \text{interest rate per period}\\
+            N: \text{number of periods}
+        \end{array}
+    \end{gathered}}\]
 \end{definition}
 
 \begin{center}
@@ -403,23 +453,41 @@
 \end{center}
 
 \begin{remark}[Sign Combinations for Arithmetic Gradients]
-    Besides $G=0$, four cases: $A>0,\,G>0$ (positive, increasing);
-    $A>0,\,G<0$ (positive, decreasing); $A<0,\,G>0$ (negative, becoming
-    less so); $A<0,\,G<0$ (negative, becoming more so).
+    Besides $G=0$, four cases:
+    \begin{itemize}
+        \item $A>0,\,G>0$: positive, increasing
+        \item $A>0,\,G<0$: positive, decreasing
+        \item $A<0,\,G>0$: negative, becoming less so
+        \item $A<0,\,G<0$: negative, becoming more so
+    \end{itemize}
 \end{remark}
 
 \begin{definition}[Present Worth of a Geometric Gradient]
     For a series $A,\,A(1+g),\,A(1+g)^2,\dots$ starting at $t=1$:
-    \[(P/\text{Geom},i,g,N) = \frac{1-\left(\frac{1+g}{1+i}\right)^N}{i-g}
-    = \frac{(P/A,i_o,N)}{1+g}, \qquad i_o = \frac{1+i}{1+g}-1.\]
+    \[\boxed{\begin{gathered}
+        (P/\text{Geom},i,g,N) = \frac{1-\left(\frac{1+g}{1+i}\right)^N}{i-g}
+        = \frac{(P/A,i_o,N)}{1+g}, \qquad i_o = \frac{1+i}{1+g}-1\\[4pt]
+        \begin{array}{@{}l@{}}
+            g: \text{growth rate per period}\\
+            i: \text{interest rate per period}\\
+            i_o: \text{growth-adjusted interest rate}\\
+            N: \text{number of periods}
+        \end{array}
+    \end{gathered}}\]
 \end{definition}
 
 \begin{remark}
     Regardless of the pattern, present value always follows from
-    discounting each cash-flow individually and summing. Each period a
-    cash-flow is moved forward, multiply by $(1+i)$; each period back,
-    divide by $(1+i)$:
-    \[\boxed{P = \frac{F_1}{1+i}+\frac{F_2}{(1+i)^2}+\cdots = \sum_t \frac{F_t}{(1+i)^t}.}\]
+    \dbb{discounting each cash-flow individually and summing}. Each period a
+    cash-flow is moved forward, \dbb{multiply} by $(1+i)$; each period back,
+    \dbb{divide} by $(1+i)$:
+    \[\boxed{\begin{gathered}
+        P = \frac{F_1}{1+i}+\frac{F_2}{(1+i)^2}+\cdots = \sum_t \frac{F_t}{(1+i)^t}\\[4pt]
+        \begin{array}{@{}l@{}}
+            F_t: \text{net cash-flow at time } t\\
+            i: \text{interest rate per period}
+        \end{array}
+    \end{gathered}}\]
 \end{remark}
 
 \heading{Factor Table ($i = 10\%$)}
@@ -429,19 +497,23 @@
 
 \begin{example}[Reflection: Lump Sums vs.\ Annuity]
     Which option do you prefer if interest is 8\%?
-    (a) \$20,000 now and \$50,000 at the end of 10 years, or
-    (b) ten equal annual receipts of \$7,000?
+    \begin{enumerate}[label = \alph*)]
+        \item \$20,000 now and \$50,000 at the end of 10 years
+        \item Ten equal annual receipts of \$7,000
+    \end{enumerate}
     \begin{align*}
         P_a &= 20{,}000 + 50{,}000(P/F,8\%,10) = 20{,}000 + 50{,}000(0.46319) = \db{\$43{,}160}\\
         P_b &= 7{,}000(P/A,8\%,10) = 7{,}000(6.7101) = \db{\$46{,}971}
     \end{align*}
     \db{Prefer (b): it has the higher present value.}
+    \factornote{\fPF; \fPA}
 \end{example}
 
 \begin{example}[Reflection: Annuity at a Lower Rate]
     \$1/year for 5 years has a present value of \$3.7908 at 10\%. Which is a likely value at 9\%?
     (a) 3.8897 \quad (b) 5.0000 \quad (c) 3.7908 \quad (d) 2.3262
     \\\db{(a) 3.8897. A lower rate discounts less, so PV rises above 3.7908, but it must stay below the undiscounted total of \$5. Check: $(P/A,9\%,5) = 3.8897$.}
+    \factornote{\fPA}
 \end{example}
 
 \topic{Worked Examples}
@@ -451,6 +523,7 @@
     six years. If the rate of return on land is 8\%, how much should the
     investor be willing to pay now?
     \[P = 10{,}000(P/F,8\%,6) = \frac{10{,}000}{(1.08)^6} = \db{\$6{,}301.70}\]
+    \factornote{\fPF}
 \end{example}
 
 \begin{example}[The Magic of Compounding]
@@ -458,6 +531,7 @@
     at 10\% annual interest.
     \[F = 365(F/A,10\%,60) = 365\cdot\frac{(1.10)^{60}-1}{0.10} \approx \db{\$1{,}107{,}708}\]
     \db{You become a millionaire.}
+    \factornote{\fFA}
 \end{example}
 
 \begin{example}[F and P with Subperiod Compounding]
@@ -470,6 +544,7 @@
     \end{itemize}
     How much must you invest today to get \$2,000 in 5 years at 8\% compounded quarterly? $i_s = 2\%$, $N = 20$:
     \[P = 2000(P/F,2\%,20) = \frac{2000}{(1.02)^{20}} = \db{\$1{,}345.94}\]
+    \factornote{\fPF}
 \end{example}
 
 \begin{example}[Mortgage/Amortization]
@@ -479,6 +554,7 @@
     \[i_m = 1.045^{1/6} - 1 = 0.7363\%, \qquad N = 15 \times 12 = 180\]
     \[A = 300{,}000(A/P,0.7363\%,180) = \db{\$3{,}013.56 \text{ per month}}\]
     \db{That is about \$36,163/year, over 70\% of a \$50k starting salary (before tax), so it doesn't fit the budget.}
+    \factornote{\fAP}
 \end{example}
 
 \begin{example}[Sinking Fund]
@@ -486,6 +562,7 @@
     (e.g.\ replacing a machine). A roof must be replaced in 10 years for
     an estimated \$28,000. What equal end-of-year deposits at 8\% are needed?
     \[A = 28{,}000(A/F,8\%,10) = 28{,}000\cdot\frac{0.08}{(1.08)^{10}-1} = \db{\$1{,}932.83 \text{ per year}}\]
+    \factornote{\fAF}
 \end{example}
 
 \begin{example}[Retirement Planning]
@@ -495,6 +572,7 @@
         A_{7\%} &= 1{,}000{,}000(A/F,7\%,45) = \db{\$3{,}499.57 \text{ per year}}\\
         A_{10\%} &= 1{,}000{,}000(A/F,10\%,45) = \db{\$1{,}391.00 \text{ per year}}
     \end{align*}
+    \factornote{\fAF}
 \end{example}
 
 \begin{example}[Uneven Annuity Segments]
@@ -517,6 +595,7 @@
         \node[above,green!50!black] at (7,1.2) {\scriptsize \$3,000};
     \end{tikzpicture}
     \end{center}
+    \factornote{\fPA; \fPF}
 \end{example}
 
 \begin{example}[Present Value with an Arithmetic Gradient: Investment]
@@ -529,6 +608,7 @@
         &= -400{,}000 + 406{,}190 = \db{+\$6{,}190}
     \end{align*}
     \db{Barely worth it: the benefits' PV just exceeds the \$400,000 cost.}
+    \factornote{\fPA; \fPG}
 \end{example}
 
 \begin{example}[Present Value with an Arithmetic Gradient: Maintenance]
@@ -542,6 +622,7 @@
     \end{align*}
     With a \$1,000 overhaul at the start ($t=0$):
     \[\text{EAC} = (1{,}656.97 + 1{,}000)(A/P,6\%,8) = \db{\$427.87 \text{ per year}}\]
+    \factornote{\fPA; \fPG; \fAP}
 \end{example}
 
 \begin{example}[Future Value with Periodic Dividends]
@@ -555,6 +636,7 @@
         F &= 100{,}000(F/P,15\%,15) + 5{,}000(F/A,52.09\%,5)\\
         &= 813{,}706 + 68{,}510 = \db{\$882{,}216}
     \end{align*}
+    \factornote{\fFP; \fFA}
 \end{example}
 
 \begin{example}[A Business Example]
@@ -572,4 +654,5 @@
         \approx{}& \db{\$633{,}463}
     \end{align*}
     \db{where $Q_q$ is \$15k, \$20k or \$25k depending on the year.}
+    \factornote{\fPA; \fPF}
 \end{example}
