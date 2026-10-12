@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  9 OCT 2026 14:45
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  12 OCT 2026 16:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -566,30 +566,30 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 19.
 )
 \c@week=\count332
 \c@topic=\count333
-LaTeX Font Info:    Trying to load font information for T1+lmr on input line 79.
+LaTeX Font Info:    Trying to load font information for T1+lmr on input line 68.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 79.
-LaTeX Font Info:    ... okay on input line 79.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 68.
+LaTeX Font Info:    ... okay on input line 68.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -644,38 +644,38 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/local/texlive/2025/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring ON on input line 79.
+Package hyperref Info: Link coloring ON on input line 68.
  (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 81.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 70.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 81.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 70.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 81.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 70.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 81.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 70.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 81.
+(Font)              <12> on input line 70.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 81.
+(Font)              <8> on input line 70.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 81.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 81.
+(Font)              <6> on input line 70.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 70.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 81.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 70.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
@@ -782,7 +782,7 @@ Package pdftex.def Info: figures/math_equivalence.png  used on input line 252.
 <figures/gradient_G_only.png, id=236, 668.4975pt x 308.15125pt>
 File: figures/gradient_G_only.png Graphic file (type png)
 <use figures/gradient_G_only.png>
-Package pdftex.def Info: figures/gradient_G_only.png  used on input line 451.
+Package pdftex.def Info: figures/gradient_G_only.png  used on input line 449.
 (pdftex.def)             Requested size: 211.38832pt x 97.4396pt.
 
 
@@ -790,7 +790,7 @@ Package pdftex.def Info: figures/gradient_G_only.png  used on input line 451.
 <figures/factor_table_10pct.png, id=242, 1130.2225pt x 778.91pt>
 File: figures/factor_table_10pct.png Graphic file (type png)
 <use figures/factor_table_10pct.png>
-Package pdftex.def Info: figures/factor_table_10pct.png  used on input line 495.
+Package pdftex.def Info: figures/factor_table_10pct.png  used on input line 493.
 (pdftex.def)             Requested size: 352.31625pt x 242.80263pt.
 
 
@@ -816,41 +816,39 @@ Package pdftex.def Info: figures/household_debt_pie.png  used on input line 20.
 <figures/bond_face_annotated.png, id=279, 1827.82875pt x 844.15375pt>
 File: figures/bond_face_annotated.png Graphic file (type png)
 <use figures/bond_face_annotated.png>
-Package pdftex.def Info: figures/bond_face_annotated.png  used on input line 125.
+Package pdftex.def Info: figures/bond_face_annotated.png  used on input line 123.
 (pdftex.def)             Requested size: 291.2458pt x 134.5006pt.
 <figures/bond_back_annotated.png, id=280, 1392.20125pt x 845.1575pt>
 File: figures/bond_back_annotated.png Graphic file (type png)
 <use figures/bond_back_annotated.png>
-Package pdftex.def Info: figures/bond_back_annotated.png  used on input line 127.
+Package pdftex.def Info: figures/bond_back_annotated.png  used on input line 125.
 (pdftex.def)             Requested size: 234.8775pt x 142.5787pt.
 <figures/bond_coupon.png, id=281, 514.92375pt x 256.96pt>
 File: figures/bond_coupon.png Graphic file (type png)
 <use figures/bond_coupon.png>
-Package pdftex.def Info: figures/bond_coupon.png  used on input line 129.
+Package pdftex.def Info: figures/bond_coupon.png  used on input line 127.
 (pdftex.def)             Requested size: 140.92793pt x 70.32506pt.
 
 
 [27 <./figures/bond_face_annotated.png (PNG copy)>]
 
 [28 <./figures/bond_back_annotated.png (PNG copy)> <./figures/bond_coupon.png (PNG copy)>]
-
-[29]
-Overfull \hbox (1.42929pt too wide) in paragraph at lines 225--240
+Overfull \hbox (1.42929pt too wide) in paragraph at lines 220--235
  [][] 
  []
 
 
-Overfull \hbox (9.30182pt too wide) in paragraph at lines 244--255
+Overfull \hbox (9.30182pt too wide) in paragraph at lines 239--250
  [][] 
  []
 
 
 
-[30]) (./entries/week04.tex
+[29]) (./entries/week04.tex
+
+[30]
 
 [31]
-
-[32]
 
 LaTeX Font Warning: Command \boldmath invalid in math mode on input line 74.
 
@@ -858,6 +856,8 @@ LaTeX Font Warning: Command \boldmath invalid in math mode on input line 74.
 LaTeX Font Warning: Command \mathversion invalid in math mode on input line 74.
 
 
+
+[32]
 
 [33]
 
@@ -869,9 +869,9 @@ LaTeX Font Warning: Command \mathversion invalid in math mode on input line 74.
 
 [37]
 
-[38]
+[38]) (./entries/week05.tex
 
-[39]) (./entries/week05.tex
+[39]
 
 [40]
 
@@ -883,11 +883,9 @@ LaTeX Font Warning: Command \mathversion invalid in math mode on input line 74.
 
 [44]
 
-[45]
+[45])
 
-[46])
-
-[47] (./main.aux)
+[46] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -896,18 +894,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 49632DA536AB7F7FB8617FEB6615D9E7;4541.
  ) 
 Here is how much of TeX's memory you used:
- 23595 strings out of 473190
- 442014 string characters out of 5715801
- 810319 words of memory out of 5000000
- 46255 multiletter control sequences out of 15000+600000
+ 23684 strings out of 473190
+ 443312 string characters out of 5715801
+ 812162 words of memory out of 5000000
+ 46345 multiletter control sequences out of 15000+600000
  649819 words of font info for 100 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,16n,90p,583b,844s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (47 pages, 2495977 bytes).
+ 89i,16n,90p,583b,946s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (46 pages, 2512249 bytes).
 PDF statistics:
- 543 PDF objects out of 1000 (max. 8388607)
+ 544 PDF objects out of 1000 (max. 8388607)
  435 compressed objects within 5 object streams
- 141 named destinations out of 1000 (max. 500000)
+ 140 named destinations out of 1000 (max. 500000)
  246 words of extra memory for PDF output out of 10000 (max. 10000000)
 

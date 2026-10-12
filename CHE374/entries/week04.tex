@@ -38,13 +38,6 @@ you put it?
 \end{enumerate}
 \db{Going down this list, the payoff gets more uncertain, so you would demand a higher expected return.}
 
-\begin{definition}[Stock Market (``The Market'')]
-    The aggregation of buyers and sellers of \rb{stocks} (shares), which
-    represent ownership claims on businesses. Only stocks of ``public''
-    companies are traded, usually through brokerages and electronic trading
-    platforms.
-\end{definition}
-
 \begin{definition}[Financial Risk]
     The \rb{uncertainty in a future payoff}.
 \end{definition}
@@ -57,6 +50,13 @@ you put it?
     \end{itemize}
     \db{A is risk-free, so we discount it at the risk-free rate. B is risky: what rate should we use? (Answered by replication in Topic 4.2.)}
 \end{example}
+
+\begin{definition}[Stock Market (``The Market'')]
+    The aggregation of buyers and sellers of \rb{stocks} (shares), which
+    represent ownership claims on businesses. Only stocks of ``public''
+    companies are traded, usually through brokerages and electronic trading
+    platforms.
+\end{definition}
 
 \heading{Project or Company Returns}
 With prices $P_{t_j}$ observed every $\Delta t$, the (continuously
@@ -108,17 +108,6 @@ Invest a fraction $x_i$ of wealth in the $i$-th asset:
 \end{gathered}}\]
 \db{Optimize: maximize $\E[R_p]$ for a given $\sigma_p$.}
 
-\heading{CAPM Assumptions}
-\begin{itemize}
-    \item Correlations between assets are fixed and constant forever
-    \item All investors maximize economic utility (make as much money as possible) and are rational and risk-averse
-    \item All investors have the same information at the same time, and their probability beliefs match the true distribution of returns
-    \item No taxes or transaction costs
-    \item All investors are \rb{price takers} (their actions do not influence prices)
-    \item Anyone can lend and borrow unlimited amounts at the risk-free rate
-    \item All securities can be divided into parcels of any size
-\end{itemize}
-
 \heading{Efficient Frontier and Capital Market Line}
 \begin{center}
     \begin{tikzpicture}[xscale=30, yscale=40]
@@ -158,6 +147,20 @@ Regress a company's return on the market's:
     \item Investors can ``diversify away'' idiosyncratic risk with portfolios, so there is \dbb{no reward} for bearing it. Investors are only rewarded for \dbb{market risk}, measured by $\beta$
 \end{itemize}
 
+\heading{CAPM Assumptions}
+The \rb{Capital Asset Pricing Model (CAPM)} builds on MPT and the CML to give
+the expected return of any single asset from its market risk ($\beta$). It
+rests on these assumptions:
+\begin{itemize}
+    \item Correlations between assets are fixed and constant forever
+    \item All investors maximize economic utility (make as much money as possible) and are rational and risk-averse
+    \item All investors have the same information at the same time, and their probability beliefs match the true distribution of returns
+    \item No taxes or transaction costs
+    \item All investors are \rb{price takers} (their actions do not influence prices)
+    \item Anyone can lend and borrow unlimited amounts at the risk-free rate
+    \item All securities can be divided into parcels of any size
+\end{itemize}
+
 \begin{definition}[CAPM]
     The expected return of the $i$-th asset is
     \[\boxed{\begin{gathered}
@@ -165,6 +168,7 @@ Regress a company's return on the market's:
         \beta_i = \frac{\sigma_{i,MP}}{\sigma_{MP}^2} = \frac{\rho_{i,MP}\,\sigma_i}{\sigma_{MP}}\\[4pt]
         \begin{array}{@{}l@{}}
             r_f: \text{risk-free rate}\\
+            \beta_i: \text{sensitivity of asset } i \text{ to the market (its systematic risk)}\\
             \E[R_{MP}]: \text{expected return of the market portfolio}\\
             \sigma_i,\ \sigma_{MP}: \text{volatility of asset } i \text{ and of the market}\\
             \sigma_{i,MP},\ \rho_{i,MP}: \text{covariance and correlation of asset } i \text{ with the market}
@@ -210,7 +214,6 @@ Regress a company's return on the market's:
     \[\E[R_C] = 3\% + 1.2(10\% - 3\%) = 11.4\%/\text{yr}\]
     \db{Dividends are quarterly, so convert: $(1 + i_q)^4 = 1.114 \Rightarrow i_q = 2.736\%$. Today's price is the PV of 12 dividends plus the price at year 3:}
     \[10 = 0.10(P/A,2.736\%,12) + P_3(P/F,11.4\%,3) \;\Rightarrow\; P_3 = \db{\$12.43}\]
-    \factornote{\fPA; \fPF}
 \end{example}
 
 \topic{Arbitrage}
@@ -224,15 +227,6 @@ Regress a company's return on the market's:
     Fundamental to finance theory (and to valuation) is the
     \rb{no-arbitrage assumption}: ``no free lunch''.
 \end{definition}
-
-\begin{example}[Corn Arbitrage]
-    You can buy a bushel of corn for \$10 today and enter a forward contract
-    to deliver it for \$12 one year from now (storage is free). You can also
-    borrow at 10\%. What would you do?
-    \\\db{Borrow $\$10x$ and buy $x$ bushels today: net cash-flow \$0. In one year, sell the $x$ bushels for $\$12x$ and repay the $\$11x$ loan: a risk-free profit of $\$1x$.}
-    \\\db{As $x \to \infty$ the profit is infinite. In reality, demand for corn today pushes the price up until the arbitrage disappears. The no-arbitrage price is}
-    \[\frac{\$12}{1.10} = \db{\$10.91}\]
-\end{example}
 
 \heading{Futures and Forwards}
 \begin{itemize}
@@ -267,6 +261,15 @@ Regress a company's return on the market's:
     \end{tabular}
 \end{center}
 \db{E.g.\ the WTI oil futures curve: the price today for oil delivered in month 1, 2, \dots\ (in March 2020 the curve rose steeply from \$25 to \$45).}
+
+\begin{example}[Corn Arbitrage]
+    You can buy a bushel of corn for \$10 today and enter a forward contract
+    to deliver it for \$12 one year from now (storage is free). You can also
+    borrow at 10\%. What would you do?
+    \\\db{Borrow $\$10x$ and buy $x$ bushels today: net cash-flow \$0. In one year, sell the $x$ bushels for $\$12x$ and repay the $\$11x$ loan: a risk-free profit of $\$1x$.}
+    \\\db{As $x \to \infty$ the profit is infinite. In reality, demand for corn today pushes the price up until the arbitrage disappears. The no-arbitrage price is}
+    \[\frac{\$12}{1.10} = \db{\$10.91}\]
+\end{example}
 
 \begin{example}[Interest Rate Forward]
     Given a yield curve $r(t)$, find the forward rate $r_{1,2}$ that one
@@ -378,6 +381,24 @@ portfolio's price.
         \\\db{$1 - 0.95^5 = 22.6\%$}
         \item What should the price of the bond be?
         \\\db{Work backwards through the tree. Each year the bond either survives (95\%, pays the coupon plus the value going forward) or defaults (5\%, pays \$50). Discount each step at $r_f$ since these are risk-neutral probabilities:}
+        \begin{center}
+        \begin{tikzpicture}[x=2.1cm, y=1cm, every node/.style={font=\small}]
+            \foreach \k in {0,...,5}{\node[gray] at (\k,1.1) {\scriptsize Year \k};}
+            \node[fill=white, inner sep=1pt] (S0) at (0,0) {$P_0$};
+            \foreach \k/\pay in {1/5,2/5,3/5,4/5,5/{5+100}}{
+                \pgfmathtruncatemacro{\prev}{\k-1}
+                \node[fill=white, inner sep=1pt] (S\k) at (\k,0) {$\pay$};
+                \node[red!70!black] (D\k) at (\k,-1.3) {$50$};
+                \draw[->, green!50!black] (S\prev) -- (S\k) node[midway, above] {\scriptsize 95\%};
+                \draw[->, red!70!black] (S\prev) -- (D\k) node[midway, below left=-2pt] {\scriptsize 5\%};
+            }
+            \foreach \k/\v in {0/96.88,1/102.41,2/102.98,3/103.60,4/104.27}{
+                \node[text=navy, font=\scriptsize] at (\k,0.45) {\v};
+            }
+        \end{tikzpicture}
+        \\[2pt] \textit{\small Survive (green): coupon \$5, plus the \$100 face at year 5. Default (red): \$50 and the bond ends.}
+        \\ \textit{\small Blue: bond value at each surviving node, $P_{up}^{(k)}$ (including that year's coupon)}
+        \end{center}
         \begin{align*}
             P_{up}^{(4)} &= 5 + \frac{0.95(105) + 0.05(50)}{1.03} = 104.27\\
             P_{up}^{(3)} &= 5 + \frac{0.95(104.27) + 0.05(50)}{1.03} = 103.60\\
@@ -389,7 +410,6 @@ portfolio's price.
         \[96.88 = 5(P/A,y,5) + 100(P/F,y,5) \;\Rightarrow\; y = \db{5.735\%}\]
         \db{The yield is above the 3\% risk-free rate (and the 5\% coupon) to compensate for default risk.}
     \end{enumerate}
-    \factornote{\fPA; \fPF}
 \end{example}
 
 \heading{Summary}

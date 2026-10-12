@@ -49,7 +49,6 @@ Buying a \$500,000 house:
             A: \text{monthly payment}
         \end{array}
     \end{gathered}}\]
-    \factornote{\fAP}
 \end{remark}
 
 \begin{example}[Mortgage Payments Across Terms]
@@ -66,7 +65,6 @@ Buying a \$500,000 house:
         \db{Re-amortize this over the remaining 20 years at the new rate, $i_m' = 1.03^{1/6} - 1 = 0.49386\%$:}
         \[A' = 354{,}030(A/P,0.49386\%,240) = \db{\$2{,}521.36 \text{ per month}}\]
     \end{enumerate}
-    \factornote{\fAP; \fPA}
 \end{example}
 
 \begin{center}
@@ -153,7 +151,6 @@ period for $N$ periods, plus the face value $F$ at maturity.
         N: \text{number of coupon periods to maturity}
     \end{array}
 \end{gathered}}\]
-\factornote{\fPA; \fPF}
 
 \begin{example}[How Much Is This Bond Worth?]
     Ontario Hydro will pay you \$1,000 in 10 years, plus coupons at 9.25\%
@@ -166,7 +163,6 @@ period for $N$ periods, plus the face value $F$ at maturity.
     \end{align*}
     Would you be willing to pay \$953?
     \\\db{Only if the bond were as safe as the bank. Ontario Hydro might default, so you should demand a lower price.}
-    \factornote{\fPA; \fPF}
 \end{example}
 
 \begin{definition}[Yield]
@@ -181,7 +177,6 @@ period for $N$ periods, plus the face value $F$ at maturity.
     what annual interest rate gives that price?
     \[700 = 46.25(P/A,i,20) + 1000(P/F,i,20)\]
     \db{Solving numerically (trial and error or a solver): $i = 7.587\%$ per half-year, i.e.\ a nominal yield of $\approx 15.2\%$/year (effective $15.75\%$).}
-    \factornote{\fPA; \fPF}
 \end{example}
 
 \heading{Bond Price Is Determined by Yield}
@@ -275,7 +270,6 @@ period for $N$ periods, plus the face value $F$ at maturity.
         &= 300(21.8492) + 10{,}000(0.45377) = \db{\$11{,}092.46}
     \end{align*}
     \db{Price $>$ face value, because the coupon rate (12\%) exceeds the yield (10\%).}
-    \factornote{\fPA; \fPF}
 \end{example}
 
 \begin{example}[Yield on a Bond]
@@ -286,5 +280,4 @@ period for $N$ periods, plus the face value $F$ at maturity.
     \[1000 = 45(P/A,i,4) + 880(P/F,i,4) \;\Rightarrow\; i = 1.570\% \text{ per half-year}\]
     \[i_e = (1 + 0.01570)^2 - 1 = \db{3.16\%}\]
     \db{The yield is low despite the 9\%/year coupons, because you only get \$880 back on a \$1,000 purchase.}
-    \factornote{\fPA; \fPF}
 \end{example}

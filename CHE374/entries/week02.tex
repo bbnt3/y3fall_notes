@@ -374,13 +374,11 @@
 \begin{example}[F/P]
     If you had \$2,000 now and invested it at 10\%, how much would it be worth in 8 years?
     \[F = 2000(F/P,10\%,8) = 2000(1.10)^8 = 2000(2.1436) = \db{\$4{,}287.18}\]
-    \factornote{\fFP}
 \end{example}
 
 \begin{example}[P/F: Solving for $i$]
     You invest \$1,100 today and expect \$2,000 in 8 years. What is the interest rate?
     \[1100 = 2000(P/F,i,8) \;\Rightarrow\; (1+i)^8 = \frac{2000}{1100} = 1.8182 \;\Rightarrow\; i = 1.8182^{1/8} - 1 = \db{7.76\%}\]
-    \factornote{\fPF}
 \end{example}
 
 \begin{example}[Present Value of a Perpetuity]
@@ -506,14 +504,12 @@
         P_b &= 7{,}000(P/A,8\%,10) = 7{,}000(6.7101) = \db{\$46{,}971}
     \end{align*}
     \db{Prefer (b): it has the higher present value.}
-    \factornote{\fPF; \fPA}
 \end{example}
 
 \begin{example}[Reflection: Annuity at a Lower Rate]
     \$1/year for 5 years has a present value of \$3.7908 at 10\%. Which is a likely value at 9\%?
     (a) 3.8897 \quad (b) 5.0000 \quad (c) 3.7908 \quad (d) 2.3262
     \\\db{(a) 3.8897. A lower rate discounts less, so PV rises above 3.7908, but it must stay below the undiscounted total of \$5. Check: $(P/A,9\%,5) = 3.8897$.}
-    \factornote{\fPA}
 \end{example}
 
 \topic{Worked Examples}
@@ -523,7 +519,6 @@
     six years. If the rate of return on land is 8\%, how much should the
     investor be willing to pay now?
     \[P = 10{,}000(P/F,8\%,6) = \frac{10{,}000}{(1.08)^6} = \db{\$6{,}301.70}\]
-    \factornote{\fPF}
 \end{example}
 
 \begin{example}[The Magic of Compounding]
@@ -531,7 +526,6 @@
     at 10\% annual interest.
     \[F = 365(F/A,10\%,60) = 365\cdot\frac{(1.10)^{60}-1}{0.10} \approx \db{\$1{,}107{,}708}\]
     \db{You become a millionaire.}
-    \factornote{\fFA}
 \end{example}
 
 \begin{example}[F and P with Subperiod Compounding]
@@ -544,7 +538,6 @@
     \end{itemize}
     How much must you invest today to get \$2,000 in 5 years at 8\% compounded quarterly? $i_s = 2\%$, $N = 20$:
     \[P = 2000(P/F,2\%,20) = \frac{2000}{(1.02)^{20}} = \db{\$1{,}345.94}\]
-    \factornote{\fPF}
 \end{example}
 
 \begin{example}[Mortgage/Amortization]
@@ -554,7 +547,6 @@
     \[i_m = 1.045^{1/6} - 1 = 0.7363\%, \qquad N = 15 \times 12 = 180\]
     \[A = 300{,}000(A/P,0.7363\%,180) = \db{\$3{,}013.56 \text{ per month}}\]
     \db{That is about \$36,163/year, over 70\% of a \$50k starting salary (before tax), so it doesn't fit the budget.}
-    \factornote{\fAP}
 \end{example}
 
 \begin{example}[Sinking Fund]
@@ -562,7 +554,6 @@
     (e.g.\ replacing a machine). A roof must be replaced in 10 years for
     an estimated \$28,000. What equal end-of-year deposits at 8\% are needed?
     \[A = 28{,}000(A/F,8\%,10) = 28{,}000\cdot\frac{0.08}{(1.08)^{10}-1} = \db{\$1{,}932.83 \text{ per year}}\]
-    \factornote{\fAF}
 \end{example}
 
 \begin{example}[Retirement Planning]
@@ -572,7 +563,6 @@
         A_{7\%} &= 1{,}000{,}000(A/F,7\%,45) = \db{\$3{,}499.57 \text{ per year}}\\
         A_{10\%} &= 1{,}000{,}000(A/F,10\%,45) = \db{\$1{,}391.00 \text{ per year}}
     \end{align*}
-    \factornote{\fAF}
 \end{example}
 
 \begin{example}[Uneven Annuity Segments]
@@ -595,7 +585,6 @@
         \node[above,green!50!black] at (7,1.2) {\scriptsize \$3,000};
     \end{tikzpicture}
     \end{center}
-    \factornote{\fPA; \fPF}
 \end{example}
 
 \begin{example}[Present Value with an Arithmetic Gradient: Investment]
@@ -608,7 +597,6 @@
         &= -400{,}000 + 406{,}190 = \db{+\$6{,}190}
     \end{align*}
     \db{Barely worth it: the benefits' PV just exceeds the \$400,000 cost.}
-    \factornote{\fPA; \fPG}
 \end{example}
 
 \begin{example}[Present Value with an Arithmetic Gradient: Maintenance]
@@ -622,7 +610,6 @@
     \end{align*}
     With a \$1,000 overhaul at the start ($t=0$):
     \[\text{EAC} = (1{,}656.97 + 1{,}000)(A/P,6\%,8) = \db{\$427.87 \text{ per year}}\]
-    \factornote{\fPA; \fPG; \fAP}
 \end{example}
 
 \begin{example}[Future Value with Periodic Dividends]
@@ -636,7 +623,6 @@
         F &= 100{,}000(F/P,15\%,15) + 5{,}000(F/A,52.09\%,5)\\
         &= 813{,}706 + 68{,}510 = \db{\$882{,}216}
     \end{align*}
-    \factornote{\fFP; \fFA}
 \end{example}
 
 \begin{example}[A Business Example]
@@ -654,5 +640,4 @@
         \approx{}& \db{\$633{,}463}
     \end{align*}
     \db{where $Q_q$ is \$15k, \$20k or \$25k depending on the year.}
-    \factornote{\fPA; \fPF}
 \end{example}
