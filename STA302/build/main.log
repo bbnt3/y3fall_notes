@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 SEP 2026 11:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  12 OCT 2026 20:06
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -870,14 +870,17 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 al/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}] (build/main.toc
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <10.95> on input line 2.
-)
+
+
+[2{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
+texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}])
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
 
 (./entries/week01.tex
 
-[2]
+[3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
 
 Package hyperref Warning: Suppressing empty link on input line 9.
 
@@ -893,15 +896,12 @@ LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 2
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 
-[3{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/lo
-cal/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texliv
-e/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2025/texmf-d
-ist/fonts/enc/dvips/lm/lm-ts1.enc}]
+[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}]
 
-[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}])
+[5{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}])
 (./entries/week02.tex
 
-[5]
+[6]
 
 Package hyperref Warning: Suppressing empty link on input line 18.
 
@@ -916,58 +916,387 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 83.
 
 
-[6]
-
 [7]
+
+[8]
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 213.
 
 
-[8]
-
 [9]
 
-[10])
+[10]
 
-[11] (build/main.aux)
+[11]) (./entries/week03.tex
+
+[12]
+
+Package hyperref Warning: Suppressing empty link on input line 16.
+
+
+Package hyperref Warning: Suppressing empty link on input line 16.
+
+
+Package hyperref Warning: Suppressing empty link on input line 16.
+
+<figures/anscombe_scatter.png, id=268, 1585.925pt x 1063.975pt>
+File: figures/anscombe_scatter.png Graphic file (type png)
+<use figures/anscombe_scatter.png>
+Package pdftex.def Info: figures/anscombe_scatter.png  used on input line 58.
+(pdftex.def)             Requested size: 338.22418pt x 226.89938pt.
+
+
+[13]
+<figures/assumptions_picture.png, id=276, 817.0525pt x 524.96124pt>
+File: figures/assumptions_picture.png Graphic file (type png)
+<use figures/assumptions_picture.png>
+Package pdftex.def Info: figures/assumptions_picture.png  used on input line 91
+.
+(pdftex.def)             Requested size: 234.8775pt x 150.90515pt.
+
+
+[14 <./figures/anscombe_scatter.png (PNG copy)>]
+
+[15 <./figures/assumptions_picture.png (PNG copy)>]
+
+[16]
+<figures/you_try_residuals.png, id=294, 1235.61626pt x 1096.095pt>
+File: figures/you_try_residuals.png Graphic file (type png)
+<use figures/you_try_residuals.png>
+Package pdftex.def Info: figures/you_try_residuals.png  used on input line 210.
+
+(pdftex.def)             Requested size: 291.2458pt x 258.35172pt.
+
+Overfull \hbox (31.53514pt too wide) in paragraph at lines 224--227
+\T1/lmr/m/n/10.95 If the dis-tri-bu-tion is close to nor-mal, the points form a
+ \T1/lmr/bx/n/10.95 straight line\T1/lmr/m/n/10.95 . In R: \T1/lmtt/m/n/10.95 q
+qnorm(model$residuals)
+ []
+
+
+
+[17 <./figures/you_try_residuals.png (PNG copy)>]
+<figures/qq_shapes.png, id=303, 972.63374pt x 1022.82124pt>
+File: figures/qq_shapes.png Graphic file (type png)
+<use figures/qq_shapes.png>
+Package pdftex.def Info: figures/qq_shapes.png  used on input line 240.
+(pdftex.def)             Requested size: 258.36668pt x 271.68622pt.
+<figures/anscombe1_diag.png, id=304, 1145.27875pt x 1078.0275pt>
+File: figures/anscombe1_diag.png Graphic file (type png)
+<use figures/anscombe1_diag.png>
+Package pdftex.def Info: figures/anscombe1_diag.png  used on input line 257.
+(pdftex.def)             Requested size: 225.4804pt x 212.22955pt.
+<figures/anscombe2_diag.png, id=305, 1710.39pt x 1092.08pt>
+File: figures/anscombe2_diag.png Graphic file (type png)
+<use figures/anscombe2_diag.png>
+Package pdftex.def Info: figures/anscombe2_diag.png  used on input line 262.
+(pdftex.def)             Requested size: 225.4804pt x 143.95837pt.
+
+
+[18 <./figures/qq_shapes.png (PNG copy)>]
+<figures/anscombe3_diag.png, id=312, 1710.39pt x 1092.08pt>
+File: figures/anscombe3_diag.png Graphic file (type png)
+<use figures/anscombe3_diag.png>
+Package pdftex.def Info: figures/anscombe3_diag.png  used on input line 267.
+(pdftex.def)             Requested size: 225.4804pt x 143.95837pt.
+<figures/anscombe4_diag.png, id=313, 1710.39pt x 1092.08pt>
+File: figures/anscombe4_diag.png Graphic file (type png)
+<use figures/anscombe4_diag.png>
+Package pdftex.def Info: figures/anscombe4_diag.png  used on input line 272.
+(pdftex.def)             Requested size: 225.4804pt x 143.95837pt.
+
+Overfull \hbox (10.76633pt too wide) in paragraph at lines 282--285
+\T1/lmr/m/n/10.95 dic-tors are dis-crete (e.g. Miche-lin NY data, \T1/lmtt/m/n/
+10.95 lm(Price ~ Food + Decor + Service + InMichelin)\T1/lmr/m/n/10.95 ). 
+ []
+
+<figures/michelin_resid.png, id=314, 2007.5pt x 660.4675pt>
+File: figures/michelin_resid.png Graphic file (type png)
+<use figures/michelin_resid.png>
+Package pdftex.def Info: figures/michelin_resid.png  used on input line 288.
+(pdftex.def)             Requested size: 375.80544pt x 123.63579pt.
+
+
+[19 <./figures/anscombe1_diag.png (PNG copy)> <./figures/anscombe2_diag.png (PN
+G copy)> <./figures/anscombe3_diag.png (PNG copy)> <./figures/anscombe4_diag.pn
+g (PNG copy)> <./figures/michelin_resid.png (PNG copy)>]
+<figures/whats_wrong_resid.png, id=320, 1027.84pt x 1019.81pt>
+File: figures/whats_wrong_resid.png Graphic file (type png)
+<use figures/whats_wrong_resid.png>
+Package pdftex.def Info: figures/whats_wrong_resid.png  used on input line 325.
+
+(pdftex.def)             Requested size: 258.36668pt x 256.35236pt.
+
+
+[20]
+<figures/whats_wrong_pairs.png, id=327, 958.58125pt x 1009.7725pt>
+File: figures/whats_wrong_pairs.png Graphic file (type png)
+<use figures/whats_wrong_pairs.png>
+Package pdftex.def Info: figures/whats_wrong_pairs.png  used on input line 340.
+
+(pdftex.def)             Requested size: 211.38832pt x 222.6745pt.
+
+
+[21 <./figures/whats_wrong_resid.png (PNG copy)> <./figures/whats_wrong_pairs.p
+ng (PNG copy)>]
+Overfull \hbox (8.88844pt too wide) in paragraph at lines 368--369
+[]\T1/lmr/m/n/10.95 Recall: [][][][][][] 
+ []
+
+<figures/nyc_pairs.png, id=333, 1042.89626pt x 1045.9075pt>
+File: figures/nyc_pairs.png Graphic file (type png)
+<use figures/nyc_pairs.png>
+Package pdftex.def Info: figures/nyc_pairs.png  used on input line 388.
+(pdftex.def)             Requested size: 197.29623pt x 197.86269pt.
+
+
+[22]
+<figures/nyc_resid.png, id=341, 1860.9525pt x 1022.82124pt>
+File: figures/nyc_resid.png Graphic file (type png)
+<use figures/nyc_resid.png>
+Package pdftex.def Info: figures/nyc_resid.png  used on input line 393.
+(pdftex.def)             Requested size: 399.29463pt x 219.44968pt.
+<figures/caution_pairs.png, id=342, 1150.2975pt x 1078.0275pt>
+File: figures/caution_pairs.png Graphic file (type png)
+<use figures/caution_pairs.png>
+Package pdftex.def Info: figures/caution_pairs.png  used on input line 407.
+(pdftex.def)             Requested size: 225.4804pt x 211.3084pt.
+<figures/caution_resid.png, id=343, 992.70876pt x 743.77875pt>
+File: figures/caution_resid.png Graphic file (type png)
+<use figures/caution_resid.png>
+Package pdftex.def Info: figures/caution_resid.png  used on input line 411.
+(pdftex.def)             Requested size: 225.4804pt x 168.93187pt.
+
+
+[23 <./figures/nyc_pairs.png (PNG copy)> <./figures/nyc_resid.png (PNG copy)>])
+(./entries/week04.tex
+
+[24 <./figures/caution_pairs.png (PNG copy)> <./figures/caution_resid.png (PNG 
+copy)>]
+
+[25]
+<figures/w4_vst_sqrt.png, id=365, 507.3354pt x 459.27585pt>
+File: figures/w4_vst_sqrt.png Graphic file (type png)
+<use figures/w4_vst_sqrt.png>
+Package pdftex.def Info: figures/w4_vst_sqrt.png  used on input line 100.
+(pdftex.def)             Requested size: 281.85587pt x 255.1604pt.
+
+
+[26]
+<figures/w4_poisson_sqrt.png, id=370, 903.73634pt x 461.8053pt>
+File: figures/w4_poisson_sqrt.png Graphic file (type png)
+<use figures/w4_poisson_sqrt.png>
+Package pdftex.def Info: figures/w4_poisson_sqrt.png  used on input line 123.
+(pdftex.def)             Requested size: 291.2458pt x 148.8236pt.
+
+
+[27 <./figures/w4_vst_sqrt.png (PNG copy)>]
+
+[28 <./figures/w4_poisson_sqrt.png (PNG copy)>]
+
+[29]
+Overfull \hbox (5.0199pt too wide) in paragraph at lines 258--261
+[]\T1/lmtt/m/n/10.95 mag <- read.csv("magazines.csv")\T1/lmr/m/n/10.95 , 204 ma
+g-a-zines. Pre-dict $\OML/lmm/m/it/10.95 Y \OT1/lmr/m/n/10.95 =$ \T1/lmtt/m/n/1
+0.95 AdRevenue \T1/lmr/m/n/10.95 from $\OML/lmm/m/it/10.95 X[] \OT1/lmr/m/n/10.
+95 =$ \T1/lmtt/m/n/10.95 AdPages\T1/lmr/m/n/10.95 ,
+ []
+
+<figures/w4_magazine_resid.png, id=387, 512.03294pt x 301.3659pt>
+File: figures/w4_magazine_resid.png Graphic file (type png)
+<use figures/w4_magazine_resid.png>
+Package pdftex.def Info: figures/w4_magazine_resid.png  used on input line 262.
+
+(pdftex.def)             Requested size: 258.36668pt x 152.06212pt.
+<figures/w4_magazine_log.png, id=388, 522.15076pt x 361.71135pt>
+File: figures/w4_magazine_log.png Graphic file (type png)
+<use figures/w4_magazine_log.png>
+Package pdftex.def Info: figures/w4_magazine_log.png  used on input line 273.
+(pdftex.def)             Requested size: 258.36668pt x 178.98419pt.
+
+
+[30 <./figures/w4_magazine_resid.png (PNG copy)>]
+<figures/w4_magazine_allresid.png, id=395, 963.72044pt x 292.33215pt>
+File: figures/w4_magazine_allresid.png Graphic file (type png)
+<use figures/w4_magazine_allresid.png>
+Package pdftex.def Info: figures/w4_magazine_allresid.png  used on input line 2
+77.
+(pdftex.def)             Requested size: 446.26582pt x 135.37099pt.
+<figures/w4_boxcox_y.png, id=396, 963.72044pt x 423.86356pt>
+File: figures/w4_boxcox_y.png Graphic file (type png)
+<use figures/w4_boxcox_y.png>
+Package pdftex.def Info: figures/w4_boxcox_y.png  used on input line 291.
+(pdftex.def)             Requested size: 422.77664pt x 185.95079pt.
+
+
+[31 <./figures/w4_magazine_log.png (PNG copy)> <./figures/w4_magazine_allresid.
+png (PNG copy)>]
+<figures/w4_boxcox_x_resid.png, id=403, 602.37045pt x 179.2296pt>
+File: figures/w4_boxcox_x_resid.png Graphic file (type png)
+<use figures/w4_boxcox_x_resid.png>
+Package pdftex.def Info: figures/w4_boxcox_x_resid.png  used on input line 320.
+
+(pdftex.def)             Requested size: 399.29463pt x 118.80876pt.
+
+
+[32 <./figures/w4_boxcox_y.png (PNG copy)> <./figures/w4_boxcox_x_resid.png (PN
+G copy)>]
+<figures/w4_boxcox_xy_resid.png, id=409, 602.37045pt x 175.97745pt>
+File: figures/w4_boxcox_xy_resid.png Graphic file (type png)
+<use figures/w4_boxcox_xy_resid.png>
+Package pdftex.def Info: figures/w4_boxcox_xy_resid.png  used on input line 346
+.
+(pdftex.def)             Requested size: 399.29463pt x 116.65297pt.
+
+
+[33 <./figures/w4_boxcox_xy_resid.png (PNG copy)>]
+
+[34]
+
+[35]) (./entries/week05.tex
+
+[36]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 22.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 22.
+
+
+
+[37]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 119.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\sigma' on input line 119.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 119.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 119.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 119.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 119.
+
+
+
+[38]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 149.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\beta' on input line 149.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 149.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 149.
+
+
+
+[39]
+
+[40]
+
+[41]
+
+[42]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 378.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\mid' on input line 378.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 378.
+
+
+
+[43]
+
+[44]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 468.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 468.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 468.
+
+
+
+[45]
+
+[46]
+
+[47])
+
+[48] (build/main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: C91F76C0EEFA172165FF42406B1E91E9;2086.
+(rerunfilecheck)             Checksum: A0108E3F6A1B6662CA9BA0EA995021E6;7646.
  ) 
 Here is how much of TeX's memory you used:
- 23141 strings out of 473190
- 432945 string characters out of 5715801
- 808930 words of memory out of 5000000
- 45907 multiletter control sequences out of 15000+600000
- 653186 words of font info for 103 fonts, out of 8000000 for 9000
+ 24232 strings out of 473190
+ 455688 string characters out of 5715801
+ 809346 words of memory out of 5000000
+ 46863 multiletter control sequences out of 15000+600000
+ 666403 words of font info for 111 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,10n,90p,541b,712s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,16n,90p,541b,732s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb></usr/lo
 cal/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texliv
 e/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/local/texlive/2025/tex
 mf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2025/texmf-dist/fo
-nts/type1/public/lm/lmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/p
-ublic/lm/lmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lm
-mi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmib10.pfb><
-/usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/
-texlive/2025/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/202
-5/texmf-dist/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2025/texmf-dis
-t/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type
-1/public/lm/lmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/
-lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb><
-/usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local
-/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/20
-25/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/local/texlive/2025/texmf-d
-ist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/
-type1/public/lm/lmtti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/pub
-lic/amsfonts/symbols/msbm10.pfb>
-Output written on build/main.pdf (11 pages, 389137 bytes).
+nts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/
+public/lm/lmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/l
+mmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></
+usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/local
+/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/20
+25/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2025/texmf-di
+st/fonts/type1/public/lm/lmr17.pfb></usr/local/texlive/2025/texmf-dist/fonts/ty
+pe1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/l
+m/lmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmr8.pfb><
+/usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/local
+/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2
+025/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texlive/2025/texmf-d
+ist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/t
+ype1/public/lm/lmtk10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/publi
+c/lm/lmtt10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmtti
+10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb>
+Output written on build/main.pdf (48 pages, 3200063 bytes).
 PDF statistics:
- 268 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
- 38 named destinations out of 1000 (max. 500000)
- 101 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 663 PDF objects out of 1000 (max. 8388607)
+ 532 compressed objects within 6 object streams
+ 161 named destinations out of 1000 (max. 500000)
+ 392 words of extra memory for PDF output out of 10000 (max. 10000000)
 
