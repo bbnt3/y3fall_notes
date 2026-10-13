@@ -34,8 +34,8 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
     A random variable $X$ and probability measure $P$ induce a probability measure $\mu$ on $\R$ defined by
     \[\mu(A) = P(X \in A) = P(\left\{\omega\in \Omega: X(\omega)\in A\right\})\]
     for any $A \subseteq \R$.
-    \aside{$\mu$ is a measure on the real number set: $\mu(\{0,1\})$ and $\mu([0,1))$ each return a certain value.}
-    \\ $\mu(A)$ takes a real number set $A$ as input, and equals $P$ of the \aside{pre-image of $A$ w.r.t.\ r.v.\ $X$}, i.e.\ $P(\Omega_A) = \mu(A)$ where $\Omega_A = \left\{\omega\in\Omega: X(\omega)\in A\right\}$.
+    \text{$\mu$ is a measure on the real number set: $\mu(\{0,1\})$ and $\mu([0,1))$ each return a certain value.}
+    \\ $\mu(A)$ takes a real number set $A$ as input, and equals $P$ of the \text{pre-image of $A$ w.r.t.\ r.v.\ $X$}, i.e.\ $P(\Omega_A) = \mu(A)$ where $\Omega_A = \left\{\omega\in\Omega: X(\omega)\in A\right\}$.
 \end{theorem}
 
 \begin{example}[][3.2.1]
@@ -65,7 +65,7 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
         \draw[->, red] (wred.east) to[bend left=10] (5.8,-2.2);
         \draw[->, green!60!black] (wgreen.east) to[bend left=10] (6.6,-2.2);
         \draw[->, yellow!70!black] (wyellow.east) to[bend left=5] (8.2,-2.2);
-        \node[blue!55!black, align=left, anchor=west] at (1.4,1.6) {\aside{pre-image of $A$ w.r.t.\ $X$: $\{\text{blue, red}\}$}};
+        \node[blue!55!black, align=left, anchor=west] at (1.4,1.6) {\text{pre-image of $A$ w.r.t.\ $X$: $\{\text{blue, red}\}$}};
         \node at (6.3,0.1) {$X$};
     \end{tikzpicture}
     \end{center}
@@ -146,7 +146,7 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
                 \node at (0.95,0.45) {$A_2$};
                 \node at (-0.25,-0.05) {$A_3$};
                 \node at (-1.15,-0.25) {$\cdots$};
-                \node[anchor=west] at (2.7,0) {$\displaystyle\bigcap_{n=1}^{\infty} A_n = \phi$ \aside{(shrinks to nothing)}};
+                \node[anchor=west] at (2.7,0) {$\displaystyle\bigcap_{n=1}^{\infty} A_n = \phi$ \text{(shrinks to nothing)}};
             \end{tikzpicture}
             \end{center}
             \begin{align*}
@@ -166,7 +166,7 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
                 \node at (0.95,0.45) {$B_2$};
                 \node at (1.9,0.75) {$B_3$};
                 \node at (2.85,0) {$\cdots$};
-                \node[anchor=west] at (3.3,0) {$\displaystyle\bigcup_{n=1}^{\infty} B_n = \Omega$ \aside{(grows to everything)}};
+                \node[anchor=west] at (3.3,0) {$\displaystyle\bigcup_{n=1}^{\infty} B_n = \Omega$ \text{(grows to everything)}};
             \end{tikzpicture}
             \end{center}
             \[\bigcup_{n=1}^{\infty} B_n = \Omega\]

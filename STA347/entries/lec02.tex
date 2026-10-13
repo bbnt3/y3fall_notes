@@ -24,7 +24,7 @@
     \end{enumerate}
 \end{quote}
 
-\aside{$\mathcal{P}(\Omega)$ is the power set of $\Omega$.}
+\text{$\mathcal{P}(\Omega)$ is the power set of $\Omega$.}
 
 \textbf{Remark:} It may be impossible for such a $P$ to exist. To define exactly which subsets we want $P$ to satisfy these axioms, that would require more advanced mathematical theories. For this class, we just assume such a $P$ is defined for all subsets of $\Omega$.
 
@@ -51,7 +51,7 @@ The following properties are satisfied by any probability measure $P$
 \begin{enumerate}
     \item $\forall E \subseteq \Omega, P(E^C) = 1 - P(E)$
     \item $P(\phi) = 0$
-    \item $\forall E, F \subseteq \Omega$, such that $E \subseteq F, P(E) \leq P(F)$ \aside{(``big event, big probability'')}
+    \item $\forall E, F \subseteq \Omega$, such that $E \subseteq F, P(E) \leq P(F)$ \text{(``big event, big probability'')}
     \item $\forall E, F \subseteq \Omega, P(E\bigcup F) = P(E)+P(F) - P(E\bigcap F)$
     \item $\forall E, F \subseteq \Omega, P(E\bigcap F) = P(E)+P(F)-P(E\bigcup F)$
     \item $\forall E, F \subseteq \Omega, P(F \setminus E) = P(F) - P(E\bigcap F)$
@@ -85,7 +85,7 @@ Proof via Def 2.2 (probability axioms).
         \node[orange!80!black] at (1.9,-1.9) {$F_3$};
         \draw[->, orange!80!black] (1.65,-1.85) -- (0.9,-1.6);
     \end{tikzpicture}
-    \\ \aside{$F_i$ = the part of $E_i$ not already covered by $E_1,\dots,E_{i-1}$.}
+    \\ \text{$F_i$ = the part of $E_i$ not already covered by $E_1,\dots,E_{i-1}$.}
     \end{center}
     from the probability axiom.
     \begin{align*}

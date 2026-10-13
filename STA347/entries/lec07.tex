@@ -36,7 +36,7 @@ Both Chebyshev and Markov's inequality talk about
     \node[below] at (3,0) {$a$};
     \node[red!70!black] at (3.9,1.3) {$P(X \geq a)$};
     \draw[->, red!70!black] (3.9,1.1) -- (3.5,0.3);
-    \node at (2.3,-0.8) {\aside{Markov: uses the 1st moment}};
+    \node at (2.3,-0.8) {\text{Markov: uses the 1st moment}};
     % Chebyshev: bell curve, both tails beyond E(X) +- t
     \begin{scope}[xshift=7.3cm]
         \draw[->] (-1.2,0) -- (5,0) node[right]{$x$};
@@ -50,7 +50,7 @@ Both Chebyshev and Markov's inequality talk about
         \draw[<->] (0.4,0.35) -- node[above]{$t$} (1.9,0.35);
         \node[red!70!black] at (3.9,1.5) {$P(|X-E(X)| \geq t)$};
         \draw[->, red!70!black] (3.9,1.3) -- (3.7,0.2);
-        \node at (1.9,-0.8) {\aside{Chebyshev: uses the 2nd moment}};
+        \node at (1.9,-0.8) {\text{Chebyshev: uses the 2nd moment}};
     \end{scope}
 \end{tikzpicture}
 \end{center}
@@ -94,7 +94,7 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
         \draw (1,0.08) -- (1,-0.08) node[below]{$x$};
         \draw (5,0.08) -- (5,-0.08) node[below]{$y$};
         \draw[decorate, decoration={brace, amplitude=5pt}] (1,0.2) -- (5,0.2)
-            node[midway, above=5pt]{\aside{$\lambda x + (1-\lambda)y,\ \lambda \in (0,1)$}};
+            node[midway, above=5pt]{\text{$\lambda x + (1-\lambda)y,\ \lambda \in (0,1)$}};
     \end{tikzpicture}
     \end{center}
     if $\lambda \to 1$, then the value is closer to $x$. Vice versa for $\lambda \to 0$, the value is closer to $y$.
@@ -126,7 +126,7 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
     \end{tikzpicture}
     \end{center}
     Convexity: $f(\lambda x+ (1-\lambda)y) \leq \lambda f(x) + (1-\lambda)f(y)$
-    \\ \aside{$\Rightarrow$ the function is under the straight line}
+    \\ \text{$\Rightarrow$ the function is under the straight line}
 \end{definition}
 
 \begin{lemma}[Hoeffding's Lemma][4.4.2]
@@ -141,10 +141,10 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
         Apply $f(y) = e^{\lambda y}$ transformation to r.v.\ $Y$:
         \[e^{\lambda Y} \leq \alpha e^{\lambda a} + (1-\alpha)e^{\lambda b} = \frac{b-Y}{b-a}e^{\lambda a} + \frac{Y-a}{b-a}e^{\lambda b}\]
         Take expectation on both sides:
-        \[E[e^{\lambda Y}] \leq E\Big[\frac{b-\overbrace{Y}^{\aside{random var.}}}{b-a}\underbrace{e^{\lambda a}}_{\aside{constant}}\Big] + E\Big[\frac{Y-a}{b-a}\underbrace{e^{\lambda b}}_{\aside{constant}}\Big]\]
+        \[E[e^{\lambda Y}] \leq E\Big[\frac{b-\overbrace{Y}^{\text{random var.}}}{b-a}\underbrace{e^{\lambda a}}_{\text{constant}}\Big] + E\Big[\frac{Y-a}{b-a}\underbrace{e^{\lambda b}}_{\text{constant}}\Big]\]
         \[= \frac{b-E(Y)}{b-a}e^{\lambda a} + \frac{E(Y)-a}{b-a}e^{\lambda b}\]
         \[= \underbrace{\frac{b}{b-a}}_{p}e^{\lambda a} + \frac{-a}{b-a}e^{\lambda b} \qquad (\text{since } E(Y) = 0)\]
-        Next, we let $p = \frac{b}{b-a}$ \aside{(since $E(Y)=0$ forces $a \leq 0 \leq b$, we have $p \in [0,1]$)}:
+        Next, we let $p = \frac{b}{b-a}$:
         \[E[e^{\lambda Y}] \leq pe^{\lambda a} + (1-p)e^{\lambda b}\]
         We take log on RHS:
         \[\log\{E[e^{\lambda Y}]\} \leq \log\{pe^{\lambda a} + (1-p)e^{\lambda b}\}\]
@@ -157,7 +157,6 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
         \[\varphi(u) = \underbrace{\varphi(0)}_{0} + \underbrace{\varphi'(0)}_{0}u + \frac{1}{2}\varphi''(\xi)u^2 \qquad \text{(Taylor's Expansion at } u = 0)\]
         For some $\xi$ between $0$ and $u$, \quad $\varphi(u) = \frac{1}{2}\varphi''(\xi)u^2$
         \[\varphi''(u) = \frac{p(1-p)e^u}{[p+(1-p)e^u]^2} \leq \frac{1}{4}\]
-        \aside{(writing $q = \frac{(1-p)e^u}{p+(1-p)e^u} \in [0,1]$, $\varphi''(u) = q(1-q) \leq \frac14$)}
         \[\Rightarrow \varphi(u) \leq \frac{1}{8}u^2\]
         \[\Rightarrow \log\{E[e^{\lambda Y}]\} \leq \frac{1}{8}u^2 = \frac{(b-a)^2\lambda^2}{8} \quad \text{as } u = (b-a)\lambda\]
         \[\Rightarrow M_Y(\lambda) \leq e^{\frac{(b-a)^2\lambda^2}{8}}\]
@@ -175,18 +174,13 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
         \[P(\underbrace{S_n - E(S_n)}_{(1)} \geq t) \leq e^{-\lambda t}\underbrace{E[e^{\lambda(S_n - E(S_n))}]}_{(2)}\]
         (1): \quad $S_n - E(S_n) = \sum_{i=1}^n (X_i - E(X_i))$ \quad as $S_n = \sum_{i=1}^n X_i$
         \\ (2): \[e^{\lambda(S_n - E(S_n))} = e^{\lambda\sum_{i=1}^n (X_i - E(X_i))} = \prod_{i=1}^n e^{\lambda[X_i - E(X_i)]}\]
-        Taking expectations, the factors are independent so $E$ of the product $=$ product of $E$'s \aside{(Thm 5.7)}:
+        Taking expectations, the factors are independent so $E$ of the product $=$ product of $E$'s:
         \[M_{S_n - E(S_n)}(\lambda) = \prod_{i=1}^n M_{X_i - E(X_i)}(\lambda)\]
-        Applying Hoeffding's Lemma to $Y = X_i - E(X_i)$ \aside{(mean $0$, range of width $b_i - a_i$)}: \quad $M_{X_i - E(X_i)}(\lambda) \leq e^{\frac{(b_i - a_i)^2\lambda^2}{8}}$
+        Applying Hoeffding's Lemma to $Y = X_i - E(X_i)$: \quad $M_{X_i - E(X_i)}(\lambda) \leq e^{\frac{(b_i - a_i)^2\lambda^2}{8}}$
         \[M_{S_n - E(S_n)}(\lambda) \leq \prod_{i=1}^n e^{\frac{(b_i-a_i)^2\lambda^2}{8}} = e^{\frac{\lambda^2}{8}\sum_{i=1}^n (b_i - a_i)^2}\]
         Combine with Chernoff's inequality:
         \[P(S_n - E(S_n) \geq t) \leq e^{-\lambda t + \frac{\lambda^2}{8}\sum_{i=1}^n (b_i - a_i)^2}\]
         Rearrange, we have Hoeffding's inequality.
-        \\ \aside{Filling in the rearrangement: write $D = \sum_{i=1}^n (b_i-a_i)^2$. The bound holds for every $\lambda>0$, so pick the $\lambda$ minimizing the exponent $g(\lambda) = -\lambda t + \frac{\lambda^2}{8}D$:}
-        \[g'(\lambda) = -t + \frac{\lambda}{4}D = 0 \;\Rightarrow\; \lambda^* = \frac{4t}{D}, \qquad g(\lambda^*) = -\frac{4t^2}{D} + \frac{2t^2}{D} = -\frac{2t^2}{D}\]
-        \[\Rightarrow P(S_n - E(S_n) \geq t) \leq e^{-2t^2/D}\]
-        \aside{The other tail: apply the same argument to $-X_i$ (with $-b_i \leq -X_i \leq -a_i$, same width $b_i - a_i$) to get $P(S_n - E(S_n) \leq -t) \leq e^{-2t^2/D}$. Then by Lemma 2.4 (union bound),}
-        \[P(|S_n - E(S_n)| \geq t) \leq P(S_n - E(S_n) \geq t) + P(S_n - E(S_n) \leq -t) \leq 2e^{-2t^2/D}\]
         \hfill $\square$
     \end{proof}
 \end{theorem}

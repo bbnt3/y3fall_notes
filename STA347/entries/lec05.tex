@@ -13,7 +13,7 @@ for this course, we are defining probability via ``measure theory'', so we need 
 Particularly, under the ``measure theory'' perspective:
 \[E(X) = \int x\, dP \quad \Rightarrow P = \text{probability measure}\]
 \[\int xf(x)\,dx \quad \Rightarrow \quad \int x\, dP\]
-``Riemann Integral'' \aside{(integrating against a measure $dP$ instead of $dx$; this is the Lebesgue integral)}
+``Riemann Integral''
 
 \begin{definition}[Simple Expectation][5.1]
     If $X$ only takes finitely many values $x_1, \dots, x_n$, and $A_i = \left\{\omega: X(\omega) = x_i\right\}$, define the expectation of $X$ by:
@@ -53,8 +53,8 @@ Particularly, under the ``measure theory'' perspective:
         \node[left] at (0,3) {$3$};
         \node[left] at (0,5) {$5$};
         \draw (0,5) -- (-0.015,5);
-        \node at (1/6,1.5) {\aside{$P = \frac13$}};
-        \node at (2/3,2.5) {\aside{$P = \frac23$}};
+        \node at (1/6,1.5) {\text{$P = \frac13$}};
+        \node at (2/3,2.5) {\text{$P = \frac23$}};
     \end{tikzpicture}
     \end{center}
     \[E(X) = 5 \cdot P(\omega > \frac{1}{3}) + 3\cdot P(\omega \leq \frac{1}{3})\]
@@ -137,8 +137,7 @@ Recall, when we defined the integral:
     \node at (3.5,0.6) {$\cdots$};
 \end{tikzpicture}
 \end{center}
-When it comes to the measure-theoretic integral, we are no longer cutting $X$ axis into tiny intervals, but cutting each set into tiny subsets and calculate the sum of $x$ times the measure of each tiny subset.
-\\ \aside{(Prof's notes say ``Riemann'' here, but cutting the sample space into sets and weighting by their measure is the Lebesgue integral; Riemann is the ``cut the $x$-axis'' picture above.)}
+When it comes to the Riemann integral, we are no longer cutting $X$ axis into tiny intervals, but cutting each set into tiny subsets and calculate the sum of $x$ times the measure of each tiny subset.
 \begin{align*}
     E(X) &= \inf \left\{E(Z): \quad Z\text{ is simple and } Z \geq X \text{ a.s.}\right\}\\
     &= \sup \left\{E(Y): \quad Y \text{ is simple and } Y \leq X \text{ a.s.}\right\}
@@ -170,7 +169,6 @@ Our goal is to prove $L \geq U \quad \Rightarrow \quad L = U \overset{def}{=}E(X
 \\the way to cut $[-M, M]$ into tiny intervals.
 \\for any arbitrary $n$, we define
 \[E_k = \left\{\omega: \frac{kM}{n}\geq X(\omega) \geq \frac{(k-1)M}{n}\right\}\]
-\aside{($k = -n+1, \dots, n$, so the $E_k$'s cover $[-M, M]$ in $2n$ levels of width $\frac{M}{n}$.)}
 \begin{center}
 \begin{tikzpicture}[scale=1, every node/.style={font=\small}]
     % inverse of X(w) = 0.08 w^2 + 0.2 w + 0.3, to find where each level is hit
@@ -202,7 +200,7 @@ Our goal is to prove $L \geq U \quad \Rightarrow \quad L = U \overset{def}{=}E(X
     \node[anchor=west, green!50!black] at (6.7,4.4) {$\psi_n$ (upper bound)};
     \node[anchor=west, blue!55!black] at (6.7,3.8) {$X(\omega)$};
     \node[anchor=west, red!70!black] at (6.7,3.2) {$\phi_n$ (lower bound)};
-    \node[anchor=west] at (6.7,2.4) {\aside{\shortstack[l]{cut the range $[-M,M]$ into $n$ levels,\\ $E_k$ = the $\omega$'s landing in level $k$}}};
+    \node[anchor=west] at (6.7,2.4) {\text{\shortstack[l]{cut the range $[-M,M]$ into $n$ levels,\\ $E_k$ = the $\omega$'s landing in level $k$}}};
 \end{tikzpicture}
 \end{center}
 

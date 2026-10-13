@@ -1,0 +1,74 @@
+% !TeX root = ../main.tex
+
+\newlecture[][Oct 13, 2026]
+
+\begin{theorem}[Bounded Convergence Thm][5.7]
+    Suppose that $|X_n| \leq M$ a.s. and $X_n\overset{P}{\to} X$,
+    \\Then $EX = \lim_{n\to \infty}EX_n$
+    \\In general
+    \[\lim_{n\to\infty}EX_n = E\lim_{n\to\infty}X_n\]
+    This may NOT be true!
+    \\However, under certain conditions, you can switch taking limit and expectation.
+    \[\begin{cases}
+        \text{Bounded Convergence Theorem} &\text{(BCT)} \\
+        \text{Monotone Convergence Theorem} &\text{(MCT)} \\
+        \text{Dominated Convergence Theorem} &\text{(DCT)}
+    \end{cases}\]
+\end{theorem}
+
+\begin{example}[Counter Example][5.6.1]
+    Suppose the sequence of R.V. $\left\{X_n \right\}$
+    \[\begin{cases}
+        n & \text{with probability } \frac{1}{n} \\
+        0 & \text{with probability } 1-\frac{1}{n}
+    \end{cases}\]
+    \[\lim_{n\to\infty}X_n = 0 \quad \text{a.s.}\]
+    \[\Rightarrow E\left(\lim_{n\to\infty}X_n\right) = E(0) = 0\]
+    However, for each $n \quad E(X_n) = n \times \frac{1}{n} = 1$
+    \[\lim_{n\to\infty}E(X_n) = \lim_{n\to\infty}1 = 1\]
+    The problem is, even though the probability of $X_n$ taking non-zero values is shrinkaging to 0, the value it may take, however, goes sufficiently large.
+    \\However, under BCT, the value that $X_n$ may take is boudned, and it can be no longer sufficiently large to offset the convergence of probability, therefore we can have limit of expectation = expectation of limit.
+\end{example}
+
+\begin{proof}
+    Fix $\varepsilon > 0$ and define
+    \[\mathcal{G}_n = \left\{\left|X_n - X\right| > \varepsilon\right\}\]
+    as $X_n \overset{P}{\to} X \qquad P(\mathcal{G}_n) \to 0$
+    \[\left|EX_n - EX\right| = \left|E(X_n - X)\right| \qquad f(x) = \left|X\right| \text{ convex}\]
+    \[\leq E\left|X_n - X\right|\]
+    \[= \underbrace{E[\left|X_n - X\right|I\mathcal{G}_n]}_{\leq 2M\cdot P(\mathcal{G}_n)} + \underbrace{E[\left|X_n - X\right| \cdot I \mathcal{G}_n^c]}_{\leq \varepsilon [1-P(\mathcal{G}_n)]}\]
+    \[\leq \underbrace{2M\cdot P(\mathcal{G}_n)}_{\substack{\to 0\\ \text{as } n\to\infty}} + \;\underset{\mathclap{\substack{\Bigg\uparrow\\ \text{arbitrary}}}}{\varepsilon}\cdot[1-P(\mathcal{G}_n)]\]
+    \[= \varepsilon + P(\mathcal{G}_n)\left|2M - \varepsilon\right|\]
+    \\As this value can be arbitrarily small, we show that $E\left|X_n - X\right|$ can be arbitrarily small as $n \to \infty$.
+    \\Note: for BCT, we do not require $X_n \overset{a.s.}{\longrightarrow} X$, but $X_n \overset{P}{\longrightarrow} X$ is sufficient.
+\end{proof}
+
+\begin{theorem}[Fatou's Lemma][5.8]
+    If $X_n \geq 0$ a.s. for all $n$, then
+    \[\liminf_{n\to\infty} EX_n \geq E(\liminf_{n\to\infty}X_n)\]
+    Proof not required!!!!
+\end{theorem}
+
+\begin{theorem}[Monotone Convergence Theorem][5.8.1]
+    If $X_n \geq 0$ a.s. and
+    \[X_n \underset{\mathclap{\substack{\Big\uparrow\\ \text{monotonically increasing}}}}{\uparrow} X \quad \text{a.s.}\]
+    then
+    \[\lim_{n\to\infty} EX_n = EX\]
+    $X_n \uparrow X$ means for each $\omega \in \Omega$,
+    \[X_1(\omega) \leq X_2(\omega) \leq \cdots \leq X_n(\omega) \leq \cdots\]
+    \[\lim_{n\to\infty} X_n(\omega) = X(\omega)\]
+    \begin{proof}
+        Since $EX_n \leq EX$ as $X_n \leq X$ a.s.,
+        \[\limsup_{n\to\infty} EX_n \leq \lim_{n\to\infty}EX = EX = E\lim_{n\to\infty}X_n\]
+        However, by Fatou's Lemma, as $X_n \overset{a.s.}{\longrightarrow} X$ (so $\liminf_{n\to\infty} X_n = X$ a.s.),
+        \[EX = E(\liminf_{n\to\infty} X_n) \leq \liminf_{n\to\infty} EX_n\]
+        Therefore
+        \[\limsup_{n\to\infty} EX_n \leq EX \leq \liminf_{n\to\infty} EX_n\]
+        \[\Rightarrow \lim_{n\to\infty} EX_n = EX\]
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}[Dominated Convergence Theorem][5.9]
+    If $X_n \overset{a.s.}{\longrightarrow} X$ and $|X_n| \leq Y$ a.s. for some integrable $Y$, then
+    \[\lim_{n\to\infty}E(X_n) = E(\lim_{n\to\infty}X_n)\]
+\end{theorem}

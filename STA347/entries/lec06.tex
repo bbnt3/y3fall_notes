@@ -9,7 +9,7 @@
         \[X= \sum_{i=1}^{n} x_i I(A_i) \quad \text{and} \quad Y= \sum_{j=1}^{m} y_j I(B_j)\]
         \begin{align*}
             E(XY) &= E\Big[\sum_{i=1}^{n}\sum_{j=1}^{m} x_i y_j \cdot I\left\{A_i \cap B_j\right\}\Big]\\
-            &= \sum_{i=1}^{n}\sum_{j=1}^{m} x_i y_j \underbrace{P(X \in A_i, Y \in B_j)}_{\aside{$= P(X\in A_i)\cdot P(Y\in B_j)$ because $X$ and $Y$ indep.}}\\
+            &= \sum_{i=1}^{n}\sum_{j=1}^{m} x_i y_j \underbrace{P(X \in A_i, Y \in B_j)}_{\text{$= P(X\in A_i)\cdot P(Y\in B_j)$ because $X$ and $Y$ indep.}}\\
             &=\sum_{i=1}^{n}\sum_{j=1}^{m} x_i y_j P(\left\{\omega: X(\omega) \in A_i, Y(\omega) \in B_j\right\})\\
             &=\sum_{i=1}^{n}\sum_{j=1}^{m} x_i y_j P(X \in A_i)\cdot P(Y\in B_j)\\
             &=\underbrace{\sum_{i=1}^{n}x_i\cdot P(X\in A_i)}_{EX}  \underbrace{\sum_{j=1}^{m}y_j\cdot P(Y \in B_j)}_{EY}\\
@@ -21,7 +21,7 @@ Next, consider the case that $X$ and $Y$ are bounded and non-negative, then we l
 \begin{align*}
     (EX)(EY) &= \inf \left\{EZ_1: Z_1 \text{ simple, } Z_1 \geq X \text{ a.s.}\right\}\\
     &\qquad\cdot\inf\left\{EZ_2: Z_2\text{ simple, } Z_2 \geq Y \text{ a.s.}\right\}\\
-    &= \inf\left\{(EZ_1) \cdot(EZ_2)\right\} \qquad \aside{because $Z_1, Z_2$ simple, so $\inf(EZ_1)\cdot\inf(EZ_2) = \inf(EZ_1 \cdot EZ_2)$}\\
+    &= \inf\left\{(EZ_1) \cdot(EZ_2)\right\} \qquad \text{because $Z_1, Z_2$ simple, so $\inf(EZ_1)\cdot\inf(EZ_2) = \inf(EZ_1 \cdot EZ_2)$}\\
     &= \inf\left\{EZ_1Z_2: Z_1 \text{ and }Z_2 \text{ simple and independent, } Z_1 Z_2\geq XY \text{ a.s.}\right\}
 \end{align*}
 

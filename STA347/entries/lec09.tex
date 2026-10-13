@@ -11,11 +11,11 @@
         \item $\left\{A_n\right\}\downarrow A$ means:
         \[A_1 \supseteq A_2 \supseteq \cdots \supseteq A_n \supseteq \cdots \to A, \qquad \lim_{n\to \infty} \bigcap_{i=1}^n A_i = A\]
     \end{enumerate}
-    \aside{Note: $A_1 \subseteq \cdots \subseteq A_n \subseteq \cdots \to A$ means}
-    \[\aside{$P(A_1) \leq \cdots \leq P(A_n) \leq \cdots \to P(A)$}\]
+    Note: $A_1 \subseteq \cdots \subseteq A_n \subseteq \cdots \to A$ means
+    \[P(A_1) \leq \cdots \leq P(A_n) \leq \cdots \to P(A)\]
     \begin{proof}
         Suppose $\left\{A_n\right\} \uparrow A$.
-        \\We let $A_0 = \varnothing$, and $B_1 = A_1$, $B_n = A_n \cap A_{n-1}^c$ \aside{($B_n$ = the part of $A_n$ not already in $A_{n-1}$)}.
+        \\We let $A_0 = \varnothing$, and $B_1 = A_1$, $B_n = A_n \cap A_{n-1}^c$.
         \begin{center}
         \begin{tikzpicture}[scale=0.8, every node/.style={font=\small}]
             \fill[green!30] (0,0) ellipse (2.4cm and 1.3cm);
@@ -39,12 +39,11 @@
         Therefore, $P\left(\bigcup_{i=1}^n A_i\right) = P\left(\bigcup_{i=1}^n B_i\right)$, and
         \begin{align*}
             P(A) = P\left(\lim_{n\to\infty}\bigcup_{i=1}^n A_i\right) &= P\left(\lim_{n\to\infty}\bigcup_{i=1}^n B_i\right) = P\left(\bigcup_{i=1}^\infty B_i\right)\\
-            &= \lim_{n\to\infty}\sum_{i=1}^n P(B_i) & &{}\aside{(countable additivity, $B_i$'s disjoint)}\\
-            &= \lim_{n\to\infty} P(A_n) & &{}\aside{($\textstyle\sum_{i=1}^n P(B_i) = P(\bigcup_{i=1}^n B_i) = P(A_n)$)}
+            &= \lim_{n\to\infty}\sum_{i=1}^n P(B_i)\\
+            &= \lim_{n\to\infty} P(A_n)
         \end{align*}
         For the case $A_n \downarrow A$, the proof is similar; one may take the complement:
         \[\left\{A_n\right\}\downarrow A \;\Rightarrow\; \left\{A_n^c\right\}\uparrow A^c\]
-        \aside{so $P(A_n) = 1 - P(A_n^c) \to 1 - P(A^c) = P(A)$.}
     \end{proof}
 \end{theorem}
 
@@ -67,11 +66,9 @@
 \[\limsup_{n\to\infty} A_n = \left\{A_n \text{ i.o.}\right\} = \bigcap_{n=1}^\infty \underbrace{\bigcup_{k=n}^\infty A_k}_{\text{tail union}}\]
 You want to find the smallest set that contains the union of your tail events:
 \\``elements that will appear infinitely many times''.
-\\ \aside{$\omega \in \{A_n \text{ i.o.}\}$ $\Leftrightarrow$ for every $n$ there is some $k \geq n$ with $\omega \in A_k$.}
 \[\liminf_{n\to\infty} A_n = \left\{A_n \text{ a.a.}\right\} = \bigcup_{n=1}^\infty \underbrace{\bigcap_{k=n}^\infty A_k}_{\text{tail intersect}}\]
 You want to find the largest set that contains the intersect of your tail events:
 \\``elements that will appear in all tail sets''.
-\\ \aside{$\omega \in \{A_n \text{ a.a.}\}$ $\Leftrightarrow$ there is some $n$ with $\omega \in A_k$ for all $k \geq n$ (in all but finitely many $A_k$).}
 
 \begin{example}[Tail Events][\relax]
     Suppose $\left\{A_n\right\}$ is constructed as follows:
@@ -101,7 +98,6 @@ You want to find the largest set that contains the intersect of your tail events
 
 \begin{corollary}[][5.2.1]
     \[P(A_n \text{ i.o.}) = 1 - P(A_n^c \text{ a.a.})\]
-    \aside{(By De Morgan, $\{A_n \text{ i.o.}\}^c = \bigcup_{n}\bigcap_{k\geq n}A_k^c = \{A_n^c \text{ a.a.}\}$.)}
 \end{corollary}
 
 \begin{proposition}[][5.2.2]
@@ -111,7 +107,7 @@ You want to find the largest set that contains the intersect of your tail events
     \begin{proof}
         We prove the 1st ``$\leq$''.
         \[\liminf_{n\to\infty} A_n = \bigcup_{n=1}^\infty \underbrace{\bigcap_{k=n}^\infty A_k}_{B_n}\]
-        We let $B_n = \bigcap_{k=n}^\infty A_k$ \aside{(``the intersect of tail events'')}, so $\liminf_{n\to\infty} A_n = \bigcup_{n=1}^\infty B_n$.
+        We let $B_n = \bigcap_{k=n}^\infty A_k$ (``the intersect of tail events''), so $\liminf_{n\to\infty} A_n = \bigcup_{n=1}^\infty B_n$.
         \\Notice that $B_1 \subseteq B_2 \subseteq \cdots \subseteq B_n \subseteq \cdots$ as $B_n = \bigcap_{k=n}^\infty A_k$:
         \begin{align*}
             B_1 &= A_1 \cap A_2 \cap \cdots \cap A_n \cap \cdots\\
@@ -126,7 +122,6 @@ You want to find the largest set that contains the intersect of your tail events
         \end{align*}
         The 2nd ``$\leq$'' is by definition.
         \\The 3rd ``$\leq$'' can be proved similarly.
-        \\ \aside{(Let $C_n = \bigcup_{k=n}^\infty A_k$, so $C_n \downarrow \limsup A_n$. Then $P(\limsup A_n) = \lim P(C_n) = \limsup P(C_n) \geq \limsup P(A_n)$, since $A_n \subseteq C_n$.)}
     \end{proof}
 \end{proposition}
 
@@ -143,10 +138,9 @@ You want to find the largest set that contains the intersect of your tail events
                 P(A_n \text{ i.o.}) &= P\left(\bigcap_{n=1}^\infty\bigcup_{k=n}^\infty A_k\right) = P\left(\bigcap_{n=1}^\infty B_n\right)\\
                 &= \lim_{n\to\infty} P(B_n) & &\text{as } B_n \downarrow B = \textstyle\bigcap_{n=1}^\infty B_n\\
                 &= \lim_{n\to\infty} P\left(\bigcup_{k=n}^\infty A_k\right)\\
-                &\leq \lim_{n\to\infty} \sum_{k=n}^\infty P(A_k) & &{}\aside{(union bound, Lemma 2.4)}\\
+                &\leq \lim_{n\to\infty} \sum_{k=n}^\infty P(A_k)\\
                 &= 0 & &\text{as } \textstyle\sum_{k=1}^\infty P(A_k) < \infty
             \end{align*}
-            \aside{(The tail $\sum_{k=n}^\infty P(A_k)$ of a convergent series goes to $0$.)}
 
             \item
             \begin{align*}
@@ -159,7 +153,6 @@ You want to find the largest set that contains the intersect of your tail events
                 &= \lim_{n\to\infty} P(C_n) = \lim_{n\to\infty} P\left(\bigcap_{k=n}^\infty A_k^c\right)\\
                 &= \lim_{n\to\infty}\prod_{k=n}^\infty \left[1 - P(A_k)\right] & &\text{because $\{A_n\}$ independent}
             \end{align*}
-            \aside{($P(\bigcap_{k=n}^\infty A_k^c) = \prod_{k=n}^\infty P(A_k^c)$; the $A_k^c$ are independent by Prop 2.7.1.)}
             \\Each factor $1 - P(A_k) \leq 1$, but that alone doesn't give $0$. The missing step: use $1 - x \leq e^{-x}$:
             \[\prod_{k=n}^\infty\left[1 - P(A_k)\right] \leq \prod_{k=n}^\infty e^{-P(A_k)} = \exp\left\{-\sum_{k=n}^\infty P(A_k)\right\} = e^{-\infty} = 0\]
             since $\sum_{k=n}^\infty P(A_k) = \infty$ for every $n$. So
@@ -177,7 +170,6 @@ You want to find the largest set that contains the intersect of your tail events
     \[P(\left\{A_n \text{ i.o.}\right\}) = P(\left\{0\right\}) = 0\]
     but
     \[\sum_{n=1}^\infty P(A_n) = \sum_{n=1}^\infty \frac{1}{n} = \infty\]
-    \aside{($P(A_n \text{ i.o.}) = 0$ does not force $\sum P(A_n) < \infty$.)}
 \end{example}
 
 \begin{example}[Independence is needed for ii)][5.3.2]
@@ -187,5 +179,5 @@ You want to find the largest set that contains the intersect of your tail events
     Then
     \[\sum_{n=1}^\infty P(A_n) = \sum_{n=1}^\infty \frac{1}{2} = \lim_{n\to\infty}\frac{1}{2}\cdot n = \infty\]
     \[P(A_n \text{ i.o.}) = P(A_n) = \frac{1}{2} \neq 1\]
-    as all $\left\{A_n\right\}$ are the same \aside{(so they are not independent)}.
+    as all $\left\{A_n\right\}$ are the same.
 \end{example}

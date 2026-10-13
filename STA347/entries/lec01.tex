@@ -14,27 +14,27 @@
         A sequence $(x_n)_{n=1}^\infty \subseteq \R$ converges to $x$ if
         \[\forall \varepsilon>0,\ \exists N \in \N \text{ s.t. } n>N \Rightarrow \left\lvert x_n-x\right\rvert < \varepsilon.\]
     \end{quote}
-    $x_n \to x$ \aside{converge to $x$?}
-    \\ \aside{Pick $\varepsilon$ (how close $x_n$ is to the target).}
+    $x_n \to x$ \text{converge to $x$?}
+    \\ \text{Pick $\varepsilon$ (how close $x_n$ is to the target).}
     \\ For any $\varepsilon$ picked, can find $N$, such that $n>N$, $\left\lvert x_n-x\right\rvert < \varepsilon$.
     \\ e.g. $x_n = \dfrac{1}{n} \to 0$
 
     \item \deflabel{1.1.2}{Functional Convergence Pointwisely}
     \begin{quote}
-        A sequence $(f_n)_{n=1}^\infty \subseteq \R^X$ converges pointwise to $f$ \aside{(target $f$)} if
+        A sequence $(f_n)_{n=1}^\infty \subseteq \R^X$ converges pointwise to $f$ \text{(target $f$)} if
         \[\forall \varepsilon>0,\ \forall x \in X,\ \exists N_x \in \N \text{ s.t. } n>N_x \Rightarrow \left\lvert f_n(x)-f(x)\right\rvert < \varepsilon.\]
     \end{quote}
-    $f_1,\dots,f_n,\dots$ --- \aside{sequence of functions}
-    \\ $f$ --- \aside{target function}
+    $f_1,\dots,f_n,\dots$ --- \text{sequence of functions}
+    \\ $f$ --- \text{target function}
     \\ For any $\varepsilon$ and $x$, can find $N_x$ s.t. $n>N_x$, $\left\lvert f_n(x)-f(x)\right\rvert < \varepsilon$.
-    \\ $f_1(2), f_2(2), \dots, f_n(2), \dots \to f(2)$ --- \aside{for every $x$, there is a corresponding $N_x$.}
+    \\ $f_1(2), f_2(2), \dots, f_n(2), \dots \to f(2)$ --- \text{for every $x$, there is a corresponding $N_x$.}
 
     \item \deflabel{1.1.3}{Functional Convergence Uniformly}
     \begin{quote}
         A sequence $(f_n)_{n=1}^\infty \subseteq \R^X$ converges uniformly to $f$ if
         \[\forall \varepsilon>0,\ \hly{\exists N \in \N} \quad \forall x \in X,\ n>N \Rightarrow \left\lvert f_n(x)-f(x)\right\rvert < \varepsilon.\]
     \end{quote}
-    \aside{That works for all $x \in X$ --- need a common threshold $N$ for uniform convergence.}
+    \text{That works for all $x \in X$ --- need a common threshold $N$ for uniform convergence.}
 \end{enumerate}
 
 \heading{Key difference:}
@@ -76,7 +76,7 @@ For pointwise convergence, you need to have $x$ specified first, then there is a
     \node[above] at (0,2.2) {upper bound $u$};
     \node[below] at (0,-2.2) {lower bound $v$};
     \draw[->] (2.6,2.6) -- (1.9,1.9);
-    \node[align=left, blue!55!black, anchor=west] at (2.65,2.6) {\aside{\shortstack[l]{can find $x \in A$ that's infinitely\\ close to upper bound\\ but less than it}}};
+    \node[align=left, blue!55!black, anchor=west] at (2.65,2.6) {\text{\shortstack[l]{can find $x \in A$ that's infinitely\\ close to upper bound\\ but less than it}}};
 \end{tikzpicture}
 \end{center}
 
@@ -106,8 +106,8 @@ $\max(A)$ and $\min(A)$ must be elements of the set $A$.
 \begin{center}
 \begin{tikzpicture}[scale=1, every node/.style={font=\small}]
     \draw[->] (0,0) -- (7,0) node[right]{$n$};
-    \draw[dashed, red!70!black] (0,2.2) -- (6.6,2.2) node[right, black]{\aside{limit of upper bound / $\limsup$}};
-    \draw[dashed, red!70!black] (0,0.5) -- (6.6,0.5) node[right, black]{\aside{limit of lower bound / $\liminf$}};
+    \draw[dashed, red!70!black] (0,2.2) -- (6.6,2.2) node[right, black]{\text{limit of upper bound / $\limsup$}};
+    \draw[dashed, red!70!black] (0,0.5) -- (6.6,0.5) node[right, black]{\text{limit of lower bound / $\liminf$}};
     \draw[thick, blue!55!black]
         (0.2,2.6) -- (0.9,0.15) -- (1.6,2.45) -- (2.3,0.3) -- (3,2.3)
         -- (3.7,0.4) -- (4.4,2.05) -- (5.1,0.45) -- (5.8,1.8) -- (6.5,0.5);
@@ -121,7 +121,7 @@ $\max(A)$ and $\min(A)$ must be elements of the set $A$.
     \[\Rightarrow \limsup_{n\to\infty} x_n = 1, \qquad \liminf_{n\to\infty} x_n = -1\]
 \end{example}
 
-\aside{The limsup and liminf are used to describe the long-run behaviour of a sequence, even if the sequence does not converge.}
+\text{The limsup and liminf are used to describe the long-run behaviour of a sequence, even if the sequence does not converge.}
 \\ For a sequence $x_n$, if $\displaystyle\limsup_{n\to\infty} x_n = \liminf_{n\to\infty} x_n = x$, then $\displaystyle\lim_{n\to\infty} x_n = x$.
 
 \subsection{Function Limits}
@@ -129,7 +129,7 @@ $\max(A)$ and $\min(A)$ must be elements of the set $A$.
 \deflabel{1.3}{Left and Right Limit of a Function}
 \begin{quote}
     For any function $f: \R \to \R$,
-    \[f(x-) = \lim_{y\uparrow x} f(y) = L \quad \aside{(to the left of $x$, a small neighbourhood)}\]
+    \[f(x-) = \lim_{y\uparrow x} f(y) = L \quad \text{(to the left of $x$, a small neighbourhood)}\]
     \[\Leftrightarrow \forall \varepsilon>0,\ \exists \delta>0 \text{ s.t. } \forall y \in (x-\delta,x),\ \left\lvert f(y)-L\right\rvert < \varepsilon.\]
     \[f(x+) = \lim_{y\downarrow x} f(y) = U\]
     \[\Leftrightarrow \forall \varepsilon>0,\ \exists \delta>0 \text{ s.t. } \forall y \in (x,x+\delta),\ \left\lvert f(y)-U\right\rvert < \varepsilon.\]
