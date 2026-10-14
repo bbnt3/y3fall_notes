@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1791837608.47698 "/Users/Bonnie/Desktop/y3fall_notes/CHE374/main.tex" "main.pdf" "main" 1791837610.50959 0
+["pdflatex"] 1792009146.76372 "/Users/Bonnie/Desktop/y3fall_notes/CHE374/main.tex" "main.pdf" "main" 1792009148.37272 0
   "../template/preamble.tex" 1791217002.22348 7297 0fd95ed11559886728354c86763c30db ""
-  "/Users/Bonnie/Desktop/y3fall_notes/CHE374/main.tex" 1791821542.75927 2632 fbde6ac41621b4d7b2218d056f15bb1b ""
+  "/Users/Bonnie/Desktop/y3fall_notes/CHE374/main.tex" 1792009144.66422 2632 fbde6ac41621b4d7b2218d056f15bb1b ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc" 1202520719 2405 5dcf2c1b967ee25cc46c58cd52244aed ""
@@ -221,8 +221,8 @@
   "entries/week01.tex" 1791821542.75341 14388 68443d1aeab54396ab8dbcde648ebaee ""
   "entries/week02.tex" 1791821542.754 28206 98a94a359b30ce5141009f0ff3f29485 ""
   "entries/week03.tex" 1791824554.21671 13704 cf3ee50169d4e2a60ef63595aa78af1d ""
-  "entries/week04.tex" 1791837608.23083 21866 a686191a785da26865c5093da9967b45 ""
-  "entries/week05.tex" 1791821542.75498 15903 44c5278c241898a28bb9c33eecf1c396 ""
+  "entries/week04.tex" 1791838413.72866 21792 f2fb5a93b6c5ff7e716941aacaf0aa64 ""
+  "entries/week05.tex" 1791849750.6368 15903 44c5278c241898a28bb9c33eecf1c396 ""
   "figures/arithmetic_gradient.png" 1790276538.68704 7373 325af5c77f2d1104d75e91c7ccd99596 ""
   "figures/bond_back_annotated.png" 1790276876.92574 629509 3f900f910bb7a69307971c322945edef ""
   "figures/bond_coupon.png" 1790276876.96054 141475 b49e48d37224fd56add26a3123f908a7 ""
@@ -236,10 +236,10 @@
   "figures/period_timeline.png" 1790276538.642 3860 48e417c4628a37a0a6cb962d28f1197c ""
   "figures/simple_vs_compound.png" 1790276391.31617 17443 a829bbf193d5e7144b498edae656048b ""
   "figures/young_professional_cf.png" 1790276561.63411 6116 29efddbc3d6866bbc13f5d67b09e6aa4 ""
-  "main.aux" 1791837610.33523 2617 e3a1f93c7f0f45eaeeb903b54db9923b "pdflatex"
-  "main.out" 1791837610.33599 4541 49632da536ab7f7fb8617feb6615d9e7 "pdflatex"
-  "main.tex" 1791821542.75927 2632 fbde6ac41621b4d7b2218d056f15bb1b ""
-  "main.toc" 1791837610.3362 1593 fa5846d8c4d369302da30156bfa48eb0 "pdflatex"
+  "main.aux" 1792009148.23559 2617 e3a1f93c7f0f45eaeeb903b54db9923b "pdflatex"
+  "main.out" 1792009148.23632 4541 49632da536ab7f7fb8617feb6615d9e7 "pdflatex"
+  "main.tex" 1792009144.66422 2632 fbde6ac41621b4d7b2218d056f15bb1b ""
+  "main.toc" 1792009148.23656 1593 fa5846d8c4d369302da30156bfa48eb0 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
