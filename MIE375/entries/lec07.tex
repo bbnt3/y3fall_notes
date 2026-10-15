@@ -6,10 +6,13 @@
 \begin{definition}[\rb{Portfolio Duration}]
     Given fixed income securities with prices $P_i$ and durations $D_i$, $i = 1, \dots, m$, the portfolio consisting of the aggregate of these has price $P$ and duration $D$:
     \[\boxed{\begin{gathered}
-        P = P_1 + P_2 + \cdots + P_m\\
-        D = w_1D_1 + w_2D_2 + \cdots + w_mD_m, \qquad w_i = \frac{P_i}{P}
+        P = P_1 + P_2 + \cdots + P_m = \sum_{i=1}^{m} P_i\\
+        D = w_1D_1 + w_2D_2 + \cdots + w_mD_m, \quad w_i = \frac{P_i}{P} \quad 0<w<1, \sum w_i = 1
     \end{gathered}}\]
     Works for both \dbb{Macaulay} and \dbb{all forms of modified} duration.
+    \\Note: when having multiple ($x_i$) shares of one bond
+    \[P = x_1P_1 + x_2P_2 + \cdots + x_mP_m = \sum_{i=1}^m x_iP_i\]
+    \[D = w_1D_1+w_2D_2 +\cdots + w_mD_m =, \qquad w_i = \frac{x_iP_i}{P}\]
 \end{definition}
 \keypoint{\db{Note}: this looks just like the Macaulay duration formula, except with \rb{time replaced by duration}!\\(Weights are each security's share of the total price.)}
 
@@ -47,6 +50,7 @@ The weights add to 1 ($w_A + w_B = 1$), so $D^{A+B}$ always lies \ul{between} $D
 \end{definition}
 
 \b{Problem}: you have an obligation to pay \$1,000 two years from now, but you can only purchase bonds of maturity 1 and 5 years.
+\\Reasons to buy 5 year bond instead of 2 year: longer maturity, yield and prices may be better
 \begin{itemize}
     \item 1 year bond only: \dbb{reinvestment risk}. The money must be reinvested at year 1 at an unknown future rate.
     \item 5 year bond only: \dbb{too sensitive to interest rates}. It must be sold at year 2 at an unknown price.
@@ -64,7 +68,8 @@ The weights add to 1 ($w_A + w_B = 1$), so $D^{A+B}$ always lies \ul{between} $D
 \end{tikzpicture}
 \end{center}
 
-\keypoint{\rb{Solution}: construct a portfolio of 1 and 5 year securities with the same \rb{present value} and \rb{duration} as your obligation.}
+\keypoint{\rb{Solution}: construct a portfolio of 1 and 5 year securities with the same \rb{present value} and \rb{duration} as your obligation. 
+\\Ensures the prices of the bonds could grow to the magnitude of the liability.}
 
 With $x$ units of bond 1 (price $P_1$, duration $D_1$) and $y$ units of bond 2 (price $P_2$, duration $D_2$), and an obligation with present value $P$ and duration $D$:
 \[\boxed{\begin{aligned}
@@ -89,6 +94,7 @@ Solve these two equations for $x$ and $y$ to determine your portfolio. The durat
     \end{tabular}
     \end{center}
     Prices: $\frac{1000}{1.09^2} = 841.68$, $\frac{100}{1.09} = 91.74$, $\frac{100}{1.09^5} = 64.99$. Each is a zero, so its Macaulay duration is its maturity.
+    \\Note the price of the liability is discounted by the rate of the yield, when yields are different you can take an average (only an approximation).
     \\Let $x$ = number of bond 1, $y$ = number of bond 2 held.
     \begin{align*}
         \text{Match prices:} &\quad 91.74x + 64.99y = 841.68\\
@@ -97,6 +103,7 @@ Solve these two equations for $x$ and $y$ to determine your portfolio. The durat
     Multiplying the duration equation by 841.68 and subtracting the price equation: $4(64.99)y = 841.68$, so
     \[\boxed{x = 6.88, \quad y = 3.24}\]
     In weights, $w_1 + w_2 = 1$ and $w_1(1) + w_2(5) = 2$ give $w_1 = \frac{3}{4}$ and $w_2 = \frac{1}{4}$. So \$631.26 goes into bond 1 and \$210.42 into bond 2.
+    \\Sell all of them at the end of duration!
 \end{example}
 
 \begin{example}[Bond Immunization Spreadsheet]
