@@ -14,3 +14,4 @@
 \contentsline {section}{Lecture 9: Chapter 5 - Limiting Theorems and Convergences}{31}{section*.15}%
 \contentsline {section}{Lecture 10: Convergence in Probability and Almost Sure Convergence}{36}{section*.16}%
 \contentsline {section}{Lecture 11 (Oct 13, 2026)}{39}{section*.17}%
+\contentsline {section}{Lecture 12: Midterm Review}{41}{section*.18}%

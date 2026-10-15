@@ -1,0 +1,51 @@
+% !TeX root = ../main.tex
+
+\newlecture[Midterm Review][Oct 15, 2026]
+ 
+\[\text{4 Questions: }\begin{cases}
+    \text{Foundation of Probability}\\
+    \text{Expectation}\\
+    \text{Inequalities}\\
+    \text{Limiting Theorems}
+\end{cases}\]
+
+\heading{Foundations of Probability}
+\begin{center}
+    $\Omega$: Event, Probability: $\Omega \mapsto \mathbb{R}$
+    \\Random Variable: $X$
+    \\$P(X=1): P(\left(\omega: X(\omega) = 1\right))$
+\end{center}
+
+Theorems/Proofs Required:
+\begin{itemize}
+    \item CH2: Prop 2.3, Lemma 2.4
+    \item CH3: Prop 2.7.1
+    \item CH4: Thm 4.1 and proof, Thm 4.2 and proof, Thm 4.3 and proof, Thm 4.4 (no proof req), Thm 4.5 (with proof! May be asked?), Thm 4.6 (with proof - set derivative to 0), Prop 4.6.1, Thm 4.7 (no proof)
+    \item CH5: Thm 5.1 (key parts of course), Def 5.2, 5.2.1 \& 5.2.2(with proof) Prop 5.2, 5.3 (important!!! req) 5.7(First part of proof for simple purposes), Def 5.4 \& 5.5 (definitely tested!!!), Prop 5.5.1 - 5.5.3 (with proof), Thm 5.5.5 \& 5.6 (no proof req), everything in lec11 without proofs
+\end{itemize}
+
+Proofs NOT Required:
+\begin{itemize}
+    \item Anything not provided
+    \item 2.5, 2.7.2, 3.5.1,
+    \item 3.9, 3.10, proof of 5.3(not in this midterm, but required)
+\end{itemize}
+
+\heading{Difference between converge in $P$ and a.s. converge}
+For $\overset{P}{\to}$, as $n\to \infty$
+\[\forall \varepsilon> 0, P(\left|X_n - X\right| < \varepsilon) = 1\]
+$\exists N\varepsilon$, s.t. $\forall \delta >0$ when $n > N\varepsilon, \omega$
+\[P(\left|X_n - X\right|<\varepsilon)<\delta\]
+
+For $\overset{a.s.}{\longrightarrow}$, $n\to \infty$
+\[P(\lim_{n\to\infty}X_n = X) = 1\]
+$\forall \varepsilon$ and $\omega$, $\exists N, \omega$ s.t. $n>N\varepsilon, \omega$
+\[P(\left|X_n(\omega) - X(\omega) \right|<\varepsilon)=1\]
+We are talking about pointwise convergences of function
+
+\[P(\lim_{n\to\infty} X_n = X) = 1\]
+\begin{center}How to interpret "$\lim_{n\to\infty}X_n = X$"?\end{center}
+For "a.s.", $\forall \omega \in \Omega$, 
+\[\left|X_n(\omega) - X(\omega)\right|<\varepsilon \quad \text{a.a. (almost always happens)}\]
+For "$\overset{P}{\to}$", $\forall\omega \in \Omega$, 
+\[P(\left\{\left|X_n(\omega) - X(\omega)\right|<\varepsilon\right\})<\delta \quad \text{sufficiently small}\]
