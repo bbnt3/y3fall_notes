@@ -23,6 +23,39 @@
 
 \lecturetoctrue
 
+% STA347-only: clickable midterm-required theorems.
+% \req{key} at a theorem drops an anchor; \rl{key}{text} links to it;
+% \reqtoc{key}{text}, placed at the theorem, adds a TOC line + PDF bookmark
+% under that theorem's own lecture.
+\usepackage{bookmark}
+\newcommand{\req}[1]{\hypertarget{req:#1}{}\label{req:#1}}
+% Required (with proof) -> red bold heading + red "Proof";
+% required, no proof -> blue bold heading. Body text stays normal.
+\makeatletter
+\newcommand{\reqhead}[1]{%
+    \let\reqoldboldhead\th@boldhead
+    \def\th@boldhead{\reqoldboldhead\thm@headfont{\bfseries\color{#1}}}%
+    \let\reqoldboldheadnp\th@boldheadnp
+    \def\th@boldheadnp{\reqoldboldheadnp\thm@headfont{\bfseries\color{#1}}}%
+    % clicking the heading jumps to the Lec 12 required list
+    \hypersetup{linkcolor=#1}%
+    \let\reqoldthhead\th@boldhead
+    \def\th@boldhead{\reqoldthhead\reqlinkhead}%
+    \let\reqoldthheadnp\th@boldheadnp
+    \def\th@boldheadnp{\reqoldthheadnp\reqlinkhead}}
+\newcommand{\reqlinkhead}{%
+    \let\reqoldthmhead\thmhead
+    \def\thmhead##1##2##3{\@ifempty{##3}%
+        {\reqoldthmhead{\hyperlink{req:list}{##1}}{\hyperlink{req:list}{##2}}{}}%
+        {\reqoldthmhead{\hyperlink{req:list}{##1}}{\hyperlink{req:list}{##2}}{\hyperlink{req:list}{##3}}}}}
+\makeatother
+\newenvironment{reqproof}{\reqhead{red!70!black}\renewcommand{\proofname}{\textcolor{red!70!black}{\bfseries Proof}}}{}
+\newenvironment{reqnoproof}{\reqhead{blue!60!black}}{}
+\newcommand{\rl}[2]{\hyperref[req:#1]{#2}}
+\newcommand{\reqtoc}[2]{%
+    \addtocontents{toc}{\protect\contentsline{subsubsection}{#2}{\protect\pageref{req:#1}}{req:#1}}%
+    \bookmark[dest=req:#1,level=2]{#2}}
+
 \begin{document}
 \maketitle
 \tableofcontents

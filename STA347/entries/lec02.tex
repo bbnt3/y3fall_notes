@@ -46,7 +46,8 @@
     We assume such a measure exists (and is well defined) for this class.
 \end{example}
 
-\begin{proposition}[][2.3]
+\begin{reqproof}
+\begin{proposition}[][2.3]\req{p2.3}\reqtoc{p2.3}{Prop 2.3}
 The following properties are satisfied by any probability measure $P$
 \begin{enumerate}
     \item $\forall E \subseteq \Omega, P(E^C) = 1 - P(E)$
@@ -58,8 +59,10 @@ The following properties are satisfied by any probability measure $P$
 \end{enumerate}
 Proof via Def 2.2 (probability axioms).
 \end{proposition}
+\end{reqproof}
 
-\begin{lemma}[][2.4]
+\begin{reqproof}
+\begin{lemma}[][2.4]\req{l2.4}\reqtoc{l2.4}{Lemma 2.4}
     For a sequence $E_1, \dots, E_n \subseteq \Omega$
     \[P(\bigcup_{i=1}^n E_i) \leq \sum_{i=1}^{n}P(E_i)\]
     \begin{proof}
@@ -98,7 +101,10 @@ Proof via Def 2.2 (probability axioms).
     \[P(\bigcup_{i=1}^{n}E_i) = \sum_{i=1}^{n}P(F_i) \leq \sum_{i=1}^{n}P(E_i)\]
     \end{proof}
 \end{lemma}
+\end{reqproof}
 
-\begin{lemma}[][2.5]
+\begin{reqnoproof}
+\begin{lemma}[][2.5]\req{l2.5}
     Let $P$ be the Lebesgue measure on $[0,1]$. Then $P(E) = 0$ for any \underline{countable} set $E$.
 \end{lemma}
+\end{reqnoproof}

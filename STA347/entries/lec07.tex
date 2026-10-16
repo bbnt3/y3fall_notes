@@ -2,7 +2,8 @@
 
 \newlecture[Chapter 4 - Inequalities][Sep 29, 2026]
 
-\begin{theorem}[Markov's Inequality][4.1]
+\begin{reqproof}
+\begin{theorem}[Markov's Inequality][4.1]\req{t4.1}\reqtoc{t4.1}{Thm 4.1 Markov's Inequality}
     If $X \geq 0$ a.s., then for all $a>0$,
     \[P(X \geq a) \leq \frac{E(X)}{a}\]
     \begin{proof}
@@ -12,8 +13,10 @@
         \hfill $\square$
     \end{proof}
 \end{theorem}
+\end{reqproof}
 
-\begin{theorem}[Chebyshev's Inequality][4.2]
+\begin{reqproof}
+\begin{theorem}[Chebyshev's Inequality][4.2]\req{t4.2}\reqtoc{t4.2}{Thm 4.2 Chebyshev's Inequality}
     For all $t > 0$,
     \[P(|X- E(X)|\geq t) \leq \frac{\Var(X)}{t^2}\]
     \begin{proof}
@@ -22,6 +25,7 @@
         \hfill $\square$
     \end{proof}
 \end{theorem}
+\end{reqproof}
 
 Both Chebyshev and Markov's inequality talk about
 \[P(X\geq \cdots) \quad \Leftarrow \quad \text{the tail probability}\]
@@ -62,7 +66,8 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
 \\E.g. the exponential moment? $\Rightarrow$ Chernoff's Inequality
 \[M_X(t) = E[e^{tX}]\]
 
-\begin{theorem}[Chernoff's Inequality][4.3]
+\begin{reqproof}
+\begin{theorem}[Chernoff's Inequality][4.3]\req{t4.3}\reqtoc{t4.3}{Thm 4.3 Chernoff's Inequality}
     For all $t\geq 0$, \quad $P(X\geq E(X) + t) \leq \inf_{\lambda>0}M_{X - E(X)} (\lambda)e^{-\lambda t}$
     \[P(X\geq E(X) + t) \text{ roughly } P(\underbrace{X-E(X)}_{\substack{\text{distance between $X$} \\ \text{to its expected value}}}\geq t)\]
     \[\leq \inf_{\lambda>0} M_{X-E(X)} (\lambda)e^{-\lambda t}\]
@@ -80,6 +85,7 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
         \hfill $\square$
     \end{proof}
 \end{theorem}
+\end{reqproof}
 
 \subsection{Hoeffding's Inequality (Thm 4.4)}
 
@@ -164,7 +170,8 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
     \end{proof}
 \end{lemma}
 
-\begin{theorem}[Hoeffding's Inequality][4.4]
+\begin{reqnoproof}
+\begin{theorem}[Hoeffding's Inequality][4.4]\req{t4.4}\reqtoc{t4.4}{Thm 4.4 Hoeffding's Inequality}
     Suppose $X_1, X_2, \dots, X_n, \dots$ are indep.\ with $a_i \leq X_i \leq b_i$ for all $i$.
     \\ Then letting $S_n = \sum_{i=1}^n X_i$, for all $t > 0$,
     \[P(|S_n - E(S_n)| \geq t) \leq 2 \cdot \exp\left\{-\frac{2t^2}{\sum_{i=1}^n (b_i - a_i)^2}\right\}\]
@@ -184,3 +191,4 @@ Where Markov uses the 1st moment, Chebyshev uses 2nd moment.
         \hfill $\square$
     \end{proof}
 \end{theorem}
+\end{reqnoproof}

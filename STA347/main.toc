@@ -1,17 +1,48 @@
-\contentsline {section}{Lecture 1: Set Theory Fundamentals}{2}{section*.2}%
-\contentsline {subsection}{Limiting Processes}{4}{section*.3}%
-\contentsline {subsection}{Function Limits}{5}{section*.4}%
-\contentsline {section}{Lecture 2: Probability Measure}{6}{section*.5}%
-\contentsline {section}{Lecture 3: Independence, Random Variables and Distributions}{8}{section*.6}%
-\contentsline {subsection}{Random Variables and Distributions}{8}{section*.7}%
-\contentsline {section}{Lecture 4: Random Variables \& Distributions}{13}{section*.8}%
-\contentsline {section}{Lecture 5: Expectation}{15}{section*.9}%
-\contentsline {subsection}{Expectation}{15}{section*.10}%
-\contentsline {section}{Lecture 6: Independence and Expectation, Variance}{21}{section*.11}%
-\contentsline {section}{Lecture 7: Chapter 4 - Inequalities}{23}{section*.12}%
-\contentsline {subsection}{Hoeffding's Inequality (Thm 4.4)}{24}{section*.13}%
-\contentsline {section}{Lecture 8 (Oct 1, 2026)}{28}{section*.14}%
-\contentsline {section}{Lecture 9: Chapter 5 - Limiting Theorems and Convergences}{31}{section*.15}%
-\contentsline {section}{Lecture 10: Convergence in Probability and Almost Sure Convergence}{36}{section*.16}%
-\contentsline {section}{Lecture 11 (Oct 13, 2026)}{39}{section*.17}%
-\contentsline {section}{Lecture 12: Midterm Review}{41}{section*.18}%
+\contentsline {section}{Lecture 1: Set Theory Fundamentals}{3}{section*.2}%
+\contentsline {subsection}{Limiting Processes}{5}{section*.3}%
+\contentsline {subsection}{Function Limits}{6}{section*.4}%
+\contentsline {section}{Lecture 2: Probability Measure}{7}{section*.5}%
+\contentsline {subsubsection}{Prop 2.3}{\pageref {req:p2.3}}{req:p2.3}
+\contentsline {subsubsection}{Lemma 2.4}{\pageref {req:l2.4}}{req:l2.4}
+\contentsline {section}{Lecture 3: Independence, Random Variables and Distributions}{9}{section*.6}%
+\contentsline {subsubsection}{Prop 2.7.1}{\pageref {req:p2.7.1}}{req:p2.7.1}
+\contentsline {subsection}{Random Variables and Distributions}{9}{section*.7}%
+\contentsline {section}{Lecture 4: Random Variables \& Distributions}{14}{section*.8}%
+\contentsline {section}{Lecture 5: Expectation}{16}{section*.9}%
+\contentsline {subsection}{Expectation}{16}{section*.10}%
+\contentsline {subsubsection}{Prop 5.2 Properties of Expectation}{\pageref {req:p5.2}}{req:p5.2}
+\contentsline {section}{Lecture 6: Independence and Expectation, Variance}{22}{section*.11}%
+\contentsline {subsubsection}{Thm 5.7 Independence and Expectation}{\pageref {req:t5.7}}{req:t5.7}
+\contentsline {section}{Lecture 7: Chapter 4 - Inequalities}{24}{section*.12}%
+\contentsline {subsubsection}{Thm 4.1 Markov's Inequality}{\pageref {req:t4.1}}{req:t4.1}
+\contentsline {subsubsection}{Thm 4.2 Chebyshev's Inequality}{\pageref {req:t4.2}}{req:t4.2}
+\contentsline {subsubsection}{Thm 4.3 Chernoff's Inequality}{\pageref {req:t4.3}}{req:t4.3}
+\contentsline {subsection}{Hoeffding's Inequality (Thm 4.4)}{25}{section*.13}%
+\contentsline {subsubsection}{Thm 4.4 Hoeffding's Inequality}{\pageref {req:t4.4}}{req:t4.4}
+\contentsline {section}{Lecture 8 (Oct 1, 2026)}{29}{section*.14}%
+\contentsline {subsubsection}{Thm 4.5 Jensen's Inequality}{\pageref {req:t4.5}}{req:t4.5}
+\contentsline {subsubsection}{Lemma 4.6 Young's Inequality}{\pageref {req:l4.6}}{req:l4.6}
+\contentsline {subsubsection}{Thm 4.6 H\"older's Inequality}{\pageref {req:t4.6}}{req:t4.6}
+\contentsline {subsubsection}{Prop 4.6.1 Cauchy-Schwarz Inequality}{\pageref {req:p4.6.1}}{req:p4.6.1}
+\contentsline {subsubsection}{Thm 4.7 Minkowski's Inequality}{\pageref {req:t4.7}}{req:t4.7}
+\contentsline {section}{Lecture 9: Chapter 5 - Limiting Theorems and Convergences}{32}{section*.15}%
+\contentsline {subsubsection}{Thm 5.1 Continuity of Measure}{\pageref {req:t5.1}}{req:t5.1}
+\contentsline {subsubsection}{Def 5.2 Tail Events}{\pageref {req:d5.2}}{req:d5.2}
+\contentsline {subsubsection}{Corollary 5.2.1}{\pageref {req:c5.2.1}}{req:c5.2.1}
+\contentsline {subsubsection}{Prop 5.2.2}{\pageref {req:p5.2.2}}{req:p5.2.2}
+\contentsline {subsubsection}{Thm 5.3 Borel-Cantelli Lemma}{\pageref {req:t5.3}}{req:t5.3}
+\contentsline {section}{Lecture 10: Convergence in Probability and Almost Sure Convergence}{37}{section*.16}%
+\contentsline {subsubsection}{Def 5.4 Convergence in Probability}{\pageref {req:d5.4}}{req:d5.4}
+\contentsline {subsubsection}{Def 5.5 Almost Sure Convergence}{\pageref {req:d5.5}}{req:d5.5}
+\contentsline {subsubsection}{Prop 5.5.1}{\pageref {req:p5.5.1}}{req:p5.5.1}
+\contentsline {subsubsection}{Prop 5.5.2}{\pageref {req:p5.5.2}}{req:p5.5.2}
+\contentsline {subsubsection}{Prop 5.5.3}{\pageref {req:p5.5.3}}{req:p5.5.3}
+\contentsline {subsubsection}{Thm 5.5.5}{\pageref {req:t5.5.5}}{req:t5.5.5}
+\contentsline {subsubsection}{Thm 5.6 Continuous Mapping Theorem}{\pageref {req:t5.6}}{req:t5.6}
+\contentsline {section}{Lecture 11 (Oct 13, 2026)}{40}{section*.17}%
+\contentsline {subsubsection}{Thm 5.7 Bounded Convergence Theorem}{\pageref {req:bct}}{req:bct}
+\contentsline {subsubsection}{Thm 5.8 Fatou's Lemma}{\pageref {req:fatou}}{req:fatou}
+\contentsline {subsubsection}{Thm 5.8.1 Monotone Convergence Theorem}{\pageref {req:mct}}{req:mct}
+\contentsline {subsubsection}{Thm 5.9 Dominated Convergence Theorem}{\pageref {req:dct}}{req:dct}
+\contentsline {section}{Lecture 12: Midterm Review}{42}{section*.18}%
+\contentsline {subsection}{Midterm: Required Theorems}{42}{section*.18}%

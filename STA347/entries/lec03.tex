@@ -11,13 +11,17 @@
 e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right\}$
 \[P(E_1 \bigcap E_2 \bigcap E_3) = P(E_1)P(E_2)P(E_3)\]
 
-\begin{proposition}[][2.7.1]
+\begin{reqproof}
+\begin{proposition}[][2.7.1]\req{p2.7.1}\reqtoc{p2.7.1}{Prop 2.7.1}
     If $E_1, \dots E_n$ are independent, then $E_1^c, \dots, E_n^c$ are also independent. Proof as an exercise.
 \end{proposition}
+\end{reqproof}
 
-\begin{proposition}[][2.7.2]
+\begin{reqnoproof}
+\begin{proposition}[][2.7.2]\req{p2.7.2}
     If an infinite collection of events $\left\{E_\alpha :\alpha \in \mathcal{I}\right\}$ are independent, then for a finite subset $\mathcal{J} \subseteq \mathcal{I}$, the events $\left\{E_\beta : \beta \in \mathcal{J}\right\}$ are independent.
 \end{proposition}
+\end{reqnoproof}
 
 \subsection{Random Variables and Distributions}
 \begin{definition}[Random Variables][3.1]
@@ -193,9 +197,11 @@ e.g. if $\mathcal{I} = \left\{1,2,3\right\}$ a subset of $\left\{1,\dots,n\right
     \[F^{-1}(y) = \sup\left\{x:F(x) < y\right\}\]
 \end{definition}
 
-\begin{theorem}[][3.5.1]
+\begin{reqnoproof}
+\begin{theorem}[][3.5.1]\req{t3.5.1}
     If $F$ satisfies properties i) to iii) of Thm 3.4, then such an $F$ is the CDF of some r.v. 
 \end{theorem}
+\end{reqnoproof}
 
 \begin{theorem}[][3.6]
     If $F$ is a CDF, it can only have countably many discontinuities.

@@ -27,17 +27,21 @@
     Proofs are analogous to the proofs under the univariate case.
 \end{theorem}
 
-\begin{definition}[The Joint Density][3.9]
+\begin{reqnoproof}
+\begin{definition}[The Joint Density][3.9]\req{d3.9}
     A random vector has a joint density function:
     \[f: \mathbb{R}^n \to \mathbb{R}, \quad \text{if }\forall(x_1, \dots, x_n)\in \mathbb{R}^n\]
     \[F(x_1, \dots x_n) = \int_{-\infty}^{x_1}\cdots \int_{-\infty}^{x_n}f(y_1, \dots, y_n)\, dy_n\dots \,dy_1\]
 \end{definition}
+\end{reqnoproof}
 
-\begin{theorem}[Independence of Random Variables][3.10]
+\begin{reqnoproof}
+\begin{theorem}[Independence of Random Variables][3.10]\req{t3.10}
     Random variables $X_1, \dots, X_n$ with CDFs $F_1, \dots, F_n$
     are independent if and only if
     \[F(x_1, \dots, x_n) = \prod_{i=1}^nF_i(x_i), \quad \forall(x_1, \dots, x_n) \in \mathbb{R}^n \]
 \end{theorem}
+\end{reqnoproof}
 
 \heading{Limits of sets:}
 Let $A_i$ be sets for $i\in\{1,2,\dots\}$ and consider $\displaystyle\lim_{n\to\infty}A_n$.

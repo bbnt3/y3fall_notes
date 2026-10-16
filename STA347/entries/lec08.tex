@@ -2,7 +2,8 @@
 
 \newlecture[][Oct 1, 2026]
 
-\begin{theorem}[Jensen's Inequality][4.5]
+\begin{reqproof}
+\begin{theorem}[Jensen's Inequality][4.5]\req{t4.5}\reqtoc{t4.5}{Thm 4.5 Jensen's Inequality}
     If $f$ is a convex function and $X$ is a random variable such that $f(X)$ is integrable,
     \[f(EX) \leq Ef(X)\]
     The inequality is \dbb{flipped} if $f$ is \dbb{concave}.
@@ -37,13 +38,15 @@
     \end{align*}
     \end{proof}
 \end{theorem}
+\end{reqproof}
 
 \begin{example}[Applying the Jensen's Inequality][4.5.1]
     \[[E(X)]^2 \leq E[X^2] \quad f(x) = x^2 \Rightarrow \text{convex}\]
     \[E[\log X] \leq \log [EX] \quad f(x) = \log x \Rightarrow \text{concave}\]
 \end{example}
 
-\begin{lemma}[Young's Inequality][4.6]
+\begin{reqproof}
+\begin{lemma}[Young's Inequality][4.6]\req{l4.6}\reqtoc{l4.6}{Lemma 4.6 Young's Inequality}
     For any $p, q > 1$ and $\frac{1}{p}+ \frac{1}{q} = 1$,
     \[xy \leq \frac{x^p}{p} + \frac{y^q}{q} \quad \text{for any }x,y \geq 0 \]
     \begin{proof}
@@ -69,8 +72,10 @@
     \\(If $p=q=2$: $\frac{1}{2}x^2 + \frac{1}{2}y^2 \geq xy \;\Leftrightarrow\; x^2+y^2 \geq 2xy$.)
     \end{proof}
 \end{lemma}
+\end{reqproof}
 
-\begin{theorem}[H\"older's Inequality][4.6]
+\begin{reqproof}
+\begin{theorem}[H\"older's Inequality][4.6]\req{t4.6}\reqtoc{t4.6}{Thm 4.6 \texorpdfstring{H\"older}{Hölder}'s Inequality}
     If $p,q > 1$ s.t. $\frac{1}{p} + \frac{1}{q} = 1$,
     \[E[|XY|] \leq [E(|X|^p)]^{\frac{1}{p}} \cdot [E(|Y|^q)]^{\frac{1}{q}}\]
 
@@ -92,20 +97,25 @@
     \[E[|X||Y|] \leq E(|X|^p)^{\frac{1}{p}} E(|Y|^q)^{\frac{1}{q}}\]
     \end{proof}
 \end{theorem}
+\end{reqproof}
 
-\begin{proposition}[Cauchy-Schwarz Inequality][4.6.1]
+\begin{reqproof}
+\begin{proposition}[Cauchy-Schwarz Inequality][4.6.1]\req{p4.6.1}\reqtoc{p4.6.1}{Prop 4.6.1 Cauchy-Schwarz Inequality}
     \[E[|XY|] \leq \sqrt{E(X^2)E(Y^2)}\]
     \begin{proof}
     Exercise.
     \end{proof}
 \end{proposition}
+\end{reqproof}
 
-\begin{theorem}[Minkowski's Inequality][4.7]
+\begin{reqnoproof}
+\begin{theorem}[Minkowski's Inequality][4.7]\req{t4.7}\reqtoc{t4.7}{Thm 4.7 Minkowski's Inequality}
     If $p>1$, then
     \[[E(|X+Y|^p)]^{\frac{1}{p}} \leq [E(|X|^p)]^{\frac{1}{p}} + [E(|Y|^p)]^{\frac{1}{p}}\]
     \begin{center}
         (The triangle inequality in probability)
     \end{center}
 \end{theorem}
+\end{reqnoproof}
 
 {\large\rb{EXAM UPDATE: CAN BRING CHEATSHEET DOUBLE SIDE HANDWRITTEN!!!!}\par}

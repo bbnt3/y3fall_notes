@@ -2,7 +2,8 @@
 
 \newlecture[Chapter 5 - Limiting Theorems and Convergences][Oct 6, 2026]
 
-\begin{theorem}[Continuity of Measure][5.1]
+\begin{reqproof}
+\begin{theorem}[Continuity of Measure][5.1]\req{t5.1}\reqtoc{t5.1}{Thm 5.1 Continuity of Measure}
     If $\left\{A_n\right\} \uparrow A$ or $\left\{A_n\right\} \downarrow A$, then $\lim_{n\to \infty} P(A_n) = P(A)$.
     \\Note:
     \begin{enumerate}
@@ -46,6 +47,7 @@
         \[\left\{A_n\right\}\downarrow A \;\Rightarrow\; \left\{A_n^c\right\}\uparrow A^c\]
     \end{proof}
 \end{theorem}
+\end{reqproof}
 
 \begin{example}[][5.1.1]
     If each $A_n = \left[0, 1-\frac{1}{n}\right]$, then
@@ -54,7 +56,8 @@
     \[P(A) = \lim_{n\to\infty} P(A_n) = \lim_{n\to\infty}\left(1-\frac{1}{n}\right) = 1\]
 \end{example}
 
-\begin{definition}[Tail Events][5.2]
+\begin{reqproof}
+\begin{definition}[Tail Events][5.2]\req{d5.2}\reqtoc{d5.2}{Def 5.2 Tail Events}
     Consider a sequence $A_1, A_2, \dots \subseteq \Omega$, define the tail events as:
     \[\limsup_{n\to\infty} A_n = \left\{A_n \text{ i.o.}\right\} = \bigcap_{n=1}^\infty \bigcup_{k=n}^\infty A_k\]
     \[\liminf_{n\to\infty} A_n = \left\{A_n \text{ a.a.}\right\} = \bigcup_{n=1}^\infty \bigcap_{k=n}^\infty A_k\]
@@ -62,6 +65,7 @@
     \\ i.o.\ means \dbb{infinitely often}
     \\ a.a.\ means \dbb{almost always}
 \end{definition}
+\end{reqproof}
 
 \[\limsup_{n\to\infty} A_n = \left\{A_n \text{ i.o.}\right\} = \bigcap_{n=1}^\infty \underbrace{\bigcup_{k=n}^\infty A_k}_{\text{tail union}}\]
 You want to find the smallest set that contains the union of your tail events:
@@ -96,11 +100,14 @@ You want to find the largest set that contains the intersect of your tail events
     \\$\left\{A_n \text{ a.a.}\right\} \Rightarrow$ ``the elements that will appear almost always in the tail of $\left\{A_n\right\}$''
 \end{example}
 
-\begin{corollary}[][5.2.1]
+\begin{reqproof}
+\begin{corollary}[][5.2.1]\req{c5.2.1}\reqtoc{c5.2.1}{Corollary 5.2.1}
     \[P(A_n \text{ i.o.}) = 1 - P(A_n^c \text{ a.a.})\]
 \end{corollary}
+\end{reqproof}
 
-\begin{proposition}[][5.2.2]
+\begin{reqproof}
+\begin{proposition}[][5.2.2]\req{p5.2.2}\reqtoc{p5.2.2}{Prop 5.2.2}
     \[P(A_n \text{ a.a.}) \leq \liminf_{n\to\infty} P(A_n) \leq \limsup_{n\to\infty} P(A_n) \leq P(A_n \text{ i.o.})\]
     i.e.
     \[P\left(\liminf_{n\to\infty} A_n\right) \leq \liminf_{n\to\infty} P(A_n) \leq \limsup_{n\to\infty} P(A_n) \leq P\left(\limsup_{n\to\infty} A_n\right)\]
@@ -124,8 +131,10 @@ You want to find the largest set that contains the intersect of your tail events
         \\The 3rd ``$\leq$'' can be proved similarly.
     \end{proof}
 \end{proposition}
+\end{reqproof}
 
-\begin{theorem}[Borel-Cantelli Lemma][5.3]
+\begin{reqnoproof}
+\begin{theorem}[Borel-Cantelli Lemma][5.3]\req{t5.3}\reqtoc{t5.3}{Thm 5.3 Borel-Cantelli Lemma}
     \begin{enumerate}[label=\roman*)]
         \item If $\sum_{n=1}^\infty P(A_n) < \infty$, then $P(A_n \text{ i.o.}) = 0$.
         \item If $\sum_{n=1}^\infty P(A_n) = \infty$ and $\left\{A_n\right\}$ are independent, then $P(A_n \text{ i.o.}) = 1$.
@@ -160,6 +169,7 @@ You want to find the largest set that contains the intersect of your tail events
         \end{enumerate}
     \end{proof}
 \end{theorem}
+\end{reqnoproof}
 
 \begin{example}[Converse does NOT hold for i)][5.3.1]
     Uniform measure and $A_n = \left[0, \frac{1}{n}\right]$. Then $A_n \downarrow A = \left\{0\right\}$, and

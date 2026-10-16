@@ -2,7 +2,8 @@
 
 \newlecture[][Oct 13, 2026]
 
-\begin{theorem}[Bounded Convergence Thm][5.7]
+\begin{reqnoproof}
+\begin{theorem}[Bounded Convergence Thm][5.7]\req{bct}\reqtoc{bct}{Thm 5.7 Bounded Convergence Theorem}
     Suppose that $|X_n| \leq M$ a.s. and $X_n\overset{P}{\to} X$,
     \\Then $EX = \lim_{n\to \infty}EX_n$
     \\In general
@@ -15,6 +16,7 @@
         \text{Dominated Convergence Theorem} &\text{(DCT)}
     \end{cases}\]
 \end{theorem}
+\end{reqnoproof}
 
 \begin{example}[Counter Example][5.6.1]
     Suppose the sequence of R.V. $\left\{X_n \right\}$
@@ -43,13 +45,16 @@
     \\Note: for BCT, we do not require $X_n \overset{a.s.}{\longrightarrow} X$, but $X_n \overset{P}{\longrightarrow} X$ is sufficient.
 \end{proof}
 
-\begin{theorem}[Fatou's Lemma][5.8]
+\begin{reqnoproof}
+\begin{theorem}[Fatou's Lemma][5.8]\req{fatou}\reqtoc{fatou}{Thm 5.8 Fatou's Lemma}
     If $X_n \geq 0$ a.s. for all $n$, then
     \[\liminf_{n\to\infty} EX_n \geq E(\liminf_{n\to\infty}X_n)\]
     Proof not required!!!!
 \end{theorem}
+\end{reqnoproof}
 
-\begin{theorem}[Monotone Convergence Theorem][5.8.1]
+\begin{reqnoproof}
+\begin{theorem}[Monotone Convergence Theorem][5.8.1]\req{mct}\reqtoc{mct}{Thm 5.8.1 Monotone Convergence Theorem}
     If $X_n \geq 0$ a.s. and
     \[X_n \underset{\mathclap{\substack{\Big\uparrow\\ \text{monotonically increasing}}}}{\uparrow} X \quad \text{a.s.}\]
     then
@@ -67,8 +72,11 @@
         \[\Rightarrow \lim_{n\to\infty} EX_n = EX\]
     \end{proof}
 \end{theorem}
+\end{reqnoproof}
 
-\begin{theorem}[Dominated Convergence Theorem][5.9]
+\begin{reqnoproof}
+\begin{theorem}[Dominated Convergence Theorem][5.9]\req{dct}\reqtoc{dct}{Thm 5.9 Dominated Convergence Theorem}
     If $X_n \overset{a.s.}{\longrightarrow} X$ and $|X_n| \leq Y$ a.s. for some integrable $Y$, then
     \[\lim_{n\to\infty}E(X_n) = E(\lim_{n\to\infty}X_n)\]
 \end{theorem}
+\end{reqnoproof}

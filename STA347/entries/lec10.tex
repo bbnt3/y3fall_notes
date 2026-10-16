@@ -2,17 +2,21 @@
 
 \newlecture[Convergence in Probability and Almost Sure Convergence][Oct 8, 2026]
 
-\begin{definition}[Convergence in Probability][5.4]
+\begin{reqproof}
+\begin{definition}[Convergence in Probability][5.4]\req{d5.4}\reqtoc{d5.4}{Def 5.4 Convergence in Probability}
     A sequence of random variables $X_n$ converges in probability to $X$ if for all $\varepsilon > 0$
     \[\lim_{n\to \infty} P(\left|X_n - X\right| \leq \varepsilon) = 1 \qquad \text{or} \qquad \lim_{n\to \infty} P(\left|X_n - X\right| > \varepsilon) = 0\]
     and is denoted by $X_n \overset{P}{\longrightarrow} X$.
 \end{definition}
+\end{reqproof}
 
-\begin{definition}[Almost Sure Convergence][5.5]
+\begin{reqproof}
+\begin{definition}[Almost Sure Convergence][5.5]\req{d5.5}\reqtoc{d5.5}{Def 5.5 Almost Sure Convergence}
     A sequence of random variables $X_n$ converges almost surely to $X$ if
     \[P(\lim_{n \to \infty} X_n = X) = 1\]
     and is denoted by $X_n \overset{a.s.}{\longrightarrow} X$.
 \end{definition}
+\end{reqproof}
 
 \heading{Compare the two:}
 \[X_n \overset{P}{\longrightarrow} X \qquad \lim_{n\to \infty} P(\left|X_n - X\right| < \varepsilon ) = 1\]
@@ -28,7 +32,8 @@ Written in the same form, for all $\varepsilon > 0$:
 ``$\overset{a.s.}{\longrightarrow}$'' condition holds almost always: for intersect of the tail.
 \\``$\overset{P}{\longrightarrow}$'' condition satisfied at target.
 
-\begin{proposition}[][5.5.1]
+\begin{reqproof}
+\begin{proposition}[][5.5.1]\req{p5.5.1}\reqtoc{p5.5.1}{Prop 5.5.1}
     If for all $\varepsilon > 0$, $P(\left|X_n - X\right| > \varepsilon \text{ i.o.}) = 0$, then
     \[X_n \overset{a.s.}{\longrightarrow} X\]
     \begin{proof}
@@ -39,8 +44,10 @@ Written in the same form, for all $\varepsilon > 0$:
         \end{align*}
     \end{proof}
 \end{proposition}
+\end{reqproof}
 
-\begin{proposition}[][5.5.2]
+\begin{reqproof}
+\begin{proposition}[][5.5.2]\req{p5.5.2}\reqtoc{p5.5.2}{Prop 5.5.2}
     If for all $\varepsilon > 0$,
     \[\sum_{n=1}^{\infty} P(\left|X_n(\omega) - X(\omega)\right| \geq \varepsilon) < \infty\]
     then $X_n \overset{a.s.}{\longrightarrow} X$.
@@ -48,8 +55,10 @@ Written in the same form, for all $\varepsilon > 0$:
         Applying the Borel-Cantelli Lemma.
     \end{proof}
 \end{proposition}
+\end{reqproof}
 
-\begin{proposition}[][5.5.3]
+\begin{reqproof}
+\begin{proposition}[][5.5.3]\req{p5.5.3}\reqtoc{p5.5.3}{Prop 5.5.3}
     If $X_n \overset{a.s.}{\longrightarrow} X$, then $X_n \overset{P}{\longrightarrow}X$.
     \\The opposite doesn't hold: $X_n \overset{P}{\longrightarrow} X \nRightarrow X_n \overset{a.s.}{\longrightarrow} X$.
     \begin{proof}
@@ -65,6 +74,7 @@ Written in the same form, for all $\varepsilon > 0$:
         So $\lim_{n\to\infty} P(|X_n - X| \geq \varepsilon) = 0$ for every $\varepsilon > 0$, i.e.\ $X_n \overset{P}{\longrightarrow} X$. The counterexample for the converse is Example 5.5.4.
     \end{proof}
 \end{proposition}
+\end{reqproof}
 
 \begin{example}[][5.5.4]
     $X_n$ independent with $P(X_n = 1) = \frac{1}{n}$, $P(X_n = 0) = 1 - \frac{1}{n}$.
@@ -76,12 +86,15 @@ Written in the same form, for all $\varepsilon > 0$:
     \[\Rightarrow X_n \overset{a.s.}{\not\longrightarrow} 0\]
 \end{example}
 
-\begin{theorem}[][5.5.5]
+\begin{reqnoproof}
+\begin{theorem}[][5.5.5]\req{t5.5.5}\reqtoc{t5.5.5}{Thm 5.5.5}
     If $X_n \overset{P}{\longrightarrow} X$, there exists a subsequence such that
     \[X_{n_k} \overset{a.s.}{\longrightarrow} X\]
 \end{theorem}
+\end{reqnoproof}
 
-\begin{theorem}[Continuous Mapping Theorem][5.6]
+\begin{reqnoproof}
+\begin{theorem}[Continuous Mapping Theorem][5.6]\req{t5.6}\reqtoc{t5.6}{Thm 5.6 Continuous Mapping Theorem}
     If $f$ is a continuous function, then
     \begin{enumerate}[label = \roman*)]
         \item $X_n \overset{a.s.}{\longrightarrow} X \Rightarrow f(X_n) \overset{a.s.}{\longrightarrow}f(X)$
@@ -97,3 +110,4 @@ Written in the same form, for all $\varepsilon > 0$:
         \end{enumerate}
     \end{proof}
 \end{theorem}
+\end{reqnoproof}
