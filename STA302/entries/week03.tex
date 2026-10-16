@@ -135,6 +135,7 @@
 \subsection{Verifying Assumptions with Residual Plots}\label{sec:residplots}
 
 \begin{definition}[Residuals]
+    Residuals $\hat{\epsilon}$ are the estimated errors (distance from the fitted line).
     $\hat{\boldsymbol\epsilon}=\mathbf{Y}-\hat{\mathbf{Y}}=(\mathbf{I}_n-\mathbf{H})\mathbf{Y}$
     are our (sample) estimates of the errors, with
     \[E[\hat\epsilon_i\mid X]=0, \qquad \Var[\hat\epsilon_i\mid X]=\sigma^2(1-h_{ii}),\]
@@ -142,7 +143,7 @@
     $\mathbf{H}=\mathbf{X}(\mathbf{X}'\mathbf{X})^{-1}\mathbf{X}'$.
     \aside{The errors all have the same variance, but the residuals'
     variances depend on $X$.} Estimate $\sigma^2$ by
-    \[\hat\sigma^2 = \frac{1}{n-(p+1)}\sum_{i=1}^n\big(Y_i-\hat Y_i\big)^2 = \frac{1}{n-(p+1)}\sum_{i=1}^n\hat\epsilon_i^2\]
+    \[\hat\sigma^2 = s^2 = \frac{1}{n-(p+1)}\sum_{i=1}^n\big(Y_i-\hat Y_i\big)^2 = \frac{1}{n-(p+1)}\sum_{i=1}^n\hat\epsilon_i^2\]
     \aside{df $=n-p-1$: $n$ observations minus $p+1$ $\beta$'s. The sum is
     the same as in SLR.}
 \end{definition}
