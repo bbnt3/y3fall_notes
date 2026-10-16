@@ -19,3 +19,7 @@
 \contentsline {subsection}{5.1 - Project Relationships and Alternatives}{40}{section*.34}%
 \contentsline {subsection}{5.2 - Present Worth and Annual Worth}{42}{section*.36}%
 \contentsline {subsection}{5.3 - Evaluating Mutually Exclusive Projects (PW/AW)}{44}{section*.38}%
+\contentsline {section}{Week 6 - Comparison Methods (Part 2)}{47}{section*.39}%
+\contentsline {subsection}{6.1 - Internal Rate of Return}{47}{section*.41}%
+\contentsline {subsection}{6.2 - Comparing Mutually Exclusive Projects Using IRR}{50}{section*.43}%
+\contentsline {subsection}{6.3 - Payback Period}{52}{section*.45}%
