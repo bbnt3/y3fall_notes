@@ -56,25 +56,35 @@
     \addtocontents{toc}{\protect\contentsline{subsubsection}{#2}{\protect\pageref{req:#1}}{req:#1}}%
     \bookmark[dest=req:#1,level=2]{#2}}
 
+% STA347-only: group lectures by chapter in the TOC / PDF outline.
+% \chapterentry{title} goes right before a lecture's \input; it lands on the
+% lecture's own page (no extra page break, \newlecture skips its \newpage).
+\makeatletter
+\newcommand{\chapterentry}[1]{\clearpage\phantomsection\addcontentsline{toc}{part}{#1}\booltrue{newlecture@justsection}}
+\makeatother
+
 \begin{document}
 \maketitle
 \tableofcontents
 
 % Add one input per lecture, in the order you want them to appear.
+\chapterentry{Chapter 1: Set Theory Fundamentals}
 \input{entries/lec01.tex}
+\chapterentry{Chapter 2: Probability Measure}
 \input{entries/lec02.tex}
+\chapterentry{Chapter 3: Independence, Random Variables and Distributions}
 \input{entries/lec03.tex}
 \input{entries/lec04.tex}
+\chapterentry{Expectation}
 \input{entries/lec05.tex}
 \input{entries/lec06.tex}
+\chapterentry{Chapter 4: Inequalities}
 \input{entries/lec07.tex}
 \input{entries/lec08.tex}
-
+\chapterentry{Chapter 5: Limiting Theorems and Convergences}
 \input{entries/lec09.tex}
-
 \input{entries/lec10.tex}
-
 \input{entries/lec11.tex}
-
+\chapterentry{Midterm Review}
 \input{entries/lec12.tex}
 \end{document}

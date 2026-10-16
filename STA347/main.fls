@@ -2,7 +2,7 @@ PWD /Users/Bonnie/Desktop/y3fall_notes/STA347
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/Bonnie/Desktop/y3fall_notes/STA347/main.tex
+INPUT main.tex
 OUTPUT main.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/article.cls
@@ -307,6 +307,7 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
 INPUT ./main.toc
 INPUT ./main.toc
 INPUT main.toc
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/rm-lmr10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/lmmi10.tfm
@@ -317,11 +318,10 @@ OUTPUT main.toc
 INPUT ./entries/lec01.tex
 INPUT ./entries/lec01.tex
 INPUT entries/lec01.tex
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmr8.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmr6.tfm
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbx12.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmr10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/rm-lmr10.tfm
@@ -339,10 +339,10 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msam5
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm5.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
 INPUT ./entries/lec02.tex
 INPUT ./entries/lec02.tex
 INPUT entries/lec02.tex
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmri10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbxi10.tfm
 INPUT ./entries/lec03.tex
@@ -357,10 +357,10 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/lm/ts1lmr.fd
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ts1-lmr10.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
 INPUT ./entries/lec05.tex
 INPUT ./entries/lec05.tex
 INPUT entries/lec05.tex
-INPUT /usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
 INPUT ./entries/lec06.tex
 INPUT ./entries/lec06.tex
 INPUT entries/lec06.tex

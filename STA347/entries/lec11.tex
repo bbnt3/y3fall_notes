@@ -1,9 +1,9 @@
 % !TeX root = ../main.tex
 
-\newlecture[][Oct 13, 2026]
+\newlecture[Convergence Theorems: BCT, Fatou, MCT and DCT][Oct 13, 2026]
 
 \begin{reqnoproof}
-\begin{theorem}[Bounded Convergence Thm][5.7]\req{bct}\reqtoc{bct}{Thm 5.7 Bounded Convergence Theorem}
+\begin{theorem}[Bounded Convergence Theorem][5.7]\req{bct}\reqtoc{bct}{Thm 5.7 Bounded Convergence Theorem}
     Suppose that $|X_n| \leq M$ a.s. and $X_n\overset{P}{\to} X$,
     \\Then $EX = \lim_{n\to \infty}EX_n$
     \\In general
@@ -20,16 +20,16 @@
 
 \begin{example}[Counter Example][5.6.1]
     Suppose the sequence of R.V. $\left\{X_n \right\}$
-    \[\begin{cases}
-        n & \text{with probability } \frac{1}{n} \\
-        0 & \text{with probability } 1-\frac{1}{n}
+    \[X_n = \begin{cases}
+        n^2 & \text{with probability } \frac{1}{n^2} \\
+        0 & \text{with probability } 1-\frac{1}{n^2}
     \end{cases}\]
     \[\lim_{n\to\infty}X_n = 0 \quad \text{a.s.}\]
     \[\Rightarrow E\left(\lim_{n\to\infty}X_n\right) = E(0) = 0\]
-    However, for each $n \quad E(X_n) = n \times \frac{1}{n} = 1$
+    However, for each $n \quad E(X_n) = n^2 \cdot \frac{1}{n^2} = 1$
     \[\lim_{n\to\infty}E(X_n) = \lim_{n\to\infty}1 = 1\]
     The problem is, even though the probability of $X_n$ taking non-zero values is shrinkaging to 0, the value it may take, however, goes sufficiently large.
-    \\However, under BCT, the value that $X_n$ may take is boudned, and it can be no longer sufficiently large to offset the convergence of probability, therefore we can have limit of expectation = expectation of limit.
+    \\However, under BCT, the value that $X_n$ may take is bounded, and it can be no longer sufficiently large to offset the convergence of probability, therefore we can have limit of expectation = expectation of limit.
 \end{example}
 
 \begin{proof}
@@ -42,14 +42,41 @@
     \[\leq \underbrace{2M\cdot P(\mathcal{G}_n)}_{\substack{\to 0\\ \text{as } n\to\infty}} + \;\underset{\mathclap{\substack{\Bigg\uparrow\\ \text{arbitrary}}}}{\varepsilon}\cdot[1-P(\mathcal{G}_n)]\]
     \[= \varepsilon + P(\mathcal{G}_n)\left|2M - \varepsilon\right|\]
     \\As this value can be arbitrarily small, we show that $E\left|X_n - X\right|$ can be arbitrarily small as $n \to \infty$.
-    \\Note: for BCT, we do not require $X_n \overset{a.s.}{\longrightarrow} X$, but $X_n \overset{P}{\longrightarrow} X$ is sufficient.
 \end{proof}
+Note: for BCT, we do not require $X_n \overset{a.s.}{\longrightarrow} X$, but $X_n \overset{P}{\longrightarrow} X$ is sufficient.
 
 \begin{reqnoproof}
 \begin{theorem}[Fatou's Lemma][5.8]\req{fatou}\reqtoc{fatou}{Thm 5.8 Fatou's Lemma}
     If $X_n \geq 0$ a.s. for all $n$, then
-    \[\liminf_{n\to\infty} EX_n \geq E(\liminf_{n\to\infty}X_n)\]
-    Proof not required!!!!
+    \[\liminf_{n\to\infty} {\color{green!50!black}EX_n} \geq E({\color{red!70!black}\liminf_{n\to\infty}X_n})\]
+    \begin{center}
+    \begin{tikzpicture}[scale=1, every node/.style={font=\small}]
+        \node at (0,0.3) {$\Omega \backslash X_n$};
+        \foreach \j/\lab in {1/X_1,2/X_2,3/X_3} \node[blue!55!black] at (1.3*\j,0.3) {$\lab$};
+        \node[blue!55!black] at (5.2,0.3) {$\cdots$};
+        \node[blue!55!black] at (6.5,0.3) {$X_n$};
+        \node[blue!55!black] at (7.6,0.3) {$\cdots$};
+        \foreach \i/\lab in {1/\omega_1,2/\omega_2} \node[blue!55!black] at (0,-0.8*\i) {$\lab$};
+        \node[blue!55!black] at (0,-2.3) {$\vdots$};
+        \node[blue!55!black] at (0,-3.0) {$\omega_p$};
+        \node[blue!55!black] at (0,-3.6) {$\vdots$};
+        % rows: liminf over n for each omega
+        \foreach \i in {1,2} {
+            \draw[red!70!black, thick] (4.2,-0.8*\i) ellipse (4.0cm and 0.3cm);
+            \node[red!70!black, anchor=west] at (8.3,-0.8*\i) {$\liminf X_n(\omega_{\i})$};
+        }
+        % columns: expectation over omega for each n
+        \foreach \j in {1,2} {
+            \draw[green!50!black, thick] (1.3*\j,-1.6) ellipse (0.45cm and 2.0cm);
+            \draw[->, green!50!black] (1.3*\j,-3.6) -- (1.3*\j,-4.1) node[below]{$EX_{\j}$};
+        }
+        \node[green!50!black] at (3.9,-4.4) {$\cdots$};
+    \end{tikzpicture}
+    \end{center}
+    {\color{green!50!black}$\lim_{n\to\infty} EX_n$: calculate expectation first for each $n$, then take limit.}
+    \\{\color{red!70!black}$E[\liminf X_n]$: averaging the infimum of $X_n$ under each $\omega$ (average of inf's).}
+    \\Taking average first under each $n$ $\geq$ taking average of the infimum's.
+    \\Proof: Not required.
 \end{theorem}
 \end{reqnoproof}
 
@@ -58,18 +85,16 @@
     If $X_n \geq 0$ a.s. and
     \[X_n \underset{\mathclap{\substack{\Big\uparrow\\ \text{monotonically increasing}}}}{\uparrow} X \quad \text{a.s.}\]
     then
-    \[\lim_{n\to\infty} EX_n = EX\]
+    \[EX_n \uparrow EX\]
     $X_n \uparrow X$ means for each $\omega \in \Omega$,
     \[X_1(\omega) \leq X_2(\omega) \leq \cdots \leq X_n(\omega) \leq \cdots\]
     \[\lim_{n\to\infty} X_n(\omega) = X(\omega)\]
     \begin{proof}
         Since $EX_n \leq EX$ as $X_n \leq X$ a.s.,
-        \[\limsup_{n\to\infty} EX_n \leq \lim_{n\to\infty}EX = EX = E\lim_{n\to\infty}X_n\]
-        However, by Fatou's Lemma, as $X_n \overset{a.s.}{\longrightarrow} X$ (so $\liminf_{n\to\infty} X_n = X$ a.s.),
-        \[EX = E(\liminf_{n\to\infty} X_n) \leq \liminf_{n\to\infty} EX_n\]
-        Therefore
-        \[\limsup_{n\to\infty} EX_n \leq EX \leq \liminf_{n\to\infty} EX_n\]
-        \[\Rightarrow \lim_{n\to\infty} EX_n = EX\]
+        \[\lim_{n\to\infty} EX_n \leq \lim_{n\to\infty}EX = EX = E\lim_{n\to\infty}X_n\]
+        However, by Fatou's Lemma, as $X_n \overset{a.s.}{\longrightarrow} X$ \quad ($\liminf_n X_n = \lim_n X_n$),
+        \[\lim_{n\to\infty} EX_n \geq E\lim_{n\to\infty}X_n\]
+        \[\Rightarrow \lim_{n\to\infty} EX_n = E\lim_{n\to\infty}X_n\]
     \end{proof}
 \end{theorem}
 \end{reqnoproof}
