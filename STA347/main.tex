@@ -43,14 +43,15 @@
     \def\th@boldhead{\reqoldthhead\reqlinkhead}%
     \let\reqoldthheadnp\th@boldheadnp
     \def\th@boldheadnp{\reqoldthheadnp\reqlinkhead}}
+\newcommand{\reqprefix}{}% "*" on required headings
 \newcommand{\reqlinkhead}{%
     \let\reqoldthmhead\thmhead
     \def\thmhead##1##2##3{\@ifempty{##3}%
-        {\reqoldthmhead{\hyperlink{req:list}{##1}}{\hyperlink{req:list}{##2}}{}}%
-        {\reqoldthmhead{\hyperlink{req:list}{##1}}{\hyperlink{req:list}{##2}}{\hyperlink{req:list}{##3}}}}}
+        {\reqoldthmhead{\hyperlink{req:list}{\reqprefix##1}}{\hyperlink{req:list}{##2}}{}}%
+        {\reqoldthmhead{\hyperlink{req:list}{\reqprefix##1}}{\hyperlink{req:list}{##2}}{\hyperlink{req:list}{##3}}}}}
 \makeatother
-\newenvironment{reqproof}{\reqhead{red!70!black}\renewcommand{\proofname}{\textcolor{red!70!black}{\bfseries Proof}}}{}
-\newenvironment{reqnoproof}{\reqhead{blue!60!black}}{}
+\newenvironment{reqproof}{\renewcommand{\reqprefix}{*}\reqhead{red!70!black}\renewcommand{\proofname}{\textcolor{red!70!black}{\bfseries Proof}}}{}
+\newenvironment{reqnoproof}{\renewcommand{\reqprefix}{*}\reqhead{blue!60!black}}{}
 \newcommand{\rl}[2]{\hyperref[req:#1]{#2}}
 \newcommand{\reqtoc}[2]{%
     \addtocontents{toc}{\protect\contentsline{subsubsection}{#2}{\protect\pageref{req:#1}}{req:#1}}%
