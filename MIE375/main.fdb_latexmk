@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1792082275.19 "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" "main.pdf" "main" 1792082277.35971 0
+["pdflatex"] 1792360178.74754 "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" "main.pdf" "main" 1792360181.29825 0
   "../template/preamble.tex" 1791217002.22348 7297 0fd95ed11559886728354c86763c30db ""
   "/Users/Bonnie/Desktop/y3fall_notes/MIE375/main.tex" 1791479171.73494 1954 2dc489df3d77931336d2e3b3d9a48cbb ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
@@ -218,16 +218,16 @@
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
   "entries/lec01.tex" 1791477058.99067 8982 a855494dfbf8b2c71219f20d1de124fd ""
-  "entries/lec02.tex" 1791478170.07912 13801 00ba5bc00046be8c72a200259fe5dafd ""
+  "entries/lec02.tex" 1792360178.4451 13834 642bda88a88a6077e0fc5a9d9df00fc0 ""
   "entries/lec03.tex" 1791476909.08227 13570 e593bace587b11b69812b1c3add4c631 ""
   "entries/lec04.tex" 1791476909.08303 15590 6ed591ae5f5422b2e59b6e9f946f6038 ""
   "entries/lec05.tex" 1791215788.1164 8924 d3d3ba4436d196e85141aa7eeb22c7b5 ""
   "entries/lec06.tex" 1791478086.93857 17338 3d7b109a09156c6e44297456b74a68f5 ""
   "entries/lec07.tex" 1792082274.94956 10255 6adbeaef08f52c690286e940afde01a8 ""
-  "main.aux" 1792082277.2325 1026 110c5575322d32c56c6a442c0f843589 "pdflatex"
-  "main.out" 1792082277.23301 1796 1a3c799166c137f7c68a740c6ea91c84 "pdflatex"
+  "main.aux" 1792360181.16113 1026 110c5575322d32c56c6a442c0f843589 "pdflatex"
+  "main.out" 1792360181.1624 1796 1a3c799166c137f7c68a740c6ea91c84 "pdflatex"
   "main.tex" 1791479171.73494 1954 2dc489df3d77931336d2e3b3d9a48cbb ""
-  "main.toc" 1792082277.23324 576 f7d69cdf9deeaacb82f4b1538b565d89 "pdflatex"
+  "main.toc" 1792360181.16339 576 f7d69cdf9deeaacb82f4b1538b565d89 "pdflatex"
   (generated)
   "main.aux"
   "main.log"
