@@ -1,0 +1,367 @@
+% !TeX root = ../main.tex
+
+% Surface mean used in Appendix 11.A, with its subscript set underneath.
+\providecommand{\mean}{\operatorname*{mean}}
+
+\newlecture[Laplace's Equation: Fundamental Solutions and Green's Functions]
+
+\subsection{11.1 Introduction}
+In this lecture, we seek the \textit{fundamental solution} of the Laplace operator and appeal to the principle of linear superposition to solve Laplace's and Poisson's equations. The technique allows us to naturally analyze the solution to Laplace's equation in unbounded domains. We will also apply the method of reflection to find \textit{Green's functions} and solve boundary value problems.
+
+\subsection{11.2 Fundamental solution}
+We recall from our discussion of the fundamental solution of the heat equation that the Dirac delta distribution centered at $a \in \R^n$, denoted $\delta_a$ or $\delta(\cdot - a)$, is characterized by
+\[\int_{\R^n} f(x)\delta(x - a)\,dx = f(a)\]
+for any sufficiently regular function $f$. As discussed for the heat equation, the delta distribution may be understood as the limit of increasingly concentrated Gaussians with unit integral. In the heat equation, the delta distribution represented a concentrated initial condition. For Poisson's equation, it represents a concentrated source. This leads to the following definition of the fundamental solution.
+
+\begin{definition}[Fundamental Solution of the Laplace Operator][11.1]
+    The \textbf{fundamental solution} of the Laplace operator is a function $\Phi : \R^n \setminus \{0\} \to \R$ satisfying
+    \[-\Delta\Phi = \delta \quad \text{in } \R^n\]
+    in the sense of distribution. The fundamental solutions are given by
+    \[\Phi(x) = \begin{cases} -\dfrac{1}{2}\|x\|, & n = 1, \\[6pt] -\dfrac{1}{2\pi}\log\|x\|, & n = 2, \\[6pt] \dfrac{1}{\sigma_n(n - 2)\|x\|^{n-2}}, & n \geq 3, \end{cases}\]
+    where $\sigma_n$ is the surface area of the unit sphere in $\R^n$ (e.g., $\sigma_n = 4\pi$ for $n = 3$), and $\|x\| \equiv \sqrt{x_1^2 + \cdots + x_n^2}$.
+\end{definition}
+\begin{proof}[First part of proof (for $\R^2$)]
+    We prove the result for $\R^2$ for which $\Phi(x) = -\frac{1}{2\pi}\log\|x\| = -\frac{1}{2\pi}\log(r)$, where $r \equiv \|x\|$. We first verify that the fundamental solution satisfies Laplace's equation for any $r > 0$:
+    \[-\Delta\Phi = -\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial\Phi}{\partial r}\right) - \frac{1}{r^2}\frac{\partial^2\Phi}{\partial\theta^2} = -\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial}{\partial r}\left(-\frac{1}{2\pi}\log(r)\right)\right) = \frac{1}{2\pi}\frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{1}{r}\right) = 0,\]
+    for $r > 0$, and hence $-\Delta\Phi(x) = 0$ for $x \neq 0$.
+
+    Showing $-\Delta\Phi = \delta$ requires distribution theory; this is beyond the scope of this course.
+\end{proof}
+
+The fundamental solution is singular at the origin, in the sense that it fails to be smooth there. Its behavior far from the origin depends on the spatial dimension. For $n \geq 3$, it decays as $\|x\|^{2-n}$. In one and two dimensions, it does not decay to zero as $\|x\| \to \infty$. For example, in two dimensions, the fundamental solution is unbounded at the origin and varies logarithmically with the distance from the origin, as shown in Figure 11.1. By construction, the function is harmonic everywhere except at the origin. In electrostatics, the fundamental solution represents the electric potential associated with a point charge at the origin.
+
+\lecfig[0.45\linewidth]{laplace_funsoln}{2}{195 557 195 69}{Figure 11.1: The fundamental solution of Laplace's equation in $\R^2$. Note that the function is unbounded at the origin.}
+
+\subsection{11.3 Poisson's equation in $\R^n$}
+We now use the fundamental solution to solve Poisson's problem in $\R^n$:
+
+\begin{theorem}[][11.2]
+    Suppose $f : \R^n \to \R$ is twice continuously differentiable and has a compact support. Then a solution to Poisson's problem
+    \[-\Delta u = f \quad \text{in } \R^n\]
+    can be expressed as
+    \[u(x) = \int_{\R^n} \Phi(x - \xi)f(\xi)\,d\xi,\]
+    where $\Phi : \R^n \to \R$ is the fundamental solution to Laplace's equation.
+\end{theorem}
+\begin{proof}
+    The proof is beyond the scope of this course.
+
+    However, using the definition of the fundamental solution and the Dirac delta distribution, we may at least formally show
+    \[-\Delta u(x) = -\int_{\R^n} \Delta\Phi(x - \xi)f(\xi)\,d\xi = \int_{\R^n} \delta(x - \xi)f(\xi)\,d\xi = f(x),\]
+    and hence $-\Delta u(x) = f(x)$ $\forall x \in \R^n$.
+\end{proof}
+
+Note that the solution is not unique without an additional condition, such as a prescribed behavior at infinity, because any harmonic function may be added to $u$ without changing the source term.
+
+\subsection{11.4 Green's function}
+We now consider the solution of Laplace's (and Poisson's) equation in a domain $\Omega$ with a boundary using \textit{Green's functions}, which are similar to the fundamental solution but incorporate the boundary condition.
+
+\begin{definition}[Green's Function][11.3]
+    A \textbf{Green's function} for $\Omega$ is a function $G : (\overline{\Omega} \times \overline{\Omega}) \setminus \{(x, \xi) \mid x = \xi\} \to \R$, such that, for each fixed $\xi \in \Omega$,
+    \begin{align*}
+        -\Delta_xG(\cdot, \xi) &= \delta_\xi \quad \text{in } \Omega, \\
+        G(\cdot, \xi) &= 0 \quad \text{on } \partial\Omega,
+    \end{align*}
+    in the sense of distribution, where $\delta_\xi$ is the Dirac delta distribution centered at $\xi$ (i.e., $\delta_\xi = \delta(\cdot - \xi)$).
+\end{definition}
+
+Informally, we may think of Green's function as satisfying, for each fixed $\xi \in \Omega$,
+\[-\Delta_xG(x, \xi) = \delta(x - \xi),\]
+where the equality is understood in the sense of distributions in $x$ on $\Omega$, together with the boundary condition
+\[G(x, \xi) = 0 \quad \forall x \in \partial\Omega.\]
+Away from the source point $\xi$, the equation becomes
+\[-\Delta_xG(x, \xi) = 0 \quad \forall x \in \Omega \setminus \{\xi\}.\]
+Like the fundamental solution, a Green's function $G(\cdot, \xi)$ is harmonic everywhere except at $\xi$; however, unlike the fundamental solution, the Green's function is associated with a particular domain $\Omega$ with a boundary $\partial\Omega$. In electrostatics, the Green's function $G(\cdot, \xi)$ represents the electric potential associated with a single point charge at $\xi$ inside a grounded conducting boundary $\partial\Omega$ (where the potential vanishes).
+
+We first note that Green's functions are symmetric.
+
+\begin{theorem}[Symmetry of Green's Function][11.4]
+    For any $x, \xi \in \Omega$, $x \neq \xi$,
+    \[G(x, \xi) = G(\xi, x).\]
+\end{theorem}
+\begin{proof}
+    Proof is provided in Appendix 11.A.
+\end{proof}
+
+The symmetry of Green's functions is known as the \textit{principle of reciprocity}. In electrostatics, the symmetry implies that (i) the potential at point $a$ due to a point charge at $b$ and (ii) the potential at point $b$ due to a point charge at $a$ are the same. The symmetry $G(x, \xi) = G(\xi, x)$ means that, in addition to its defining equation in the $x$-variable, the Green's function satisfies, for every fixed $x \in \Omega$,
+\[-\Delta_\xi G(x, \cdot) = \delta_x \quad \text{in } \Omega\]
+in the sense of distributions.
+
+The Green's function provides the following solution representation for a nonhomogeneous Dirichlet boundary-value problem:
+
+\begin{theorem}[Green's Representation Formula][11.5]
+    Assume that the domain and data are sufficiently regular, and let $G$ be the Green's function associated with $\Omega$. Then the solution to Poisson's problem
+    \begin{align*}
+        -\Delta u &= f \quad \text{in } \Omega, \\
+        u &= g \quad \text{on } \partial\Omega
+    \end{align*}
+    can be expressed, for every $x \in \Omega$, as
+    \begin{equation*}
+        u(x) = \int_\Omega G(x, \xi)f(\xi)\,d\xi - \int_{\partial\Omega} \nu(\xi) \cdot \nabla_\xi G(x, \xi)g(\xi)\,ds(\xi). \tag{11.1}
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    Proof is provided in Appendix 11.A.
+
+    We may also at least formally obtain the expression from the definition of the delta distribution and two successive applications of integration by parts:
+    \begin{align*}
+        u(\xi) &= \int_\Omega \delta(\xi - x)u(x)\,dx = -\int_\Omega \Delta_xG(x, \xi)u(x)\,dx \\
+        &= \int_\Omega \nabla_xG(x, \xi) \cdot \nabla u(x)\,dx - \int_{\partial\Omega} \nu(x) \cdot \nabla_xG(x, \xi)u(x)\,ds(x) \\
+        &= -\int_\Omega G(x, \xi)\Delta u(x)\,dx + \int_{\partial\Omega} G(x, \xi)\nu(x) \cdot \nabla u(x)\,ds(x) - \int_{\partial\Omega} \nu(x) \cdot \nabla_xG(x, \xi)u(x)\,ds(x) \\
+        &= \int_\Omega G(x, \xi)f(x)\,dx - \int_{\partial\Omega} \nu(x) \cdot \nabla_xG(x, \xi)g(x)\,ds(x),
+    \end{align*}
+    where the last equality follows from $G(\cdot, \xi) = 0$ on $\partial\Omega$. We finally appeal to the symmetry of the Green's function to obtain the desired result.
+\end{proof}
+
+The representation formula allows us to express the solution to Poisson's problem as the convolution of the Green's function with the source $f$ and boundary data $g$. The Green's function for problems with boundaries (in Theorem 11.5) plays an analogous role as the fundamental solution for problems without boundaries (in Theorem 11.2).
+
+For Laplace's equation, the Green's representation formula simplifies to
+\begin{equation*}
+    u(x) = \int_{\partial\Omega} K(x, \xi)g(\xi)\,ds(\xi), \tag{11.2}
+\end{equation*}
+where $K$ is the \textit{Poisson kernel} associated with $\Omega$:
+\[K(x, \xi) \equiv -\nu(\xi) \cdot \nabla_\xi G(x, \xi).\]
+The Poisson kernel is nonnegative and satisfies
+\[\int_{\partial\Omega} K(x, \xi)\,ds(\xi) = 1,\]
+which we may readily verify by taking the constant function $u = 1$. Hence, the value of a harmonic function at an interior point is a weighted average of its boundary values.
+
+\subsection{11.5 Finding Green's functions: general formulation}
+In general, a Green's function, which satisfies Definition 11.3, can be expressed in terms of the fundamental solution $\Phi$ and a ``correction function'' $\Psi$. Namely, we consider the decomposition of the form
+\[G(x, \xi) = \Phi(x - \xi) + \Psi(x, \xi).\]
+We apply the Laplacian to the decomposition to obtain
+\[-\Delta_xG(x, \xi) = -\Delta_x\Phi(x - \xi) - \Delta_x\Psi(x, \xi) = \delta(x - \xi) - \Delta_x\Psi(x, \xi) \quad \forall x, \xi \in \Omega.\]
+Since we wish $-\Delta_xG(x, \xi) = \delta(x - \xi)$, we conclude that
+\[-\Delta_x\Psi(x, \xi) = 0 \quad \forall x, \xi \in \Omega.\]
+We next apply the boundary condition for the Green's function to the decomposition to obtain
+\[G(x, \xi) = \Phi(x - \xi) + \Psi(x, \xi) = 0 \quad \forall x \in \partial\Omega, \ \forall\xi \in \Omega,\]
+which implies that
+\[\Psi(x, \xi) = -\Phi(x - \xi), \quad \forall x \in \partial\Omega, \ \forall\xi \in \Omega.\]
+Thus, the correction function $\Psi : \overline{\Omega} \times \Omega \to \R$ must satisfy, for each fixed $\xi \in \Omega$,
+\begin{align*}
+    -\Delta_x\Psi(x, \xi) &= 0 \quad \forall x \in \Omega, \\
+    \Psi(x, \xi) &= -\Phi(x - \xi) \quad \forall x \in \partial\Omega.
+\end{align*}
+The correction function $\Psi$, unlike the fundamental solution $\Phi$, does not contain a singularity and is harmonic everywhere in $\Omega$. The fundamental solution provides the required singularity at the source point $\xi$, while the harmonic correction function modifies the boundary values without introducing another source. Their sum is the Green's function: $G(x, \xi) = \Phi(x - \xi) + \Psi(x, \xi)$.
+
+\subsection{11.6 Green's function for the upper half-plane}
+We consider a boundary-value problem for Laplace's equation on the upper half-plane. To this end, we introduce the boundary $\Gamma \equiv \{(x_1, x_2) \mid x_2 = 0\}$ and the domain $\Omega \equiv \{(x_1, x_2) \mid x_2 > 0\}$. The boundary-value problem is
+\begin{equation*}
+    \begin{aligned}
+        -\Delta u &= 0 \quad \text{in } \Omega, \\
+        u &= g \quad \text{on } \Gamma.
+    \end{aligned} \tag{11.3}
+\end{equation*}
+We solve the problem in two steps: we first find the Green's function; we then apply Green's representation formula.
+
+To find the Green's function, we use \textit{the method of images} (or \textit{the method of reflection}) and express the Green's function as a sum of fundamental solutions. The idea is to choose an \textit{image point} $\tilde{\xi} \in \R^2 \setminus \Omega$ associated with the reflection of $\xi$ about the axis $x_2 = 0$; i.e.,
+\[\tilde{\xi} = (\tilde{\xi}_1, \tilde{\xi}_2) \equiv (\xi_1, -\xi_2).\]
+The image point $\tilde{\xi}$ associated with the point $\xi$ has an important property that any point on the boundary $\Gamma$ is equidistant from $\xi$ and $\tilde{\xi}$. As we will see shortly, this property is important to enforce the boundary condition. We then choose the correction function
+\[\Psi(x, \xi) = -\Phi(x - \tilde{\xi}),\]
+so that the Green's function is
+\[G(x, \xi) = \Phi(x - \xi) - \Phi(x - \tilde{\xi}) = -\frac{1}{2\pi}\log\|x - \xi\| + \frac{1}{2\pi}\log\|x - \tilde{\xi}\|.\]
+We observe the following:
+\begin{enumerate}
+    \item The Green's function $G(x, \xi)$ is harmonic everywhere in $\Omega$ except at $\xi$ since (i) $\Phi(x - \xi)$ is harmonic everywhere except at $\xi$ and (ii) $\Phi(x - \tilde{\xi})$ is harmonic everywhere in $\Omega$ since $\tilde{\xi} \notin \Omega$.
+    \item The value of the fundamental solution depends only on the distance between two points, and the distance from $x$ to $\xi$ and from $x$ to $\tilde{\xi}$ are the same for all $x \in \Gamma$. Hence, for any $x \in \Gamma$, $\Phi(x - \xi) = \Phi(x - \tilde{\xi})$, which implies $G(x, \xi) = \Phi(x - \xi) - \Phi(x - \tilde{\xi}) = 0$. Thus the boundary condition for the Green's function is satisfied.
+\end{enumerate}
+Figure 11.2 shows the Green's function $G(x, \xi \equiv (0, 0.5))$ for the upper half-plane.
+
+\lecfig[0.8\linewidth]{laplace_funsoln}{7}{82 535 82 74}{Figure 11.2: Green's function for the upper half-plane $G(x, \xi \equiv (0, 0.5))$. The function is unbounded at $\xi = (0, 0.5)$ (and at the image point $\tilde{\xi} = (0, -0.5)$). The red line indicates the boundary.}
+
+We now wish to represent the solution to Laplace's problem (11.3) using the representation formula (11.1). To this end, we first evaluate the directional derivative $\nu(\xi) \cdot \nabla_\xi G(x, \xi)$ to find
+\[\nu(\xi) \cdot \nabla_\xi G(x, \xi) = -\frac{\partial G(x, \xi)}{\partial\xi_2} = \frac{1}{2\pi}\frac{\partial}{\partial\xi_2}\left(\log\|x - \xi\| - \log\|x - \tilde{\xi}\|\right) = \frac{1}{2\pi}\left(\frac{\xi_2 - x_2}{\|x - \xi\|^2} - \frac{\xi_2 + x_2}{\|x - \tilde{\xi}\|^2}\right),\]
+where the first equality follows from $\nu = (0, -1)$ on $\Gamma$ for the upper half-plane, and the last equality follows from $\tilde{\xi}_2 = -\xi_2$. For $\xi \in \Gamma$, $\xi = \tilde{\xi}$ and hence
+\[\nu(\xi) \cdot \nabla_\xi G(x, \xi) = -\frac{x_2}{\pi}\frac{1}{\|x - \xi\|^2}.\]
+We appeal to the Green's representation formula (11.2) for Laplace's equation and find that a solution to (11.3) is given by the \textit{Poisson formula for the upper half-plane (in $\R^2$)}
+\[u(x) = \int_\Gamma K(x, \xi)g(\xi)\,ds(\xi) = \int_\Gamma -\nu(\xi) \cdot \nabla_\xi G(x, \xi)g(\xi)\,ds(\xi) = \frac{1}{\pi}\int_\Gamma \frac{x_2}{\|x - \xi\|^2}g(\xi)\,ds(\xi),\]
+where the \textit{Poisson kernel for the upper half-plane (in $\R^2$)} is
+\[K(x, \xi) \equiv \frac{1}{\pi}\frac{x_2}{\|x - \xi\|^2} = \frac{1}{\pi}\frac{x_2}{(x_1 - \xi_1)^2 + x_2^2}.\]
+Note that this solution is not unique without an additional condition at infinity, since we may add any harmonic function that vanishes on the boundary; e.g., $w(x_1, x_2) = x_2$. However, within the class of bounded harmonic functions, the solution is unique.
+
+We make a few observations:
+\begin{enumerate}
+    \item If $g \geq 0$ everywhere on $\Gamma$ and $g > 0$ somewhere on some nonempty open interval of $\Gamma$, then the solution is strictly positive ($u > 0$) everywhere in the upper half-plane. This is consistent with the strong maximum principle.
+    \item Any disturbance in the boundary condition affects the solution everywhere in the upper half-plane because Poisson's kernel is nonzero everywhere.
+    \item If the boundary function $g$ is integrable, then
+    \[|u(x_1, x_2)| \leq \frac{1}{\pi x_2}\int_{-\infty}^{\infty} |g(\xi_1)|\,d\xi_1,\]
+    since $\frac{x_2}{(x_1 - \xi_1)^2 + x_2^2} \leq \frac{1}{x_2}$. Hence, the influence of localized boundary data decays at least as rapidly as $1/x_2$ as we move vertically away from the boundary.
+\end{enumerate}
+
+\begin{nremark}[Poisson's Formula for Upper Half-Plane in $\R^n$][11.6]
+    Following the same derivation as above, we can show that Poisson formula for the upper half-plane in $\R^n$ is
+    \[u(x) = \int_\Gamma \frac{2}{n\alpha_n}\frac{x_n}{\|x - \xi\|^n}g(\xi)\,ds(\xi),\]
+    where $\alpha_n$ is the volume of the unit ball in $\R^n$ (e.g., $\alpha_{n=2} = \pi$, $\alpha_{n=3} = 4/3\pi$).
+\end{nremark}
+
+\begin{example}[Laplace's Equation in the Upper Half-Plane][11.7]
+    We consider a boundary-value problem
+    \begin{align*}
+        -\Delta u &= 0 \quad \text{in } \Omega \equiv \{(x_1, x_2) \mid x_2 > 0\}, \\
+        u &= g \quad \text{on } \Gamma \equiv \{(x_1, x_2) \mid x_2 = 0\},
+    \end{align*}
+    where
+    \[g((x_1, 0)) \equiv \begin{cases} 1, & x_1 \in (-1/2, 1/2), \\ 0, & \text{otherwise}. \end{cases}\]
+    Using Poisson formula for the upper half-plane, we can express the solution as
+    \[u(x) = \frac{1}{\pi}\int_\Gamma \frac{x_2}{\|x - \xi\|^2}g(\xi)\,ds(\xi) = \frac{1}{\pi}\int_{\xi_1=-1/2}^{1/2} \frac{x_2}{(x_1 - \xi_1)^2 + x_2^2}\,d\xi_1,\]
+    where the last equality follows from $\xi = (\xi_1, 0)$ on the boundary $\Gamma$. Figure 11.3 shows the solution. We observe that even though the boundary condition is discontinuous, the solution is smooth everywhere in the upper half-plane (excluding the boundary). We also observe that the strong maximum principle is satisfied and the solution is strictly positive everywhere (excluding the boundary).
+
+    \lecfig[0.45\linewidth]{laplace_funsoln}{8}{195 554 195 69}{Figure 11.3: Solution to Laplace's equation in the upper half-plane.}
+\end{example}
+
+\subsection{11.7 Green's function for a disk}
+We now consider the solution of Laplace's problem on a disk $\Omega \equiv B(0, a) = \{x \in \R^2 \mid \|x\| < a\}$ of radius $a$:
+\begin{equation*}
+    \begin{aligned}
+        -\Delta u &= 0 \quad \text{in } \Omega, \\
+        u &= g \quad \text{on } \partial\Omega.
+    \end{aligned} \tag{11.4}
+\end{equation*}
+We again solve the problem in two steps: we first find the Green's function; we then apply the Green's representation formula.
+
+As before, to find the Green's function, we wish to find the correction function $\Psi$ which takes on the negative of the fundamental solution $\Phi$ on the boundary. To this end, we first introduce the \textit{dual point} with respect to the disk.
+
+\begin{definition}[Dual Point with Respect to a Circle][11.8]
+    The point
+    \[\tilde{\xi} \equiv \frac{a^2}{\|\xi\|^2}\xi\]
+    is said to be \textbf{dual} to $\xi \neq 0$ with respect to the circle $\partial B(0, a)$. The case $\xi = 0$ is obtained separately by symmetry or by taking a limit. For any fixed $\xi \in B(0, a) \setminus \{0\}$, the dual point satisfies for $x \in \partial B(0, a)$,
+    \[\|x - \xi\| = \frac{\|\xi\|}{a}\|x - \tilde{\xi}\|.\]
+\end{definition}
+\begin{proof}
+    We first observe that
+    \[\frac{\|\xi\|}{a}\|x - \tilde{\xi}\| = \frac{\|\xi\|}{a}\left\|x - \frac{a^2}{\|\xi\|^2}\xi\right\| = \left\|\frac{\|\xi\|}{a}x - \frac{a}{\|\xi\|}\xi\right\| = \left(\frac{\|\xi\|^2}{a^2}x \cdot x - 2x \cdot \xi + \frac{a^2}{\|\xi\|^2}\xi \cdot \xi\right)^{1/2}.\]
+    Since $x \cdot x = a^2$ for $x \in \partial B(0, a)$,
+    \[\frac{\|\xi\|}{a}\|x - \tilde{\xi}\| = \left(\|\xi\|^2 - 2x \cdot \xi + \|x\|^2\right)^{1/2} = \|x - \xi\|,\]
+    which is the desired relationship.
+\end{proof}
+
+Given $\|x - \xi\| = \frac{\|\xi\|}{a}\|x - \tilde{\xi}\|$ for $x \in \partial B(0, a)$, we choose the correction function
+\[\Psi(x, \xi) = -\Phi\left(\frac{\|\xi\|}{a}(x - \tilde{\xi})\right)\]
+so that the Green's function is
+\[G(x, \xi) = \Phi(x - \xi) - \Phi\left(\frac{\|\xi\|}{a}(x - \tilde{\xi})\right) = -\frac{1}{2\pi}\log(\|x - \xi\|) + \frac{1}{2\pi}\log\left(\frac{\|\xi\|}{a}\|x - \tilde{\xi}\|\right).\]
+The Green's function then satisfies the boundary condition. For a source at the center of the disk, the Green's function is obtained by taking the limit $\xi \to 0$ or by appealing to the rotational symmetry:
+\[G(x, \xi = 0) = -\frac{1}{2\pi}\log\left(\frac{\|x\|}{a}\right).\]
+Figure 11.4 shows the Green's function $G(x, \xi \equiv (0.4, 0))$ for the unit disk.
+
+\lecfig[0.7\linewidth]{laplace_funsoln}{10}{115 539 115 69}{Figure 11.4: Green's function for the unit disk $G(x, \xi \equiv (0.4, 0))$. The function is unbounded at $\xi = (0.4, 0.0)$ (and at the dual point $\tilde{\xi} = (2.5, 0.0)$). The red line indicates the boundary.}
+
+We now wish to represent the solution to Laplace's problem (11.4) using the Green's representation formula (11.2) for Laplace's equation. After the tedious but straightforward evaluation of $\nu \cdot \nabla_\xi G(x, \xi)$ for $\xi \in \partial B(0, a)$, we find a solution representation:
+\[u(x) = -\int_{\partial\Omega} \nu(\xi) \cdot \nabla_\xi G(x, \xi)g(\xi)\,ds(\xi) = \frac{a^2 - \|x\|^2}{2\pi a}\int_{\partial B(0, a)} \frac{g(\xi)}{\|x - \xi\|^2}\,ds(\xi).\]
+This formula is called the \textit{Poisson formula for a disk (in $\R^2$)}. The function
+\[K(x, \xi) \equiv \frac{a^2 - \|x\|^2}{2\pi a}\frac{1}{\|x - \xi\|^2}, \quad x \in B(0, a), \ \xi \in \partial B(0, a),\]
+which multiplies the boundary function $g$ is called \textit{Poisson kernel for a disk (in $\R^2$)}.
+
+\begin{nremark}[Poisson Formula for a Ball in $\R^n$][11.9]
+    Following the same derivation as above, we can show that Poisson formula for a ball $B(0, a) \subset \R^n$ is
+    \[u(x) = \frac{1}{n\alpha_na}\int_{\partial B(0, a)} \frac{a^2 - \|x\|^2}{\|x - \xi\|^n}g(\xi)\,ds(\xi),\]
+    where $\alpha_n$ is the volume of the unit ball in $\R^n$.
+\end{nremark}
+
+\begin{example}[Laplace's Equation in a Disk][11.10]
+    We consider a boundary-value problem
+    \begin{align*}
+        -\Delta u &= 0 \quad \text{in } \Omega \equiv \{x \in \R^2 \mid \|x\| < 1\}, \\
+        u &= g \quad \text{on } \partial\Omega,
+    \end{align*}
+    where
+    \[g((r = 1, \theta)) \equiv \begin{cases} 1, & \theta \in (-\pi/10, \pi/10), \\ 0, & \text{otherwise}. \end{cases}\]
+    Using Poisson's formula for a unit disk, we can express the solution as
+    \[u(x) = \frac{a^2 - \|x\|^2}{2\pi a}\int_{\partial B(0, a)} \frac{g(\xi)}{\|x - \xi\|^2}\,ds(\xi) = \frac{1^2 - \|x\|^2}{2\pi}\int_{-\pi/10}^{\pi/10} \frac{1}{(x_1 - \cos(\theta))^2 + (x_2 - \sin(\theta))^2}\,d\theta,\]
+    where the last equality follows from $\xi = (\cos(\theta), \sin(\theta))$ on $\partial B(0, a = 1)$. Figure 11.5 shows the solution. We observe that even though the boundary condition is discontinuous, the solution is smooth everywhere in the disk (excluding the boundary). We also observe that the strong maximum principle is satisfied and the solution is strictly positive everywhere (excluding the boundary).
+
+    \lecfig[0.45\linewidth]{laplace_funsoln}{11}{195 551 195 69}{Figure 11.5: Solution to Laplace's equation in a disk.}
+\end{example}
+
+\begin{example}[Proof of the Mean-Value Formula Using Poisson's Formula][11.11]
+    We evaluate Poisson's formula (for the disk) at the origin $x = 0$ to find that
+    \[u(0) = \frac{a^2}{2\pi a}\int_{\partial B(0, a)} \frac{g(\xi)}{a^2}\,ds(\xi) = \frac{1}{2\pi a}\int_{\partial B(0, a)} g(\xi)\,ds(\xi),\]
+    which is the mean value formula.
+\end{example}
+
+\subsection{11.8 Summary}
+We summarize key points of this lecture:
+\begin{enumerate}
+    \item The fundamental solution of the Laplace operator satisfies the Poisson's equation with the delta distribution as the source in $\R^n$.
+    \item The solution to Poisson's equation in $\R^n$ can be expressed as the convolution of the fundamental solution with the source function.
+    \item Green's function on $\Omega \subset \R^n$ satisfies the Poisson's equation with the Dirac delta distribution as the source and vanishes on $\partial\Omega$.
+    \item Green's function is symmetric. This is known as the principle of reciprocity.
+    \item The solution to Poisson's problem on $\Omega \subset \R^n$ with Dirichlet boundary conditions can be expressed using the Green's representation formula.
+    \item Green's function for a half plane can be found using the method of reflection (i.e., method of images).
+    \item Green's function for a disk can be found using the method of reflection using the concept of dual points.
+\end{enumerate}
+
+\subsection{11.A Proofs of properties of Green's functions}
+Before we prove properties of Green's function, we introduce Green's second identity, which helps us prove the properties.
+
+\begin{proposition}[Green's Second Identity][11.12]
+    For all $w, u \in C^2(\overline{\Omega})$,
+    \[\int_\Omega (w\Delta u - u\Delta w)\,dx = \int_{\partial\Omega} (w(\nu \cdot \nabla u) - u(\nu \cdot \nabla w))\,ds.\]
+\end{proposition}
+\begin{proof}
+    We invoke integration by parts twice to yield
+    \[\int_\Omega w\Delta u\,dx = \int_{\partial\Omega} w(\nu \cdot \nabla u)\,ds - \int_\Omega \nabla w \cdot \nabla u\,dx = \int_{\partial\Omega} (w(\nu \cdot \nabla u) - (\nu \cdot \nabla w)u)\,ds + \int_\Omega (\Delta w)u\,dx.\]
+    The subtraction of $\int_\Omega (\Delta w)u\,dx$ from both sides yields the desired result.
+\end{proof}
+
+\begin{proposition}[][11.13]
+    Let $\Phi : \R^n \setminus \{0\} \to \R$ be the fundamental solution of the Laplace operator. Then, for any continuously differentiable $u$,
+    \[\lim_{\epsilon \to 0} \int_{\partial B(a, \epsilon)} \left(\Phi(x - a)\frac{\partial u}{\partial\nu}(x) - u(x)\frac{\partial\Phi}{\partial\nu}(x - a)\right) ds(x) = u(a),\]
+    where $B(a, \epsilon)$ is the ball of radius $\epsilon$ centered about $a$, and $\frac{\partial u}{\partial\nu}(x) \equiv \nu(x) \cdot \nabla u(x)$ for $\nu$ the outward-pointing normal on the surface of the ball.
+\end{proposition}
+\begin{proof}
+    We prove the result in two dimensions ($n = 2$), for which $\Phi(x) = -\frac{1}{2\pi}\log\|x\|$. The proof for other dimensions follows similarly. We first note that, for any fixed $\epsilon > 0$,
+    \begin{align*}
+        (\star) &\equiv \int_{\partial B(a, \epsilon)} \left(\Phi(x - a)\frac{\partial u}{\partial\nu}(x) - u(x)\frac{\partial\Phi}{\partial\nu}(x - a)\right) ds(x) \\
+        &= -\frac{1}{2\pi}\log(\epsilon)\int_{\partial B(a, \epsilon)} \frac{\partial u}{\partial\nu}(x)\,ds(x) + \frac{1}{2\pi\epsilon}\int_{\partial B(a, \epsilon)} u(x)\,ds(x),
+    \end{align*}
+    where the equality follows because (i) the fundamental solution depends only on the distance from $a$, and hence (ii) $\Phi(x - a) = -\frac{1}{2\pi}\log(\epsilon)$ and $\frac{\partial\Phi}{\partial\nu}(x - a) = \frac{\partial}{\partial r}(-\frac{1}{2\pi}\log(r))|_{r=\epsilon} = -\frac{1}{2\pi\epsilon}$ for any $x \in \partial B(a, \epsilon)$. We now rewrite the integrals in terms of the mean over the surface of the ball to obtain
+    \[(\star) = -\frac{1}{2\pi}\log(\epsilon)\,2\pi\epsilon\mean_{\partial B(a, \epsilon)}\left(\frac{\partial u}{\partial\nu}\right) + \frac{1}{2\pi\epsilon}2\pi\epsilon\mean_{\partial B(a, \epsilon)}(u) = -\epsilon\log(\epsilon)\mean_{\partial B(a, \epsilon)}\left(\frac{\partial u}{\partial\nu}\right) + \mean_{\partial B(a, \epsilon)}(u),\]
+    where $\mean_{\partial B(a, \epsilon)}(\frac{\partial u}{\partial\nu}) \equiv \frac{1}{2\pi\epsilon}\int_{\partial B(a, \epsilon)} \frac{\partial u}{\partial\nu}(x)\,ds(x)$ and $\mean_{\partial B(a, \epsilon)}(u) \equiv \frac{1}{2\pi\epsilon}\int_{\partial B(a, \epsilon)} u(x)\,ds(x)$. Since $u$ is continuously differentiable, $\frac{\partial u}{\partial\nu}$ and $u$ are bounded and so are their means. Moreover, since $\lim_{\epsilon \to 0} \epsilon\log(\epsilon) = 0$, the first term is 0 in the limit of $\epsilon \to 0$. It follows that
+    \[\lim_{\epsilon \to 0} (\star) = \lim_{\epsilon \to 0} \mean_{\partial B(a, \epsilon)}(u) = u(a),\]
+    which is the desired result.
+\end{proof}
+
+\begin{proof}[Proof of symmetry of Green's function]
+    We first introduce $u(x) = G(x, a) = \Phi(x - a) + \Psi(x, a)$ and $w(x) = G(x, b) = \Phi(x - b) + \Psi(x, b)$, where $G(x, a)$ and $G(x, b)$ are Green's functions on $\Omega$, and $\Psi(x, a)$ and $\Psi(x, b)$ are the associated correction functions. We next introduce a domain $\Omega_\epsilon \equiv \Omega \setminus (\overline{B(a, \epsilon)} \cup \overline{B(b, \epsilon)})$ for $\epsilon > 0$ but sufficiently small; i.e., $\Omega$ with two holes centered about $a$ and $b$. Both $u$ and $w$ are harmonic in $\Omega_\epsilon$ since the holes remove the singularity in the Green's functions. We now invoke the Green's second identity with $u$ and $w$. The left hand side of the Green's second identity over $\Omega_\epsilon$ is
+    \[(\text{LHS}) = \int_{\Omega_\epsilon} (G(x, b)\Delta G(x, a) - G(x, a)\Delta G(x, b))\,dx = 0;\]
+    the term vanishes because $G(x, a)$ and $G(x, b)$ are harmonic everywhere in $\Omega_\epsilon$ and hence $\Delta G(x, a) = \Delta G(x, b) = 0$ for all $x \in \Omega_\epsilon$. We next note that the right hand side of the Green's second identity over $\Omega_\epsilon$ is
+    \begin{align*}
+        (\text{RHS}) &= \int_{\partial\Omega_\epsilon} \left(w\frac{\partial u}{\partial\nu} - u\frac{\partial w}{\partial\nu}\right) ds(x) \\
+        &= \int_{\partial\Omega} \left(w\frac{\partial u}{\partial\nu} - u\frac{\partial w}{\partial\nu}\right) ds(x) - \int_{\partial B(a, \epsilon)} \left(w\frac{\partial u}{\partial\nu} - u\frac{\partial w}{\partial\nu}\right) ds(x) - \int_{\partial B(b, \epsilon)} \left(w\frac{\partial u}{\partial\nu} - u\frac{\partial w}{\partial\nu}\right) ds(x) \\
+        &\equiv C_\Omega - A_\epsilon - B_\epsilon,
+    \end{align*}
+    where $\nu$ is the outward-pointing normal with respect to $\Omega$ on $\partial\Omega$ and with respect to the balls on $\partial B(a, \epsilon)$ and $\partial B(b, \epsilon)$. In other words, $\nu$ is the inward-pointing normal with respect to $\Omega_\epsilon$ on $\partial B(a, \epsilon)$. The first term $C_\Omega$ vanishes because $u(x) = G(x, a) = 0$ and $w(x) = G(x, b) = 0$ for all $x \in \partial\Omega$. The second term simplifies to
+    \begin{align*}
+        \lim_{\epsilon \to 0} A_\epsilon &= \lim_{\epsilon \to 0} \int_{\partial B(a, \epsilon)} \left(w(x)\frac{\partial G}{\partial\nu}(x, a) - G(x, a)\frac{\partial w}{\partial\nu}(x)\right) ds(x) \\
+        &= \lim_{\epsilon \to 0} \int_{\partial B(a, \epsilon)} \left(w(x)\frac{\partial\Phi}{\partial\nu}(x - a) - \Phi(x - a)\frac{\partial w}{\partial\nu}(x)\right) ds(x) \\
+        &\quad + \lim_{\epsilon \to 0} \int_{\partial B(a, \epsilon)} \left(w(x)\frac{\partial\Psi}{\partial\nu}(x, a) - \Psi(x, a)\frac{\partial w}{\partial\nu}(x)\right) ds(x) \\
+        &= -w(a) = -G(a, b),
+    \end{align*}
+    where the second equality follows from the decomposition $G(x, a) = \Phi(x - a) + \Psi(x, a)$; the last equality follows from (i) the application of Proposition 11.13 to the first term and (ii) the fact that the second term vanishes as $\epsilon \to 0$ because $w(x)\frac{\partial\Psi}{\partial\nu}(x, a) - \Psi(x, a)\frac{\partial w}{\partial\nu}(x)$ is continuous. Similarly,
+    \[\lim_{\epsilon \to 0} B_\epsilon = u(b) = G(b, a).\]
+    It follows $0 = (\text{LHS}) = (\text{RHS}) = -\lim_{\epsilon \to 0} A_\epsilon - \lim_{\epsilon \to 0} B_\epsilon = G(a, b) - G(b, a)$, and hence $G(a, b) = G(b, a)$.
+\end{proof}
+
+\begin{proof}[Proof of Green's representation formula]
+    We first introduce $w(x) = G(x, \xi) = \Phi(x - \xi) + \Psi(x, \xi)$, where $G(x, \xi)$ is the Green's function on $\Omega$ and $\Psi(x, \xi)$ is the associated correction function. We next introduce a domain $\Omega_\epsilon \equiv \Omega \setminus \overline{B(\xi, \epsilon)}$ for $\epsilon > 0$ but sufficiently small. Note that $w$ is harmonic in $\Omega_\epsilon$ since the hole removes the singularity in the Green's function. We now invoke the Green's second identity with $w(x) = G(x, \xi)$ and $u(x)$. The left-hand side is given by
+    \[(\text{LHS}) = \int_{\Omega_\epsilon} (G(x, \xi)\Delta u(x) - u(x)\Delta G(x, \xi))\,dx = -\int_{\Omega_\epsilon} G(x, \xi)f(x)\,dx;\]
+    the second term vanishes because $G(x, \xi)$ is harmonic in $\Omega_\epsilon$. The right-hand side is given by
+    \begin{align*}
+        (\text{RHS}) &= \int_{\partial\Omega_\epsilon} \left(G(x, \xi)\frac{\partial u(x)}{\partial\nu} - u(x)\frac{\partial G}{\partial\nu}(x, \xi)\right) ds(x) \\
+        &= \int_{\partial\Omega} \left(G(x, \xi)\frac{\partial u(x)}{\partial\nu} - u(x)\frac{\partial G}{\partial\nu}(x, \xi)\right) ds(x) \\
+        &\quad - \int_{\partial B(\xi, \epsilon)} \left(G(x, \xi)\frac{\partial u(x)}{\partial\nu} - u(x)\frac{\partial G}{\partial\nu}(x, \xi)\right) ds(x) \\
+        &\equiv C_\Omega - D_\epsilon,
+    \end{align*}
+    where $\nu$ is the outward-pointing normal with respect to $\Omega$ on $\partial\Omega$ and with respect to $B(\xi, \epsilon)$ on $\partial B(\xi, \epsilon)$. In other words, $\nu$ is the inward-pointing normal with respect to $\Omega_\epsilon$ on $\partial B(\xi, \epsilon)$. The first term simplifies to
+    \[C_\Omega = -\int_{\partial\Omega} g(x)\frac{\partial G}{\partial\nu}(x, \xi)\,ds(x),\]
+    because $G(x, \xi) = 0$ and $u(x) = g(x)$ for all $x \in \partial\Omega$. The second term simplifies to
+    \[\lim_{\epsilon \to 0} D_\epsilon = u(\xi),\]
+    following the same argument used to simplify $A_\epsilon$ in the proof of symmetry of Green's functions. Equating the left- and right-hand sides, we obtain
+    \[u(\xi) = \int_\Omega G(x, \xi)f(x)\,dx - \int_{\partial\Omega} g(x)\frac{\partial G}{\partial\nu}(x, \xi)\,ds(x).\]
+    We switch the roles of $x$ and $\xi$ to obtain
+    \begin{align*}
+        u(x) &= \int_\Omega G(\xi, x)f(\xi)\,d\xi - \int_{\partial\Omega} g(\xi)\frac{\partial G}{\partial\nu}(\xi, x)\,ds(\xi) \\
+        &= \int_\Omega G(\xi, x)f(\xi)\,d\xi - \int_{\partial\Omega} g(\xi)\nu(\xi) \cdot \nabla_\xi G(\xi, x)\,ds(\xi).
+    \end{align*}
+    We appeal to the symmetry of the Green's function to obtain
+    \[u(x) = \int_\Omega G(x, \xi)f(\xi)\,d\xi - \int_{\partial\Omega} g(\xi)\nu(\xi) \cdot \nabla_\xi G(x, \xi)\,ds(\xi),\]
+    which is the desired result.
+\end{proof}

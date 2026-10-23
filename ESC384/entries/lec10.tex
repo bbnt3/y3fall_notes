@@ -1,0 +1,244 @@
+% !TeX root = ../main.tex
+
+\newlecture[Laplace's Equation: Separation of Variables]
+
+\subsection{10.1 Introduction}
+In this lecture, we seek the solution of Laplace's equation on bounded domains using \textit{separation of variables}. While the technique is fundamentally the same as that considered for the heat equation, we pay particular attention to the extension of the technique to higher spatial dimensions ($n > 1$).
+
+\subsection{10.2 Laplace's equation on a rectangle}
+We now consider the solution of Laplace's equation on a rectangle $\Omega \equiv (0, L) \times (0, H)$ using separation of variables:
+\begin{equation*}
+    \begin{aligned}
+        -\Delta u &= 0 \quad \text{in } \Omega \equiv (0, L) \times (0, H), \\
+        u &= g^1 \quad \text{on } \Gamma^1 \equiv \{x = 0\} \times (0, H), \\
+        u &= g^2 \quad \text{on } \Gamma^2 \equiv \{x = L\} \times (0, H), \\
+        u &= g^3 \quad \text{on } \Gamma^3 \equiv (0, L) \times \{y = 0\}, \\
+        u &= g^4 \quad \text{on } \Gamma^4 \equiv (0, L) \times \{y = H\},
+    \end{aligned} \tag{10.1}
+\end{equation*}
+where $x$ and $y$ denote the first and second spatial coordinates, respectively, and $g^i$, $i = 1, \dots, 4$, are some boundary functions. Note that the boundaries $\Gamma^1$, $\Gamma^2$, $\Gamma^3$, and $\Gamma^4$ correspond to the left, right, bottom, and top boundaries, respectively. If the solution is required to be continuous on $\overline{\Omega}$, the boundary functions must agree at the corners; e.g., $g^1(0) = g^3(0)$ at the lower-left corner, with analogous conditions at the other corners.
+
+To solve the boundary value problem (10.1), we again appeal to the principle of superposition. Namely, we decompose the solution $u$ into two parts $u = u^{1,2} + u^{3,4}$, where $u^{1,2}$ is the solution to the boundary value problem with only $g^1$ and $g^2$ as the nonhomogeneous boundaries, and $u^{3,4}$ is the solution to the boundary value problem with only $g^3$ and $g^4$ as the nonhomogeneous boundaries. More explicitly, $u^{1,2}$ is the solution to
+\begin{equation*}
+    \begin{aligned}
+        -\Delta u^{1,2} &= 0 \quad \text{in } \Omega, \\
+        u^{1,2} &= g^1 \quad \text{on } \Gamma^1, \\
+        u^{1,2} &= g^2 \quad \text{on } \Gamma^2, \\
+        u^{1,2} &= 0 \quad \text{on } \Gamma^3 \cup \Gamma^4;
+    \end{aligned} \tag{10.2}
+\end{equation*}
+similarly, $u^{3,4}$ is the solution to
+\begin{align*}
+    -\Delta u^{3,4} &= 0 \quad \text{in } \Omega, \\
+    u^{3,4} &= g^3 \quad \text{on } \Gamma^3, \\
+    u^{3,4} &= g^4 \quad \text{on } \Gamma^4, \\
+    u^{3,4} &= 0 \quad \text{on } \Gamma^1 \cup \Gamma^2.
+\end{align*}
+We readily see $u = u^{1,2} + u^{3,4}$ by superposition.
+
+We now consider the solution of (10.2) by separation of variables and linear superposition. We recall the two-step procedure:
+\begin{itemize}
+    \item \textit{Step 1.} We find a family of separable solutions of the form
+    \[u_n(x, y) = X_n(x; C_n, D_n)Y_n(y), \quad n = 1, 2, \dots,\]
+    each of which satisfies the homogeneous boundary conditions on $\Gamma^3$ and $\Gamma^4$ for any choice of coefficients $C_n$ and $D_n$, but not (in general) the nonhomogeneous boundary conditions on $\Gamma^1$ and $\Gamma^2$. (As we have seen for the heat equation, $Y_n$ will be a family of functions in $y$ that satisfy homogeneous boundary conditions at $y = 0$ and $y = H$; hence, we associate the indeterminate coefficients $C_n$ and $D_n$ with functions $X_n$ in $x$.)
+    \item \textit{Step 2.} We consider a particular choice of coefficients $C_n$ and $D_n$ such that
+    \[u^{1,2}(x, y) = \sum_{n=1}^{\infty} X_n(x; C_n, D_n)Y_n(y)\]
+    satisfies the nonhomogeneous boundary conditions on $\Gamma^1$ and $\Gamma^2$. Note that the solution $u^{1,2}$ automatically satisfies the homogeneous boundary conditions on $\Gamma^3$ and $\Gamma^4$ since each $u_n$ satisfies the homogeneous boundary conditions.
+\end{itemize}
+
+To find a separable solution of the form $u_n(x, y) = X_n(x)Y_n(y)$, we substitute the expression into (10.2). At points where $X_nY_n \neq 0$, we obtain
+\[-X_n''Y_n - X_nY_n'' = 0 \quad \Rightarrow \quad \frac{X_n''}{X_n} = -\frac{Y_n''}{Y_n} = \alpha_n\]
+for some constant $\alpha_n \in \R$. We have used the fact that $X_n''/X_n$ and $Y_n''/Y_n$ depend on only $x$ and $y$, respectively, and hence each of them must be a constant.
+
+We now consider the boundary value eigenproblem associated with $Y_n$; we solve for $Y_n$ (instead of $X_n$) first because we wish to impose homogeneous boundary conditions at the endpoints $y = 0$ and $y = H$. We first observe that the boundary condition implies that
+\begin{align*}
+    u_n(x, y = 0) &= X_n(x)Y_n(0) = 0, \quad \forall x \in (0, L), \\
+    u_n(x, y = H) &= X_n(x)Y_n(H) = 0, \quad \forall x \in (0, L).
+\end{align*}
+Since we seek a nontrivial solution, we require $X_n \neq 0$ and deduce $Y_n(0) = Y_n(H) = 0$. Our boundary value eigenproblem for $Y_n$ is as follows:
+\begin{align*}
+    -Y_n'' &= \alpha_nY_n \quad \text{in } (0, H), \\
+    Y_n(0) &= Y_n(H) = 0.
+\end{align*}
+This is a Sturm--Liouville problem. In fact this is a scaled version of the problem considered in Example 4.6, and the eigenpairs are given by
+\[Y_n(y) = \sin(\lambda_ny) \quad \text{and} \quad \alpha_n = \lambda_n^2\]
+for $\lambda_n = n\pi/H$, $n = 1, 2, \dots$.
+
+We next consider the ODE associated with $X_n$:
+\[X_n'' = \alpha_nX_n \quad \Rightarrow \quad X_n'' = \lambda_n^2X_n\]
+for $\lambda_n = n\pi/H$. The general solution is given by
+\[X_n(x) = C_n\sinh(\lambda_nx) + D_n\cosh(\lambda_nx).\]
+We therefore conclude that any solution of the form
+\[u^{1,2}(x, y) = \sum_{n=1}^{\infty} (C_n\sinh(\lambda_nx) + D_n\cosh(\lambda_nx))\sin(\lambda_ny)\]
+satisfies Laplace's equation and the associated homogeneous boundary conditions on $y = 0$ and $y = H$.
+
+We now enforce the nonhomogeneous boundary conditions on $x = 0$ and $x = L$. We first enforce $u(x = 0, y) = g^1(y)$ to obtain
+\[u^{1,2}(x = 0, y) = \sum_{n=1}^{\infty} D_n\sin(\lambda_ny) = g^1(y)\]
+for $\lambda_n = n\pi/H$. We recognize that this is a Fourier sine series and the coefficients are given by
+\begin{equation*}
+    D_n = \hat{g}_n^1 \equiv \frac{2}{H} \int_0^H \sin(n\pi y/H)g^1(y)\,dy, \quad n = 1, 2, \dots. \tag{10.3}
+\end{equation*}
+We next enforce the boundary condition $u^{1,2}(x = L, y) = g^2(y)$ to obtain
+\[u^{1,2}(x = L, y) = \sum_{n=1}^{\infty} (C_n\sinh(\lambda_nL) + \hat{g}_n^1\cosh(\lambda_nL))\sin(\lambda_ny) = g^2(y),\]
+where we have set $D_n = \hat{g}_n^1$. We note that the ``coefficient'' $(C_n\sinh(\lambda_nL) + \hat{g}_n^1\cosh(\lambda_nL))$ must be the $n$-th Fourier sine coefficient of $g^2$. Hence
+\[C_n\sinh(\lambda_nL) + \hat{g}_n^1\cosh(\lambda_nL) = \hat{g}_n^2 \equiv \frac{2}{H} \int_0^H \sin(n\pi y/H)g^2(y)\,dy.\]
+We rearrange the expression to obtain
+\begin{equation*}
+    C_n = \frac{\hat{g}_n^2 - \hat{g}_n^1\cosh(\lambda_nL)}{\sinh(\lambda_nL)}. \tag{10.4}
+\end{equation*}
+We therefore conclude that the solution $u^{1,2}$ is given by
+\[u^{1,2}(x, y) = \sum_{n=1}^{\infty} \left(\frac{\hat{g}_n^2 - \hat{g}_n^1\cosh(\lambda_nL)}{\sinh(\lambda_nL)}\sinh(\lambda_nx) + \hat{g}_n^1\cosh(\lambda_nx)\right)\sin(\lambda_ny).\]
+We may group the terms containing $\hat{g}_n^1$ and $\hat{g}_n^2$ to obtain
+\[u^{1,2}(x, y) = \sum_{n=1}^{\infty} \left(\hat{g}_n^1(\cosh(\lambda_nx) - \coth(\lambda_nL)\sinh(\lambda_nx)) + \hat{g}_n^2\frac{\sinh(\lambda_nx)}{\sinh(\lambda_nL)}\right)\sin(\lambda_ny),\]
+which may be further simplified using a hyperbolic identity to yield
+\[u^{1,2}(x, y) = \sum_{n=1}^{\infty} \left(\hat{g}_n^1\frac{\sinh(\lambda_n(L - x))}{\sinh(\lambda_nL)} + \hat{g}_n^2\frac{\sinh(\lambda_nx)}{\sinh(\lambda_nL)}\right)\sin(\lambda_ny),\]
+where $\lambda_n = n\pi/H$.
+
+By the symmetry of the problem, we also find the solution to
+\begin{equation*}
+    \begin{aligned}
+        -\Delta u^{3,4} &= 0 \quad \text{in } \Omega, \\
+        u^{3,4} &= g^3 \quad \text{on } \Gamma^3, \\
+        u^{3,4} &= g^4 \quad \text{on } \Gamma^4, \\
+        u^{3,4} &= 0 \quad \text{on } \Gamma^1 \cup \Gamma^2
+    \end{aligned} \tag{10.5}
+\end{equation*}
+is
+\[u^{3,4}(x, y) = \sum_{n=1}^{\infty} \left(\hat{g}_n^3\frac{\sinh(\mu_n(H - y))}{\sinh(\mu_nH)} + \hat{g}_n^4\frac{\sinh(\mu_ny)}{\sinh(\mu_nH)}\right)\sin(\mu_nx),\]
+where $\mu_n = n\pi/L$, and $\hat{g}_n^3$ and $\hat{g}_n^4$ are the Fourier sine series coefficients
+\[\hat{g}_n^3 \equiv \frac{2}{L} \int_0^L \sin(n\pi x/L)g^3(x)\,dx \quad \text{and} \quad \hat{g}_n^4 \equiv \frac{2}{L} \int_0^L \sin(n\pi x/L)g^4(x)\,dx.\]
+It follows that, by linear superposition, the solution to the original problem (10.1) is given by
+\begin{align*}
+    u(x, y) &= u^{1,2}(x, y) + u^{3,4}(x, y) \\
+    &= \sum_{n=1}^{\infty} \left(\hat{g}_n^1\frac{\sinh(\lambda_n(L - x))}{\sinh(\lambda_nL)} + \hat{g}_n^2\frac{\sinh(\lambda_nx)}{\sinh(\lambda_nL)}\right)\sin(\lambda_ny) \\
+    &\quad + \sum_{n=1}^{\infty} \left(\hat{g}_n^3\frac{\sinh(\mu_n(H - y))}{\sinh(\mu_nH)} + \hat{g}_n^4\frac{\sinh(\mu_ny)}{\sinh(\mu_nH)}\right)\sin(\mu_nx)
+\end{align*}
+for $\lambda_n = n\pi/H$ and $\mu_n = n\pi/L$.
+
+We make a few observations:
+\begin{enumerate}
+    \item The solution is a linear combination of four harmonic functions associated with the four boundary functions $g^1, \dots, g^4$; i.e., $u = u^1 + u^2 + u^3 + u^4$ where
+    \begin{align*}
+        u^1(x, y) &= \sum_{n=1}^{\infty} \hat{g}_n^1\frac{\sinh(\lambda_n(L - x))}{\sinh(\lambda_nL)}\sin(\lambda_ny), & u^2(x, y) &= \sum_{n=1}^{\infty} \hat{g}_n^2\frac{\sinh(\lambda_nx)}{\sinh(\lambda_nL)}\sin(\lambda_ny), \\
+        u^3(x, y) &= \sum_{n=1}^{\infty} \hat{g}_n^3\frac{\sinh(\mu_n(H - y))}{\sinh(\mu_nH)}\sin(\mu_nx), & u^4(x, y) &= \sum_{n=1}^{\infty} \hat{g}_n^4\frac{\sinh(\mu_ny)}{\sinh(\mu_nH)}\sin(\mu_nx).
+    \end{align*}
+    \item We readily verify that the solution satisfies the boundary conditions:
+    \begin{align*}
+        u(x = 0, y) &= \sum_{n=1}^{\infty} \hat{g}_n^1\sin(\lambda_ny) = g^1(y), & u(x = L, y) &= \sum_{n=1}^{\infty} \hat{g}_n^2\sin(\lambda_ny) = g^2(y), \\
+        u(x, y = 0) &= \sum_{n=1}^{\infty} \hat{g}_n^3\sin(\mu_nx) = g^3(x), & u(x, y = H) &= \sum_{n=1}^{\infty} \hat{g}_n^4\sin(\mu_nx) = g^4(x).
+    \end{align*}
+    \item Figure 10.1 shows functions $\frac{\sinh(\lambda_n(L - x))}{\sinh(\lambda_nL)}$ and $\frac{\sinh(\lambda_nx)}{\sinh(\lambda_nL)}$ for $H = 1$, which dictate the decay of the $n$-th mode away from the $x = 0$ and $x = L$ boundaries, respectively. We observe that the functions decay exponentially away from their associated boundaries. For example, away from $x = L$, the ratio $\sinh(\lambda_nx)/\sinh(\lambda_nL)$ behaves approximately as $\exp(-\lambda_n(L - x))$. Moreover, higher modes (i.e., modes associated with larger $n$) decay more rapidly because $\lambda_n = n\pi/H$.
+    \item Figure 10.2 shows the solution associated with a nonhomogeneous boundary condition on $x = L$ and with the homogeneous boundary conditions elsewhere: $u_n(x, y) = \hat{g}_n^2\frac{\sinh(\lambda_nx)}{\sinh(\lambda_nL)}\sin(\lambda_ny)$ for $n = 1$ and 3. We observe that each mode is smooth and decays exponentially away from the boundary.
+\end{enumerate}
+
+\lecfig[0.8\linewidth]{laplace_sov}{6}{87 500 71 115}{Figure 10.1: Functions $\sinh(n\pi(1 - x))/\sinh(n\pi)$ and $\sinh(n\pi x)/\sinh(n\pi)$.}
+
+\lecfig[0.8\linewidth]{laplace_sov}{6}{82 187 82 427}{Figure 10.2: Solutions to Laplace's equation on $(0, 1.5) \times (0, 1)$ for $g^2(y) = \sin(n\pi y)$ and $g^i = 0$ for $i = 1, 3, 4$.}
+
+\begin{example}[Laplace's Equation on a Square][10.1]
+    We consider Laplace's equation on the unit square $\Omega \equiv (0, 1)^2$. The boundary value problem is given by (10.1) for triangular boundary functions
+    \begin{align*}
+        g^2(y) &= 1 - 2|y - 0.5|, \quad y \in (0, 1), \\
+        g^4(x) &= 1/2 - |x - 0.5|, \quad x \in (0, 1),
+    \end{align*}
+    and $g^1 = g^3 = 0$. To find the solution, we first note that $\lambda_n = \mu_n = n\pi$ since $L = H = 1$. We then find the Fourier sine coefficients of $g^2$ and $g^4$:
+    \[\hat{g}_n^2 = \begin{cases} \dfrac{8(-1)^{(n-1)/2}}{n^2\pi^2}, & n \text{ odd}, \\ 0, & n \text{ even}, \end{cases} \qquad \hat{g}_n^4 = \begin{cases} \dfrac{4(-1)^{(n-1)/2}}{n^2\pi^2}, & n \text{ odd}, \\ 0, & n \text{ even}. \end{cases}\]
+    We then substitute the coefficients into our general expression to find
+    \[u(x, y) = \sum_{n=1,3,5,\dots}^{\infty} \left(\frac{8(-1)^{(n-1)/2}}{n^2\pi^2}\frac{\sinh(n\pi x)}{\sinh(n\pi)}\sin(n\pi y) + \frac{4(-1)^{(n-1)/2}}{n^2\pi^2}\frac{\sinh(n\pi y)}{\sinh(n\pi)}\sin(n\pi x)\right).\]
+    Figure 10.3 shows the solution to the problem. We observe that even though the boundary functions are not smooth, the solution is smooth on $\Omega$. In fact it can be shown that harmonic functions are infinitely continuously differentiable in $\Omega$ (but not necessarily on $\partial\Omega$). We also observe that the maximum (resp.\ minimum) principle is clearly satisfied and the maximum (resp.\ minimum) value is attained on the boundary.
+
+    \lecfig[0.45\linewidth]{laplace_sov}{7}{195 555 195 69}{Figure 10.3: Solution to Laplace's equation on a square with triangular boundary functions.}
+\end{example}
+
+\subsection{10.3 Laplace's equation on a disk}
+We now consider the solution of Laplace's equation on a disk $\Omega \equiv \{x \in \R^2 \mid \|x\|_2 < a\}$:
+\begin{equation*}
+    \begin{aligned}
+        -\Delta u &= 0 \quad \text{in } \Omega, \\
+        u &= g \quad \text{on } \partial\Omega.
+    \end{aligned} \tag{10.6}
+\end{equation*}
+We again use separation of variables but now in polar coordinates. The Laplacian in polar coordinates is
+\[\Delta u = \frac{1}{r}\frac{\partial}{\partial r}\left(r\frac{\partial u}{\partial r}\right) + \frac{1}{r^2}\frac{\partial^2 u}{\partial\theta^2} = \frac{\partial^2 u}{\partial r^2} + \frac{1}{r}\frac{\partial u}{\partial r} + \frac{1}{r^2}\frac{\partial^2 u}{\partial\theta^2} = 0.\]
+We substitute the separable form of the solution $u_n(r, \theta) = R_n(r)\Theta_n(\theta)$ and obtain
+\[R_n''\Theta_n + \frac{1}{r}R_n'\Theta_n + \frac{1}{r^2}R_n\Theta_n'' = 0.\]
+At points where $R_n\Theta_n \neq 0$, we multiply through by $r^2/(R_n\Theta_n)$ to obtain
+\[r^2\frac{R_n''}{R_n} + r\frac{R_n'}{R_n} + \frac{\Theta_n''}{\Theta_n} = 0 \quad \Rightarrow \quad r^2\frac{R_n''}{R_n} + r\frac{R_n'}{R_n} = -\frac{\Theta_n''}{\Theta_n} = \alpha_n.\]
+Since the left- and right-hand sides are functions of only $r$ and $\theta$, respectively, we deduce as before that they must be equal to some constant $\alpha_n$.
+
+We now consider the eigenproblem associated with $\Theta_n$. Because the location of the ``cut'' that we make in the $\theta$-coordinate is arbitrary, we impose periodic boundary conditions. In addition, we solve for $\Theta_n$ (instead of $R_n$) first because the periodic boundary condition can be readily incorporated into the separable form of the solution, just like the homogeneous boundary conditions in the rectangular case. The resulting eigenproblem is given by
+\begin{align*}
+    -\Theta_n'' &= \alpha_n\Theta_n \quad \text{in } (0, 2\pi), \\
+    \Theta_n(0) &= \Theta_n(2\pi), \\
+    \Theta_n'(0) &= \Theta_n'(2\pi).
+\end{align*}
+This is a periodic Sturm--Liouville problem. The general solution to the ODE is given by
+\[\Theta_n(\theta) = A_n\cos(\lambda_n\theta) + B_n\sin(\lambda_n\theta)\]
+for $\lambda_n = \sqrt{\alpha_n}$. We then impose the periodic boundary condition to find that $\lambda_n = n$, $n = 0, 1, 2, \dots$, and hence
+\[\Theta_n(\theta) = A_n\cos(n\theta) + B_n\sin(n\theta),\]
+and $\alpha_n = \lambda_n^2 = n^2$. (Note that $\Theta_{n=0} = A_n$ is a constant function, which of course is periodic.)
+
+Having found $\alpha_n = n^2$, we next observe that the ODE for $R_n$ must satisfy
+\[r^2R_n'' + rR_n' - n^2R_n = 0.\]
+This is a Cauchy--Euler equation of order two, whose solution is of the form $R_n(r) = r^m$ for some $m$. We substitute the form of the solution to obtain
+\[m(m - 1)r^m + mr^m - n^2r^m = 0 \quad \Rightarrow \quad m^2 - n^2 = 0 \quad \Rightarrow \quad m = \pm n.\]
+It follows that $R_n(r) = C_nr^n + D_nr^{-n}$ if $n \neq 0$. For $n = 0$, the solution is given by $R_{n=0}(r) = C_{n=0} + D_{n=0}\log(r)$. We now impose the condition that $R_n$ should be bounded for $0 \leq r < a$ and in particular at the origin; we hence reject the solution $r^{-n}$ and $\log(r)$ which are unbounded at the origin. It follows that our solution is
+\[R_n(r) = C_nr^n, \quad n = 0, 1, 2, \dots.\]
+Hence our family of separable solutions is
+\[u_n(r, \theta) = R_n(r)\Theta_n(\theta) = r^n(A_n\cos(n\theta) + B_n\sin(n\theta)), \quad n = 0, 1, 2, \dots.\]
+We appeal to the principle of superposition and rescale the constant term by $1/2$ and all other terms by $1/a^n$ for convenience to obtain
+\begin{equation*}
+    u(r, \theta) = \frac{1}{2}A_0 + \sum_{n=1}^{\infty} \left(\frac{r}{a}\right)^n (A_n\cos(n\theta) + B_n\sin(n\theta)). \tag{10.7}
+\end{equation*}
+To find the coefficients $(A_n)_{n=0}^{\infty}$ and $(B_n)_{n=1}^{\infty}$, we apply the boundary condition at $r = a$:
+\[u(r = a, \theta) = \frac{1}{2}A_0 + \sum_{n=1}^{\infty} (A_n\cos(n\theta) + B_n\sin(n\theta)) = g(\theta);\]
+this is the Fourier series for $g$ with period $2\pi$ and hence the coefficients are given by
+\begin{equation*}
+    \begin{aligned}
+        A_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} g(\theta)\cos(n\theta)\,d\theta, \quad n = 0, 1, \dots, \\
+        B_n &= \frac{1}{\pi} \int_{-\pi}^{\pi} g(\theta)\sin(n\theta)\,d\theta, \quad n = 1, 2, \dots.
+    \end{aligned} \tag{10.8}
+\end{equation*}
+Hence the Fourier series representation of the solution to (10.6) is given by (10.7) with coefficients (10.8). We make a few observations:
+\begin{enumerate}
+    \item For $n \geq 1$, the amplitude of each mode depends on $(r/a)^n$ with $r/a \leq 1$, and high modes---modes with a large $n$ that exhibit rapid oscillation on the boundary---decay rapidly away from the boundary. The $n = 0$ mode is constant and does not decay. This behavior is shown in Figure 10.4 and is similar to the decay away from the boundary observed for rectangular domains.
+    \item The solution (as expected) satisfies the mean-value formulas over $\Omega$ and $\partial\Omega$. The value at the center of the disk is
+    \[u(r = 0, \theta) = \frac{1}{2}A_0.\]
+    The average of the solution over the disk is
+    \begin{align*}
+        \frac{1}{\pi a^2} \int_\Omega u\,dx &= \frac{1}{\pi a^2} \int_{\theta=-\pi}^{\pi} \int_{r=0}^{a} \left(\frac{1}{2}A_0 + \sum_{n=1}^{\infty} \left(\frac{r}{a}\right)^n (A_n\cos(n\theta) + B_n\sin(n\theta))\right) r\,dr\,d\theta \\
+        &= \frac{1}{\pi a^2} \int_{\theta=-\pi}^{\pi} \int_{r=0}^{a} \frac{1}{2}A_0\,r\,dr\,d\theta = \frac{1}{2}A_0,
+    \end{align*}
+    where the second equality follows because all of the sine and cosine integrals vanish when integrated over $(-\pi, \pi)$. The average over the circumference is
+    \begin{align*}
+        \frac{1}{2\pi a} \int_{\partial\Omega} u\,ds &= \frac{1}{2\pi a} \int_{\theta=-\pi}^{\pi} u(r = a, \theta)\,a\,d\theta \\
+        &= \frac{1}{2\pi a} \int_{\theta=-\pi}^{\pi} \left(\frac{1}{2}A_0 + \sum_{n=1}^{\infty} (A_n\cos(n\theta) + B_n\sin(n\theta))\right) a\,d\theta \\
+        &= \frac{1}{2\pi a} \int_{\theta=-\pi}^{\pi} \frac{1}{2}A_0\,a\,d\theta = \frac{1}{2}A_0,
+    \end{align*}
+    where the third equality again follows because all of the sine and cosine integrals vanish. Hence, we observe that, for any boundary condition $g$, the value of the solution at the center of the disk is equal to (i) its average over the disk and (ii) its average over the circumference, as expected from the mean-value formulas.
+\end{enumerate}
+
+\lecfig[0.45\linewidth]{laplace_sov}{10}{197 549 181 65}{Figure 10.4: Function $(r/a)^n$.}
+
+\begin{example}[Laplace's Equation on a Disk][10.2]
+    Let $\Omega \equiv \{x \in \R^2 \mid \|x\|_2 < 2\}$ and consider
+    \begin{align*}
+        -\Delta u &= 0 \quad \text{in } \Omega, \\
+        u(r = 2, \theta) &= 1 + \cos(3\theta), \quad \theta \in [-\pi, \pi).
+    \end{align*}
+    We wish to find the solution to the boundary value problem. We could find the Fourier coefficients using the formula (10.8), but for this simple boundary condition we can find the coefficients by inspection. Namely, we wish to find $(A_n)_{n=0}^{\infty}$ and $(B_n)_{n=1}^{\infty}$ such that
+    \[u(r = 2, \theta) = \frac{1}{2}A_0 + \sum_{n=1}^{\infty} (A_n\cos(n\theta) + B_n\sin(n\theta)) = 1 + \cos(3\theta).\]
+    We match the coefficients on the left- and right-hand sides to observe that $A_0/2 = 1$ (i.e., $A_0 = 2$), $A_3 = 1$, and all other coefficients should be zero. Hence the solution is
+    \[u(r, \theta) = 1 + \left(\frac{r}{2}\right)^3 \cos(3\theta).\]
+    Figure 10.5 shows the solution. We observe, as expected, the solution is smooth. In addition, we readily verify the (weak) maximum and minimum principles: the maximum and minimum of 2 and 0, respectively, occur on the boundary. The strong maximum and minimum principles are also satisfied: the solution strictly inside the domain $\Omega$ (i.e., not on the boundary) are all strictly greater than 0 and strictly less than 2, since $(r/2)^3 < 1$ for all $r < 2$. Finally, we observe that the mean-value formulas are satisfied; the value at the center, the average over the disk, and the average over the circumference are all equal to 1.
+
+    \lecfig[0.45\linewidth]{laplace_sov}{11}{195 576 195 69}{Figure 10.5: Solution to Laplace's equation on a disk.}
+\end{example}
+
+\subsection{10.4 Summary}
+We summarize key points of this lecture:
+\begin{enumerate}
+    \item Separation of variables can be applied to solve Laplace's equation in two (or higher) dimensions.
+    \item The solution to Laplace's equation on a rectangle or disk can be expressed in terms of the Fourier coefficients of the boundary data.
+    \item Nonconstant boundary modes decay away from the boundary on a rectangle or disk. Higher-frequency modes decay more rapidly; i.e., the effects of highly oscillatory boundary modes are confined to a thin region near the boundary.
+\end{enumerate}

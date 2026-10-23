@@ -1,0 +1,175 @@
+% !TeX root = ../main.tex
+
+\newlecture[Laplace's Equation: Finite Difference Method]
+
+\subsection{12.1 Introduction}
+In this lecture, we consider finite difference approximations of Poisson's (and Laplace's) equation in two dimensions. Numerical methods are often necessary for PDEs in two and higher dimensions because analytical solution methods are generally unavailable for complex domain geometries. Building on our discussion of the finite difference method for the one-dimensional heat equation in Lecture 8, in this lecture we focus on finite difference approximations in higher dimensions.
+
+\subsection{12.2 Problem statement}
+We introduce Poisson's equation in two dimensions:
+\begin{align*}
+    -\frac{\partial^2 u}{\partial x^2} - \frac{\partial^2 u}{\partial y^2} &= f \quad \text{in } \Omega \equiv (0, 1) \times (0, 1), \\
+    u &= 0 \quad \text{on } \partial\Omega,
+\end{align*}
+where $f : \Omega \to \R$ is some forcing function. For simplicity, we consider a unit square domain and homogeneous Dirichlet boundary conditions. We defer to Section 12.6 for the treatment of other boundary conditions.
+
+\subsection{12.3 Finite difference formulation}
+We approximate the two-dimensional Poisson's equation by a finite difference method. As we have done for the heat equation, we first introduce a computational grid over the domain $\Omega$. The grid points are given by
+\[(x_i, y_j) = (i\Delta x, j\Delta y), \quad i, j = 0, \dots, n + 1,\]
+where $\Delta x = \Delta y = h = 1/(n + 1)$ is the spacing between any two grid points. We then denote our approximation of the solution by
+\[\tilde{u}_{i,j} \equiv \tilde{u}(x_i, y_j), \quad i, j = 0, \dots, n + 1.\]
+An example of a computational grid for $n = 3$ is shown in Figure 12.1. (Note that our indices range from $i, j = 0$ to $n + 1$, so that the unknowns are at $i, j = 1, \dots, n$ after we impose the Dirichlet boundary conditions at $i, j = 0$ and $n + 1$. The indices are different from the mixed boundary condition case considered in Lecture 8, where the rightmost node was an unknown node because of the Neumann boundary condition. This also affects the relationship between the grid spacing $\Delta x$ and $n$.)
+
+\lecfig[0.4\linewidth]{laplace_fd}{2}{216 549 216 75}{Figure 12.1: Computational grid for two-dimensional Poisson equation.}
+
+We apply the second-order central difference formula to approximate the second derivatives
+\begin{align*}
+    \left.\frac{\partial^2 u}{\partial x^2}\right|_{i,j} &\approx \frac{\tilde{u}_{i+1,j} - 2\tilde{u}_{i,j} + \tilde{u}_{i-1,j}}{\Delta x^2}, \\
+    \left.\frac{\partial^2 u}{\partial y^2}\right|_{i,j} &\approx \frac{\tilde{u}_{i,j+1} - 2\tilde{u}_{i,j} + \tilde{u}_{i,j-1}}{\Delta y^2}.
+\end{align*}
+We note that, because we are approximating \textit{partial} derivatives, the finite difference steps for $\frac{\partial^2 u}{\partial x^2}$ and $\frac{\partial^2 u}{\partial y^2}$ are taken (only) in the respective coordinate directions. We also recall that these approximations for the second derivatives are second-order accurate (Proposition 8.4); i.e., using Taylor expansions, we can show that
+\[\left|\left.\frac{\partial^2 u}{\partial x^2}\right|_{i,j} - \frac{u(x_{i+1}, y_j) - 2u(x_i, y_j) + u(x_{i-1}, y_j)}{\Delta x^2}\right| = \mathcal{O}(\Delta x^2)\]
+for sufficiently regular $u$.
+
+Combining the two approximations of partial derivatives, we obtain an approximation of the Laplacian:
+\[-\Delta u|_{i,j} = -\left.\frac{\partial^2 u}{\partial x^2}\right|_{i,j} - \left.\frac{\partial^2 u}{\partial y^2}\right|_{i,j} \approx -\frac{\tilde{u}_{i+1,j} - 2\tilde{u}_{i,j} + \tilde{u}_{i-1,j}}{\Delta x^2} - \frac{\tilde{u}_{i,j+1} - 2\tilde{u}_{i,j} + \tilde{u}_{i,j-1}}{\Delta y^2}.\]
+Because the approximation of the Laplacian at $(i, j)$ involves the solution values at five points (i.e.\ four neighbors and itself), the finite difference approximation is said to have a \textit{five-point stencil}. Substitution of the finite difference formula into Poisson's equation yields
+\begin{equation*}
+    -\frac{\tilde{u}_{i+1,j} - 2\tilde{u}_{i,j} + \tilde{u}_{i-1,j}}{\Delta x^2} - \frac{\tilde{u}_{i,j+1} - 2\tilde{u}_{i,j} + \tilde{u}_{i,j-1}}{\Delta y^2} = \hat{f}_{i,j}, \quad i, j = 1, \dots, n, \tag{12.1}
+\end{equation*}
+where $\hat{f}_{i,j} = f(x_i, y_j)$. The homogeneous Dirichlet boundary conditions become
+\begin{align*}
+    \tilde{u}_{0,j} = \tilde{u}_{n+1,j} &= 0, \quad j = 0, \dots, n + 1, \\
+    \tilde{u}_{i,0} = \tilde{u}_{i,n+1} &= 0, \quad i = 1, \dots, n.
+\end{align*}
+Note that we have $n^2$ equations associated with the interior grid points. The difference equation can again be expressed in a matrix form:
+\[\hat{A}\tilde{u} = \hat{f};\]
+for instance, if $n = 3$ and $h \equiv \Delta x = \Delta y$, the matrix $\hat{A} \in \R^{9 \times 9}$ and the vectors $\tilde{u} \in \R^9$ and $\hat{f} \in \R^9$ are given by
+\[\hat{A} = \frac{1}{h^2}\left(\begin{array}{rrr|rrr|rrr}
+    4 & -1 & & -1 & & & & & \\
+    -1 & 4 & -1 & & -1 & & & & \\
+    & -1 & 4 & & & -1 & & & \\ \hline
+    -1 & & & 4 & -1 & & -1 & & \\
+    & -1 & & -1 & 4 & -1 & & -1 & \\
+    & & -1 & & -1 & 4 & & & -1 \\ \hline
+    & & & -1 & & & 4 & -1 & \\
+    & & & & -1 & & -1 & 4 & -1 \\
+    & & & & & -1 & & -1 & 4
+\end{array}\right), \quad
+\tilde{u} = \left(\begin{array}{c} \tilde{u}_{11} \\ \tilde{u}_{21} \\ \tilde{u}_{31} \\ \hline \tilde{u}_{12} \\ \tilde{u}_{22} \\ \tilde{u}_{32} \\ \hline \tilde{u}_{13} \\ \tilde{u}_{23} \\ \tilde{u}_{33} \end{array}\right), \quad
+\hat{f} = \left(\begin{array}{c} \hat{f}_{11} \\ \hat{f}_{21} \\ \hat{f}_{31} \\ \hline \hat{f}_{12} \\ \hat{f}_{22} \\ \hat{f}_{32} \\ \hline \hat{f}_{13} \\ \hat{f}_{23} \\ \hat{f}_{33} \end{array}\right).\]
+Note that we have ordered the grid points such that the $x$-index is the faster-changing index and the $y$-index is the slower-changing index; this choice is arbitrary.
+
+Because we have employed a second-order accurate finite difference formula to approximate the Laplacian, the discretization is consistent to second order. If the exact solution is sufficiently regular and the discrete problem is stable, then the finite difference approximation is second-order accurate and the error is bounded by
+\[\|u - \tilde{u}\|_\infty = \max_{i,j=1,\dots,n} |u(x_i, y_j) - \tilde{u}_{i,j}| \leq C\Delta x^2 + D\Delta y^2,\]
+for constants $C < \infty$ and $D < \infty$ that are independent of $\Delta x$ and $\Delta y$. We make two observations:
+\begin{enumerate}
+    \item \textit{Convergence:} the error $\|u - \tilde{u}\|_\infty \to 0$ as $\Delta x \to 0$ and $\Delta y \to 0$.
+    \item \textit{Order of accuracy:} $\|u - \tilde{u}\|_\infty \leq C\Delta x^2 + D\Delta y^2$, and the scheme is second-order accurate. Decreasing both $\Delta x$ and $\Delta y$ by a factor of two causes the error bound to decrease by a factor of four.
+\end{enumerate}
+
+We make one final remark on computational considerations. As in the case of the one-dimensional heat equation, the matrix $\hat{A}$ associated with two- or higher-dimensional Laplace's equation is \textit{sparse} (i.e., most entries are zero). It is important to take advantage of this sparsity in computation. Pragmatically, in \textsc{Matlab}, we should (i) ensure that the matrix is stored as a sparse matrix using the \texttt{sparse} command and (ii) use the ``$\backslash$'' backslash operator to solve the linear system $\hat{A}\tilde{u} = \hat{f}$. We should \textit{never} use the \texttt{inv} function merely to solve the system, since the inverse of $\hat{A}$ is dense and explicitly forming it is unnecessary and inefficient.
+
+\subsection{12.4 Example: square domain}
+We consider a two-dimensional Poisson problem
+\begin{align*}
+    -\Delta u &= \sin(\pi x)\sin(\pi y) \quad \text{in } \Omega \equiv (0, 1)^2, \\
+    u &= 0 \quad \text{on } \partial\Omega.
+\end{align*}
+Finite difference approximations of the solution for two different values of the grid spacing $h = \Delta x = \Delta y$ are shown in Figure 12.2. The $h = 1/64$ approximation is noticeably smoother than the $h = 1/8$ approximation.
+
+\lecfig[0.8\linewidth]{laplace_fd}{4}{74 498 59 70}{Figure 12.2: Finite difference approximations of Poisson's equation on the unit square domain.}
+
+Table 12.1 shows the maximum error over all grid points as a function of the grid spacing. We observe that the maximum error decreases by approximately a factor of four whenever the grid spacing is decreased by a factor of two. This is consistent with the fact that the error scales as $\mathcal{O}(\Delta x^2 + \Delta y^2)$ for the second-order accurate finite difference method for smooth problems.
+
+\begin{center}
+    \begin{tabular}{cc}
+        $h$ & $\|u - \tilde{u}\|_\infty$ \\
+        \hline
+        $1/4$ & $2.69 \times 10^{-3}$ \\
+        $1/8$ & $6.56 \times 10^{-4}$ \\
+        $1/16$ & $1.63 \times 10^{-4}$ \\
+        $1/32$ & $4.07 \times 10^{-5}$ \\
+        $1/64$ & $1.02 \times 10^{-5}$
+    \end{tabular}\\[4pt]
+    {\small Table 12.1: Maximum error for finite difference approximations of Poisson's equation on the unit square domain as a function of the grid spacing.}
+\end{center}
+
+\subsection{12.5 Example: $L$-shaped domain}
+The finite difference approximation readily extends to non-square domains. We consider Poisson's equation on an $L$-shaped domain $\Omega \equiv (0, 1)^2 \setminus [0, 1/2]^2$:
+\begin{align*}
+    -\Delta u &= 1 \quad \text{in } \Omega, \\
+    u &= 0 \quad \text{on } \partial\Omega.
+\end{align*}
+An example of the computational grid for the $L$-shaped domain is shown in Figure 12.3(a). Note that there is no computational grid in $(0, 1/2)^2$, which is not part of the domain. The solution obtained on a finer grid is shown in Figure 12.3(b). The solution is in fact singular at the $270^\circ$ corner; i.e., higher-order derivatives are not continuous at the corner. Table 12.2 shows that, due to the presence of the singularity, the asymptotic finite difference error converges as $\mathcal{O}(h^{2/3})$ for $h = \Delta x = \Delta y$, which is (significantly) slower than the convergence of $\mathcal{O}(h^2)$ for smooth problems. The fact that the method does not achieve the design order of accuracy for problems with singularities is consistent with the fact that the finite difference formulas are derived using Taylor expansions for smooth functions.
+
+\lecfig[0.85\linewidth]{laplace_fd}{6}{72 479 42 65}{Figure 12.3: Computational grid and solution for the $L$-shaped domain problem.}
+
+\begin{center}
+    \begin{tabular}{cc}
+        $h$ & $\|u - \tilde{u}\|_\infty$ \\
+        \hline
+        $1/4$ & $1.79 \times 10^{-3}$ \\
+        $1/8$ & $1.92 \times 10^{-3}$ \\
+        $1/16$ & $1.40 \times 10^{-3}$ \\
+        $1/32$ & $9.19 \times 10^{-4}$ \\
+        $1/64$ & $5.80 \times 10^{-4}$
+    \end{tabular}\\[4pt]
+    {\small Table 12.2: Maximum error for the two-dimensional Poisson problem on the $L$-shaped domain as a function of grid spacing.}
+\end{center}
+
+\subsection{12.6 Treatment of various boundary conditions}
+The treatment of various boundary conditions in two dimensions is similar to the treatment of boundary conditions in one dimension in Lecture 8.
+\begin{enumerate}
+    \item \textit{Dirichlet boundary.} Suppose we wish to impose a nonhomogeneous Dirichlet boundary condition on the $x = 0$ boundary:
+    \[u(x_{i=0}, y_j) = h(y_j).\]
+    This boundary condition is incorporated in the finite difference equation associated with $(x_{i=1}, y_j)$. We substitute $u_{i=0,j} = h(y_j)$ into (12.1) evaluated at $(x_{i=1}, y_j)$,
+    \[-\frac{\tilde{u}_{2,j} - 2\tilde{u}_{1,j} + \tilde{u}_{0,j}}{\Delta x^2} - \frac{\tilde{u}_{1,j+1} - 2\tilde{u}_{1,j} + \tilde{u}_{1,j-1}}{\Delta y^2} = \hat{f}_{1,j},\]
+    to obtain
+    \[-\frac{\tilde{u}_{2,j} - 2\tilde{u}_{1,j} + h(y_j)}{\Delta x^2} - \frac{\tilde{u}_{1,j+1} - 2\tilde{u}_{1,j} + \tilde{u}_{1,j-1}}{\Delta y^2} = \hat{f}_{1,j}.\]
+    We move all known terms to the right-hand side to obtain
+    \[-\frac{\tilde{u}_{2,j} - 2\tilde{u}_{1,j}}{\Delta x^2} - \frac{\tilde{u}_{1,j+1} - 2\tilde{u}_{1,j} + \tilde{u}_{1,j-1}}{\Delta y^2} = \hat{f}_{1,j} + \frac{h(y_j)}{\Delta x^2}.\]
+    We note that the expression is similar to the expression obtained for a nonhomogeneous Dirichlet boundary condition for the one-dimensional heat equation.
+    \item \textit{Neumann boundary.} Suppose we wish to impose a nonhomogeneous Neumann boundary condition on the $x = 0$ boundary:
+    \[-\frac{\partial u}{\partial x}(x_{i=0}, y_j) = h(y_j).\]
+    This boundary condition is incorporated in the finite difference equation associated with $(x_{i=0}, y_j)$. (Recall that, unlike the case of a Dirichlet boundary condition, the solution on the boundary $u(x_{i=0}, y_j)$ is unknown for a Neumann boundary condition.) The finite difference approximation of the boundary condition is
+    \[-\frac{\tilde{u}_{1,j} - \tilde{u}_{-1,j}}{2\Delta x} = h(y_j),\]
+    which implies $\tilde{u}_{-1,j} = \tilde{u}_{1,j} + 2\Delta x\,h(y_j)$. We substitute the approximation of the boundary condition into (12.1) evaluated at $(x_{i=0}, y_j)$,
+    \[-\frac{\tilde{u}_{1,j} - 2\tilde{u}_{0,j} + \tilde{u}_{-1,j}}{\Delta x^2} - \frac{\tilde{u}_{0,j+1} - 2\tilde{u}_{0,j} + \tilde{u}_{0,j-1}}{\Delta y^2} = \hat{f}_{0,j},\]
+    to obtain
+    \[-\frac{\tilde{u}_{1,j} - 2\tilde{u}_{0,j} + \tilde{u}_{1,j} + 2\Delta x\,h(y_j)}{\Delta x^2} - \frac{\tilde{u}_{0,j+1} - 2\tilde{u}_{0,j} + \tilde{u}_{0,j-1}}{\Delta y^2} = \hat{f}_{0,j}.\]
+    We again move known quantities to the right-hand side to obtain
+    \[-\frac{2\tilde{u}_{1,j} - 2\tilde{u}_{0,j}}{\Delta x^2} - \frac{\tilde{u}_{0,j+1} - 2\tilde{u}_{0,j} + \tilde{u}_{0,j-1}}{\Delta y^2} = \hat{f}_{0,j} + \frac{2h(y_j)}{\Delta x}.\]
+    We note that the expression is similar to the expression obtained for a nonhomogeneous Neumann boundary condition for the one-dimensional heat equation.
+\end{enumerate}
+
+\begin{nremark}[][12.1]
+    If Neumann conditions are imposed on the entire boundary, the resulting discrete system is singular. This mirrors the continuous pure Neumann problem: a compatibility condition is required for a solution to exist, and the solution is unique only up to an additive constant. The constant functions form the null space of the continuous Laplace operator, while the constant vector lies in the null space of the discrete operator.
+\end{nremark}
+
+\subsection{12.7 Time dependent problems: heat equation}
+We can readily apply the finite difference approximation of two-dimensional Laplace's equation to construct a semi-discrete equation for the two-dimensional heat equation. The resulting semi-discrete equation is
+\[\frac{d\tilde{u}_{i,j}}{dt} - \frac{\tilde{u}_{i+1,j} - 2\tilde{u}_{i,j} + \tilde{u}_{i-1,j}}{\Delta x^2} - \frac{\tilde{u}_{i,j+1} - 2\tilde{u}_{i,j} + \tilde{u}_{i,j-1}}{\Delta y^2} = \hat{f}_{i,j}, \quad i, j = 1, \dots, n.\]
+The associated matrix form of the equation is
+\[\frac{d\tilde{u}}{dt} + \hat{A}\tilde{u} = \hat{f}.\]
+We can then apply a time-marching method discussed in Lecture 8 to the time derivative to obtain a fully discrete equation. We then solve the fully discrete equation, starting at time $t = 0$.
+
+\subsection{12.8 Other numerical methods for PDEs}
+While we have focused our discussion on the finite difference method in this course, there are many other numerical methods for PDEs. We here highlight several well-known approaches:
+\begin{itemize}
+    \item \textit{Finite element methods.} Finite element methods are derived from the so-called weak form of the PDEs. Finite element methods permit the use of \textit{unstructured meshes}, which facilitates the treatment of complex geometries; an example of unstructured meshes is shown in Figure 12.4(a). The method is also amenable to rigorous analysis using functional analysis techniques. The finite element method can be used to approximate PDEs of all types (i.e., parabolic, elliptic, and hyperbolic) and are used in many engineering applications including structures, fluids, acoustics, and electromagnetics. An example of finite element approximation of fluid flow is shown in Figure 12.4(b).
+    \item \textit{Finite volume methods.} Finite volume methods are derived from the integral form, as opposed to the differential form, of the PDEs and are particularly well-suited for hyperbolic conservation laws in fluid dynamics. Like finite element methods, finite volume methods also permit the use of unstructured meshes, which facilitates the treatment of complex geometries.
+    \item \textit{Boundary element methods.} Boundary element methods are primarily used for linear homogeneous PDEs with known fundamental solutions. The methods appeal to the fundamental solution and Green's representation formula to recast the PDE as an integral equation posed on the boundary, thereby reducing the dimension of the computational problem by one. Boundary element methods are widely used in electromagnetics; the vortex-lattice method for potential flows in fluid dynamics is also an example of a boundary element method.
+\end{itemize}
+
+\lecfig[0.8\linewidth]{laplace_fd}{8}{89 595 82 74}{Figure 12.4: Example of a mesh and solution for flow past a cylinder.}
+
+\subsection{12.9 Summary}
+We summarize key points of this lecture:
+\begin{enumerate}
+    \item Finite difference methods readily extend to higher dimensions. To approximate a partial derivative in a given direction, a finite difference formula is applied in that direction.
+    \item If the Laplacian operator is approximated using the second-order accurate finite difference formula, the resulting finite difference approximation of Laplace's (or Poisson's) equation is second-order accurate.
+    \item Various boundary conditions can be treated. On a Dirichlet boundary, we simply replace the value of the solution on the boundary with the known value. On a Neumann (or Robin) boundary, we approximate the boundary condition using a finite difference formula and make an appropriate substitution.
+    \item Finite difference methods for higher spatial dimensions can also be used to identify a semi-discrete form of higher-dimensional time-dependent problems.
+    \item There are many numerical methods for PDEs, including finite element, finite volume, and boundary element methods.
+\end{enumerate}

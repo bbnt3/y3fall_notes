@@ -1,0 +1,252 @@
+% !TeX root = ../main.tex
+
+\newlecture[Laplace's Equation: Introduction]
+
+\subsection{9.1 Introduction}
+In this lecture, we introduce and study Laplace's equation
+\[-\Delta u = 0 \quad \text{in } \Omega \subset \R^n\]
+and the closely related Poisson's equation
+\[-\Delta u = f \quad \text{in } \Omega \subset \R^n\]
+for some $f : \Omega \to \R$. Both equations are ubiquitous in science and engineering, and they are archetypes of elliptic PDEs. Following the approach used for the heat equation, we will first derive a number of properties associated with Laplace's and Poisson's equations without explicitly seeking the solution.
+
+\textit{Classification.} We recall the classification system introduced in Lecture 1. We immediately observe that Laplace's and Poisson's equations are second-order linear equations. Laplace's equation is homogeneous, while Poisson's equation is nonhomogeneous (for $f \neq 0$). Both equations are also elliptic. To see this, for simplicity we consider $n = 2$ and observe that the matrix associated with the second-order operator $-\Delta = -\frac{\partial^2}{\partial x_1^2} - \frac{\partial^2}{\partial x_2^2}$ is
+\[A = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix};\]
+the associated eigenvalues are $\lambda_{1,2} = -1$. Because the eigenvalues have the same sign, the equation is elliptic. This argument would hold for an arbitrary $n$ because the $A$ matrix is $A = -I_{n \times n}$.
+
+\subsection{9.2 Laplace's and Poisson's equations in science and engineering}
+We provide a few applications of Laplace's and Poisson's equations in science and engineering.
+\begin{itemize}
+    \item \textit{Steady heat transfer.} The PDE that describes the steady temperature distribution $u$ is obtained by setting the time derivative term $\frac{\partial u}{\partial t}$ of the heat equation to 0. The resulting equation is Laplace's equation $-\Delta u = 0$ if there is no (volume) heat source and Poisson's equation $-\Delta u = f$ if there is a source term $f$. We may obtain a boundary value problem by augmenting the PDE with some combination of the boundary conditions discussed in Section 5.3.
+    \item \textit{Steady diffusion.} The steady-state concentration of chemical species dispersed in a medium is described by Laplace's equation. The species concentration $u : \Omega \to \R$ satisfies Laplace's equation $-\Delta u = 0$ if there is no volume chemical source and Poisson's equation $-\Delta u = f$ if there is a source term.
+    \item \textit{Potential flow.} Steady, inviscid, incompressible, and irrotational flows can be modeled using the potential flow theory. The velocity potential $\phi : \Omega \to \R$ satisfies Laplace's equation $-\Delta\phi = 0$. The velocity field is then given by $v = \nabla\phi$.
+    \item \textit{Electrostatics.} The electric field in a linear, isotropic, and homogeneous material is described by Poisson's equation. The electric potential $\phi : \Omega \to \R$ satisfies Poisson's equation $-\Delta\phi = \rho/\epsilon$, where $\rho$ is the volumetric charge density and $\epsilon$ is the permittivity of the medium. The electric field is then given by $E = -\nabla\phi$.
+\end{itemize}
+Laplace's equation is also ubiquitous in mathematics, and its solution bears a special name.
+
+\begin{definition}[Harmonic Function][9.1]
+    Let $\Omega \subset \R^n$. A function $u : \Omega \to \R$ that satisfies Laplace's equation $-\Delta u = 0$ in $\Omega$ is called a \textbf{harmonic function}.
+\end{definition}
+
+Before we proceed with the solution of Laplace's and Poisson's equations, we make one remark about our choice of the sign. Laplace's and Poisson's equations are sometimes written without the negative sign in front of the differential operator; i.e., $\Delta u = 0$ instead of $-\Delta u = 0$. Throughout this lecture, as we have done throughout the course so far, we use the convention that the Laplacian is $-\Delta = -\nabla \cdot \nabla$.
+
+\subsection{9.3 Mean-value formulas}
+Harmonic functions have a number of special properties. The first property is expressed in \textit{mean value formulas}. (All proofs in this section and following sections should be considered optional.)
+
+\begin{definition}[Ball in $\R^n$][9.2]
+    A \textbf{ball} of radius $r$ and centered at $x_0$ is an open subset of $\R^n$ given by $B(x_0, r) \equiv \{x \in \R^n \mid \|x - x_0\|_2 < r\}$, where $\|\cdot\|_2$ is the Euclidean norm in $\R^n$. Its boundary is $\partial B(x_0, r) = \{x \in \R^n \mid \|x - x_0\|_2 = r\}$. The volume of the ball is denoted by $|B(x_0, r)|$, and the surface area of the ball is denoted by $|\partial B(x_0, r)|$.
+\end{definition}
+
+\begin{example}[][9.3]
+    In two dimensions, $B(x_0, r)$ is a disk, and $\partial B(x_0, r)$ is a circle. Its ``volume'' (i.e., area in $\R^2$) is $|B(x_0, r)| = \pi r^2$, and its ``surface area'' (i.e., arc length in $\R^2$) is $|\partial B(x_0, r)| = 2\pi r$.
+\end{example}
+
+\begin{theorem}[Mean-Value Formula for Harmonic Functions][9.4]
+    If $u$ is harmonic in $\Omega$, then for any ball satisfying $\overline{B(x_0, r)} \subset \Omega$, we have
+    \[u(x_0) = \underbrace{\frac{1}{|B(x_0, r)|} \int_{B(x_0, r)} u\,dx}_{\text{average over the volume}} = \underbrace{\frac{1}{|\partial B(x_0, r)|} \int_{\partial B(x_0, r)} u\,ds}_{\text{average over the surface}}.\]
+\end{theorem}
+\begin{proof}
+    We prove the formula in $\R^2$; the proof readily extends to higher dimensions. We first prove the relationship for the average over the circumference. Without loss of generality, we choose the coordinate system centered at the ball and introduce a function
+    \[\phi(r) = \frac{1}{2\pi r} \int_{\partial B(0, r)} u(y)\,ds(y) = \frac{1}{2\pi r} \int_{\theta=0}^{2\pi} u(r, \theta)\,r\,d\theta = \frac{1}{2\pi} \int_{\theta=0}^{2\pi} u(r, \theta)\,d\theta.\]
+    We then differentiate the function to obtain
+    \[\phi'(r) = \frac{1}{2\pi} \int_{\theta=0}^{2\pi} \frac{\partial u}{\partial r}(r, \theta)\,d\theta = \frac{1}{2\pi r} \int_{\theta=0}^{2\pi} \frac{\partial u}{\partial r}(r, \theta)\,r\,d\theta.\]
+    We now (i) recognize that the integration is over the circle $\partial B(0, r)$, (ii) recognize $\frac{\partial u}{\partial r} = \nu \cdot \nabla u$ for $\nu$ the outward pointing unit normal on the circle, and (iii) invoke the divergence theorem to obtain
+    \[\phi'(r) = \frac{1}{2\pi r} \int_{\partial B(0, r)} \nu \cdot \nabla u\,ds = \frac{1}{2\pi r} \int_{B(0, r)} \Delta u\,dx = 0,\]
+    where the last equality follows from $\Delta u = 0$. Hence $\phi$ is a constant function and we can equate its value for any $r$ to the limit of $r$ going to 0, $\lim_{r \to 0} \phi(r)$:
+    \[\phi(r) = \lim_{a \to 0} \phi(a) = \lim_{a \to 0} \frac{1}{2\pi a} \int_{\partial B(0, a)} u(y)\,ds(y) = u(x = 0),\]
+    which is the first relationship. (Note that we use a dummy variable $a$ for the limit $\lim_{a \to 0} \phi(a)$ to avoid conflation with $r$ about which $\phi$ is evaluated.)
+
+    To prove the second relationship we again use polar coordinates to obtain
+    \[\int_{B(0, r)} u(x)\,dx = \int_{z=0}^{r} \left(\int_{\partial B(0, z)} u\,ds\right) dz = \int_{z=0}^{r} u(0)\,2\pi z\,dz = u(0)\pi r^2,\]
+    which is the second relationship.
+\end{proof}
+
+\begin{theorem}[Converse to Mean-Value Theorem][9.5]
+    If $u \in C^2(\Omega)$ satisfies
+    \[u(x_0) = \frac{1}{2\pi r} \int_{\partial B(x_0, r)} u(s)\,ds\]
+    for all balls satisfying $\overline{B(x_0, r)} \subset \Omega$, then $u$ is harmonic.
+\end{theorem}
+\begin{proof}
+    Proof is beyond the scope of this course. See, for example, \textit{Partial Differential Equations} by Evans.
+\end{proof}
+
+\begin{example}[Mean-Value Formulas in $\R^1$][9.6]
+    Let $u : \R \to \R$ be a harmonic function (i.e., $u$ satisfies $-u'' = 0$ in $\R$). We introduce a ball $B(x_0 = 1, r = 2) = (-1, 3)$. (The ball is just an open line segment in $\R^1$.) Suppose $u(x = -1) = 1$ and $u(x = 3) = 2$. Then by the mean value formula, the value at the center of the ball is given by
+    \[u(1) = \underbrace{\frac{1}{|\partial B(1, 2)|} \int_{\partial B(1, 2)} u\,ds}_{\text{ball surface average}} = \frac{1}{2}(u(-1) + u(3)) = \frac{3}{2}.\]
+    In addition, the average of $u$ over the line segment $(-1, 3)$ is
+    \[\frac{1}{|B(x_0, r)|} \int_{B(x_0, r)} u\,dx = \frac{1}{4} \int_{-1}^{3} u\,dx = \frac{3}{2}.\]
+    Note that we arrive at these conclusions \textit{without knowing the precise form of the solution}.
+
+    (Note that the explicit form of the solution is given by $u(x) = \frac{1}{4}x + \frac{5}{4}$, which yields the results that are consistent with the above. Harmonic functions are linear in $\R^1$ because $u'' = 0$.)
+\end{example}
+
+\begin{example}[Mean-Value Formulas in $\R^2$][9.7]
+    Let $u : \R^2 \to \R$ be a harmonic function. We introduce a ball $B(0, 2) \subset \R^2$. Suppose along the surface of the ball (i.e., the circle) the function is given by
+    \[u(r = 2, \theta) = 1 + \cos(3\theta)\]
+    in polar coordinates. Then, by the mean-value formula for the surface, the value at the center of the ball is
+    \[u(0) = \underbrace{\frac{1}{|\partial B(0, 2)|} \int_{\partial B(0, 2)} u\,ds}_{\text{average over circle}} = \frac{1}{2\pi \cdot 2} \int_{\theta=0}^{2\pi} (1 + \cos(3\theta))\,2\,d\theta = 1.\]
+    Similarly, by the mean value formula for the volume,
+    \[\underbrace{\frac{1}{|B(0, 2)|} \int_{B(0, 2)} u\,dx}_{\text{average over disk}} = u(0) = 1.\]
+    We arrive at these results without knowing the explicit form of the solution.
+
+    (We will find an explicit form of the solution using separation of variables in Example 10.2. The solution as expected satisfies the above mean-value properties.)
+\end{example}
+
+\subsection{9.4 Maximum principles}
+Similarly to the heat equation, Laplace's equation also satisfies certain maximum and minimum principles:
+
+\begin{theorem}[(Weak) Maximum Principle][9.8]
+    Let $\Omega \subset \R^n$ be a bounded connected open domain, and let $u \in C^2(\Omega) \cap C(\overline{\Omega})$ be harmonic in $\Omega$. Then
+    \[\max_{\overline{\Omega}} u = \max_{\partial\Omega} u;\]
+    the function attains the maximum value on the boundary of the domain.
+\end{theorem}
+\begin{proof}
+    The result follows from the strong maximum principle stated below. Suppose $x^\star \in \overline{\Omega}$ is the maximizer so that $u(x^\star) = \max_{\overline{\Omega}} u \equiv M$. We have two cases: (i) $x^\star$ is an interior point, $x^\star \in \Omega$; (ii) $x^\star$ is on the boundary, $x^\star \in \partial\Omega$. If $x^\star \in \Omega$, then by the strong maximum principle $u$ is a constant function and hence the maximum is attained everywhere, including on the boundary $\partial\Omega$. If $x^\star \in \partial\Omega$, the conclusion follows immediately.
+\end{proof}
+
+\begin{theorem}[Strong Maximum Principle][9.9]
+    Let $\Omega \subset \R^n$ be a bounded connected open domain, and let $u \in C^2(\Omega) \cap C(\overline{\Omega})$ be harmonic in $\Omega$. If there exists a point $x^\star \in \Omega$ such that
+    \[u(x^\star) = \max_{\overline{\Omega}} u,\]
+    then $u$ is constant in $\Omega$. (Note that $x^\star$ must lie in the open set $\Omega$, which is strictly interior to $\overline{\Omega}$.)
+\end{theorem}
+\begin{proof}
+    Suppose $x^\star \in \Omega$ is the maximizer so that $u(x^\star) = \max_{\overline{\Omega}} u \equiv M$. For any ball satisfying $\overline{B(x^\star, a)} \subset \Omega$, the mean-value formula gives
+    \[M = u(x^\star) = \frac{1}{|B(x^\star, a)|} \int_{B(x^\star, a)} u(x)\,dx.\]
+    Because $u(x) \leq M$ throughout the ball, this equality is possible only if $u(x) = M$ for all $x \in B(x^\star, a)$. We then repeat the same argument for a new ball with the center $x^{\star\prime}$ and radius $a'$ that lies in $B(x^\star, a)$, from which we conclude $u(x) = M$ for all $x \in B(x^\star, a) \cup B(x^{\star\prime}, a')$. We repeat the same argument along a chain of overlapping balls within the connected domain and conclude that $u(x) = M$ for all $x \in \Omega$.
+\end{proof}
+
+\begin{theorem}[Weak and Strong Minimum Principles][9.10]
+    Let $\Omega \subset \R^n$ be a bounded connected open domain, and let $u \in C^2(\Omega) \cap C(\overline{\Omega})$ be harmonic in $\Omega$. Then
+    \[\min_{\overline{\Omega}} u = \min_{\partial\Omega} u.\]
+    In addition, if there exists a point $x^\star \in \Omega$ such that
+    \[u(x^\star) = \min_{\overline{\Omega}} u,\]
+    then $u$ is constant in $\Omega$.
+\end{theorem}
+\begin{proof}
+    We apply the weak and strong maximum principle, respectively, to $-u$. (See the same argument for the maximum/minimum principle for the heat equation for a complete proof.)
+\end{proof}
+
+We make a few observations:
+\begin{enumerate}
+    \item The weak maximum (resp.\ minimum) principle states that, if $u : \overline{\Omega} \to \R$ is a harmonic function, then it attains a maximum (resp.\ minimum) on the boundary $\partial\Omega$. In other words, for any $x \in \overline{\Omega}$ (including the boundary),
+    \[\min_{\partial\Omega} u \leq u(x) \leq \max_{\partial\Omega} u.\]
+    \item The strong maximum (resp.\ minimum) principle states that, if $u : \overline{\Omega} \to \R$ is a harmonic function, then the only way for it to attain a maximum (resp.\ minimum) in $\Omega$---i.e., strictly inside of the domain and not on the boundary---is if $u$ is a constant function. Conversely, if $u$ is a non-constant function, then the function values in $\Omega$ are strictly less than (resp.\ greater than) the maximum (resp.\ minimum) value on the boundary. In other words, for a non-constant harmonic function $u$ and for any $x \in \Omega$ (strictly inside),
+    \[\min_{\partial\Omega} u < u(x) < \max_{\partial\Omega} u.\]
+\end{enumerate}
+
+We now provide an example:
+
+\begin{example}[Maximum Principle in $\R^2$][9.11]
+    Suppose $u : \R^2 \to \R$ is a harmonic function. We introduce a ball $\Omega = B(0, 2) \subset \R^2$. Suppose along the surface of the ball (i.e., the circle) the function is given by
+    \[u(r = 2, \theta) = 2 + \cos(3\theta)^2\]
+    in polar coordinates. Then, by the weak maximum and minimum principles, for any $x \in \overline{\Omega}$ (including the boundary),
+    \[2 = \min_{\partial\Omega} u \leq u(x) \leq \max_{\partial\Omega} u = 3.\]
+    In addition, because $u$ is a non-constant function, by the strong maximum and minimum principles, for any $x \in \Omega$ (strictly inside),
+    \[2 < u(x) < 3.\]
+\end{example}
+
+We conclude the section with a positivity result:
+
+\begin{corollary}[Positivity][9.12]
+    Let $\Omega$ be a bounded connected open domain, and let $u \in C^2(\Omega) \cap C(\overline{\Omega})$ solve
+    \begin{align*}
+        -\Delta u &= 0 \quad \text{in } \Omega, \\
+        u &= g \quad \text{on } \partial\Omega.
+    \end{align*}
+    If $g \geq 0$, then $u \geq 0$ everywhere in $\overline{\Omega}$. In addition, if $\Omega$ is connected and $g(x) > 0$ for some $x \in \partial\Omega$, then $u > 0$ everywhere in $\Omega$.
+\end{corollary}
+\begin{proof}
+    Nonnegativity is a consequence of the weak minimum principle. If $u \geq 0$ on $\partial\Omega$, then $u(x) \geq \min_{x \in \partial\Omega} u(x) \geq 0$ for all $x \in \overline{\Omega}$.
+
+    Strict positivity follows from the strong minimum principle. Suppose that $g \geq 0$ on $\partial\Omega$, that $g(x) > 0$ for some $x \in \partial\Omega$, and that there exists $x^\star \in \Omega$ such that $u(x^\star) = 0$. Since $u \geq 0$ on $\overline{\Omega}$, the function $u$ attains its minimum at $x^\star$. The strong minimum principle therefore implies that $u$ is constant in $\Omega$. By continuity on $\overline{\Omega}$, this would imply that $u = 0$ on $\partial\Omega$, contradicting the fact that $g(y) > 0$ at some $y \in \partial\Omega$. Hence, $u > 0$ throughout $\Omega$.
+\end{proof}
+
+\subsection{9.5 Uniqueness and uniform stability by maximum principle}
+We now assess two of the three conditions of well-posedness: uniqueness and stability. We appeal to the maximum principle to show Dirichlet boundary value problems associated with Laplace's equation satisfy both conditions. The approach is analogous to our proof of uniqueness and stability for the heat equation by its maximum principle.
+
+\begin{theorem}[Uniqueness of the Solution to Laplace's Equation][9.13]
+    Let $\Omega$ be a bounded connected open domain and $g \in C(\partial\Omega)$. There exists at most one solution $u \in C^2(\Omega) \cap C(\overline{\Omega})$ to the boundary value problem
+    \begin{align*}
+        -\Delta u &= 0 \quad \text{in } \Omega, \\
+        u &= g \quad \text{on } \partial\Omega.
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    If both $u_1 \in C^2(\Omega) \cap C(\overline{\Omega})$ and $u_2 \in C^2(\Omega) \cap C(\overline{\Omega})$ are solutions to the boundary value problem, then $u_1 - u_2 \in C^2(\Omega) \cap C(\overline{\Omega})$ and by linearity
+    \begin{align*}
+        -\Delta(u_1 - u_2) &= 0 \quad \text{in } \Omega, \\
+        (u_1 - u_2) &= 0 \quad \text{on } \partial\Omega.
+    \end{align*}
+    By the maximum and minimum principle, $u_1 - u_2 = 0$ everywhere in $\overline{\Omega}$ and hence $u_1 = u_2$.
+\end{proof}
+
+\begin{theorem}[Stability of the Solution to Laplace's Equation][9.14]
+    Let $\Omega$ be a bounded connected open domain, and let $u_1, u_2 \in C^2(\Omega) \cap C(\overline{\Omega})$ be solutions to the boundary value problems associated with boundary data $g_1$ and $g_2$, respectively:
+    \begin{align*}
+        -\Delta u_i &= 0 \quad \text{in } \Omega, \\
+        u_i &= g_i \quad \text{on } \partial\Omega
+    \end{align*}
+    for $i = 1, 2$. Then the solution depends continuously on data in the sense that
+    \begin{equation*}
+        \max_{x \in \overline{\Omega}} |u_1(x) - u_2(x)| = \max_{x \in \partial\Omega} |g_1(x) - g_2(x)|. \tag{9.1}
+    \end{equation*}
+\end{theorem}
+\begin{proof}
+    We appeal to the linearity of the Laplacian operator and take the difference of the two sets of equations to obtain
+    \begin{align*}
+        -\Delta(u_1 - u_2) &= 0 \quad \text{in } \Omega, \\
+        (u_1 - u_2) &= (g_1 - g_2) \quad \text{on } \partial\Omega.
+    \end{align*}
+    The (weak) maximum (resp.\ minimum) principles require the maximum (resp.\ minimum) to occur at the boundary; i.e., for any $x \in \overline{\Omega}$,
+    \begin{align*}
+        u_1(x) - u_2(x) &\leq \max_{x \in \partial\Omega} (g_1(x) - g_2(x)), \\
+        u_1(x) - u_2(x) &\geq \min_{x \in \partial\Omega} (g_1(x) - g_2(x)).
+    \end{align*}
+    It follows that
+    \[|u_1(x) - u_2(x)| \leq \max_{x \in \partial\Omega} |g_1(x) - g_2(x)|\]
+    for every $x \in \overline{\Omega}$. Hence,
+    \[\max_{x \in \overline{\Omega}} |u_1(x) - u_2(x)| \leq \max_{x \in \partial\Omega} |g_1(x) - g_2(x)|.\]
+    The reverse inequality follows from $\partial\Omega \subset \overline{\Omega}$ and the boundary condition $u_1 - u_2 = g_1 - g_2$ on $\partial\Omega$. Therefore,
+    \[\max_{x \in \overline{\Omega}} |u_1(x) - u_2(x)| = \max_{x \in \partial\Omega} |g_1(x) - g_2(x)|,\]
+    which is the desired equality.
+\end{proof}
+
+The left-hand side of (9.1) measures the closeness of the two solutions, and the right-hand side of (9.1) measures the closeness of the boundary data. The uniform stability result shows that the difference in the two solutions $u_1$ and $u_2$ over any point $x \in \overline{\Omega}$ is bounded by the maximum difference in the boundary data $g_1 - g_2$. Hence a small change in the data results in a small change in the solution; the problem is hence stable. We saw in Lecture 5 that the heat equation enjoys a similar uniform stability property. As we will see later, the same maximum-norm estimate does not generally apply to the wave and transport equations, whose stability properties reflect their different propagation behaviors.
+
+\subsection{9.6 Energy method: uniqueness}
+Similarly to the case of the heat equation, we can also prove the uniqueness of the solution to Laplace's equation using an energy method under the assumptions on $\Omega$ in Theorem 9.14. Suppose $u_1$ and $u_2$ are two solutions to the same boundary value problem associated with Laplace's equation. Then their difference $w \equiv u_1 - u_2$ satisfies
+\begin{align*}
+    -\Delta w &= 0 \quad \text{in } \Omega, \\
+    w &= 0 \quad \text{on } \partial\Omega.
+\end{align*}
+We then observe that
+\[0 = -\int_\Omega w\Delta w\,dx = \int_\Omega \nabla w \cdot \nabla w\,dx,\]
+where the second equality follows from integration by parts and the fact $w = 0$ on $\partial\Omega$. Hence, $\nabla w = 0$ in $\Omega$. Because $\Omega$ is connected, $w$ is constant in $\Omega$. Since $w = 0$ on $\partial\Omega$, we conclude that $w = u_1 - u_2 = 0$ in $\Omega$.
+
+\subsection{9.7 Note on pure Neumann problems}
+In this chapter, we studied the well-posedness of Laplace's equation with Dirichlet boundary conditions. We note that the corresponding pure Neumann problem,
+\begin{align*}
+    -\Delta u &= 0 \quad \text{in } \Omega, \\
+    \nu \cdot \nabla u &= g \quad \text{on } \partial\Omega,
+\end{align*}
+has a different well-posedness structure. Integrating the PDE over $\Omega$ and applying the divergence theorem shows that a necessary compatibility condition is
+\[\int_{\partial\Omega} g\,ds = 0.\]
+Moreover, if $u$ is a solution, then $u + C$ is also a solution for any constant $C$. Hence, when a solution exists, it is unique only up to an additive constant.
+
+More generally, for Poisson's equation
+\begin{align*}
+    -\Delta u &= f \quad \text{in } \Omega, \\
+    \nu \cdot \nabla u &= g \quad \text{on } \partial\Omega,
+\end{align*}
+the necessary compatibility condition is
+\[\int_\Omega f\,dx + \int_{\partial\Omega} g\,ds = 0.\]
+
+\subsection{9.8 Summary}
+We summarize key points of this lecture:
+\begin{enumerate}
+    \item Laplace's equation is ubiquitous in both engineering and mathematics. A function that satisfies Laplace's equation is called a harmonic function.
+    \item Harmonic functions satisfy mean-value properties. Given a harmonic function over a ball, the value of the function at the center is equal to both the mean of the function over the ball and the mean of the function over the surface of the ball.
+    \item Harmonic functions satisfy maximum principles. A harmonic function attains the maximum value somewhere on the boundary (i.e., the weak maximum principle); if the maximum is attained in the interior, then it must be a constant function (i.e., the strong maximum principle).
+    \item Harmonic functions also satisfy the weak and strong minimum principles.
+    \item Dirichlet boundary value problems associated with Laplace's equation have unique solutions. The proof follows from either the maximum principle or the energy method.
+    \item Dirichlet boundary value problems associated with Laplace's equation are stable in the sense that the solution depends continuously on the boundary data. The proof follows from the maximum principle.
+\end{enumerate}
