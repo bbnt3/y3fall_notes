@@ -446,11 +446,15 @@ INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmtt10.tfm
+INPUT ./entries/week07.tex
+INPUT ./entries/week07.tex
+INPUT entries/week07.tex
 INPUT build/main.aux
 INPUT build/main.out
 INPUT build/main.out
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx8.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmex10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmmi6.pfb
