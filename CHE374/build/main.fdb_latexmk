@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1792781570.88429 "main.tex" "build/main.pdf" "main" 1792781573.09982 0
+["pdflatex"] 1792889840.31208 "main.tex" "main.pdf" "main" 1792889842.64437 0
   "../template/preamble.tex" 1791217002.22348 7297 0fd95ed11559886728354c86763c30db ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -221,9 +221,9 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1771962573 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "build/main.aux" 1792781572.90538 3721 c1834e34cec97ea6550858db564fde7f "pdflatex"
-  "build/main.out" 1792781572.9061 6766 93f4aa016a39373865160fbb5abff23a "pdflatex"
-  "build/main.toc" 1792781572.90633 2328 64b7375f701f5ffa60182a15a7f59f13 "pdflatex"
+  "build/main.aux" 1792889842.46454 3721 c1834e34cec97ea6550858db564fde7f "pdflatex"
+  "build/main.out" 1792889842.46523 6766 93f4aa016a39373865160fbb5abff23a "pdflatex"
+  "build/main.toc" 1792889842.46546 2328 64b7375f701f5ffa60182a15a7f59f13 "pdflatex"
   "entries/week01.tex" 1791821542.75341 14388 68443d1aeab54396ab8dbcde648ebaee ""
   "entries/week02.tex" 1791821542.754 28206 98a94a359b30ce5141009f0ff3f29485 ""
   "entries/week03.tex" 1791824554.21671 13704 cf3ee50169d4e2a60ef63595aa78af1d ""
@@ -249,6 +249,6 @@
   "build/main.aux"
   "build/main.log"
   "build/main.out"
-  "build/main.pdf"
   "build/main.toc"
+  "main.pdf"
   (rewritten before read)
