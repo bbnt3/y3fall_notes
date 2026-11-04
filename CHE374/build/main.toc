@@ -28,3 +28,7 @@
 \contentsline {subsection}{7.2 - Straight-Line and Declining Balance}{57}{section*.50}%
 \contentsline {subsection}{7.3 - Sum-of-Years'-Digits and Units of Production}{61}{section*.52}%
 \contentsline {subsection}{7.4 - Adjusting for Asset End of Life}{62}{section*.54}%
+\contentsline {section}{Week 8 - Financial Accounting}{65}{section*.55}%
+\contentsline {subsection}{8.1 - Introduction to Financial Accounting}{65}{section*.57}%
+\contentsline {subsection}{8.2 - Example: Tara Inc.\ (Service Industry)}{68}{section*.59}%
+\contentsline {subsection}{8.3 - Financial Ratios}{70}{section*.61}%
