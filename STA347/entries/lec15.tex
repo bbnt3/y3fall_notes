@@ -1,0 +1,139 @@
+% !TeX root = ../main.tex
+
+\newlecture[Weak Convergence, Skorokhod and Portmanteau]
+
+\begin{definition}[Weak Convergence / Convergence in Distribution][7.1]
+    A sequence of probability distributions $\mu_n$ with corresponding cumulative distribution functions $F_n$ converges weakly (in distribution) to a probability distribution $\mu$ with CDF $F$ if for all continuity points $x$ of $F$
+    \[\lim_{n\to\infty} F_n(x) = F(x)\]
+    and it is denoted by $X_n \overset{D}{\longrightarrow} X$ if $X_n \sim F_n$ and $X \sim F$, or $F_n \Rightarrow F$, or $\mu_n \Rightarrow \mu$.
+\end{definition}
+Notes:
+\begin{enumerate}
+    \item Pointwise convergence is enough: $F_n(x) \to F(x)$ when $n \to \infty$ for all continuity points $x$ of $F$.
+    \item Using RV notation, $X_n \overset{D}{\longrightarrow} X$; using CDF notation, $F_n \Rightarrow F$; or using distribution notation, $\mu_n \Rightarrow \mu$.
+\end{enumerate}
+
+\begin{example}[][\relax]
+    $X \sim \text{Bernoulli}(0.5)$: $X$ tossing a coin,
+    \[X = \begin{cases} 1 & H\\ 0 & T\end{cases}\]
+    $Y = 1 - X \sim \text{Bernoulli}(0.5)$: $Y$ tossing the same coin,
+    \[Y = \begin{cases} 1 & T\\ 0 & H\end{cases}\]
+    \[X \overset{D}{\longrightarrow} Y \quad \text{but} \quad Y = 1 - X\]
+\end{example}
+
+\begin{theorem}[Scheff\'e's Theorem][7.1.1]
+    Let $X_n$ each have density $f_n$ and $X$ have density $f$. Then if $f_n(x) \to f(x)$ for all $x \in \R$,
+    \[X_n \overset{D}{\longrightarrow} X\]
+    Note:
+    \begin{align*}
+        \text{Def 7.1:} & \quad F_n \to F \Rightarrow X_n \overset{D}{\longrightarrow} X\\
+        \text{Scheff\'e Thm:} & \quad f_n \to f \Rightarrow X_n \overset{D}{\longrightarrow} X
+    \end{align*}
+    \begin{proof}
+        \[\begin{array}{ccc}
+            F_n(x) = \displaystyle\int_{-\infty}^x f_n(u)\,du & & \\
+            \downarrow & & \downarrow\\
+            F(x) & \overset{\text{may not}}{\Leftarrow} & f(u)\,du
+        \end{array}\]
+        We need the condition that $f_n(u)$ must be either bounded / dominated by some other real-valued function, in order to say $F_n(x) \to F(x)$.
+
+        Observe that the existence of a density implies $F$ is continuous everywhere.
+        \begin{align*}
+            |F_n(y) - F(y)| &= \left|\int_{-\infty}^y [f_n(x) - f(x)]\,dx\right|\\
+            &\leq \int_{-\infty}^y |f_n(x) - f(x)|\,dx\\
+            &\leq \int_\R |f_n(x) - f(x)|\,dx\\
+            &= \int_\R [f_n(x) - f(x)]^+\,dx + \int_\R [f_n(x) - f(x)]^-\,dx\\
+            &= 2\int_\R [f_n(x) - f(x)]^+\,dx
+        \end{align*}
+        (the last step because $\int_\R f_n = \int_\R f = 1$, so $\int_\R [f_n - f]^+ = \int_\R [f_n - f]^-$.)
+        \\Then, observe that
+        \[\underbrace{[f_n(x) - f(x)]^+}_{\text{dominated by } f(x)} \leq [f(x)]^+ = f(x)\]
+        We have shown that inside the integral, $[f_n(x) - f(x)]^+$ is dominated by some function (and $\to 0$ pointwise), therefore by the Dominated Convergence Theorem,
+        \[F_n(y) - F(y) \to 0 \quad \text{when } n \to \infty\]
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}[Skorokhod Representation][7.2]
+    If $F_n \Rightarrow F$ (which means for any RV $X_n \sim F_n$, $X_n \overset{D}{\longrightarrow} X$, where $X \sim F$), there exist an $\Omega$ and corresponding $P$ along with random variables $Y_1, \dots, Y_n, \dots$ defined on $\Omega$, such that $Y_n \sim F_n$, $Y \sim F$ and $Y_n \overset{a.s.}{\longrightarrow} Y$.
+\end{theorem}
+Note: $F_n \Rightarrow F$ means
+\\For \textbf{ALL} $X_n \sim F_n$, $X \sim F$: $X_n \overset{D}{\longrightarrow} X$.
+\\{\color{red!70!black}Among all random variables satisfying $F_n \Rightarrow F$, there \underline{exist} a subset $Y_n \sim F_n$, $Y \sim F$, $Y_n \overset{a.s.}{\longrightarrow} Y$.}
+\begin{proof}
+    As long as I can find an example, that's enough to prove.
+    \\Let $\Omega = [0,1]$ and $P$ be the uniform distribution on $[0,1]$.
+    \[X_n(\omega) = F_n^{-1}(\omega) \quad \text{and} \quad X(\omega) = F^{-1}(\omega)\]
+    That's an example.
+
+    Note: among $X_n \overset{D}{\longrightarrow} X$, there \underline{exist} $Y_n \overset{a.s.}{\longrightarrow} Y$, where $Y_n \sim X_n$, $Y \sim X$. Finding an example is enough.
+    \\Previously, we learned that we can create a random variable with any arbitrary distribution by transforming the uniform one: for $U \sim \text{Unif}(0,1)$, let $Y = F^{-1}(U)$, where $F$ is the CDF of any arbitrary random variable; then $Y \sim F$.
+    \[\begin{array}{ccc}
+        X_n & \overset{D}{\longrightarrow} & X\\
+        \wr & & \wr\\
+        F_n & \Rightarrow & F
+    \end{array}\]
+    Let $U \sim \text{Unif}(0,1)$,
+    \[Y_n = F_n^{-1}(U)\]
+    then $Y_n$ is a sequence of RV's each with CDF $F_n$.
+    \[Y = F^{-1}(U)\]
+    then $Y$ is a RV with CDF $F$.
+    \[Y_n \overset{D}{\longrightarrow} Y \quad \text{and} \quad Y_n \overset{a.s.}{\longrightarrow} Y\]
+    $Y_n$ and $Y$ is the example.
+\end{proof}
+
+\begin{theorem}[Portmanteau Lemma][7.3]
+    $F_n \Rightarrow F$ \underline{if and only if} for all bounded and continuous $h: \R \to \R$, when $X_n \sim F_n$ and $X \sim F$, then
+    \[Eh(X_n) \to Eh(X)\]
+\end{theorem}
+Remark: the Portmanteau Lemma says
+\[X_n \overset{D}{\longrightarrow} X \quad \underline{\text{is equivalent to}} \quad Eh(X_n) \to Eh(X) \text{ for any } h\]
+\begin{proof}
+    ``If and only if'' $\Leftrightarrow$ both directions.
+    \begin{enumerate}
+        \item The forward direction:
+        \[X_n \overset{D}{\longrightarrow} X \Rightarrow E[h(X_n)] \to E[h(X)] \quad \forall h\]
+        Using the Skorokhod Representation, we choose $X_n \sim F_n$ and $X \sim F$ where $X_n \overset{a.s.}{\longrightarrow} X$. Then easily (by the continuous mapping theorem and BCT, as $h$ is bounded and continuous),
+        \[E[h(X_n)] \to E[h(X)]\]
+        Note: for $X_n \overset{D}{\longrightarrow} X$, using the Skorokhod representation we choose $Y_n \sim X_n$ and $Y \sim X$ $\Rightarrow$ $E[h(Y_n)] \to E[h(Y)]$. For the other random variables, even though they may not satisfy the almost sure convergence part, they share the same expected values, so the result can be generalized to all.
+        \\Step 1. Using Skorokhod representation, I intentionally pick $Y_n \sim F_n$, $Y \sim F$ and $Y_n \overset{a.s.}{\longrightarrow} Y$, and I can show $E[h(Y_n)] \to E[h(Y)]$.
+        \\Step 2. For any general random variables $X_n$ and $X$, we don't have $X_n \overset{a.s.}{\longrightarrow} X$, but
+        \begin{align*}
+            E[h(X_n)] &= E[h(Y_n)] & &\text{because } X_n \sim Y_n\\
+            E[h(X)] &= E[h(Y)] & &\text{because } X \sim Y
+        \end{align*}
+        So $E[h(Y_n)] \to E[h(Y)]$ can be generalized to $E[h(X_n)] \to E[h(X)]$.
+
+        \item The backward direction:
+        \[E[h(X_n)] \to E[h(X)] \text{ for any } h(\cdot) \Rightarrow X_n \overset{D}{\longrightarrow} X \ / \ F_n \Rightarrow F\]
+        for $X_n \sim F_n$, $X \sim F$.
+        We know $E[\cdot] \to E[\cdot]$; we want to show the corresponding $F_n \to F$.
+        \\Using indicator functions, we intentionally let each
+        \[h_a(x) = I(x \leq a)\]
+        \begin{align*}
+            E[h(X_n)] &\to E[h(X)] \quad \text{for \underline{any} } h(\cdot)\\
+            E[h_a(X_n)] &\to E[h_a(X)] \quad \text{for any } a
+        \end{align*}
+        \begin{align*}
+            E[h_a(X_n)] &= E[I(X_n \leq a)] = P(X_n \leq a) = F_n(a)\\
+            E[h_a(X)] &= F(a)
+        \end{align*}
+        \[E[h_a(X_n)] \to E[h_a(X)] \text{ for any } a \Rightarrow F_n(a) \to F(a) \text{ for any } a \Leftrightarrow X_n \overset{D}{\longrightarrow} X\]
+        Note that this is just a partial proof, where we only consider the case that the CDFs are always absolutely continuous. For the complete proof, please refer to the 1st recommended textbook.
+    \end{enumerate}
+\end{proof}
+
+\begin{corollary}[Continuous Mapping Theorem under Weak Convergence][7.3.1]
+    If $X_n \overset{D}{\longrightarrow} X$, then $f(X_n) \overset{D}{\longrightarrow} f(X)$ for any continuous function $f$.
+    \begin{proof}
+        For any continuous and bounded function $g$, $g \circ f$ is also continuous and bounded. By Portmanteau's Lemma,
+        \[X_n \overset{D}{\longrightarrow} X \Rightarrow E[h(X_n)] \to E[h(X)] \quad \forall h\]
+        Let $h(\cdot) = g \circ f$:
+        \[E[g(\fcolorbox{red!70!black}{white}{$f(X_n)$})] \to E[g(\fcolorbox{red!70!black}{white}{$f(X)$})] \quad \forall g\]
+        \[\Downarrow\]
+        \[f(X_n) \overset{D}{\longrightarrow} f(X)\]
+    \end{proof}
+\end{corollary}
+
+\begin{corollary}[][7.3.2]
+    If $X_n \overset{P}{\longrightarrow} X$, then $X_n \overset{D}{\longrightarrow} X$, but the reverse is NOT true.
+\end{corollary}

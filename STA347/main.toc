@@ -53,3 +53,8 @@
 \contentsline {part}{Midterm Review}{45}{section*.24}%
 \contentsline {section}{Lecture 12: Midterm Review}{45}{section*.25}%
 \contentsline {subsection}{Midterm: Required Theorems}{45}{section*.25}%
+\contentsline {part}{Chapter 6: Law of Large Numbers}{47}{section*.26}%
+\contentsline {section}{Lecture 13: Weak and Strong Law of Large Numbers}{47}{section*.27}%
+\contentsline {section}{Lecture 14: Polynomial Approximation and Glivenko-Cantelli}{51}{section*.28}%
+\contentsline {part}{Chapter 7: Central Limit Theorem}{53}{section*.29}%
+\contentsline {section}{Lecture 15: Weak Convergence, Skorokhod and Portmanteau}{53}{section*.30}%

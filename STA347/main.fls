@@ -382,6 +382,15 @@ INPUT entries/lec11.tex
 INPUT ./entries/lec12.tex
 INPUT ./entries/lec12.tex
 INPUT entries/lec12.tex
+INPUT ./entries/lec13.tex
+INPUT ./entries/lec13.tex
+INPUT entries/lec13.tex
+INPUT ./entries/lec14.tex
+INPUT ./entries/lec14.tex
+INPUT entries/lec14.tex
+INPUT ./entries/lec15.tex
+INPUT ./entries/lec15.tex
+INPUT entries/lec15.tex
 INPUT main.aux
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmbx12.pfb

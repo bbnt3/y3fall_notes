@@ -1,0 +1,78 @@
+% !TeX root = ../main.tex
+
+\newlecture[Polynomial Approximation and Glivenko-Cantelli]
+
+\begin{theorem}[Polynomial Approximation][6.3]
+    If $f: [0,1] \to \R$ is continuous, the Bernstein's approximation
+    \[f_n(x) = \sum_{m=0}^n \binom{n}{m}x^m(1-x)^{n-m}f\left(\frac{m}{n}\right)\]
+    satisfies
+    \[\sup_{x\in[0,1]}|f_n(x) - f(x)| \to 0\]
+\end{theorem}
+
+\begin{example}[Quadratic Approximation][6.3.1]
+    When $n = 2$, the quadratic approximation
+    \begin{align*}
+        f_2(x) &= \sum_{m=0}^2 \binom{2}{m}x^m(1-x)^{2-m}f\left(\frac{m}{2}\right)\\
+        &= x^0(1-x)^2f(0) + 2x^1(1-x)^1f\left(\frac12\right) + x^2(1-x)^0f(1)\\
+        &= (1-x)^2f(0) + 2x(1-x)f\left(\frac12\right) + x^2f(1)
+    \end{align*}
+\end{example}
+
+\begin{center}
+\begin{tikzpicture}[scale=1, every node/.style={font=\small}]
+    \draw[->] (-0.2,0) -- (5.6,0);
+    \draw[->] (0,-0.2) -- (0,3.6);
+    \node[below left] at (0,0) {$0$};
+    \draw[thick, blue!55!black] plot[smooth, tension=0.8] coordinates {(0,1.1) (0.6,1.8) (1.6,1.75) (2.6,1.6) (3.6,2.0) (5,3.3)};
+    \foreach \x/\y in {0.35/1.55, 0.75/1.83, 1.15/1.82} \draw[dotted] (\x,0) -- (\x,\y);
+    \draw[dotted] (5,0) -- (5,3.3);
+    \node[below] at (5,0) {$1$};
+    \node at (0.2,2.4) {$f(\frac1n)$};
+    \node at (1.3,2.4) {$f(\frac2n)$};
+    \node at (2.4,2.1) {$\cdots$};
+    \node at (5,3.65) {$f(\frac{n}{n})$};
+    \node[anchor=west] at (5.7,1.2) {\shortstack[l]{$n \Leftarrow$ degree\\ of polynomial}};
+\end{tikzpicture}
+\end{center}
+We use the polynomial coefficients as weights to get a weighted average:
+\[\sum_{m=0}^n \underbrace{\binom{n}{m}x^m(1-x)^{n-m}}_{\text{polynomial}}\cdot\underbrace{f\left(\frac{m}{n}\right)}_{\substack{\text{the function}\\ \text{evaluated at } \frac{m}{n}}}\]
+
+\begin{theorem}[Glivenko-Cantelli][6.4]
+    Let $X_1, X_2, \dots$ be i.i.d.\ with CDF $F$ and define the empirical distribution function
+    \[F_n(x) = \frac{1}{n}\sum_{i=1}^n I\left\{X_i \leq x\right\}\]
+    Then,
+    \[\sup_{x\in\R}|F_n(x) - F(x)| \to 0 \quad \text{a.s.}\]
+\end{theorem}
+
+\begin{example}[][6.4.1]
+    \[\vec{x} = \left\{-2, 0, 3, 5, 8\right\}\]
+    I want to estimate what distribution the above observations are from.
+
+    \heading{Method 1: parametric method}
+    We need to assume $X_i \overset{iid}{\sim} N(\underline{\mu}, \underline{\sigma^2})$ (unknown), then we use the 5 observations to estimate $\mu$ and $\sigma^2$.
+    \\The conclusion: $X_i \overset{iid}{\sim} N(\hat{\mu}, \hat{\sigma}^2)$
+
+    \heading{Method 2: non-parametric method}
+    We don't assume any distribution model. Calculate the empirical CDF of $\vec{x} = \left\{-2, 0, 3, 5, 8\right\}$:
+    \[\hat{F}(x) = \begin{cases}
+        0 & x < -2\\
+        \frac15 & -2 \leq x < 0\\
+        \frac25 & 0 \leq x < 3\\
+        \frac35 & 3 \leq x < 5\\
+        \frac45 & 5 \leq x < 8\\
+        1 & x \geq 8
+    \end{cases}\]
+    Counting the number of observations less than or equal to each $x$.
+\end{example}
+
+\begin{proof}[Proof of Thm 6.4]
+    Fix $x \in \R$; we show $F_n(x) \to F(x)$ pointwise.
+    \\Define $Y_i = I\left\{X_i \leq x\right\}$. Then
+    \[Y_i \overset{iid}{\sim} \text{Bernoulli}(p), \qquad p = P(X_i \leq x)\]
+    \[E(Y_i) = P(X_i \leq x) = F(x)\]
+    Using the SLLN,
+    \[\bar{Y} = \frac{1}{n}\sum_{i=1}^n Y_i \overset{a.s.}{\longrightarrow} E(Y_i)\]
+    Therefore
+    \[F_n(x) = \frac{1}{n}\sum_{i=1}^n Y_i \overset{a.s.}{\longrightarrow} F(x)\]
+    In fact, the convergence holds \underline{uniformly}, but the proof of uniform convergence is beyond the scope of this course.
+\end{proof}
