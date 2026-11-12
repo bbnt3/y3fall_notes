@@ -6,3 +6,5 @@
 \contentsline {section}{Lecture 6: Bond Price Sensitivity}{32}{section*.7}%
 \contentsline {section}{Lecture 7: Duration for Bond Portfolios \& Immunization}{40}{section*.8}%
 \contentsline {section}{Lecture 8: Dynamic Programming}{45}{section*.9}%
+\contentsline {section}{Lecture 9: Mean-Variance Portfolio Theory}{53}{section*.10}%
+\contentsline {section}{Lecture 10: Markowitz Portfolio Theory}{63}{section*.11}%

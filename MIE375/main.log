@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  4 NOV 2026 17:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  12 NOV 2026 12:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1030,22 +1030,60 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 [50]
 
-[51])
+[51]) (./entries/lec09.tex
 
-[52] (./main.aux)
+[52]
+
+[53]
+
+[54]
+
+[55]
+
+[56]
+
+[57]
+
+[58]
+
+[59]
+
+[60]
+
+[61]) (./entries/lec10.tex
+
+[62]
+
+[63]
+
+[64]
+
+[65]
+
+[66]
+
+[67]
+
+[68]
+
+[69]
+
+[70])
+
+[71] (./main.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: F0AFC0CEF930864E92FED4BDB4CD4591;1999.
+(rerunfilecheck)             Checksum: A0E4C7A40D57CD30903E91825D3E20C7;2509.
  ) 
 Here is how much of TeX's memory you used:
- 24362 strings out of 473190
- 455282 string characters out of 5715801
- 824599 words of memory out of 5000000
- 47048 multiletter control sequences out of 15000+600000
- 637931 words of font info for 101 fonts, out of 8000000 for 9000
+ 25288 strings out of 473190
+ 473327 string characters out of 5715801
+ 831857 words of memory out of 5000000
+ 47919 multiletter control sequences out of 15000+600000
+ 643917 words of font info for 103 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,26n,90p,585b,924s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/latxfont/line
@@ -1064,11 +1102,13 @@ f-dist/fonts/type1/public/lm/lmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts
 c/lm/lmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.
 pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/
 local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb></usr/local/texli
-ve/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on main.pdf (52 pages, 473216 bytes).
+ve/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2025/tex
+mf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/local/texlive/2025
+/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (71 pages, 566911 bytes).
 PDF statistics:
- 434 PDF objects out of 1000 (max. 8388607)
- 335 compressed objects within 4 object streams
- 91 named destinations out of 1000 (max. 500000)
- 77 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 571 PDF objects out of 1000 (max. 8388607)
+ 447 compressed objects within 5 object streams
+ 138 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

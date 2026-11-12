@@ -394,6 +394,14 @@ INPUT ./entries/lec08.tex
 INPUT ./entries/lec08.tex
 INPUT entries/lec08.tex
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
+INPUT ./entries/lec09.tex
+INPUT ./entries/lec09.tex
+INPUT entries/lec09.tex
+INPUT ./entries/lec10.tex
+INPUT ./entries/lec10.tex
+INPUT entries/lec10.tex
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbx8.tfm
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbx6.tfm
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
@@ -416,3 +424,5 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmri10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy6.pfb
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/lm/lmsy8.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb
