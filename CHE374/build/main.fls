@@ -454,6 +454,9 @@ INPUT ./entries/week08.tex
 INPUT entries/week08.tex
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmcsc10.tfm
 INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
+INPUT ./entries/week09.tex
+INPUT ./entries/week09.tex
+INPUT entries/week09.tex
 INPUT build/main.aux
 INPUT build/main.out
 INPUT build/main.out
