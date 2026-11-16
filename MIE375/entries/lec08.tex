@@ -39,30 +39,43 @@ The running present values satisfy the recursion:
 \[\boxed{PV(k) = x_k + \frac{PV(k+1)}{1+f_{k,k+1}}}\]
 
 \begin{example}
-    Running present value with given one-period discount factors:
+    \b{Given}: the cash flows and the one-period discount factors (the short rates themselves are not given):
     \begin{center}
     \begin{tabular}{lcccc}
         \toprule
-        Time & 0 & 1 & 2 & 3\\
+        Time $k$ & 0 & 1 & 2 & 3\\
         \midrule
-        Cash flow & 20 & 25 & 30 & 35\\
+        Cash flow $x_k$ & 20 & 25 & 30 & 35\\
         Discount $\frac{1}{1+f_{k,k+1}}$ & 0.943 & 0.935 & 0.93 & \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \b{Find}: the running present values $PV(k)$.
+
+    \b{Solution}: start at the end, $PV(3) = x_3 = 35$, and work backwards:
+    \begin{align*}
+        PV(2) &= 30 + 35(0.93) = 62.55\\
+        PV(1) &= 25 + 62.55(0.935) = 83.48\\
+        PV(0) &= 20 + 83.48(0.943) = \boxed{98.73}
+    \end{align*}
+    \begin{center}
+    \begin{tabular}{lcccc}
+        \toprule
+        Time $k$ & 0 & 1 & 2 & 3\\
+        \midrule
         $PV(k)$ & 98.73 & 83.48 & 62.55 & 35\\
         \bottomrule
     \end{tabular}
     \end{center}
-    Working backwards from $PV(3) = 35$:
-    \begin{align*}
-        PV(2) &= 30 + 35(0.93) = 62.55\\
-        PV(1) &= 25 + 62.55(0.935) = 83.48\\
-        PV(0) &= 20 + 83.48(0.943) = 98.73
-    \end{align*}
 \end{example}
 
 \heading{Application to Floating Rate Bonds}
 \begin{definition}[\rb{Floating Rate Bond}]
     A bond where the coupons are tied to the \dbb{current short rate} of interest. After every coupon payment, the coupon rate is reset to the current short rate.
 \end{definition}
+\begin{remark}
+    A \dbb{short rate} is a rate spanning exactly \ul{one period} (see Lecture 4): $s_1, f_{1,2}, f_{2,3}, \dots$ It is \ul{not} the same as a spot rate $s_t$, which starts today and can span any length; $s_1$ is the only rate that is both. Here $s_1(t)$ is the one-period rate \ul{observed when you reach time $t$}: from that vantage point it starts ``now'' and lasts one period, but seen from today it is unknown.
+\end{remark}
 \b{Exercise}: using running present value, show that the value of a floating rate bond is \ul{equal to par at any reset date}.
 
 Assume yearly coupons, face value $F$, and let $s_1(t)$ be the (one-year) short rate when you are at time $t$. The coupon paid at time $t+1$ is set at time $t$: $C_{t+1} = s_1(t)F$.
@@ -84,14 +97,54 @@ Assume yearly coupons, face value $F$, and let $s_1(t)$ be the (one-year) short 
     \node at (-0.3,0.6) {$\cdots$};
 \end{tikzpicture}
 \end{center}
+\b{Convention}: here $PV(t)$ is the value \ul{just after} the coupon at $t$ is paid (the reset date), so it covers the cash flows at $t+1$ and later. To value at $t$, take everything received at $t+1$ (the coupon plus the value of what remains) and discount one period at the short rate in force at $t$:
+\[\boxed{PV(t) = \frac{C_{t+1} + PV(t+1)}{1+s_1(t)}}\]
+\aside{This differs from the running PV recursion $PV(k) = x_k + \frac{PV(k+1)}{1+f_{k,k+1}}$, which \emph{includes} the cash flow at $k$. Both are valid; they track different quantities: $PV^{\text{incl}}(t) = C_t + PV^{\text{excl}}(t)$. With the inclusive version, the floater result reads $PV(t) = C_t + F$ (still $F$ at $t=0$, where there is no coupon).}
+
+\b{Where to start}: two equivalent choices for the end of the bond.
+\begin{itemize}
+    \item $PV(n) = 0$ (nothing left after maturity), with the full final cash flow $C_n = s_1(n-1)F + F$.
+    \item $PV(n) = F$ (treat the face value as the bond's value at maturity), with $C_n = s_1(n-1)F$ the coupon only. This makes the induction cleanest.
+\end{itemize}
+
 Working backwards (red arrows = discount one period):
 \begin{align*}
     PV(n-1) &= \frac{F + s_1(n-1)F}{1+s_1(n-1)} = \frac{F\cancel{(1+s_1(n-1))}}{\cancel{1+s_1(n-1)}} = F\\
     PV(n-2) &= \frac{s_1(n-2)F + PV(n-1)}{1+s_1(n-2)} = \frac{F + s_1(n-2)F}{1+s_1(n-2)} = F\\
     &\;\;\vdots
 \end{align*}
-Each step has exactly the same form, so by induction $PV(t) = F$ at every reset date.
+At $n-2$, the rest of the bond acts like a lump sum of $F$ paid at $n-1$, which is exactly the situation one step later.
+
+\b{Proof by induction} (using $PV(n) = F$):
+\begin{itemize}
+    \item \b{Base case}: $PV(n) = F$.
+    \item \b{Inductive step}: if $PV(t+1) = F$, then
+    \[PV(t) = \frac{s_1(t)F + F}{1+s_1(t)} = \frac{F\,(1+s_1(t))}{1+s_1(t)} = F.\]
+\end{itemize}
+Hence $PV(t) = F$ at every reset date $t = n-1, \dots, 1, 0$. $\blacksquare$
+
+\b{Why it works}: the rate that \ul{sets the coupon} and the rate used to \ul{discount} are the same, $s_1(t)$, both fixed at time $t$. Whatever value $s_1(t)$ takes, it cancels, so you never need to know future rates (and no assumption like expectation dynamics is needed).
+
+\begin{example}[Floater with Changing Rates]
+    \b{Given}: $F = 100$, $n = 3$, yearly short rates $s_1(0) = 5\%$, $s_1(1) = 8\%$, $s_1(2) = 3\%$.
+    \begin{center}
+    \begin{tabular}{lccc}
+        \toprule
+        Time & 1 & 2 & 3\\
+        \midrule
+        Cash flow & 5 & 8 & $3 + 100$\\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \b{Find}: the value at each reset date.
+
+    \b{Solution}:
+    \[PV(2) = \frac{103}{1.03} = 100, \qquad PV(1) = \frac{8 + 100}{1.08} = 100, \qquad PV(0) = \frac{5 + 100}{1.05} = \boxed{100}\]
+    The rates jump around, but the value is 100 at every reset date.
+\end{example}
+
 \keypoint{A floating rate bond is worth \rb{par} ($F$) at every reset date: the coupon always exactly pays the interest for the next period.}
+\aside{Consequence: a floater has very little interest-rate risk. If rates rise, the next coupon rises too and the price returns to par at the next reset, so its duration (Lecture 6) is roughly the time to the next reset. Between reset dates the price is not exactly $F$.}
 
 \header{Example: Fishing}
 Every year we decide whether to fish in a lake or not:

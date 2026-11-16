@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1794503526.77263 "main.tex" "main.pdf" "main" 1794503529.93335 0
+["pdflatex"] 1794847344.00564 "main.tex" "main.pdf" "main" 1794847347.1348 0
   "../template/preamble.tex" 1791217002.22348 7297 0fd95ed11559886728354c86763c30db ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -229,13 +229,13 @@
   "entries/lec05.tex" 1791215788.1164 8924 d3d3ba4436d196e85141aa7eeb22c7b5 ""
   "entries/lec06.tex" 1791478086.93857 17338 3d7b109a09156c6e44297456b74a68f5 ""
   "entries/lec07.tex" 1792082274.94956 10255 6adbeaef08f52c690286e940afde01a8 ""
-  "entries/lec08.tex" 1793830846.49194 18136 f73be17878bbf7ca3386ca0088f1b393 ""
+  "entries/lec08.tex" 1794847338.61615 18454 b563205169ed173fc0602c4584674be5 ""
   "entries/lec09.tex" 1794503523.13823 22586 bce318344e2e04b15e7c2ca6f2cf1bd8 ""
   "entries/lec10.tex" 1794503469.03456 19234 a5b6cd423627375efbe9f28e668cc512 ""
-  "main.aux" 1794503529.81172 1389 7707467620cc8d02bf734e6d677cc9d7 "pdflatex"
-  "main.out" 1794503529.81217 2509 a0e4c7a40d57cd30903e91825d3e20c7 "pdflatex"
+  "main.aux" 1794847346.99578 1389 7707467620cc8d02bf734e6d677cc9d7 "pdflatex"
+  "main.out" 1794847346.99621 2509 a0e4c7a40d57cd30903e91825d3e20c7 "pdflatex"
   "main.tex" 1794502329.26886 2032 4d2d17b0333027fd4f3a71711a18e0e7 ""
-  "main.toc" 1794503529.81236 816 5aa0763915c2254db816cc3b41da231a "pdflatex"
+  "main.toc" 1794847346.99641 816 5aa0763915c2254db816cc3b41da231a "pdflatex"
   (generated)
   "main.aux"
   "main.log"
