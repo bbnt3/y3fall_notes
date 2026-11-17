@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1793732658.26582 "main.tex" "build/main.pdf" "main" 1793732659.90946 0
+["pdflatex"] 1794941794.76416 "main.tex" "build/main.pdf" "main" 1794941796.28946 0
   "../template/preamble.tex" 1791217002.22348 7297 0fd95ed11559886728354c86763c30db ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc" 1202520719 3486 c7eadf5dcc57b3b2d11736679f6636ba ""
@@ -229,15 +229,17 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1771962573 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "build/main.aux" 1793732659.69048 5971 f6359fcf352778604f4d2167d9a9574c "pdflatex"
-  "build/main.out" 1793732659.69154 9108 11c3d6505c6d59b6eb7cbc5e6b287dad "pdflatex"
-  "build/main.toc" 1793732659.69183 3226 549b973b9b507e37afba7a9d029fed06 "pdflatex"
+  "build/main.aux" 1794941796.13782 7181 95dc1faf577a7846181e20705063ffa3 "pdflatex"
+  "build/main.out" 1794941796.13885 11416 ea39de16207fc4ac35c36cf81bdbb169 "pdflatex"
+  "build/main.toc" 1794941796.13908 4026 3a5b593cd4690737d2be7cdc2a0a622a "pdflatex"
   "entries/week01.tex" 1790094876.03757 6234 60105d09a8f7c7c2dbe59a1b0ce4a5fc ""
   "entries/week02.tex" 1790094876.03772 18621 c8826b81f27d1a1317fabb0e0955c63e ""
   "entries/week03.tex" 1792108074.65113 22050 920b184dad8b62cbbca0c8656731c3d6 ""
   "entries/week04.tex" 1791297419.71106 28430 8b6bae397d58ce40a997bd855b1ee3e3 ""
   "entries/week05.tex" 1791850008.19244 33158 591d7ff9555dd809b5e6236472d1c74c ""
   "entries/week06.tex" 1793732656.44509 31925 1c1f6587fe40a7eb5a0c594c136a10af ""
+  "entries/week07.tex" 1794941793.0618 19672 5e065f247a77a8bbae842911769c5ede ""
+  "entries/week08.tex" 1794941712.65532 31048 02fef550a99383742b451d7c7fa15301 ""
   "figures/anscombe1_diag.png" 1790441555.21875 87570 97301f633b75b7faff4daff99c4ba6c1 ""
   "figures/anscombe2_diag.png" 1790441555.07944 51890 b0405be2274dc9829758cde5694c2736 ""
   "figures/anscombe3_diag.png" 1790441555.12897 44831 1e665f6139816b9f962cb8fd2a02babb ""
@@ -261,7 +263,7 @@
   "figures/whats_wrong_pairs.png" 1790441512.40203 40119 4af5c05d3cd1ac721a9afe66f6d0f6e3 ""
   "figures/whats_wrong_resid.png" 1790441512.32816 59731 af0fa1d841a9c42ac633c98d6f8c1ff3 ""
   "figures/you_try_residuals.png" 1790441511.84654 37417 0d667d1424b614ff946d244d584e0669 ""
-  "main.tex" 1793732629.93174 1431 d41cbf8a0edd67f36dc64c62b9cdc076 ""
+  "main.tex" 1794941783.622 1485 a7ce6a0f393d5eebe3832c5333e5d2ed ""
   (generated)
   "build/main.aux"
   "build/main.log"

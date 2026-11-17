@@ -506,6 +506,12 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/lmbsy10.tfm
 INPUT ./entries/week06.tex
 INPUT ./entries/week06.tex
 INPUT entries/week06.tex
+INPUT ./entries/week07.tex
+INPUT ./entries/week07.tex
+INPUT entries/week07.tex
+INPUT ./entries/week08.tex
+INPUT ./entries/week08.tex
+INPUT entries/week08.tex
 INPUT build/main.aux
 INPUT build/main.out
 INPUT build/main.out

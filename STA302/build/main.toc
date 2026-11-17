@@ -38,3 +38,13 @@
 \contentsline {subsection}{ANOVA Test for Overall Significance}{53}{section*.39}%
 \contentsline {subsection}{Partial $F$ Test}{56}{section*.40}%
 \contentsline {subsection}{Relationships Between the Tests}{58}{section*.41}%
+\contentsline {section}{Week 7: Variance Decomposition Part 2}{61}{section*.42}%
+\contentsline {subsection}{Review: Decomposition and $F$-Tests}{61}{section*.43}%
+\contentsline {subsection}{Measuring Goodness}{62}{section*.44}%
+\contentsline {subsection}{Problems with Related Predictors}{64}{section*.45}%
+\contentsline {subsection}{Assessing and Addressing Multicollinearity}{65}{section*.46}%
+\contentsline {section}{Week 8: The Problem with Problematic Observations}{69}{section*.47}%
+\contentsline {subsection}{Leverage Observations}{69}{section*.48}%
+\contentsline {subsection}{Outlying Points in Regression}{72}{section*.49}%
+\contentsline {subsection}{Influential Observations}{74}{section*.50}%
+\contentsline {subsection}{Assessing and Addressing Problematic Observations}{76}{section*.51}%

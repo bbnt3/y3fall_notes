@@ -1,0 +1,360 @@
+% !TeX root = ../main.tex
+
+% Edit this title for each week's entry.
+\section{Week 7: Variance Decomposition Part 2}
+
+\subsection{Review: Decomposition and $F$-Tests}
+
+\begin{remark}[Sum of Squares Decomposition]
+    \[\underbrace{\sum(y_i-\bar y)^2}_{SST}=\underbrace{\sum(\hat y_i-\bar y)^2}_{SS_{reg}}+\underbrace{\sum(y_i-\hat y_i)^2}_{RSS}\]
+    \begin{itemize}
+        \item $SST$: total variation in the response prior to fitting a model ($df=n-1$)
+        \item $SS_{reg}$: variation explained by the model ($df=p$)
+        \item $RSS$: variation left unexplained by the model ($df=n-p-1$)
+    \end{itemize}
+    A good model has $SS_{reg}>RSS$. But a model with more predictors (even non-significant
+    ones) has smaller RSS:
+    \[RSS_{small}\geq RSS_{big}\iff SS_{reg,small}\leq SS_{reg,big}\]
+\end{remark}
+
+\begin{remark}[ANOVA and Partial $F$-Tests]
+    \begin{itemize}
+        \item \textbf{ANOVA overall test}: $H_0$: all slopes are 0 vs.\ $H_A$: at least one slope is not 0,
+        \[F^*=\frac{SS_{reg}/p}{RSS/(n-p-1)}\sim F(p,\,n-p-1)\text{ under }H_0\]
+        \item \textbf{Partial $F$-test} (nested models): $H_0$: the full model is not better than
+        the reduced model with $k$ predictors dropped,
+        \[F^*=\frac{(RSS_{reduced}-RSS_{full})/k}{RSS_{full}/(n-p-1)}\sim F(k,\,n-p-1)\]
+        \item The ANOVA overall test is the partial $F$-test with the intercept-only reduced model
+        \aside{(\texttt{lm(y \textasciitilde{} 1)})}: there $RSS=SST$ and $SS_{reg}=0$; SST is the
+        same in both models, so $RSS_{drop}=SST-RSS_{full}=SS_{reg,full}$.
+    \end{itemize}
+\end{remark}
+
+\begin{proposition}[$t$-Tests and $F$-Tests Are Equivalent]
+    \[F=\frac{\chi^2_{df_1}/df_1}{\chi^2_{df_2}/df_2}\sim F(df_1,df_2),\qquad
+    T=\frac{Z}{\sqrt{\chi^2_{df}/df}}\sim t(df)\]
+    If $Z\sim N(0,1)$ then $Z^2\sim\chi^2_1$, so $T^2\sim F(1,df)$: the $t$-test of
+    $H_0:\beta_j=0$ is a partial $F$-test whose reduced model removes only $\beta_j$.
+\end{proposition}
+
+\heading{Module Outline}
+\begin{itemize}
+    \item Decomposition and measuring goodness
+    \item Problems with related predictors
+    \item Assessing and addressing multicollinearity
+\end{itemize}
+
+\subsection{Measuring Goodness}
+
+\begin{remark}[Comparing Models]
+    With the same dataset (same SST), we can compare models by which has the larger
+    $SS_{reg}$. But suppose you and a friend work on separate problems on the same topic:
+    different datasets, a response measuring the same characteristic (perhaps in different
+    ways), and each a 2-predictor model with different predictors. Which model is better?
+    \begin{itemize}
+        \item We can't compare $SS_{reg}$, because each model's SST is different.
+        \item We can't use the partial $F$-test, because the models are not nested.
+        \item The ANOVA overall test only says whether a linear relationship exists; it doesn't
+        quantify relative goodness.
+    \end{itemize}
+    $\Rightarrow$ We need a \textbf{unitless} measure.
+\end{remark}
+
+\begin{definition}[Coefficient of Determination $R^2$]
+    Standardize the variation explained by SST:
+    \[\boxed{R^2=\frac{SS_{reg}}{SST}=1-\frac{RSS}{SST}}\]
+    \aside{Usually we use the $1-RSS/SST$ form.} $0\leq R^2\leq1$, and in SLR
+    $R^2=\mathrm{corr}(X,Y)^2$. It is the \hlt{proportion of variation in the response
+    explained by the model}.
+\end{definition}
+
+\begin{remark}[Notes about $R^2$]
+    \begin{itemize}
+        \item $R^2=1\iff RSS=0$: all points lie exactly on the fitted hyperplane, and
+        $X_1,\dots,X_p$ account for all the variation in $Y$ (e.g.\ points exactly on a line with
+        \texttt{lm(y\textasciitilde x)}, or a wiggly curve through every point with
+        \texttt{lm(y\textasciitilde x+x\^{}2+...+x\^{}5)}).
+        \item If $\hat\beta_1=\cdots=\hat\beta_p=0$, then $R^2=0$: the model explains no variation,
+        i.e.\ there is no linear association between $X_1,\dots,X_p$ and $Y$ in the sample
+        (a flat fit at $\bar y$).
+        \item The closer $R^2$ is to 1, the greater the \textbf{degree of linear association}
+        between $X_1,\dots,X_p$ and $Y$.
+    \end{itemize}
+\end{remark}
+
+\begin{remark}[Interpreting $R^2$ with Care]
+    \begin{itemize}
+        \item There are no general rules about how large $R^2$ should be.
+        \item $R^2$ can be large even when the linear regression model is not ideal.
+        \item $R^2$ is not meaningful if a linear model is not appropriate.
+        \item Very high $R^2$ is achievable by fitting complicated models with many predictors.
+        \db{E.g.\ on the same curved data, \texttt{lm(y\textasciitilde x)} $\to$
+        \texttt{lm(y\textasciitilde x+x\^{}2)} $\to$ \texttt{lm(y\textasciitilde x+...+x\^{}7)}: $R^2$
+        keeps increasing, even as the last fit just chases noise.}
+    \end{itemize}
+\end{remark}
+
+\begin{definition}[Adjusted Coefficient of Determination $R^2_{adj}$]
+    Adding predictors \emph{always} decreases RSS, even if they're unrelated to the response,
+    and we don't want more predictors than we need. Adjust with degrees of freedom (as in ANOVA):
+    \[\boxed{R^2_{adj}=1-\frac{RSS/(n-p-1)}{SST/(n-1)}=1-\frac{s^2}{s_y^2}}\]
+    \begin{itemize}
+        \item This is \textbf{no longer} ``the proportion of variation explained by the model''.
+        \item A bigger model is better only if $SS_{reg}$ has increased enough to compensate for
+        the added complexity (the $-p$ in the denominator df penalizes extra predictors).
+        \item $R^2_{adj}\leq R^2$, since $\frac{n-1}{n-p-1}\geq1$.
+    \end{itemize}
+\end{definition}
+
+\begin{example}[Defects Data (Sheather p.\ 167)]
+    Defect rates for 30 production lines: $Y=$ \texttt{Defective} (average \# defects per 1000
+    parts), $X_1=$ \texttt{Temperature} of the process, $X_2=$ \texttt{Density} of the product,
+    $X_3=$ \texttt{Rate} of production. The pairs plot shows $Y$ curving upward in Temperature and
+    Rate and downward in Density, and the predictors strongly related to each other.
+    \aside{Compare $y\sim x_1+x_2+x_3$ vs.\ $y\sim x_1+x_2+x_3+x_1^2+x_2^2+x_3^2$.}
+\begin{verbatim}
+defects <- read.table("defects.txt", header=T)
+defects <- defects[,c(-1)]   # drop the first column, it's the case ID
+n = nrow(defects)            # n = 30
+model <- lm(Defective ~ ., data=defects)   # Y ~ . : Y on all other columns
+SST <- var(defects$Defective)*(n-1)        # 10923.87
+RSS <- sum(model$residuals^2)              # 1314.431
+\end{verbatim}
+    With $n=30$, $p=3$, $\Var(Y)=\frac{SST}{n-1}$ and $s^2=\frac{RSS}{n-p-1}$:
+    \[s^2=50.555,\quad s_y^2=376.6853,\quad RSS=26(50.555)=1314.43,\quad SST=29(376.6853)=10923.87\]
+    \[R^2=1-\frac{1314.43}{10923.87}\approx\dbb{0.88}\quad\text{(88\% of the variation in $Y$ explained by the model)}\]
+    \[R^2_{adj}=1-\frac{s^2}{s_y^2}=1-\frac{50.555}{376.6853}\approx\dbb{0.866}\]
+    Matching \texttt{summary(model)}:
+\begin{verbatim}
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)  10.3244    65.9265   0.157   0.8768
+Temperature  16.0779     8.2941   1.938   0.0635 .
+Density      -1.8273     1.4971  -1.221   0.2332
+Rate          0.1167     0.1306   0.894   0.3797
+Residual standard error: 7.11 on 26 degrees of freedom
+Multiple R-squared: 0.8797, Adjusted R-squared: 0.8658
+F-statistic: 63.36 on 3 and 26 DF, p-value: 4.371e-12
+\end{verbatim}
+\end{example}
+
+\begin{exercise}[Practice at Home]
+    Find $R^2$ and $R^2_{adj}$ manually for various models on datasets we've used, check against
+    the summary output, and interpret, e.g.\ \texttt{mpg \textasciitilde{} wt + hp} on \texttt{mtcars}.
+\end{exercise}
+
+\subsection{Problems with Related Predictors}
+
+\begin{remark}[Recall: Conditional Mean Predictor Condition (Module 3)]
+    To interpret residual plots we need each predictor's mean related to each other predictor
+    in no more complicated way than linearly: $E(X_i\mid X_j)=\alpha_0+\alpha_1X_j$. Linear
+    relationships or no relationship satisfy this (a random cloud, or a linear band, is fine);
+    complicated relationships (e.g.\ a sine wave) can obfuscate residual plots.
+\end{remark}
+
+\begin{remark}[Related Predictors and Correlation]
+    \begin{itemize}
+        \item Ideally there is no relationship between predictors --- this almost never happens
+        unless an experiment is carefully designed for it.
+        \item A linear trend between predictors means they are \textbf{correlated} or
+        \textbf{collinear}.
+        \item Recall: the correlation $\rho$ measures the strength of linear association between
+        two continuous variables.
+        \item From the house pricing example (\texttt{price \textasciitilde{} \#bedrooms + \#bathrooms},
+        \#bedrooms $\approx$ \#bathrooms): the more positively correlated $X_1$ and $X_2$, the more
+        negatively correlated $\hat\beta_1$ and $\hat\beta_2$ (and vice versa), \textbf{and} the higher
+        the variances of $\hat\beta_1$ and $\hat\beta_2$.
+    \end{itemize}
+\end{remark}
+
+\begin{example}[House Pricing: Unstable Estimates]
+    $Y=1+3X_1+2X_2+\epsilon$, $\epsilon\overset{iid}\sim N(0,3)$, $X_1\approx X_2$.
+    \aside{Fits like $\hat Y=1+5X_1$, $\hat Y=1+4X_1+X_2$, $\hat Y=1+5X_2$, \dots\ are all
+    plausible.}
+    \begin{center}
+        \begin{tabular}{lrrrr}
+            \toprule
+            & \multicolumn{2}{c}{\texttt{set.seed(1234)}} & \multicolumn{2}{c}{different seed} \\
+            & Estimate (SE) & p-value & Estimate (SE) & p-value \\
+            \midrule
+            \texttt{numBedrooms} $\hat\beta_1$ & 2.3661 (2.2732) & 0.301 & 4.4332 (2.1403) & 0.041 \\
+            \texttt{numBathrooms} $\hat\beta_2$ & 2.4111 (2.2772) & 0.292 & 0.7338 (2.1164) & 0.730 \\
+            \bottomrule
+        \end{tabular}
+    \end{center}
+    The data-generating process is the same, but the estimates are very different, the variances
+    are large, and \textbf{the significance changed as well}. \texttt{vcov(model)} gives
+    $\widehat{\Var}(\hat{\boldsymbol\beta})=\hat\sigma^2(\mathbf{X}'\mathbf{X})^{-1}$; for the first seed,
+    \[\mathrm{Corr}(\hat\beta_1,\hat\beta_2)=\frac{\Cov(\hat\beta_1,\hat\beta_2)}{\sqrt{\Var(\hat\beta_1)\Var(\hat\beta_2)}}
+    =\frac{-5.16}{\sqrt{5.17\cdot5.19}}\approx-1\]
+    \db{(Second seed: $-4.513/\sqrt{4.581\cdot4.479}\approx-1$ too.)}
+\end{example}
+
+\begin{definition}[Rank of the Design Matrix]
+    Perfect correlation ($\pm1$) between predictors --- one perfectly linearly related to another
+    --- causes issues. More generally, if one column of $\mathbf{X}$ is a \textbf{linear
+    combination of the other columns}, the predictors are dependent, $\mathbf{X}$ is not of full
+    column rank, and $\mathbf{X}'\mathbf{X}$ is \textbf{not invertible}: we can't estimate the
+    linear relationship.
+\end{definition}
+
+\begin{example}[Matrix Not Invertible]
+    $n=5$, $p=3$:
+    \[\mathbf{X}=\begin{pmatrix}1&1&4&3\\1&2&2&3\\1&3&8&7\\1&2&2&3\\1&3&8&7\end{pmatrix},\qquad
+    \mathbf{X}'\mathbf{X}=\begin{pmatrix}5&11&24&23\\11&27&60&57\\24&60&152&136\\23&57&136&125\end{pmatrix}\]
+    Here $X_3=X_1+0.5X_2$, so $\mathbf{X}'\mathbf{X}$ has rank 3 ($C_4=C_2+0.5C_3$): not
+    invertible. \texttt{solve(t(X)\%*\%X)} errors: ``system is computationally singular''.
+    \\ Yet no pair of predictors is perfectly correlated --- \texttt{cor(X)} (the correlation matrix
+    of $\mathbf{X}$) gives $r(X_1,X_2)=0.709$, $r(X_1,X_3)=0.873$, $r(X_2,X_3)=0.963$. Pairwise
+    correlations tell us whether any 2 predictors are related, but we also need to know whether a
+    predictor is a linear combination of \emph{several} others.
+\end{example}
+
+\begin{definition}[Multicollinearity]
+    When one predictor can be modelled really well using the others. Its impact on the model
+    depends on how strong the relationship between the predictors is, and how much of the
+    variation in $Y$ these predictors explain.
+\end{definition}
+
+\begin{remark}[Impact of Multicollinearity]
+    \begin{itemize}
+        \item Instability in how predictors are used to estimate the mean responses: the model
+        can't distinguish how much variation is explained only by $X_1$ vs.\ only by $X_2$, so
+        \hlt{$\Var(\hat{\boldsymbol\beta})$ is large}.
+        \item House prices: hard to separate what's explained by \#bedrooms vs.\ \#bathrooms. For
+        a house with many more bedrooms than bathrooms, the prediction can change a lot from small
+        differences in the training data --- \textbf{extrapolation is very dangerous here}.
+        \item It prevents us from properly understanding the predictor--response relationship:
+        \begin{itemize}
+            \item \textbf{Wrong estimated coefficients}: signs may be wrong compared to the literature.
+            \item \textbf{Contradictory significance}: many predictors insignificant while the
+            overall $F$-test is highly significant.
+            \item \textbf{Inflated variances}: standard errors much larger than they should be.
+        \end{itemize}
+        All of these appear in the simulated housing example!
+    \end{itemize}
+\end{remark}
+
+\begin{remark}[Structural Multicollinearity]
+    Sometimes we create multicollinearity on purpose, as a necessary result of the model
+    structure we choose to satisfy the assumptions:
+    \begin{itemize}
+        \item \textbf{Polynomial regression} for linearity, e.g.\ $\hat y_i=\hat\beta_0+\hat\beta_1x_i+\hat\beta_2x_i^2$,
+        so column $C_3$ of $\mathbf{X}$ is $(C_2)^2$.
+        \item \textbf{Interaction terms with their main effects}: if you include an interaction you
+        generally also include the main effects, e.g.\
+        $\hat y_i=\hat\beta_0+\hat\beta_1x_{i1}+\hat\beta_2x_{i2}+\hat\beta_3x_{i1}x_{i2}$.
+    \end{itemize}
+\end{remark}
+
+\subsection{Assessing and Addressing Multicollinearity}
+
+\begin{remark}[EDA and Preliminary Assessment]
+    A preliminary assessment can help justify decisions about handling multicollinearity.
+    \begin{itemize}
+        \item \textbf{Pairwise correlations} (correlation matrix of $X$): two predictors at a time.
+        Can be done early, but may not show the full extent of the problem (recall the
+        non-invertible example) and may miss non-linear relationships.
+        \item \textbf{Pairs plots}: two predictors at a time; can reveal non-linear relationships
+        (not necessarily multicollinearity --- e.g.\ an additional condition 2 issue from Module 3).
+    \end{itemize}
+    But we need to see how \emph{multiple} predictors act together to explain the response.
+\end{remark}
+
+\begin{definition}[Variance Inflation Factor (VIF), 2 Predictors]
+    The VIF quantifies how much larger the variance of a coefficient is due to
+    multicollinearity. For $y_i=\beta_0+\beta_1x_{i1}+\beta_2x_{i2}+\varepsilon_i$, with
+    $\Var(\hat{\boldsymbol\beta})=\sigma^2(\mathbf{X}'\mathbf{X})^{-1}$, it can be shown that
+    \[\boxed{\Var(\hat\beta_j)=\underbrace{\frac{1}{1-r_{12}^2}}_{VIF}\times\frac{\sigma^2}{(n-1)s_{x_j}^2}},\qquad j=1,2\]
+    where $r_{12}$ is the sample correlation between $x_1$ and $x_2$ and $s_{x_j}$ the sample SD of $x_j$.
+    \begin{itemize}
+        \item $\frac{1}{1-r_{12}^2}$ is how inflated $\Var(\hat\beta_j)$ is due to correlation
+        between the predictors.
+        \item If the predictors are independent, $\Var(\hat\beta_j)$ is close to $\frac{\sigma^2}{(n-1)s_{x_j}^2}$.
+        \item As $|r_{12}|$ increases, the VIF increases.
+    \end{itemize}
+\end{definition}
+
+\begin{example}[VIF for House Pricing]
+    Computing the VIF by hand and with \texttt{car::vif()}:
+\begin{verbatim}
+r <- cor(house1$numBedrooms, house1$numBathrooms)
+1/(1-r^2)        # 160.1022  (second simulation: 135.8856)
+car::vif(model2) # numBedrooms 160.1022, numBathrooms 160.1022
+\end{verbatim}
+    Both simulations have huge VIFs. \aside{With only 2 predictors the VIFs for $\hat\beta_1$ and
+    $\hat\beta_2$ are the same.}
+\end{example}
+
+\begin{definition}[General VIF]
+    For more than 2 predictors, define $R_j^2$: the proportion of the variation in $X_j$ explained
+    by the \textbf{remaining predictors}, i.e.\ the $R^2$ from regressing $X_j$ on the rest.
+    E.g.\ for $y\sim x_1+x_2+x_3$: $x_1\sim x_2+x_3\to R_1^2$, $x_2\sim x_1+x_3\to R_2^2$,
+    $x_3\sim x_1+x_2\to R_3^2$. Then
+    \[\boxed{\Var(\hat\beta_j)=\frac{1}{1-R_j^2}\times\frac{\sigma^2}{(n-1)s_{x_j}^2},\qquad VIF_j=\frac{1}{1-R_j^2}},\quad j=1,\dots,p\]
+    We replaced $r_{12}^2$ with $R_j^2$, which tells us how much of the information in $X_j$ is
+    already provided by the other predictors.
+\end{definition}
+
+\begin{remark}[Notes about the VIF]
+    \begin{itemize}
+        \item Generalizes to models of any size.
+        \item Can only be calculated for \textbf{numerical} predictors ($X_j$ is the response in
+        $X_j\sim$ rest of the $X$'s).
+        \item The more of the variation in $X_j$ the remaining $p-1$ predictors explain, the larger
+        the inflation.
+        \item Rule of thumb for this class: \[\boxed{VIF>5\ \Rightarrow\ \text{severe multicollinearity}}\]
+        a sign the variances of our estimates are very inflated; watch out for potentially
+        incorrect interpretations.
+        \item Ensure the model assumptions hold before interpreting the VIF.
+    \end{itemize}
+\end{remark}
+
+\begin{example}[VIF for the Defects Data]
+    For \texttt{lm(Defective \textasciitilde{} Temperature + Density + Rate)}, the variance of the
+    \texttt{Temperature} coefficient (a numeric predictor) depends on how much Temperature overlaps
+    with Density and Rate: fit $X_1\sim X_2+X_3$.
+\begin{verbatim}
+model1a <- lm(Temperature ~ Density + Rate, data=defects)
+summary(model1a)   # Multiple R-squared: 0.9255
+\end{verbatim}
+    $R_1^2=0.9255$: 92.55\% of the variation in $X_1$ is explained by $X_2$ and $X_3$, so
+    \[VIF_1=\frac1{1-R_1^2}=\frac1{1-0.9255}=\dbb{13.42}\]
+\begin{verbatim}
+library(car)
+vif(model1)   # fitted model object  lm(y ~ x1 + x2 + x3)
+# Temperature   Density      Rate
+#   13.431614 14.508872  6.642619
+\end{verbatim}
+    $\Var(\hat\beta_1)$, $\Var(\hat\beta_2)$, $\Var(\hat\beta_3)$ are inflated by factors of 13.4,
+    14.5 and 6.6 --- all above 5, so there is significant multicollinearity among all predictors.
+    Unsurprising: the pairs plot showed strong relationships between the predictors.
+    \aside{With more than 2 predictors the VIFs differ across predictors.}
+\end{example}
+
+\begin{remark}[Addressing Multicollinearity]
+    Two main ways:
+    \begin{itemize}
+        \item \textbf{Collect more data} (not usually feasible).
+        \item \textbf{Respecify the model} (what's typically done): remove some predictors or
+        change their form.
+    \end{itemize}
+    Multicollinearity means different predictors explain the same parts of the overall variation
+    in $Y$ (the SST); removing one or some predictors removes some of the overlap. Think carefully
+    about which to remove:
+    \begin{itemize}
+        \item keep predictors related to the research question;
+        \item consider how model goodness is impacted (assumptions, statistical significance,
+        width of prediction intervals);
+        \item removing predictors must be justified (variable selection, Module 9).
+    \end{itemize}
+\end{remark}
+
+\begin{remark}[Module Takeaways]
+    \begin{itemize}
+        \item How are $R^2$ and $R^2_{adj}$ computed and interpreted, and why do we need both?
+        \db{$R^2$: proportion of variation in $Y$ explained by $X$; $R^2_{adj}$: adjusts for the
+        size of the model.}
+        \item What does the VIF measure, and why is it useful for detecting multicollinearity?
+        \item How do we identify multicollinearity, and why is it important to identify?
+    \end{itemize}
+\end{remark}
