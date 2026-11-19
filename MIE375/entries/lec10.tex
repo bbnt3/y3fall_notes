@@ -6,13 +6,20 @@
 For a given mean return, you would like to \dbb{minimize your risk} (the variance).
 \begin{center}
 \begin{tikzpicture}[x=1.4cm, y=1.1cm]
+    \fill[gray!12, domain=0.25:3.8, samples=60, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r}) -- (4.4,3.8) -- (4.4,0.25) -- cycle;
     \draw[->] (0,0) -- (4.6,0) node[right] {$\sigma$};
-    \draw[->] (0,0) -- (0,4.2) node[above] {$\overline{r}$};
-    \draw[very thick, blue, domain=0.25:3.6, samples=60, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
-    \draw[dotted] (0,2.8) -- (1.75,2.8);
-    \draw[->, dashed] (3.6,2.8) -- (1.83,2.8);
-    \fill (1.75,2.8) circle (2pt);
-    \node[below right, align=left] at (1.8,2.75) {\small minimum variance point\\[-2pt]\small for a given mean return};
+    \draw[->] (0,0) -- (0,4.3) node[above] {$\overline{r}$};
+    \draw[very thick, blue, domain=0.25:1.9, samples=40, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \draw[line width=2.4pt, green!60!black, domain=1.9:3.8, samples=40, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \node[right, green!60!black] at (3.17,3.8) {\small efficient frontier};
+    \node[right, blue] at (2.79,0.25) {\small minimum-variance set (inefficient part)};
+    \node at (3.5,1.3) {\small feasible region};
+    \fill (1,1.9) circle (2pt);
+    \node[left, align=right] at (0.95,1.9) {\small global min-\\[-2pt]\small variance point};
+    \draw[dotted] (0,2.8) node[left] {\small $\overline{r}_p$} -- (1.74,2.8);
+    \draw[->, dashed, thick] (4.0,2.8) -- (1.80,2.8);
+    \fill[red!70!black] (1.74,2.8) circle (2.2pt);
+    \node[below, align=center] at (3.25,2.75) {\small fix $\overline{r}_p$, move left\\[-2pt]\small to the least risk};
 \end{tikzpicture}
 \end{center}
 Markowitz formulated the problem of being on the efficient frontier as an \rb{optimization}. Assume there are $n$ \dbb{risky} assets with mean returns $\overline{r}_1, \overline{r}_2, \dots, \overline{r}_n$ and covariances $\sigma_{ij}$ for $i, j = 1, \dots, n$.
@@ -140,13 +147,21 @@ Assumptions:
 \keypoint{Only two efficient funds need to exist, and everyone can invest in them!}
 \begin{center}
 \begin{tikzpicture}[x=1.4cm, y=1.1cm]
+    \fill[gray!12, domain=0.25:3.8, samples=60, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r}) -- (4.4,3.8) -- (4.4,0.25) -- cycle;
     \draw[->] (0,0) -- (4.6,0) node[right] {$\sigma$};
-    \draw[->] (0,0) -- (0,4.2) node[above] {$\overline{r}$};
-    \draw[thick, domain=0.25:3.8, samples=60, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
-    \foreach \r/\lab/\c/\pos in {2.3/{Fund 1}/blue/right, 3.4/{Fund 2}/blue/right, 2.85/{another efficient fund}/red/left} {
+    \draw[->] (0,0) -- (0,4.3) node[above] {$\overline{r}$};
+    \draw[very thick, blue, domain=0.25:1.9, samples=40, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \draw[line width=2.4pt, green!60!black, domain=1.9:3.8, samples=40, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \node[right, green!60!black] at (3.17,3.8) {\small efficient frontier};
+    \node[right, blue] at (2.79,0.25) {\small minimum-variance set (inefficient part)};
+    \node at (3.4,1.9) {\small feasible region};
+    \foreach \r/\lab/\c/\pos in {2.3/{Fund 1}/blue/right, 3.4/{Fund 2}/blue/right} {
         \pgfmathsetmacro{\s}{sqrt(1 + 2.5*(\r-1.9)^2)}
         \fill[\c] (\s,\r) circle (2.2pt) node[\pos, black] {\small \lab};
     }
+    \pgfmathsetmacro{\s}{sqrt(1 + 2.5*(2.85-1.9)^2)}
+    \fill[red] (\s,2.85) circle (2.2pt);
+    \draw[<-, red] ({\s-0.08},2.9) -- (0.9,3.6) node[above, align=center] {\small another efficient fund\\[-2pt]\small $= \alpha\,$Fund 1 $+ (1-\alpha)\,$Fund 2};
 \end{tikzpicture}
 \end{center}
 The red fund is \ul{just a portfolio of Fund 1 and Fund 2}.
@@ -199,13 +214,22 @@ Form a portfolio with $\alpha$ of the risk-free asset and $1-\alpha$ of the risk
 As we vary $\alpha$, $(\sigma, \overline{r}) = \left((1-\alpha)\sigma,\ \alpha r_f + (1-\alpha)\overline{r}\right)$ traces a \rb{straight line} from $(0, r_f)$ through the risky asset:
 \begin{center}
 \begin{tikzpicture}[x=1.4cm, y=1.1cm]
+    \fill[gray!12, domain=0.25:3.8, samples=60, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r}) -- (4.4,3.8) -- (4.4,0.25) -- cycle;
     \draw[->] (0,0) -- (4.6,0) node[right] {$\sigma$};
-    \draw[->] (0,0) -- (0,4.2) node[above] {$\overline{r}$};
-    \draw[thick, domain=0.25:3.8, samples=60, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \draw[->] (0,0) -- (0,4.3) node[above] {$\overline{r}$};
+    \draw[very thick, blue, domain=0.25:1.9, samples=40, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \draw[line width=2.4pt, green!60!black, domain=1.9:3.8, samples=40, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \node[right, green!60!black] at (3.17,3.8) {\small efficient frontier of risky assets};
+    \node[right, blue] at (2.79,0.25) {\small minimum-variance set (inefficient part)};
+    \node at (3.6,1.5) {\small risky feasible region};
     \draw (0.08,1.2) -- (-0.08,1.2) node[left] {$r_f$};
-    \pgfmathsetmacro{\s}{sqrt(1 + 2.5*(2.6-1.9)^2)}
-    \draw[very thick, ->] (0,1.2) -- ({4.4},{1.2 + 4.4*(2.6-1.2)/\s});
-    \fill (\s,2.6) circle (2pt) node[below right] {\small $(\overline{r}, \sigma^2)$};
+    % line from (0, r_f) through the risky point P = (2.2, 2.4)
+    \draw[very thick, ->] (0,1.2) -- (3.9,{1.2 + 3.9*1.2/2.2});
+    \fill (0,1.2) circle (2pt);
+    \fill (2.2,2.4) circle (2.2pt) node[below right] {\small risky $(\sigma, \overline{r})$};
+    \node[above left] at (1.1,1.8) {\small $0 < \alpha < 1$};
+    \node[above left] at (3.5,3.1) {\small $\alpha < 0$ (borrow)};
+    \node[below right] at (0,1.2) {\small $\alpha = 1$};
 \end{tikzpicture}
 \end{center}
 $\alpha = 1$ is all risk-free (on the axis), $\alpha = 0$ is all risky, and $\alpha < 0$ (borrowing at $r_f$) extends the line beyond the risky point.
@@ -218,15 +242,20 @@ Doing this for every risky portfolio fills the region between two lines from $r_
     \pgfmathsetmacro{\m}{sqrt(0.49 + 0.4)}
     \pgfmathsetmacro{\rT}{1.9 + 1/(2.5*0.7)}
     \pgfmathsetmacro{\sT}{sqrt(1 + 2.5*(\rT-1.9)^2)}
-    \fill[blue!8] (0,1.2) -- (3.0,{1.2 + 3.0*\m}) -- (4.4,{1.2 + 3.0*\m}) -- (4.4,0) -- ({1.2/\m},0) -- cycle;
+    \fill[green!8] (0,1.2) -- (3.0,{1.2 + 3.0*\m}) -- (4.4,{1.2 + 3.0*\m}) -- (4.4,-0.4) -- ({1.6/\m},-0.4) -- cycle;
+    \fill[gray!22, domain=0.25:3.8, samples=60, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r}) -- (4.4,3.8) -- (4.4,0.25) -- cycle;
     \draw[->] (0,0) -- (4.6,0) node[right] {$\sigma$};
-    \draw[->] (0,-0.2) -- (0,4.2) node[above] {$\overline{r}$};
-    \draw[thick, domain=0.25:3.8, samples=60, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \draw[->] (0,-0.4) -- (0,4.3) node[above] {$\overline{r}$};
+    \draw[very thick, blue, domain=0.25:1.9, samples=40, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \draw[line width=2.4pt, blue!60!black, domain=1.9:3.8, samples=40, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \node[right, blue!60!black] at (3.17,3.8) {\small efficient frontier of risky assets};
+    \node[right, blue] at (2.79,0.25) {\small min-variance set of risky assets};
     \draw (0.08,1.2) -- (-0.08,1.2) node[left] {$r_f$};
-    \draw[very thick, ->] (0,1.2) -- (3.0,{1.2 + 3.0*\m});
-    \draw[very thick, ->] (0,1.2) -- ({1.6/\m},-0.4);
-    \fill[red!70!black] (\sT,\rT) circle (2.2pt) node[above left] {$F$};
-    \draw[<-, double] ({\sT+0.1},\rT) -- ({\sT+0.8},\rT) node[right] {\small tangent to the risky feasible region};
+    \draw[line width=2.4pt, green!60!black, ->] (0,1.2) -- (3.0,{1.2 + 3.0*\m}) node[above, align=center] {\small efficient frontier\\[-2pt]\small (risk-free $+$ $F$)};
+    \draw[very thick, ->] (0,1.2) -- ({1.6/\m},-0.4) node[below] {\small short $F$ ($\alpha > 1$)};
+    \node at (3.65,1.55) {\small risky assets only};
+    \node[green!40!black] at (2.3,0.45) {\small expanded feasible region};
+    \fill[red!70!black] (\sT,\rT) circle (2.4pt) node[above left] {$F$};
 \end{tikzpicture}
 \end{center}
 The lower line comes from \ul{shorting} $F$ to invest more in the risk-free asset ($\alpha > 1$): the risk is $|1-\alpha|\sigma_F$, but the mean drops below $r_f$.
@@ -242,6 +271,29 @@ Assumptions:
     \textbf{Theorem} (\rb{One-Fund Theorem}). There is a \dbb{single fund $F$} of risky assets such that any efficient portfolio can be constructed as a combination of the fund $F$ and the risk-free asset.
 \end{framed}
 The efficient frontier is now the \ul{upper straight line} from $r_f$ through $F$. Every investor holds the same risky fund $F$. Investors differ only in how they split money between $F$ and the risk-free asset (more risk-averse means more in $r_f$).
+
+\begin{center}
+\begin{tikzpicture}[x=1.4cm, y=1.1cm]
+    \pgfmathsetmacro{\m}{sqrt(0.49 + 0.4)}
+    \pgfmathsetmacro{\rT}{1.9 + 1/(2.5*0.7)}
+    \pgfmathsetmacro{\sT}{sqrt(1 + 2.5*(\rT-1.9)^2)}
+    \pgfmathsetmacro{\sG}{sqrt(1 + 2.5*(3.3-1.9)^2)}
+    \fill[gray!12, domain=0.25:3.8, samples=60, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r}) -- (4.4,3.8) -- (4.4,0.25) -- cycle;
+    \draw[->] (0,0) -- (4.6,0) node[right] {$\sigma$};
+    \draw[->] (0,0) -- (0,4.3) node[above] {$\overline{r}$};
+    \draw[very thick, blue, domain=0.25:1.9, samples=40, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \draw[line width=2.4pt, blue!60!black, domain=1.9:3.8, samples=40, smooth, variable=\r] plot ({sqrt(1 + 2.5*(\r-1.9)^2)}, {\r});
+    \node[right, blue!60!black] at (3.17,3.8) {\small efficient frontier of risky assets};
+    \node[right, blue] at (2.79,0.25) {\small min-variance set};
+    \draw (0.08,1.2) -- (-0.08,1.2) node[left] {$r_f$};
+    \draw[dashed, gray!70!black, thick] (0,1.2) -- (3.6,{1.2 + 3.6*0.7/2.8});
+    \fill[gray!70!black] (2.8,1.9) circle (2pt) node[below right, black] {\small another risky fund: smaller slope};
+    \draw[line width=2.4pt, green!60!black, ->] (0,1.2) -- (3.0,{1.2 + 3.0*\m}) node[above, align=center] {\small efficient frontier\\[-2pt]\small (max slope)};
+    \draw[dotted] (0,1.2) -- (\sT,1.2) node[midway, below] {\small $\sigma_F$} -- (\sT,\rT) node[pos=0.8, right] {\small $\overline{r}_F - r_f$};
+    \fill[red!70!black] (\sT,\rT) circle (2.4pt) node[above left] {$F$};
+\end{tikzpicture}
+\end{center}
+The one fund $F$ is the risky fund that maximizes $\text{slope} = \dfrac{\overline{r}_F - r_f}{\sigma_F}$: any other risky fund (gray) gives a flatter line, which is dominated.
 
 \heading{Computation of the One-Fund}
 The one-fund is the fund of risky assets with the \rb{maximum slope} from the risk-free rate:
