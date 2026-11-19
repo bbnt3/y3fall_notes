@@ -1,0 +1,301 @@
+% !TeX root = ../main.tex
+
+% Edit this title for each week's entry.
+\section{Week 10 - Inflation}
+
+\topic{Introduction, Causes and Effects}
+
+\begin{example}[Reflection: Hamburger Prices]
+    How much does a McDonald's hamburger cost?
+    \\\db{On an early McDonald's menu, a hamburger was \dbb{15\textcent}. The Canadian Big Mac rose from about \$1.90 in 1986 to over \$6.50 by 2018. Average Canadian undergraduate tuition rose from about \$4300 to \$6400 between 2006 and 2017. The same goods cost more dollars over time.}
+\end{example}
+
+\begin{definition}[Inflation]
+    A rise in the \dbb{average prices} of goods and services over time. It
+    reflects the decline in the \dbb{purchasing power} of the dollar over
+    time. \rb{Deflation} is the opposite.
+\end{definition}
+
+\heading{What Causes Inflation?}
+\begin{itemize}
+    \item \rb{Demand pull}: demand rises faster than supply
+    \item \rb{Cost push}: production costs (wages, materials, energy) rise and are passed on
+    \item \rb{Expanding money supply}: more money chasing the same goods
+    \item \rb{Expectations}: if people expect prices to rise, they demand higher wages and raise prices now
+\end{itemize}
+
+\heading{What Are the Effects of Inflation?}
+\begin{itemize}
+    \item \dbb{Benefits borrowers}: they repay with dollars worth less
+    \item \dbb{Hurts} lenders, savers, the unemployed, retirees (fixed incomes), etc.
+    \item Menu costs (changing prices) and tax distortions
+    \item In the \b{short run only}, higher inflation can lead to lower unemployment
+    \item At low levels it can stimulate the economy; at high levels (\rb{hyperinflation}) it can be a disaster
+\end{itemize}
+
+\heading{Bank of Canada Inflation Target}
+The primary mission of the Bank of Canada is to control inflation, with a
+target of \dbb{2\%} per year.
+
+\begin{example}[Reflection: Why Not 0\%?]
+    Why don't we target 0\% inflation?
+    \\\db{A target of 0\% leaves no buffer against \dbb{deflation}. Falling prices make people delay spending and make debts heavier in real terms, which can spiral into a recession. A small positive rate also gives the central bank room to cut interest rates, and lets real wages adjust without cutting anyone's nominal pay.}
+\end{example}
+
+\begin{remark}
+    Remember that the interest rate is interest / principal!
+\end{remark}
+
+\heading{Summary}
+\begin{enumerate}
+    \item Inflation $=$ rising prices
+    \item Caused by rising demand, increasing costs, an expanding money supply, or expectations
+    \item OK at low levels; a disaster at high levels!
+\end{enumerate}
+
+\topic{Measuring Inflation: Consumer Price Index}
+
+\begin{definition}[Consumer Price Index (CPI)]
+    The most commonly used inflation index: the \dbb{weighted average of
+    prices} of a basket of goods and services of primary consumer needs
+    (food, housing, transportation, apparel, medical care, recreation,
+    education, \dots). It relates the average price of a \b{fixed}
+    \rb{basket} of goods in a given period to its price in a \rb{base
+    period}:
+    \[\boxed{\text{CPI}_t = \frac{\text{Cost of basket in year } t}{\text{Cost of basket in base year}} \times 100}\]
+    The current CPI base year is 2002, with index 100. The index for any
+    other year is the number of dollars needed that year to buy the basket
+    that cost \$100 in 2002.
+\end{definition}
+
+\begin{center}
+\begin{tabular}{cc@{\hspace{3em}}cc}
+    \toprule
+    Year & CPI & Year & CPI \\
+    \midrule
+    2002 & 100.0 & 2011 & 119.9 \\
+    2003 & 102.8 & 2012 & 121.7 \\
+    2004 & 104.7 & 2013 & 122.8 \\
+    2005 & 107.0 & 2014 & 125.2 \\
+    2006 & 109.1 & 2015 & 126.6 \\
+    2007 & 111.5 & 2016 & 128.4 \\
+    2008 & 114.1 & 2017 & 130.4 \\
+    2009 & 114.4 & 2018 & 133.4 \\
+    2010 & 116.5 & 2019 & 136.0 \\
+    \bottomrule
+\end{tabular}
+\\[2pt] \textit{\small Canadian historical CPI (Statistics Canada)}
+\end{center}
+
+\begin{example}[Calculating CPI]
+    \begin{center}
+    \begin{tabular}{llrrrr}
+        \toprule
+        & & Hamburger & Jeans & Movie ticket & Total \\
+        \midrule
+        2002 & Price & \$4.00 & \$70.00 & \$6.00 & \\
+        & Quantity & 40 & 1 & 5 & \\
+        & Expenditure & \db{\$160} & \db{\$70} & \db{\$30} & \db{\$260} \\
+        \midrule
+        2020 & Price & \$6.00 & \$80.00 & \$8.00 & \\
+        & Quantity & 40 & 1 & 5 & \\
+        & Expenditure & \db{\$240} & \db{\$80} & \db{\$40} & \db{\$360} \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \[\text{CPI}_{2002} = \frac{260}{260} \times 100 = 100, \qquad \text{CPI}_{2020} = \frac{360}{260} \times 100 = \db{138.5}\]
+    \[\text{Inflation 2002--2020} = \frac{138.5 - 100}{100} = \db{38.5\%}\]
+\end{example}
+
+\heading{Calculating Inflation from CPI}
+\[\boxed{1 + f_t = \frac{\text{CPI}_t}{\text{CPI}_{t-1}}, \qquad (1 + f_a)^n = \frac{\text{CPI}_{t+n}}{\text{CPI}_t}}\]
+where $f_t$ is the inflation rate in year $t$ and $f_a$ is the average annual
+inflation rate over $n$ years.
+
+\begin{example}[Inflation in 2019]
+    \[f_{2019} = \frac{\text{CPI}_{2019}}{\text{CPI}_{2018}} - 1 = \frac{136.0 - 133.4}{133.4} = \db{1.95\%}\]
+\end{example}
+
+\begin{example}[Reflection: Average Annual Inflation]
+    The CPI was 102.8 in 2003 and 126.6 in 2015. What is the average annual
+    inflation rate from 2003 to 2015?
+    \[f_{2003\text{--}2015} = \frac{126.6}{102.8} - 1 = 23.2\%\]
+    \db{This is spread over $2015 - 2003 = 12$ years of compounding:}
+    \[(1 + f_a)^{12} = 1.232 \;\Rightarrow\; f_a = \db{1.75\%}\]
+    \db{(The handwritten slide uses an exponent of $2015 - 2002 = 13$ and gets 1.6\%. From 2003 to 2015 is only 12 years.)}
+\end{example}
+
+\heading{Summary}
+\begin{enumerate}
+    \item The CPI is built from the price changes of a fixed basket of goods
+    \item Inflation is determined by changes in the CPI
+\end{enumerate}
+
+\topic{Calculations with Inflation}
+
+\begin{example}[Investing with Inflation]
+    A \$100 investment pays 5\% interest for 3 years, with inflation
+    expected to be 2\% per year. What is the value of the investment? What
+    is its \emph{real value} after 3 years?
+    \begin{center}
+    \begin{tabular}{lcccc}
+        \toprule
+        Year & 0 & 1 & 2 & 3 \\
+        \midrule
+        Investment value & \$100 & \$105 & \$110.25 & \$115.76 \\
+        Price of good & \$100 & \$102 & \$104.04 & \$106.12 \\
+        Purchasing power ratio & 1.00 & 1.03 & 1.06 & 1.09 \\
+        Real value (today's \$) & \$100 & \$102.94 & \$105.97 & \db{\$109.09} \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \[100(1.05)^3 = \db{\$115.76}, \qquad \text{real value} = 100\left(\frac{1.05}{1.02}\right)^3 = \db{\$109.09}\]
+    \db{The money grows at 5\%, but its purchasing power only grows at $1.05/1.02 - 1 = 2.94\%$ per year, the \dbb{real} rate.}
+\end{example}
+
+\begin{definition}[Actual and Real Dollars]
+    \begin{itemize}
+        \item \rb{Actual (current, nominal) dollars}: expressed in the monetary units at the time the cash-flows occur
+        \item \rb{Real (constant) dollars}: expressed in monetary units of \dbb{constant purchasing power}. They must always be associated with a particular date (e.g.\ ``2026 dollars'')
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Actual and Real Interest Rates]
+    \begin{itemize}
+        \item \rb{Actual interest rate} ($i$ or $i_A$): the observed interest rate, based on actual dollars
+        \item \rb{Real interest rate} ($i'$ or $i_R$): the interest rate based on dollars of constant purchasing power
+    \end{itemize}
+    \[\boxed{\begin{gathered}
+        1 + i_R = \frac{1 + i_A}{1 + f}\\[4pt]
+        \begin{array}{@{}l@{}}
+            i_A: \text{actual interest rate}\\
+            i_R: \text{real interest rate}\\
+            f: \text{inflation rate}
+        \end{array}
+    \end{gathered}}\]
+    \db{For small rates, $i_R \approx i_A - f$.}
+\end{definition}
+
+\heading{Economic Valuation with Inflation}
+\begin{center}
+\begin{tabular}{lll}
+    \toprule
+    Cash-flows in & Adjust for inflation? & Discount with \\
+    \midrule
+    \rb{Actual} dollars & Yes (they include inflation) & \dbb{Actual} MARR \\
+    \rb{Real} dollars & No & \dbb{Real} MARR \\
+    \bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}
+    Most market interest rates are \textbf{actual} rates: loan interest
+    rates, bond yields, expected stock returns (CAPM), and contracts (unless
+    explicitly stated otherwise, e.g.\ defined benefit pension plans).
+\end{remark}
+
+\db{Historically (Canada, 1958--2009), long-term government bond yields have tracked the inflation rate, staying above it except during the mid-1970s inflation peak.}
+
+\begin{example}[Cash-flow with Inflation]
+    A company invests \$100k in a new machine that brings benefits of \$30k
+    per year for 5 years. It expects a \b{real} return of 6\%, and inflation
+    is 3\%.
+    \begin{enumerate}[label = \alph*)]
+        \item If the dollar values are \b{actual}, find the PW.
+        \\\db{Actual dollars need the actual MARR:}
+        \[i_A = (1.06)(1.03) - 1 = 9.18\%\]
+        \[\text{PW} = -100\text{k} + 30\text{k}(P/A,9.18\%,5) = \db{\$16.1\text{k}}\]
+        \item If the dollar values are \b{real}, find the PW.
+        \[\text{PW} = -100\text{k} + 30\text{k}(P/A,6\%,5) = \db{\$26.4\text{k}}\]
+        \db{Real benefits keep their purchasing power (they grow with inflation in actual dollars), so the project is worth more.}
+    \end{enumerate}
+\end{example}
+
+\begin{example}[Loan with Inflation]
+    A bank quotes 5\% compounded semi-annually. If you expect inflation of
+    2\%, what is the real effective rate of interest?
+    \[1 + i_{A,\text{eff}} = \left(1 + \frac{0.05}{2}\right)^2 \;\Rightarrow\; i_{A,\text{eff}} = 5.0625\%\]
+    \[i_{R,\text{eff}} = \frac{1.050625}{1.02} - 1 = \db{3.002\%}\]
+\end{example}
+
+\begin{example}[Bond with Inflation]
+    A 10-year bond with 5 years left to maturity has a 4\% coupon, paid
+    semi-annually. Inflation is expected to average 3\% over the next 5
+    years. If you target a real (effective) return of 5\%, how much should
+    you pay for this bond (per \$100 face)?
+    \\\db{Bond cash-flows are fixed in actual dollars, so convert to an actual rate, then to a semi-annual rate:}
+    \[i_A = (1.05)(1.03) - 1 = 8.15\%, \qquad i_s = (1.0815)^{1/2} - 1 = 3.995\%\]
+    \[P = 2(P/A,3.995\%,10) + 100(P/F,3.995\%,10) = \db{\$83.81}\]
+\end{example}
+
+\heading{Inflation with Tax Benefits}
+In accounting we use actual values. Since CCA is calculated in \b{actual}
+dollars, we \dbb{must} use the \b{actual} interest rate in the tax benefit
+factors. It is convenient to write the factors as
+\[\boxed{\text{CTF} = 1 - \tau_{1/2} = 1 - \frac{td(1 + i/2)}{(i + d)(1 + i)}, \qquad \text{CSF} = 1 - \tau_{db} = 1 - \frac{td}{i + d}}\]
+\[\text{PW} = -FC \times \text{CTF} + S \times \text{CSF} \times (P/F,i,N)\]
+where CTF is the \rb{capital tax factor} and CSF is the \rb{capital salvage
+factor} (salvage treated as open books, $R = S$).
+
+\begin{example}[Tax Benefit Factors with Inflation]
+    A machine costs \$20,000, with an expected life of 7 years and a salvage
+    value of \$6000 \b{in today's dollars}. The CCA rate is 20\% and taxes
+    are 25\%. Find the PW, assuming a real MARR of 8\% and expected
+    inflation of 4\%.
+    \\\db{The tax benefit factors need the \dbb{actual} rate:}
+    \[i_A = (1.08)(1.04) - 1 = 12.32\%\]
+    \[\text{CTF} = 1 - \frac{0.25(0.2)(1.0616)}{(0.3232)(1.1232)} = 0.8538, \qquad \text{CSF} = 1 - \frac{0.25(0.2)}{0.3232} = 0.8453\]
+    \db{Actual dollars: the salvage in year-7 dollars is $6000(1.04)^7$, discounted at the actual rate:}
+    \[\text{PW} = -20{,}000(0.8538) + 6000\frac{(1.04)^7}{(1.1232)^7}(0.8453)\]
+    \db{Real dollars: keep \$6000 and discount at the real rate, since $(1.04/1.1232)^7 = 1/(1.08)^7$:}
+    \[\text{PW} = -20{,}000(0.8538) + \frac{6000}{(1.08)^7}(0.8453) = -17{,}076 + 2959 = \db{-\$14{,}116}\]
+    \db{(The handwritten slide reports $-\$13{,}575$, but the terms it lists give $-\$14{,}116$.)}
+\end{example}
+
+\begin{remark}
+    You \textbf{must} use the actual rate in the tax benefit factors, but
+    you can use either actual or real dollars for the salvage value, as
+    long as you discount with the matching rate.
+\end{remark}
+
+\begin{example}[Reflection: Machine with Declining Benefits]
+    Find the PW of investing in a machine with annual (before-tax) benefits:
+    \begin{center}
+    \begin{tabular}{lr}
+        \toprule
+        Machine first cost & \$40,000 \\
+        Expected life & 10 years \\
+        Salvage value & \$5000 (real dollars) \\
+        Annual benefits & \$10,000 in year 1, decreasing by 4\%/yr (real dollars) \\
+        Actual MARR & 8\% \\
+        CCA rate & 20\% \\
+        Corporate tax rate & 30\% \\
+        Expected inflation & 3\% \\
+        \bottomrule
+    \end{tabular}
+    \end{center}
+    \[\text{PW} = \text{PW}_{\text{machine}} + \text{PW}_{\text{benefits}}\]
+    \db{\dbb{Machine} (tax factors at the actual rate):}
+    \[\text{CTF} = 1 - \frac{0.3(0.2)(1.04)}{(0.28)(1.08)} = 0.7937, \qquad \text{CSF} = 1 - \frac{0.3(0.2)}{0.28} = 0.7857\]
+    \[\text{PW}_{\text{machine}} = -40{,}000(0.7937) + 5000(0.7857)\frac{(1.03)^{10}}{(1.08)^{10}} = \db{-\$29{,}301}\]
+    \db{\dbb{Benefits} are in real dollars with a real growth rate $g = -4\%$, so discount at the real rate:}
+    \[i_R = \frac{1.08}{1.03} - 1 = 4.85\%\]
+    \[(P/\text{Geom},r,g,n) = \frac{1 - \left(\frac{1 + g}{1 + r}\right)^n}{r - g}, \qquad \text{PW}_{\text{benefits}} = 10{,}000(P/\text{Geom},4.85\%,-4\%,10) = \db{\$66{,}199}\]
+    \[\text{PW} = -29{,}301 + 66{,}199 = \db{\$36{,}898}\]
+    \db{(The slide gets $\text{PW}_{\text{machine}} = -\$28{,}634$ and $\text{PW} = \$37{,}565$, but its listed terms give $-\$29{,}301$. Also, the slide does not tax the benefits. Since they are before-tax, they should be multiplied by $(1 - t)$: $\text{PW}_{\text{benefits}} = 0.7(66{,}199) = \$46{,}339$, which gives $\text{PW} = \dbb{\$17{,}038}$.)}
+\end{example}
+
+\begin{remark}
+    If the growth rate were \textbf{actual} (and the \$10,000 still in real
+    dollars), convert the first payment to actual dollars and discount
+    everything at the actual rate:
+    \[\text{PW}_{\text{benefits}} = 10{,}000(1.03)(P/\text{Geom},8\%,-4\%,10)\]
+\end{remark}
+
+\heading{Summary}
+\begin{enumerate}
+    \item \b{Actual dollars}: monetary units at the time the cash-flows occur. \b{Real dollars}: constant purchasing power, tied to a particular date
+    \item The \b{actual} interest rate is the observed rate; the \b{real} rate is based on constant purchasing power: $1 + i_R = (1 + i_A)/(1 + f)$
+    \item Actual values use the actual MARR; real values use the real MARR
+    \item Always use the \b{actual} MARR in tax benefit factor calculations
+\end{enumerate}

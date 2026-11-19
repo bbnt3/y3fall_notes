@@ -457,6 +457,10 @@ INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ec-lmbx10.tfm
 INPUT ./entries/week09.tex
 INPUT ./entries/week09.tex
 INPUT entries/week09.tex
+INPUT ./entries/week10.tex
+INPUT ./entries/week10.tex
+INPUT entries/week10.tex
+INPUT /usr/local/texlive/2025/texmf-dist/fonts/tfm/public/lm/ts1-lmbx10.tfm
 INPUT build/main.aux
 INPUT build/main.out
 INPUT build/main.out
